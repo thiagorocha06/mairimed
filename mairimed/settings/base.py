@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    '0.0.0.0:5000',
+    'localhost',
     'mairimed.pythonanywhere.com',
     'mairimed.herokuapp.com',
     'mairimed.com',
