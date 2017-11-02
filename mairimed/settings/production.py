@@ -62,6 +62,7 @@ if not settings.DEBUG:
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'whitenoise.middleware.WhiteNoiseMiddleware',
     ]
 
     ROOT_URLCONF = 'mairimed.urls'
@@ -140,21 +141,28 @@ if not settings.DEBUG:
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'static_root')
-    #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'static_root')
+    #PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static_in_pro", 'our_static'),
+        os.path.join(BASE_DIR, 'static'),
         #os.path.join(BASE_DIR, "static_in_env"),
         #'/var/www/static/',
     ]
 
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'live-static', 'static-root')
+    #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'static_root')
+
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_root')
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'live-static', 'media-root')
     #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_root')
 
     LOGIN_REDIRECT_URL	=	'/'
 
     EMAIL_HOST = 'localhost'
     EMAIL_PORT = 1025
+
+    # Simplified static file serving.
+    # https://warehouse.python.org/project/whitenoise/
+
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

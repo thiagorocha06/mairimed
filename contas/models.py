@@ -10,10 +10,6 @@ class Estudante(models.Model):
     instituicao = models.CharField(max_length=30, default='')
     semestre = models.CharField(max_length=10, default='')
     artigos_favoritos = models.ManyToManyField(Artigo, related_name='favorited_by')
-    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
-    is_active   = models.BooleanField(default=True)
-    is_admin    = models.BooleanField(default=False)
-    is_staff    = models.BooleanField(default=False)
 
 def criar_estudante(sender, **kwargs):
     if kwargs['created']:
