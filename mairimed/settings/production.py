@@ -141,7 +141,7 @@ if not settings.DEBUG:
     # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
     STATIC_URL = '/static/'
-    STATIC_ROOT = '/home/mairimed/mairimed_static/static_root'
+    STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'static_root')
     #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'static_root')
 
     STATICFILES_DIRS = [
@@ -151,7 +151,7 @@ if not settings.DEBUG:
     ]
 
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = '/home/mairimed/mairimed_static/media_root'
+    MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_root')
     #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_root')
 
     LOGIN_REDIRECT_URL	=	'/'
