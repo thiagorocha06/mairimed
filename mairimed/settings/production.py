@@ -141,7 +141,12 @@ if not settings.DEBUG:
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-    #PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static'),
@@ -149,7 +154,7 @@ if not settings.DEBUG:
         #'/var/www/static/',
     ]
 
-    STATIC_URL = '/static/'
+    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'live-static', 'static-root')
     #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'static_root')
 
@@ -165,4 +170,4 @@ if not settings.DEBUG:
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
