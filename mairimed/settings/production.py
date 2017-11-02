@@ -150,11 +150,11 @@ if not settings.DEBUG:
     ]
 
     STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'live-static', 'static-root')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'live-static', 'static-root', 'our_static')
     #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'static_root')
 
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'live-static', 'media-root')
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'live-static', 'media-root', 'our_static')
     #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_root')
 
     LOGIN_REDIRECT_URL	=	'/'
