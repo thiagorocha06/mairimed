@@ -1,0 +1,19 @@
+{%	extends	"mairimed/base.html"	%}
+
+{%	block	content	%}
+
+<div class="container">
+  <h1>Perfil</h1>
+
+  <p>Usuário: {{ user }}</p>
+  <p>Primeiro Nome: {{ user.first_name }}</p>
+  <p>Último Nome: {{ user.last_name }}</p>
+  <p>Email: {{ user.email }}</p>
+  <p>Instituição de Ensino: {{ user.email }}</p>
+
+  <p><a href="{% url 'editar_perfil'%}">Editar Perfil</a></p>
+  <p><a href="{% url 'mudar_senha'%}">Mudar Senha</a></p>
+
+</div>
+
+{% endblock %}

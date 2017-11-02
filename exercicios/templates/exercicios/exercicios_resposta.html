@@ -1,0 +1,30 @@
+{% extends 'mairimed/base.html' %}
+
+{% block content %}
+
+<div class="artigo">
+  <h1>EXERCÍCIOS DE ELETROCARDIOGRAMA</h1>
+
+  {% for exercicio in exercicios %}
+    {% if exercicio.categoria == "ECG" %}
+        <h3>{{ exercicio.nome }}</h3>
+
+      {% if exercicio.exercicio_img %}
+        <img src="{{ exercicio.exercicio_img.url }}" width="800" />
+      {% endif %}
+
+      {% if exercicio.exercicio_historia %}
+        <h4>História</h4>
+        <p>{{ exercicio.exercicio_historia }}</p>
+      {% endif %}
+
+      {% if exercicio.exercicio_resposta %}
+        <h4>Resposta</h4>
+        <p>{{ exercicio.exercicio_resposta }}</p>
+      {% endif %}
+
+    {% endif %}
+  {% endfor %}
+
+</div>
+{% endblock content %}

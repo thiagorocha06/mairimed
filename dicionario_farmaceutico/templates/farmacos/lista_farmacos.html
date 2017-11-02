@@ -1,0 +1,49 @@
+{% extends 'farmacos_base.html' %}
+
+{% block content %}
+
+<form type="get" action="" style="margin: 20">
+    <input type="text" class="form-control" name="campo_pesquisa"  placeholder="Pesquisar Fármaco" value="{{ request.GET.campo_pesquisa }}" >
+    <input type="submit" class="btn btn-warning center-block" value="Pesquisar">
+</form>
+
+<div class="artigo">
+  <ul>
+    {% for farmaco in farmacos %}
+    <li><h2><a href="{% url 'detalhe_farmacos' pk=farmaco.pk %}">{{ farmaco.nome }}</a></h2></li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if farmacos.has_previous %}
+            <a href="?{{ page_request_var }}={{ farmacos.previous_page_number }}">anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ farmacos.number }} de {{ farmacos.paginator.num_pages }}
+        </span>
+
+        {% if farmacos.has_next %}
+            <a href="?{{ page_request_var }}={{ farmacos.next_page_number }}">próxima</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}
+
+{% block sidebar %}
+<nav class="col-sm-2" style="padding-bottom:20px">
+  <ul class="nav nav-pills nav-stacked">
+    <h1>Classes</h1>
+    <li><a href="{% url 'aine_farmacos' %}">AINE</a></li>
+    <li><a href="{% url 'antihipertensivos_farmacos' %}">Anti-hipertensivo</a></li>
+    <li><a href="{% url 'antiagregantes_farmacos' %}">Antiagregante Plaquetário</a></li>
+    <li><a href="{% url 'antianginosos_farmacos' %}">Antianginoso</a></li>
+    <li><a href="{% url 'antibioticos_farmacos' %}">Antibiótico</a></li>
+    <li><a href="{% url 'anticoagulantes_farmacos' %}">Anticoagulante</a></li>
+    <li><a href="{% url 'hipolipemiantes_farmacos' %}">Hipolipemiante</a></li>
+  </ul>
+</nav>
+{% endblock %}

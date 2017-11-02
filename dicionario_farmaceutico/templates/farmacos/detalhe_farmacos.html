@@ -1,0 +1,163 @@
+{% extends 'farmacos_base.html' %}
+
+<!-- CONTEUDO -->
+{% block content %}
+<div class="artigo">
+
+  <h1>{{ farmaco.nome }}</h1>
+
+  <div class="linhas-horizontais">
+    <div class="farmaco-card">
+      {% if farmaco.marcas %}
+      <h3>Marcas:</h3>
+      <p>{{ farmaco.marcas|linebreaksbr }}</p>
+      {% endif %}
+    </div>
+    <div class="farmaco-card">
+      {% if farmaco.classe %}
+      <h3>Categorias:</h3>
+      <p>{{ farmaco.classe|linebreaksbr }},</p>
+      {% endif %}
+      {% if farmaco.subclasse %}
+      <p>{{ farmaco.subclasse|linebreaksbr }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+    {% if farmaco.farmacodinamica %}
+    <h2 id="farmacodinamica">Farmacodinamica</h2>
+    <p>{{ farmaco.farmacodinamica|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.farmacocinetica %}
+    <h2 id="farmacocinetica">Farmacocinetica</h2>
+    <p>{{ farmaco.farmacocinetica|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.absorcao %}
+    <h2 id="absorcao">Absorção</h2>
+    <p>{{ farmaco.absorcao|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.distribuicao %}
+    <h2 id="distribuicao">Distribuição</h2>
+    <p>{{ farmaco.distribuicao|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.metabolismo %}
+    <h2 id="metabolismo">Metabolismo</h2>
+    <p>{{ farmaco.metabolismo|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.eliminacao %}
+    <h2 id="eliminacao">Eliminação</h2>
+    <p>{{ farmaco.eliminacao|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.indicacoes %}
+    <h2 id="indicacoes" >Indicações</h2>
+    <p>{{ farmaco.indicacoes|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.posologia %}
+    <h2 id="posologia">Posologia</h2>
+    <p>{{ farmaco.posologia|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.pediatria %}
+    <h2 id="pediatria">Pediatria</h2>
+    <p>{{ farmaco.pediatria|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.administracao %}
+    <h2 id="administracao">Administração</h2>
+    <p>{{ farmaco.administracao|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.rmuitocomum %}
+    <h2 id="rmuitocomum">Reações adversas muito comuns</h2>
+    <p>{{ farmaco.rmuitocomum|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.rcomum %}
+    <h2 id="rcomum">Reações adversas comuns</h2>
+    <p>{{ farmaco.rcomum|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.rincomum %}
+    <h2 id="rincomum">Reações adversas incomuns</h2>
+    <p>{{ farmaco.rincomum|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.rrara %}
+    <h2 id="rrara">Reações adversas raras</h2>
+    <p>{{ farmaco.rrara|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.rmuitorara %}
+    <h2 id="rmuitorara">Reações adversas muito raras</h2>
+    <p>{{ farmaco.rmuitorara|linebreaksbr }}</p>
+    {% endif %}
+
+    {% if farmaco.rnaodefinida %}
+    <h2 id="rnaodefinida">Reações adversas com frequência não definida</h2>
+    <p>{{ farmaco.rnaodefinida|linebreaksbr }}</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<nav class="col-sm-2">
+  <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="220" style="padding-bottom:20px">
+    <h1>{{ farmaco.nome }}</h1>
+    {% if farmaco.farmacodinamica %}
+    <li><a href="#farmacodinamica">Farmacodinâmica</a></li>
+    {% endif %}
+    {% if farmaco.farmacocinetica %}
+    <li><a href="#farmacocinetica">Farmacocinética</a></li>
+    {% endif %}
+    {% if farmaco.absorcao %}
+    <li><a href="#absorcao">Absorção</a></li>
+    {% endif %}
+    {% if farmaco.distribuicao %}
+    <li><a href="#distribuicao">Distribuição</a></li>
+    {% endif %}
+    {% if farmaco.metabolismo %}
+    <li><a href="#metabolismo">Metabolismo</a></li>
+    {% endif %}
+    {% if farmaco.eliminacao %}
+    <li><a href="#eliminacao">Eliminação</a></li>
+    {% endif %}
+    {% if farmaco.indicacoes %}
+    <li><a href="#indicacoes">Indicações</a></li>
+    {% endif %}
+    {% if farmaco.posologia %}
+    <li><a href="#posologia">Posologia</a></li>
+    {% endif %}
+    {% if farmaco.pediatria %}
+    <li><a href="#pediatria">Pediatria</a></li>
+    {% endif %}
+    {% if farmaco.administracao %}
+    <li><a href="#administracao">Administração</a></li>
+    {% endif %}
+    {% if farmaco.rmuitocomum %}
+    <li><a href="#rmuitocomum">Reações adversas muito comuns</a></li>
+    {% endif %}
+    {% if farmaco.rcomum %}
+    <li><a href="#rcomum">Reações adversas comuns</a></li>
+    {% endif %}
+    {% if farmaco.rincomum %}
+    <li><a href="#rincomum">Reações adversas incomuns</a></li>
+    {% endif %}
+    {% if farmaco.rrara %}
+    <li><a href="#rrara">Reações adversas raras</a></li>
+    {% endif %}
+    {% if farmaco.rmuitorara %}
+    <li><a href="#rmuitorara">Reações adversas muito raras</a></li>
+    {% endif %}
+    {% if farmaco.rnaodefinida %}
+    <li><a href="#rnaodefinida">RA com frequência não definida</a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}

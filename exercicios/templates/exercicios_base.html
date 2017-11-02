@@ -1,0 +1,94 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+
+      <!-- Icon for FF, Chrome, Opera -->
+      <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="16x16">
+      <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="32x32">
+
+      <!-- Icon for IE -->
+      <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico" >
+      <link rel="shortcut icon" type="image/x-icon" href="/assets/favicons/favicon.ico"/>
+
+      <title>Mairimed</title>
+      <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="{% static 'css/artigos.css' %}">
+    </head>
+    <body>
+
+      <!-- HEADER -->
+      <div class="page-header">
+
+        <!-- MENU SUPERIOR
+        <nav id="menu-superior" class="menu-superior">
+          <ul>
+              {% if user.is_authenticated %}
+                <li>Olá {{ user.username }}
+                  <small>(<a href="{% url 'logout'%}">Sair,</a>
+                  <a href="/perfil">Perfil</a>)</small>
+                </li>
+              {%	else	%}
+                <li><a href="/cadastro">Cadastrar-se</a></li>
+                <li><a href="{%	url	'login'	%}">Entrar</a></li>
+              {% endif %}
+          </ul>
+        </nav>
+        -->
+
+        <h1><a href="/"><img src="{% static 'img/mairimed_logo4.png' %}" /></a></h1>
+
+        <div>
+        <!-- BARRA DE NAVEGACAO -->
+        <nav id="menu" class="menu">
+          <ul>
+            <li><h2><a href="{% url 'inicio' %}">Resumos de Medicina</a></h2></li>
+            <li class="active"><h2><a href="{% url 'exercicios_categorias' %}">Exercícios de Medicina</a></h2></li>
+            <li><h2><a href="{% url 'lista_termos' %}">Dicionário Médico</a></h2></li>
+          </ul>
+        </nav>
+        </div>
+
+      </div>
+
+      <!-- CONTEUDO -->
+      <div class="content container">
+        <div class="row">
+          <!-- BARRA LATERAL -->
+          <div id="sidebar" class="col-md-3">
+            <div class="barra-lateral">
+              <h1>Exercícios de Medicina</h1>
+              <ul>
+                <li><h2><a href="{% url 'exercicios_ecg' %}">ELETROCARDIOGRAMA</a></h2></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- COLUNA PRINCIPAL -->
+          <div class="col-md-8">
+          {% block content %}
+          {% endblock %}
+          </div>
+        </div>
+      </div>
+
+      <!-- BARRA INFERIOR
+      <div class="final-pag">
+        <p>Aviso: Este site tem um fim meramente informativo e não substitui de forma alguma a consulta a um profissional de saúde, nem quaisquer tratamentos e/ou diagnósticos. Procure sempre o aconselhamento do seu médico ou farmacêutico antes de iniciar ou alterar um tratamento, exercício ou plano alimentar. Alguma informação poderá estar desatualizada. Nenhuma informação do mairimed.com é regulada ou avaliada pelo Infarmed ou pelo Ministério da Saúde, e como tal, não deverá ser utilizada para diagnosticar, curar, tratar ou prevenir qualquer doença sem a supervisão de um profissional de saúde.</p>
+      </div>
+      -->
+
+      <!-- BARRA INFERIOR -->
+      <footer>
+        <div class="final-pag">
+          <p>mairimed.com</p>
+          <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
+          <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
+        </div>
+      </footer>
+
+    </body>
+</html>

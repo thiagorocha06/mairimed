@@ -1,0 +1,109 @@
+{% extends 'farmacos_base.html' %}
+
+{% block content %}
+
+<div class="artigo">
+
+  {% url 'aine_farmacos' as aine_farmacos %}
+  {% url 'antihipertensivos_farmacos' as antihipertensivos_farmacos %}
+  {% url 'antiagregantes_farmacos' as antiagregantes_farmacos %}
+  {% url 'antianginosos_farmacos' as antianginosos_farmacos %}
+  {% url 'antibioticos_farmacos' as antibioticos_farmacos %}
+  {% url 'anticoagulantes_farmacos' as anticoagulantes_farmacos %}
+  {% url 'hipolipemiantes_farmacos' as hipolipemiantes_farmacos %}
+
+  {% if request.path == aine_farmacos %}
+  <h1>AINE</h1>
+  <ul>
+    {% for farmaco in farmacos %}
+      {% if farmaco.classe == "AINE" %}
+        <li><h2><a href="{% url 'detalhe_farmacos' pk=farmaco.pk %}">{{ farmaco.nome }}</a></h2></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if request.path == antihipertensivos_farmacos %}
+  <h1>Anti-hipertensivos</h1>
+  <ul>
+    {% for farmaco in farmacos %}
+      {% if farmaco.classe == "Anti-hipertensivo" %}
+        <li><h2><a href="{% url 'detalhe_farmacos' pk=farmaco.pk %}">{{ farmaco.nome }}</a></h2></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if request.path == antiagregantes_farmacos %}
+  <h1>Antiagregante Plaquetário</h1>
+  <ul>
+    {% for farmaco in farmacos %}
+      {% if farmaco.classe == "Antiagregante Plaquetário" %}
+        <li><h2><a href="{% url 'detalhe_farmacos' pk=farmaco.pk %}">{{ farmaco.nome }}</a></h2></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if request.path == antianginosos_farmacos %}
+  <h1>Antianginosos</h1>
+  <ul>
+    {% for farmaco in farmacos %}
+      {% if farmaco.classe == "Antianginosos" %}
+        <li><h2><a href="{% url 'detalhe_farmacos' pk=farmaco.pk %}">{{ farmaco.nome }}</a></h2></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if request.path == antibioticos_farmacos %}
+  <h1>Antibiótico</h1>
+  <ul>
+    {% for farmaco in farmacos %}
+      {% if farmaco.classe == "Antibiótico" %}
+        <li><h2><a href="{% url 'detalhe_farmacos' pk=farmaco.pk %}">{{ farmaco.nome }}</a></h2></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if request.path == anticoagulantes_farmacos %}
+  <h1>Anticoagulante</h1>
+  <ul>
+    {% for farmaco in farmacos %}
+      {% if farmaco.classe == "Anticoagulante" %}
+        <li><h2><a href="{% url 'detalhe_farmacos' pk=farmaco.pk %}">{{ farmaco.nome }}</a></h2></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if request.path == hipolipemiantes_farmacos %}
+  <h1>Hipolipemiante</h1>
+  <ul>
+    {% for farmaco in farmacos %}
+      {% if farmaco.classe == "Hipolipemiante" %}
+        <li><h2><a href="{% url 'detalhe_farmacos' pk=farmaco.pk %}">{{ farmaco.nome }}</a></h2></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+</div>
+
+{% endblock content %}
+
+{% block sidebar %}
+<nav class="col-sm-2" style="padding-bottom:20px">
+  <ul class="nav nav-pills nav-stacked">
+    <h1>Classes</h1>
+    <li><a href="{% url 'aine_farmacos' %}">AINE</a></li>
+    <li><a href="{% url 'antihipertensivos_farmacos' %}">Anti-hipertensivo</a></li>
+    <li><a href="{% url 'antiagregantes_farmacos' %}">Antiagregante Plaquetário</a></li>
+    <li><a href="{% url 'antianginosos_farmacos' %}">Antianginoso</a></li>
+    <li><a href="{% url 'antibioticos_farmacos' %}">Antibiótico</a></li>
+    <li><a href="{% url 'anticoagulantes_farmacos' %}">Anticoagulante</a></li>
+    <li><a href="{% url 'hipolipemiantes_farmacos' %}">Hipolipemiante</a></li>
+  </ul>
+</nav>
+{% endblock %}

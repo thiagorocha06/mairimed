@@ -1,0 +1,18 @@
+{% extends 'termos_base.html' %}
+
+{% block content %}
+
+<div class="artigo">
+    <h1>{{ termo.nome }}</h1>
+    <h2>Definição</h2>
+    <p>{{ termo.definicao|linebreaksbr }}</p>
+</div>
+
+<!--
+    <div class="artigo">
+        <h1>{{ termo.nome }}</h1>
+        <h2>Definição</h2>
+        <p>{{ termo.definicao|linebreaksbr }}</p>
+    </div>
+-->
+{% endblock %}

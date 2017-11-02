@@ -1,0 +1,89 @@
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Icon for FF, Chrome, Opera -->
+    <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="32x32">
+
+    <!-- Icon for IE -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico" >
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicons/favicon.ico"/>
+
+    <title>Mairimed</title>
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/artigos.css' %}">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Custom styles for this template
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+    -->
+
+    <!-- Affix -->
+
+    <style>
+      .affix {
+          top: 10px;
+          width: 170px;
+      }
+      @media screen and (max-width: 810px) {
+        .col-sm-9  {
+            margin-left: 150px;
+        }
+      }
+    </style>
+
+  </head>
+
+  <body style="background-color:#F5F0ED">
+
+    <!-- LOGO -->
+    <div class="container-fluid" style="background-color:#ff9400; color:#fff; height:130px; text-align:center;">
+      <h1><a href="/"><img src="{% static 'img/mairimed_logo4.png' %}" /></a></h1>
+    </div>
+
+    <div class="container-fluid" style="background-color:#ff9400">
+      <div class="container">
+        <nav>
+          <ul class="nav nav-justified">
+            <li><a href="{% url 'inicio' %}">Resumos Médicos</a></li>
+            <li><a href="{% url 'lista_termos' %}">Dicionário Médico</a></h2></li>
+            <li class="active"><a href="{% url 'lista_farmacos' %}">Dicionário Farmacêutico</a></h2></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+      <!-- CONTEUDO -->
+      <div class="container">
+        <div class="row">
+          <!-- BARRA LATERAL -->
+            {% block sidebar %}
+            {% endblock %}
+          <!-- COLUNA PRINCIPAL -->
+          <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+
+      <!-- BARRA INFERIOR -->
+      <footer>
+        <div class="final-pag">
+          <p>mairimed.com</p>
+          <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
+          <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
+        </div>
+      </footer>
+
+    </body>
+</html>
