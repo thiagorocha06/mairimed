@@ -28,10 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'mairimed.pythonanywhere.com',
+    'mairimed.herokuapp.com',
     'mairimed.com',
     'www.mairimed.com',
 ]
-
 
 # Application definition
 
