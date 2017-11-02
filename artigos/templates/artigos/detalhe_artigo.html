@@ -41,8 +41,14 @@
         {% if artigo.intro_figura1 %}
           <img src="{{ artigo.intro_figura1.url }}" width="700" />
         {% endif %}
+        {% if artigo.intro_figura1_texto %}
+          <p><small>{{ artigo.intro_figura1_texto|linebreaksbr }}</small></p>
+        {% endif %}
         {% if artigo.intro_figura2 %}
           <img src="{{ artigo.intro_figura2.url }}" width="700" />
+        {% endif %}
+        {% if artigo.intro_figura2_texto %}
+          <p><small>{{ artigo.intro_figura2_texto|linebreaksbr }}</small></p>
         {% endif %}
 
         <!--
@@ -77,6 +83,9 @@
         {% if artigo.epidemio_figura %}
           <img src="{{ artigo.epidemio_figura.url }}" width="700" />
         {% endif %}
+        {% if artigo.epidemio_figura_texto %}
+          <p><small>{{ artigo.epidemio_figura_texto|linebreaksbr }}</small></p>
+        {% endif %}
 
         <!--
         **********************
@@ -109,6 +118,9 @@
         {% endif %}
         {% if artigo.clas_figura %}
           <img src="{{ artigo.clas_figura.url }}" width="700" />
+        {% endif %}
+        {% if artigo.clas_figura_texto %}
+          <p><small>{{ artigo.clas_figura_texto|linebreaksbr }}</small></p>
         {% endif %}
 
         <!--
@@ -155,8 +167,14 @@
         {% if artigo.etio_img1 %}
           <img src="{{ artigo.etio_img1.url }}" width="700" />
         {% endif %}
+        {% if artigo.etio_img1_texto %}
+          <p><small>{{ artigo.etio_img1_texto|linebreaksbr }}</small></p>
+        {% endif %}
         {% if artigo.etio_img2 %}
           <img src="{{ artigo.etio_img2.url }}" width="700" />
+        {% endif %}
+        {% if artigo.etio_img2_texto %}
+          <p><small>{{ artigo.etio_img2_texto|linebreaksbr }}</small></p>
         {% endif %}
 
         <!--
@@ -201,6 +219,9 @@
         {% if artigo.historia_figura %}
           <img src="{{ artigo.historia_figura.url }}" width="700" />
         {% endif %}
+        {% if artigo.historia_figura_texto %}
+          <p><small>{{ artigo.historia_figura_texto|linebreaksbr }}</small></p>
+        {% endif %}
 
         <!-- EXAME FISICO -->
         {% if artigo.ef_top %}
@@ -233,6 +254,9 @@
         {% endif %}
         {% if artigo.ef_figura %}
           <img src="{{ artigo.ef_figura.url }}" width="700" />
+        {% endif %}
+        {% if artigo.ef_figura_texto %}
+          <p><small>{{ artigo.ef_figura_texto|linebreaksbr }}</small></p>
         {% endif %}
 
         <!-- EXAMES COMPLEMENTARES -->
@@ -267,11 +291,20 @@
         {% if artigo.exames_img1 %}
           <img src="{{ artigo.exames_img1.url }}" width="700" />
         {% endif %}
+        {% if artigo.exames_img1_texto %}
+          <p><small>{{ artigo.exames_img1_texto|linebreaksbr }}</small></p>
+        {% endif %}
         {% if artigo.exames_img2 %}
           <img src="{{ artigo.exames_img2.url }}" width="700" />
         {% endif %}
+        {% if artigo.exames_img2_texto %}
+          <p><small>{{ artigo.exames_img2_texto|linebreaksbr }}</small></p>
+        {% endif %}
         {% if artigo.exames_img3 %}
           <img src="{{ artigo.exames_img3.url }}" width="700" />
+        {% endif %}
+        {% if artigo.exames_img3_texto %}
+          <p><small>{{ artigo.exames_img3_texto|linebreaksbr }}</small></p>
         {% endif %}
 
         <!-- CRITERIOS DIAGNOSTICOS -->
@@ -288,6 +321,9 @@
 
         {% if artigo.diag_figura %}
           <img src="{{ artigo.diag_figura.url }}" width="700" />
+        {% endif %}
+        {% if artigo.diag_figura_texto %}
+          <p><small>{{ artigo.diag_figura_texto|linebreaksbr }}</small></p>
         {% endif %}
 
         <!--
@@ -326,8 +362,14 @@
         {% if artigo.top1_img1 %}
           <img src="{{ artigo.top1_img1.url }}" width="700" />
         {% endif %}
+        {% if artigo.top1_img1_texto %}
+          <p><small>{{ artigo.top1_img1_texto|linebreaksbr }}</small></p>
+        {% endif %}
         {% if artigo.top1_img2 %}
           <img src="{{ artigo.top1_img2.url }}" width="700" />
+        {% endif %}
+        {% if artigo.top1_img2_texto %}
+          <p><small>{{ artigo.top1_img2_texto|linebreaksbr }}</small></p>
         {% endif %}
 
 
@@ -434,6 +476,9 @@
         {% if artigo.trat_figura %}
           <img src="{{ artigo.trat_figura.url }}" width="700" />
         {% endif %}
+        {% if artigo.trat_figura_texto %}
+          <p><small>{{ artigo.trat_figura_texto|linebreaksbr }}</small></p>
+        {% endif %}
 
         <!-- PROFILAXIA -->
         {% if artigo.profilaxia_top %}
@@ -475,14 +520,20 @@
         {% if artigo.prof_figura %}
           <img src="{{ artigo.prof_figura.url }}" width="700" />
         {% endif %}
+        {% if artigo.prof_figura_texto %}
+          <p><small>{{ artigo.prof_figura_texto|linebreaksbr }}</small></p>
+        {% endif %}
 
         <!-- PROGNOSTICO -->
         {% if artigo.prognostico_top %}
           <h2 id='prognostico'>{{ artigo.prognostico_top }}</h2>
           <p>{{ artigo.prognostico|linebreaksbr }}</p>
-          {% if artigo.prognostico_img %}
-            <img src="{{ artigo.prognostico_img.url }}" width="700" />
-          {% endif %}
+        {% endif %}
+        {% if artigo.prognostico_img %}
+          <img src="{{ artigo.prognostico_img.url }}" width="700" />
+        {% endif %}
+        {% if artigo.prognostico_img_texto %}
+          <p><small>{{ artigo.prognostico_img_texto|linebreaksbr }}</small></p>
         {% endif %}
 
         <!-- COMPLICACOES -->
@@ -501,11 +552,20 @@
           {% if artigo.algoritmo_img1 %}
             <img src="{{ artigo.algoritmo_img1.url }}" width="700" />
           {% endif %}
+          {% if artigo.algoritmo_img1_texto %}
+            <p><small>{{ artigo.algoritmo_img1_texto|linebreaksbr }}</small></p>
+          {% endif %}
           {% if artigo.algoritmo_img2 %}
             <img src="{{ artigo.algoritmo_img2.url }}" width="700" />
           {% endif %}
+          {% if artigo.algoritmo_img2_texto %}
+            <p><small>{{ artigo.algoritmo_img2_texto|linebreaksbr }}</small></p>
+          {% endif %}
           {% if artigo.algoritmo_img3 %}
             <img src="{{ artigo.algoritmo_img3.url }}" width="700" />
+          {% endif %}
+          {% if artigo.algoritmo_img3_texto %}
+            <p><small>{{ artigo.algoritmo_img3_texto|linebreaksbr }}</small></p>
           {% endif %}
         {% endif %}
 

@@ -25,7 +25,9 @@ class Artigo(models.Model):
     intro_top6 = models.CharField(max_length=200, blank=True, null=True)
     intro_texto6 = models.TextField(blank=True, null=True)
     intro_figura1 = models.ImageField(upload_to='img', blank=True, null=True)
+    intro_figura1_texto = models.CharField(max_length=200, blank=True, null=True)
     intro_figura2 = models.ImageField(upload_to='img', blank=True, null=True)
+    intro_figura2_texto = models.CharField(max_length=200, blank=True, null=True)
 
     epidemio_top = models.CharField(max_length=200, blank=True, null=True, default="EPIDEMIOLOGIA")
     epidemiologia = models.TextField(blank=True, null=True)
@@ -40,6 +42,7 @@ class Artigo(models.Model):
     epidemio_top5 = models.CharField(max_length=200, blank=True, null=True)
     epidemio_texto5 = models.TextField(blank=True, null=True)
     epidemio_figura = models.ImageField(upload_to='img', blank=True, null=True)
+    epidemio_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
     class_top = models.CharField(max_length=200, blank=True, null=True, default="CLASSIFICAÇÃO")
     classificacao = models.TextField(blank=True, null=True)
@@ -54,6 +57,7 @@ class Artigo(models.Model):
     class_top5 = models.CharField(max_length=200, blank=True, null=True)
     class_texto5 = models.TextField(blank=True, null=True)
     clas_figura = models.ImageField(upload_to='img', blank=True, null=True)
+    clas_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
     etio_top = models.CharField(max_length=200, blank=True, null=True, default="ETIOLOGIA E FISIOPATOLOGIA")
     etiologia_fisiopatologia = models.TextField(blank=True, null=True)
@@ -74,7 +78,9 @@ class Artigo(models.Model):
     etio_top8 = models.CharField(max_length=200, blank=True, null=True)
     etio_texto8 = models.TextField(blank=True, null=True)
     etio_img1 = models.ImageField(upload_to='img', blank=True, null=True)
+    etio_img1_texto = models.CharField(max_length=200, blank=True, null=True)
     etio_img2 = models.ImageField(upload_to='img', blank=True, null=True)
+    etio_img2_texto = models.CharField(max_length=200, blank=True, null=True)
 
     diag_top = models.CharField(max_length=200, blank=True, null=True, default="DIAGNÓSTICO")
     diagnostico = models.TextField(blank=True, null=True)
@@ -94,6 +100,7 @@ class Artigo(models.Model):
     historia_top6 = models.CharField(max_length=200, blank=True, null=True)
     historia_texto6 = models.TextField(blank=True, null=True)
     historia_figura = models.ImageField(upload_to='img', blank=True, null=True)
+    historia_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
     ef_top = models.CharField(max_length=200, blank=True, null=True, default="EXAME FÍSICO")
     exame_fisico = models.TextField(blank=True, null=True)
@@ -110,6 +117,7 @@ class Artigo(models.Model):
     ef_top6 = models.CharField(max_length=200, blank=True, null=True)
     ef_texto6 = models.TextField(blank=True, null=True)
     ef_figura = models.ImageField(upload_to='img', blank=True, null=True)
+    ef_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
     exames_top = models.CharField(max_length=200, blank=True, null=True, default="EXAMES COMPLEMENTARES")
     exames_complementares = models.TextField(blank=True, null=True)
@@ -126,13 +134,17 @@ class Artigo(models.Model):
     exames_top6 = models.CharField(max_length=200, blank=True, null=True)
     exames_texto6 = models.TextField(blank=True, null=True)
     exames_img1 = models.ImageField(upload_to='img', blank=True, null=True)
+    exames_img1_texto = models.CharField(max_length=200, blank=True, null=True)
     exames_img2 = models.ImageField(upload_to='img', blank=True, null=True)
+    exames_img2_texto = models.CharField(max_length=200, blank=True, null=True)
     exames_img3 = models.ImageField(upload_to='img', blank=True, null=True)
+    exames_img3_texto = models.CharField(max_length=200, blank=True, null=True)
     criterios_top = models.CharField(max_length=200, blank=True, null=True, default="CRITÉRIOS DIAGNÓSTICOS")
     criterios_diagnosticos = models.TextField(blank=True, null=True)
     dd_top = models.CharField(max_length=200, blank=True, null=True, default="DIAGNÓSTICO DIFERENCIAL")
     diagnostico_diferencial = models.TextField(blank=True, null=True)
     diag_figura = models.ImageField(upload_to='img', blank=True, null=True)
+    diag_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
     top1 = models.CharField(max_length=200, blank=True, null=True)
     texto1 = models.TextField(blank=True, null=True)
@@ -149,7 +161,9 @@ class Artigo(models.Model):
     subtop6 = models.CharField(max_length=200, blank=True, null=True)
     subtexto6 = models.TextField(blank=True, null=True)
     top1_img1 = models.ImageField(upload_to='img', blank=True, null=True)
+    top1_img1_texto = models.CharField(max_length=200, blank=True, null=True)
     top1_img2 = models.ImageField(upload_to='img', blank=True, null=True)
+    top1_img2_texto = models.CharField(max_length=200, blank=True, null=True)
 
     tratamento_top = models.CharField(max_length=200, blank=True, null=True, default="TRATAMENTO E MANEJO")
     tratamento_e_manejo = models.TextField(blank=True, null=True)
@@ -198,6 +212,7 @@ class Artigo(models.Model):
     trat_int_top4 = models.CharField(max_length=200, blank=True, null=True)
     trat_int_texto4 = models.TextField(blank=True, null=True)
     trat_figura = models.ImageField(upload_to='img', blank=True, null=True)
+    trat_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
     profilaxia_top = models.CharField(max_length=200, blank=True, null=True, default="PROFILAXIA")
     profilaxia = models.TextField(blank=True, null=True)
@@ -214,16 +229,22 @@ class Artigo(models.Model):
     profilaxia_top6 = models.CharField(max_length=200, blank=True, null=True)
     profilaxia_texto6 = models.TextField(blank=True, null=True)
     prof_figura = models.ImageField(upload_to='img', blank=True, null=True)
+    prof_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
     prognostico_top = models.CharField(max_length=200, blank=True, null=True, default="PROGNÓSTICO")
     prognostico = models.TextField(blank=True, null=True)
     prognostico_img = models.ImageField(upload_to='img', blank=True, null=True)
+    prognostico_img_texto = models.CharField(max_length=200, blank=True, null=True)
     complicacoes_top = models.CharField(max_length=200, blank=True, null=True, default="COMPLICAÇÕES")
     complicacoes = models.TextField(blank=True, null=True)
+
     algoritmo_top = models.CharField(max_length=200, blank=True, null=True, default="ALGORITMO")
     algoritmo_img1 = models.ImageField(upload_to='img', blank=True, null=True)
+    algoritmo_img1_texto = models.CharField(max_length=200, blank=True, null=True)
     algoritmo_img2 = models.ImageField(upload_to='img', blank=True, null=True)
+    algoritmo_img2_texto = models.CharField(max_length=200, blank=True, null=True)
     algoritmo_img3 = models.ImageField(upload_to='img', blank=True, null=True)
+    algoritmo_img3_texto = models.CharField(max_length=200, blank=True, null=True)
     referencias_top = models.CharField(max_length=200, blank=True, null=True, default="REFERENCIAS")
     referencias = models.TextField(blank=True, null=True)
 
