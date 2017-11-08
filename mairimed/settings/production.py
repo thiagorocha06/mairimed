@@ -25,7 +25,7 @@ if not settings.DEBUG:
     # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
     # SECURITY WARNING: keep the secret key used in production secret!
-    SECRET_KEY = '*flm&m-1e_enl0(un8=4lv217df_2(_y0hx+i2ggg5-uk295he'
+    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = False
@@ -94,7 +94,7 @@ if not settings.DEBUG:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'mairimed',
             'USER': 'thiagorocha',
-            'PASSWORD': 'postgres',
+            'PASSWORD': os.environ['PG_PASSWORD'],
             'HOST': 'localhost',
             'PORT': '5432',
         }
