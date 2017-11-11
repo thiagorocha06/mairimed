@@ -317,7 +317,51 @@
         <!-- DIAGNOSTICO DIFERENCIAL -->
         {% if artigo.dd_top %}
           <h3 id='diagnostico_diferencial'>{{ artigo.dd_top }}</h3>
+        {% endif %}
+        {% if artigo.diagnostico_diferencial %}
           <p>{{ artigo.diagnostico_diferencial|linebreaksbr }}</p>
+        {% endif %}
+        {% if artigo.dd_top1 %}
+          <h4>{{ artigo.dd_top1 }}</h3>
+        {% endif %}
+        {% if artigo.dd_texto1 %}
+          <p>{{ artigo.dd_texto1|linebreaksbr }}</p>
+        {% endif %}
+        {% if artigo.dd_top2 %}
+          <h4>{{ artigo.dd_top2 }}</h3>
+        {% endif %}
+        {% if artigo.dd_texto2 %}
+          <p>{{ artigo.dd_texto2|linebreaksbr }}</p>
+        {% endif %}
+        {% if artigo.dd_top3 %}
+          <h4>{{ artigo.dd_top3 }}</h3>
+        {% endif %}
+        {% if artigo.dd_texto3 %}
+          <p>{{ artigo.dd_texto3|linebreaksbr }}</p>
+        {% endif %}
+        {% if artigo.dd_top4 %}
+          <h4>{{ artigo.dd_top4 }}</h3>
+        {% endif %}
+        {% if artigo.dd_texto4 %}
+          <p>{{ artigo.dd_texto4|linebreaksbr }}</p>
+        {% endif %}
+        {% if artigo.dd_top5 %}
+          <h4>{{ artigo.dd_top5 }}</h3>
+        {% endif %}
+        {% if artigo.dd_texto5 %}
+          <p>{{ artigo.dd_texto5|linebreaksbr }}</p>
+        {% endif %}
+        {% if artigo.dd_top6 %}
+          <h4>{{ artigo.dd_top6 }}</h3>
+        {% endif %}
+        {% if artigo.dd_texto6 %}
+          <p>{{ artigo.dd_texto6|linebreaksbr }}</p>
+        {% endif %}
+        {% if artigo.dd_img %}
+          <img src="{{ artigo.dd_img.url }}" width="700" />
+        {% endif %}
+        {% if artigo.dd_img_texto %}
+          <p><small>{{ artigo.dd_img_texto|linebreaksbr }}</small></p>
         {% endif %}
 
         {% if artigo.diag_figura %}
