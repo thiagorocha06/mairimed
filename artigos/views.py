@@ -11,14 +11,12 @@ from django.views.generic import DetailView, TemplateView
 from hitcount.views import HitCountDetailView
 
 class ArtigoMixinDetailView(object):
-    """
-    Mixin to same us some typing.  Adds context for us!
-    """
+
     model = Artigo
 
     def get_context_data(self, **kwargs):
         context = super(ArtigoMixinDetailView, self).get_context_data(**kwargs)
-        context['artigo_list'] = Artigo.objects.all()[:5]
+        context['artigo_list'] = Artigo.objects.all().order_by("hit_count_generic__hits")
         return context
 
 class PostCountHitDetailView(ArtigoMixinDetailView, HitCountDetailView):
@@ -27,6 +25,9 @@ class PostCountHitDetailView(ArtigoMixinDetailView, HitCountDetailView):
     """
     count_hit = True
     template_name = 'artigos/detalhe_artigo.html'
+
+class AdministracaoView(ArtigoMixinDetailView, TemplateView):
+    template_name = 'mairimed/administracao_artigo.html'
 
 def inicio(request):
     estudante = Estudante.objects

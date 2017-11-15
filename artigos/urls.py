@@ -3,7 +3,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.inicio, name='inicio'),
-    url(r'^mairimed/administracao/(?P<pk>\d+)/$', views.PostCountHitDetailView.as_view(), name='administracao'),
     url(r'^mairimed/termos_uso/$', views.termos_uso, name='termos_uso'),
     url(r'^mairimed/sobre/$', views.sobre, name='sobre'),
     url(r'^mairimed/bootstrap/(?P<pk>\d+)/$', views.bootstrap, name='bootstrap'),
@@ -19,6 +18,7 @@ urlpatterns = [
     url(r'^artigo/med_emergencia_artigos/$', views.categorias_artigos, name='med_emergencia_artigos'),
 
     url(r'^artigo/(?P<pk>\d+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
+    url(r'^artigo/administracao/$', views.AdministracaoView.as_view(), name='administracao'),
     url(r'^artigo/(?P<pk>\d+)/favoritos/$', views.favoritos_artigo, name='favoritos_artigo'),
 
 ### ESCS ###
