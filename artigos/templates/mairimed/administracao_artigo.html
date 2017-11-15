@@ -20,6 +20,8 @@
         <dd>{% get_hit_count for artigo %}</dd>
         <dt>Hits nos últimos 7 dias:</dt>
         <dd>{% get_hit_count for artigo within "days=7" %}</dd>
+        <dt>Hits nas últimas 24 horas:</dt>
+        <dd>{% get_hit_count for artigo within "days=1" %}</dd>
       </dl>
     </div>
 {% endfor %}
