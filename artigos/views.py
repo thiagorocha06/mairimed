@@ -16,7 +16,7 @@ class ArtigoMixinDetailView(object):
 
     def get_context_data(self, **kwargs):
         context = super(ArtigoMixinDetailView, self).get_context_data(**kwargs)
-        context['artigo_list'] = Artigo.objects.all().order_by("hit_count_generic__hits")
+        context['artigo_list'] = Artigo.objects.all().order_by("-hit_count_generic__hits")
         return context
 
 class PostCountHitDetailView(ArtigoMixinDetailView, HitCountDetailView):
