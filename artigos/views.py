@@ -7,6 +7,26 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import DetailView, TemplateView
+from hitcount.views import HitCountDetailView
+
+class ArtigoMixinDetailView(object):
+    """
+    Mixin to same us some typing.  Adds context for us!
+    """
+    model = Artigo
+
+    def get_context_data(self, **kwargs):
+        context = super(ArtigoMixinDetailView, self).get_context_data(**kwargs)
+        context['artigo_list'] = Artigo.objects.all()[:5]
+        return context
+
+class PostCountHitDetailView(ArtigoMixinDetailView, HitCountDetailView):
+    """
+    Generic hitcount class based view that will also perform the hitcount logic.
+    """
+    count_hit = True
+    template_name = 'artigos/detalhe_artigo.html'
 
 def inicio(request):
     estudante = Estudante.objects
@@ -18,7 +38,7 @@ def inicio(request):
         lista_artigos = lista_artigos.filter(titulo__icontains=termo_pesquisa)
 
     #Paginacao
-    paginator = Paginator(lista_artigos, 10) # Show 5 contacts per page
+    paginator = Paginator(lista_artigos, 10) # Show 10 contacts per page
     page_request_var = "pagina"
     page = request.GET.get(page_request_var)
     try:

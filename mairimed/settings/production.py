@@ -52,6 +52,7 @@ if not settings.DEBUG:
         'exercicios',
         'dicionario_medico',
         'dicionario_farmaceutico',
+        'hitcount',
     ]
 
     MIDDLEWARE = [

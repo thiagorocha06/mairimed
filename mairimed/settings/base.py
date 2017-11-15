@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'exercicios',
     'dicionario_medico',
     'dicionario_farmaceutico',
+    'hitcount',
 ]
 
 MIDDLEWARE = [

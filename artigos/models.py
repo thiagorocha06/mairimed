@@ -1,11 +1,18 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
+from django.contrib.contenttypes.fields import GenericRelation
+from hitcount.models import HitCount, HitCountMixin
 
-class Artigo(models.Model):
+class Artigo(models.Model, HitCountMixin):
     author = models.ForeignKey('auth.User')
+    hit_count_generic = GenericRelation(
+        HitCount, object_id_field='object_pk',
+        related_query_name='hit_count_generic_relation')
     data_de_criacao = models.DateTimeField(default=timezone.now)
     data_de_publicacao = models.DateTimeField(blank=True, null=True)
+
     modulo = models.CharField(max_length=200, blank=True, null=True)
     categoria = models.CharField(max_length=200, blank=True, null=True)
     titulo = models.CharField(max_length=200)
