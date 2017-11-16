@@ -48,6 +48,8 @@ class Artigo(models.Model, HitCountMixin):
     epidemio_texto4 = models.TextField(blank=True, null=True)
     epidemio_top5 = models.CharField(max_length=200, blank=True, null=True)
     epidemio_texto5 = models.TextField(blank=True, null=True)
+    epidemio_top6 = models.CharField(max_length=200, blank=True, null=True)
+    epidemio_texto6 = models.TextField(blank=True, null=True)
     epidemio_figura = models.ImageField(upload_to='img', blank=True, null=True)
     epidemio_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
@@ -63,6 +65,8 @@ class Artigo(models.Model, HitCountMixin):
     class_texto4 = models.TextField(blank=True, null=True)
     class_top5 = models.CharField(max_length=200, blank=True, null=True)
     class_texto5 = models.TextField(blank=True, null=True)
+    class_top6 = models.CharField(max_length=200, blank=True, null=True)
+    class_texto6 = models.TextField(blank=True, null=True)
     clas_figura = models.ImageField(upload_to='img', blank=True, null=True)
     clas_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
