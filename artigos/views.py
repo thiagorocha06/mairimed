@@ -29,6 +29,27 @@ class PostCountHitDetailView(ArtigoMixinDetailView, HitCountDetailView):
 class AdministracaoView(ArtigoMixinDetailView, TemplateView):
     template_name = 'mairimed/administracao_artigo.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(AdministracaoView, self).get_context_data(**kwargs)
+        lista_artigos = Artigo.objects.all()
+        n_artigos = 0
+        hits_dia = 0
+        hits_semana = 0
+        hits_mes = 0
+        for artigo in lista_artigos:
+            n_artigos = n_artigos + 1
+        for artigo in lista_artigos:
+            hits_dia = hits_dia + artigo.hit_count.hits_in_last(days=1)
+        for artigo in lista_artigos:
+            hits_semana = hits_semana + artigo.hit_count.hits_in_last(days=7)
+        for artigo in lista_artigos:
+            hits_mes = hits_mes + artigo.hit_count.hits_in_last(days=30)
+        context['n_artigos'] = n_artigos
+        context['hits_dia'] = hits_dia
+        context['hits_semana'] = hits_semana
+        context['hits_mes'] = hits_mes
+        return context
+
 def inicio(request):
     estudante = Estudante.objects
     lista_artigos = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')

@@ -4,12 +4,12 @@
 
 {% block content %}
 
-<!-- PESQUISA -->
-
-<form type="get" action="" style="margin: 20">
-    <input type="text" class="form-control" name="campo_pesquisa"  placeholder="Pesquisar Resumo" value="{{ request.GET.campo_pesquisa }}" >
-    <input type="submit" class="btn btn-warning center-block" value="Pesquisar">
-</form>
+<div class="artigo">
+  <p>Total de artigos: {{ n_artigos }} </p>
+  <p>Total de hits em 24 horas: {{ hits_dia }}</p>
+  <p>Total de hits em uma semana: {{ hits_semana }}</p>
+  <p>Total de hits em um mês: {{ hits_mes }}</p>
+</div>
 
 {% for artigo in artigo_list %}
     <div class="artigo">

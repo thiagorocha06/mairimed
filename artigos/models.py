@@ -96,6 +96,7 @@ class Artigo(models.Model, HitCountMixin):
     diag_top = models.CharField(max_length=200, blank=True, null=True, default="DIAGNÓSTICO")
     diagnostico = models.TextField(blank=True, null=True)
 
+    historia_top_h2 = models.CharField(max_length=200, blank=True, null=True)
     historia_top = models.CharField(max_length=200, blank=True, null=True, default="HISTÓRIA CLÍNICA")
     historia_clinica = models.TextField(blank=True, null=True)
     historia_top1 = models.CharField(max_length=200, blank=True, null=True)
@@ -113,6 +114,7 @@ class Artigo(models.Model, HitCountMixin):
     historia_figura = models.ImageField(upload_to='img', blank=True, null=True)
     historia_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
+    ef_top_h2 = models.CharField(max_length=200, blank=True, null=True)
     ef_top = models.CharField(max_length=200, blank=True, null=True, default="EXAME FÍSICO")
     exame_fisico = models.TextField(blank=True, null=True)
     ef_top1 = models.CharField(max_length=200, blank=True, null=True)
@@ -130,6 +132,7 @@ class Artigo(models.Model, HitCountMixin):
     ef_figura = models.ImageField(upload_to='img', blank=True, null=True)
     ef_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
+    exames_top_h2 = models.CharField(max_length=200, blank=True, null=True)
     exames_top = models.CharField(max_length=200, blank=True, null=True, default="EXAMES COMPLEMENTARES")
     exames_complementares = models.TextField(blank=True, null=True)
     exames_top1 = models.CharField(max_length=200, blank=True, null=True)
@@ -150,9 +153,11 @@ class Artigo(models.Model, HitCountMixin):
     exames_img2_texto = models.CharField(max_length=200, blank=True, null=True)
     exames_img3 = models.ImageField(upload_to='img', blank=True, null=True)
     exames_img3_texto = models.CharField(max_length=200, blank=True, null=True)
+
     criterios_top = models.CharField(max_length=200, blank=True, null=True, default="CRITÉRIOS DIAGNÓSTICOS")
     criterios_diagnosticos = models.TextField(blank=True, null=True)
 
+    dd_top_h2 = models.CharField(max_length=200, blank=True, null=True)
     dd_top = models.CharField(max_length=200, blank=True, null=True, default="DIAGNÓSTICO DIFERENCIAL")
     diagnostico_diferencial = models.TextField(blank=True, null=True)
     dd_top1 = models.CharField(max_length=200, blank=True, null=True)
@@ -194,6 +199,7 @@ class Artigo(models.Model, HitCountMixin):
 
     tratamento_top = models.CharField(max_length=200, blank=True, null=True, default="TRATAMENTO E MANEJO")
     tratamento_e_manejo = models.TextField(blank=True, null=True)
+
     medidas_top = models.CharField(max_length=200, blank=True, null=True, default="MEDIDAS GERAIS")
     tratamento_nao_medicamentoso = models.TextField(blank=True, null=True)
     medidas_top1 = models.CharField(max_length=200, blank=True, null=True)

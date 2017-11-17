@@ -197,8 +197,13 @@
         {% endif %}
 
         <!-- HISTORIA -->
+        {% if artigo.historia_top_h2 %}
+          <h2 id='historia_clinica'>{{ artigo.historia_top_h2 }}</h2>
+        {% endif %}
         {% if artigo.historia_top %}
           <h3 id='historia_clinica'>{{ artigo.historia_top }}</h3>
+        {% endif %}
+        {% if artigo.historia_clinica %}
           <p>{{ artigo.historia_clinica|linebreaksbr }}</p>
         {% endif %}
         {% if artigo.historia_texto1 %}
@@ -233,8 +238,13 @@
         {% endif %}
 
         <!-- EXAME FISICO -->
+        {% if artigo.ef_top_h2 %}
+          <h3 id='exame_fisico'>{{ artigo.ef_top_h2 }}</h3>
+        {% endif %}
         {% if artigo.ef_top %}
           <h3 id='exame_fisico'>{{ artigo.ef_top }}</h3>
+        {% endif %}
+        {% if artigo.exame_fisico %}
           <p>{{ artigo.exame_fisico|linebreaksbr }}</p>
         {% endif %}
         {% if artigo.ef_texto1 %}
@@ -269,8 +279,13 @@
         {% endif %}
 
         <!-- EXAMES COMPLEMENTARES -->
+        {% if artigo.exames_top_h2 %}
+          <h3 id='exames_complementares'>{{ artigo.exames_top_h2 }}</h3>
+        {% endif %}
         {% if artigo.exames_top %}
           <h3 id='exames_complementares'>{{ artigo.exames_top }}</h3>
+        {% endif %}
+        {% if artigo.exames_complementares %}
           <p>{{ artigo.exames_complementares|linebreaksbr }}</p>
         {% endif %}
         {% if artigo.exames_top1 %}
@@ -323,6 +338,9 @@
         {% endif %}
 
         <!-- DIAGNOSTICO DIFERENCIAL -->
+        {% if artigo.dd_top_h2 %}
+          <h3 id='diagnostico_diferencial'>{{ artigo.dd_top_h2 }}</h3>
+        {% endif %}
         {% if artigo.dd_top %}
           <h3 id='diagnostico_diferencial'>{{ artigo.dd_top }}</h3>
         {% endif %}
@@ -439,6 +457,8 @@
         <!-- MEDIDAS GERAIS -->
         {% if artigo.medidas_top %}
           <h3>{{ artigo.medidas_top }}</h3>
+        {% endif %}
+        {% if artigo.tratamento_nao_medicamentoso %}
           <p>{{ artigo.tratamento_nao_medicamentoso|linebreaksbr }}</p>
         {% endif %}
         {% if artigo.medidas_top1 %}
