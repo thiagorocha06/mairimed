@@ -198,7 +198,7 @@
 
         <!-- HISTORIA -->
         {% if artigo.historia_top_h2 %}
-          <h2 id='historia_clinica'>{{ artigo.historia_top_h2 }}</h2>
+          <h2 id='historia_top_h2'>{{ artigo.historia_top_h2 }}</h2>
         {% endif %}
         {% if artigo.historia_top %}
           <h3 id='historia_clinica'>{{ artigo.historia_top }}</h3>
@@ -239,7 +239,7 @@
 
         <!-- EXAME FISICO -->
         {% if artigo.ef_top_h2 %}
-          <h3 id='exame_fisico'>{{ artigo.ef_top_h2 }}</h3>
+          <h2 id='ef_top_h2'>{{ artigo.ef_top_h2 }}</h2>
         {% endif %}
         {% if artigo.ef_top %}
           <h3 id='exame_fisico'>{{ artigo.ef_top }}</h3>
@@ -707,8 +707,15 @@
     <li><a href="#diagnostico">{{ artigo.diag_top }}</a></li>
     {% endif %}
 
+    {% if artigo.historia_top_h2 %}
+    <li><a href="#historia_top_h2">{{ artigo.historia_top_h2 }}</a></li>
+    {% endif %}
     {% if artigo.historia_top %}
     <li><a href="#historia_clinica">{{ artigo.historia_top }}</a></li>
+    {% endif %}
+
+    {% if artigo.ef_top_h2 %}
+    <li><a href="#ef_top_h2">{{ artigo.ef_top_h2 }}</a></li>
     {% endif %}
     {% if artigo.ef_top %}
     <li><a href="#exame_fisico">{{ artigo.ef_top }}</a></li>
