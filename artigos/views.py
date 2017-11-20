@@ -52,7 +52,7 @@ class AdministracaoView(ArtigoMixinDetailView, TemplateView):
 
 def inicio(request):
     estudante = Estudante.objects
-    lista_artigos = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')
+    lista_artigos = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-hit_count_generic__hits')
 
     #Pesquisa
     termo_pesquisa = request.GET.get("campo_pesquisa")
