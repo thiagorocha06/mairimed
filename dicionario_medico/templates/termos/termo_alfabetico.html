@@ -2,33 +2,83 @@
 
 {% block content %}
 
-<div class="texto-centro">
-  <h1>{{ letra }}</h1>
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+
 </div>
 
-<div class="artigo">
-  <ul>
-    {% for termo in termos %}
-    <li><h2><a href="{% url 'detalhe_termos' pk=termo.pk %}">{{ termo.nome }}</a></h2></li>
-    <p>{{ termo.definicao }}</p>
-    {% endfor %}
-  </ul>
-</div>
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
-<div class="pagination">
-    <span class="step-links">
-        {% if termos.has_previous %}
-            <a href="?{{ page_request_var }}={{ termos.previous_page_number }}">anterior</a>
-        {% endif %}
+  <div class="lista-horizontal">
+    <ul class="linhas-horizontais">
+      <li><h1><a href="{% url 'termo_a' %}">A</a></h1></li>
+      <li><h1><a href="{% url 'termo_b' %}">B</a></h1></li>
+      <li><h1><a href="{% url 'termo_c' %}">C</a></h1></li>
+      <li><h1><a href="{% url 'termo_d' %}">D</a></h1></li>
+      <li><h1><a href="{% url 'termo_e' %}">E</a></h1></li>
+      <li><h1><a href="{% url 'termo_f' %}">F</a></h1></li>
+      <li><h1><a href="{% url 'termo_g' %}">G</a></h1></li>
+      <li><h1><a href="{% url 'termo_h' %}">H</a></h1></li>
+      <li><h1><a href="{% url 'termo_i' %}">I</a></h1></li>
+      <li><h1><a href="{% url 'termo_j' %}">J</a></h1></li>
+      <li><h1><a href="{% url 'termo_k' %}">K</a></h1></li>
+      <li><h1><a href="{% url 'termo_l' %}">L</a></h1></li>
+      <li><h1><a href="{% url 'termo_m' %}">M</a></h1></li>
+      <li><h1><a href="{% url 'termo_n' %}">N</a></h1></li>
+      <li><h1><a href="{% url 'termo_o' %}">O</a></h1></li>
+      <li><h1><a href="{% url 'termo_p' %}">P</a></h1></li>
+      <li><h1><a href="{% url 'termo_q' %}">Q</a></h1></li>
+      <li><h1><a href="{% url 'termo_r' %}">R</a></h1></li>
+      <li><h1><a href="{% url 'termo_s' %}">S</a></h1></li>
+      <li><h1><a href="{% url 'termo_t' %}">T</a></h1></li>
+      <li><h1><a href="{% url 'termo_u' %}">U</a></h1></li>
+      <li><h1><a href="{% url 'termo_v' %}">V</a></h1></li>
+      <li><h1><a href="{% url 'termo_x' %}">X</a></h1></li>
+      <li><h1><a href="{% url 'termo_z' %}">Z</a></h1></li>
+    </ul>
+  </div>
 
-        <span class="current">
-            Página {{ termos.number }} de {{ termos.paginator.num_pages }}
-        </span>
+  <div class="texto-centro">
+    <h1>{{ letra }}</h1>
+  </div>
 
-        {% if termos.has_next %}
-            <a href="?{{ page_request_var }}={{ termos.next_page_number }}">próxima</a>
-        {% endif %}
-    </span>
-</div>
+  <div class="artigo">
+    <ul>
+      {% for termo in termos %}
+        <h2>{{ termo.nome }}</h2>
+        <!-- Definição
+        <li><h2><a href="{% url 'detalhe_termos' pk=termo.pk %}">{{ termo.nome }}</a></h2></li>
+        -->
+        <p>{{ termo.definicao }}</p>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="pagination">
+      <span class="step-links">
+          {% if termos.has_previous %}
+              <a href="?{{ page_request_var }}={{ termos.previous_page_number }}">anterior</a>
+          {% endif %}
+
+          <span class="current">
+              Página {{ termos.number }} de {{ termos.paginator.num_pages }}
+          </span>
+
+          {% if termos.has_next %}
+              <a href="?{{ page_request_var }}={{ termos.next_page_number }}">próxima</a>
+          {% endif %}
+      </span>
+  </div>
+
+</main>
 
 {% endblock content %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+</div>
+
+{% endblock %}

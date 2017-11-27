@@ -3,26 +3,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="generator" content="Jekyll v3.6.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Mairimed</title>
     <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
     <!-- Custom styles-->
     <link rel="stylesheet" href="{% static 'css/artigos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <!-- Documentation extras -->
-    <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-    <!-- Meta
-    <meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    -->
+    <script src="{% static 'js/carousel.js' %}"></script>
 
     <!-- Icon for FF, Chrome, Opera -->
     <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="16x16">
@@ -36,17 +31,22 @@
 
   <body style="background-color:#F5F0ED" ondragstart="return false" onselectstart="return false">
 
-    <header class="navbar navbar-expand-lg navbar-light flex-column flex-md-row">
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
       <a class="navbar-brand" href="{% url 'inicio' %}">
         <img src="{% static 'img/mairimed_logo4.png' %}" width="140" height="45" alt="">
       </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <div class="navbar-nav-scroll">
-        <ul class="navbar-nav bd-navbar-nav flex-row">
-          <li class="nav-item">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
             <a class="nav-link" href="{% url 'inicio' %}">Início<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'lista_artigos' %}">Resumos Médicos</a>
           </li>
           <li class="nav-item">
@@ -67,40 +67,36 @@
             </div>
           </li>
         </ul>
+        <form class="form-inline my-2 my-lg-0" type="get" action="">
+          {% block form-nav %}
+          {% endblock %}
+        </form>
       </div>
+    </nav>
+  <!-- CONTENT -->
+  {% block content %}
+  {% endblock %}
+  <!-- SIDEBAR -->
+  {% block sidebar %}
+  {% endblock %}
+  <!-- CAROUSEL -->
+  {% block carousel %}
+  {% endblock %}
 
-      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-      </ul>
-      <form type="get" action="" class="form-inline my-2 my-lg-0">
-        {% block form-nav %}
-        {% endblock %}
-      </form>
-    </header>
+  <!-- FOOTER -->
+  <footer class="blog-footer">
+   <div class="container">
+     <p><a href="{% url 'termos_uso' %}">Termos de uso</a> &middot;</p>
+     <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
+     <p>&copy; 2017 mairimed.com</p>
+   </div>
+  </footer>
 
-    <div class="container-fluid">
-      <div class="row flex-xl-nowrap">
-      <!-- BARRA ESQUERDA -->
-      {% block barra-esquerda %}
-      {% endblock %}
-      <!-- CONTENT -->
-      {% block content %}
-      {% endblock %}
-      </div>
-    </div>
 
-    <!-- FOOTER -->
-    <footer class="blog-footer">
-     <div class="container">
-       <p><a href="{% url 'termos_uso' %}">Termos de uso</a> &middot;</p>
-       <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
-       <p>&copy; 2017 mairimed.com</p>
-     </div>
-    </footer>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
   </body>
 </html>

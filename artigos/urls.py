@@ -2,10 +2,11 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.inicio, name='inicio'),
+    url(r'^$', views.InicioView.as_view(), name='inicio'),
+    url(r'^mairimed/entrar/$', views.EntrarView.as_view(), name='entrar'),
+    url(r'^mairimed/lista_artigos/$', views.lista_artigos, name='lista_artigos'),
     url(r'^mairimed/termos_uso/$', views.termos_uso, name='termos_uso'),
     url(r'^mairimed/sobre/$', views.sobre, name='sobre'),
-    url(r'^mairimed/bootstrap/(?P<pk>\d+)/$', views.bootstrap, name='bootstrap'),
 
 ### ARTIGOS ###
     url(r'^artigo/infectologia/$', views.categorias_artigos, name='infectologia_artigos'),

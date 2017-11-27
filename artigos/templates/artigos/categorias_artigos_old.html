@@ -1,7 +1,6 @@
 {% extends 'artigos_base.html' %}
 
 {% block content %}
-
 <!-- Especialidades -->
   {% url 'infectologia_artigos' as infectologia_artigos %}
   {% url 'cardiologia_artigos' as cardiologia_artigos %}
@@ -18,15 +17,8 @@
   {% url '3_serie' as 3_serie %}
   {% url '4_serie' as 4_serie %}
 
-<!-- BARRA DIREITA -->
-<div class="d-none d-xl-block col-xl-2 bd-toc">
-
-</div>
-
-<!-- CONTEUDO -->
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-
 <!-- Especialidades -->
+
   {% if request.path == infectologia_artigos %}
     <div class="texto-centro">
       <h1>INFECTOLOGIA</h1>
@@ -195,11 +187,9 @@
     </div>
   {% endif %}
 
-</main>
-
 {% endblock content %}
 
-{% block barra-esquerda %}
+{% block sidebar %}
 
 <!-- Especialidades -->
   {% url 'infectologia_artigos' as infectologia_artigos %}
@@ -217,20 +207,23 @@
   {% url '3_serie' as 3_serie %}
   {% url '4_serie' as 4_serie %}
 
-  <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+<nav class="col-sm-2" style="padding-bottom:20px">
+  <ul class="nav nav-pills nav-stacked">
+    <li><h1>ESCS</h1></li>
+    <li><a href="{% url '3_serie' %}">3ª SÉRIE<br>MÓDULOS TEMÁTICOS</a></li>
+    <li><a href="{% url 'ha_3' %}">3ª SÉRIE<br>HABILIDADES E ATITUDES</a></li>
+    <li><a href="{% url '4_serie' %}">4ª SÉRIE<br>MÓDULOS TEMÁTICOS</a></li>
+    <li><a href="{% url 'ha_4' %}">4ª SÉRIE<br>HABILIDADES E ATITUDES</a></li>
 
-  <nav class="collapse bd-links" id="bd-docs-nav">
-    <div class="bd-toc-item">
-      <a class="bd-toc-link" href="{% url 'cardiologia_artigos' %}">CARDIOLOGIA</a>
-      <a class="bd-toc-link" href="{% url 'cirurgia_artigos' %}">CIRURGIA</a>
-      <a class="bd-toc-link" href="{% url 'endocrinologia_artigos' %}">ENDOCRINOLOGIA</a>
-      <a class="bd-toc-link" href="{% url 'infectologia_artigos' %}">INFECTOLOGIA</a>
-      <a class="bd-toc-link" href="{% url 'med_emergencia_artigos' %}">MEDICINA DE EMERGÊNCIA</a>
-      <a class="bd-toc-link" href="{% url 'nefrologia_artigos' %}">NEFROLOGIA</a>
-      <a class="bd-toc-link" href="{% url 'pediatria_artigos' %}">PEDIATRIA</a>
-      <a class="bd-toc-link" href="{% url 'pneumologia_artigos' %}">PNEUMOLOGIA</a>
-    </div>
-  </nav>
-
-</div>
+    <li><h1>Especialidades</h1></li>
+    <li><a href="{% url 'cardiologia_artigos' %}">CARDIOLOGIA</a></li>
+    <li><a href="{% url 'cirurgia_artigos' %}">CIRURGIA</a></li>
+    <li><a href="{% url 'endocrinologia_artigos' %}">ENDOCRINOLOGIA</a></li>
+    <li><a href="{% url 'infectologia_artigos' %}">INFECTOLOGIA</a></li>
+    <li><a href="{% url 'med_emergencia_artigos' %}">MEDICINA DE EMERGÊNCIA</a></li>
+    <li><a href="{% url 'nefrologia_artigos' %}">NEFROLOGIA</a></li>
+    <li><a href="{% url 'pediatria_artigos' %}">PEDIATRIA</a></li>
+    <li><a href="{% url 'pneumologia_artigos' %}">PNEUMOLOGIA</a></li>
+  </ul>
+</nav>
 {% endblock %}

@@ -1,0 +1,68 @@
+<!doctype html>
+{% extends "artigos_base.html" %}
+{% load staticfiles %}
+
+{% block form-nav %}
+<input type="text" class="form-control mr-sm-2" name="campo_pesquisa"  placeholder="Pesquisar Resumo" value="{{ request.GET.campo_pesquisa }}" >
+<input type="submit" class="btn btn-outline-light" value="Pesquisar">
+{% endblock %}
+
+{% block content %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+
+</div>
+
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+  <div class="texto-centro">
+    <h1>RESUMOS</h1>
+  </div>
+
+  {% for artigo in lista_artigos %}
+      <div class="artigo">
+        <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+        <p>{{ artigo.introducao|truncatechars:200 }}</p>
+      </div>
+  {% endfor %}
+
+  <div class="pagination">
+      <span class="step-links">
+          {% if lista_artigos.has_previous %}
+              <a href="?{{ page_request_var }}={{ lista_artigos.previous_page_number }}">anterior</a>
+          {% endif %}
+
+          <span class="current">
+              Página {{ lista_artigos.number }} de {{ lista_artigos.paginator.num_pages }}
+          </span>
+
+          {% if lista_artigos.has_next %}
+              <a href="?{{ page_request_var }}={{ lista_artigos.next_page_number }}">próxima</a>
+          {% endif %}
+      </span>
+  </div>
+</main>
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+<nav class="collapse bd-links" id="bd-docs-nav">
+  <div class="bd-toc-item">
+    <a class="bd-toc-link" href="{% url 'cardiologia_artigos' %}">CARDIOLOGIA</a>
+    <a class="bd-toc-link" href="{% url 'cirurgia_artigos' %}">CIRURGIA</a>
+    <a class="bd-toc-link" href="{% url 'endocrinologia_artigos' %}">ENDOCRINOLOGIA</a>
+    <a class="bd-toc-link" href="{% url 'infectologia_artigos' %}">INFECTOLOGIA</a>
+    <a class="bd-toc-link" href="{% url 'med_emergencia_artigos' %}">MEDICINA DE EMERGÊNCIA</a>
+    <a class="bd-toc-link" href="{% url 'nefrologia_artigos' %}">NEFROLOGIA</a>
+    <a class="bd-toc-link" href="{% url 'pediatria_artigos' %}">PEDIATRIA</a>
+    <a class="bd-toc-link" href="{% url 'pneumologia_artigos' %}">PNEUMOLOGIA</a>
+  </div>
+</nav>
+
+</div>
+
+{% endblock %}

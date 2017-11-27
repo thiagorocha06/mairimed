@@ -1,0 +1,77 @@
+{% extends "artigos_base_novo.html" %}
+{% load staticfiles%}
+
+{% block content %}
+
+<!-- PESQUISA -->
+
+<form type="get" action="" style="margin: 20">
+    <input type="text" class="form-control" name="campo_pesquisa"  placeholder="Pesquisar Resumo" value="{{ request.GET.campo_pesquisa }}" >
+    <input type="submit" class="btn btn-warning center-block" value="Pesquisar">
+</form>
+
+{% for artigo in lista_artigos %}
+    <div class="artigo">
+      <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+      <p>{{ artigo.introducao|truncatechars:200 }}</p>
+    </div>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if lista_artigos.has_previous %}
+            <a href="?{{ page_request_var }}={{ lista_artigos.previous_page_number }}">anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ lista_artigos.number }} de {{ lista_artigos.paginator.num_pages }}
+        </span>
+
+        {% if lista_artigos.has_next %}
+            <a href="?{{ page_request_var }}={{ lista_artigos.next_page_number }}">próxima</a>
+        {% endif %}
+    </span>
+</div>
+
+
+<!-- Favoritos
+	{% if user.is_authenticated %}
+		<h1>Favoritos</h1>
+		{% with estudante.artigos_favoritos.all as artigo_favoritado %}
+		  {% for artigo in lista_artigos %}
+		    {% if artigo in artigo_favoritado %}
+
+				<h1><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h1>
+
+				{% else %}
+				<p>Não ha favoritos</p>
+				{% endif %}
+		  {% endfor %}
+		{% endwith %}
+
+	{% endif %}
+-->
+
+{% endblock %}
+
+{% block sidebar %}
+<nav class="col-sm-2" style="padding-bottom:20px">
+  <ul class="nav nav-pills nav-stacked">
+    <li><h1>ESCS</h1></li>
+    <li><a href="{% url '3_serie' %}">3ª SÉRIE<br>MÓDULOS TEMÁTICOS</a></li>
+    <li><a href="{% url 'ha_3' %}">3ª SÉRIE<br>HABILIDADES E ATITUDES</a></li>
+    <li><a href="{% url '4_serie' %}">4ª SÉRIE<br>MÓDULOS TEMÁTICOS</a></li>
+    <li><a href="{% url 'ha_4' %}">4ª SÉRIE<br>HABILIDADES E ATITUDES</a></li>
+
+    <li><h1>Especialidades</h1></li>
+    <li><a href="{% url 'cardiologia_artigos' %}">CARDIOLOGIA</a></li>
+    <li><a href="{% url 'cirurgia_artigos' %}">CIRURGIA</a></li>
+    <li><a href="{% url 'endocrinologia_artigos' %}">ENDOCRINOLOGIA</a></li>
+    <li><a href="{% url 'infectologia_artigos' %}">INFECTOLOGIA</a></li>
+    <li><a href="{% url 'med_emergencia_artigos' %}">MEDICINA DE EMERGÊNCIA</a></li>
+    <li><a href="{% url 'nefrologia_artigos' %}">NEFROLOGIA</a></li>
+    <li><a href="{% url 'pediatria_artigos' %}">PEDIATRIA</a></li>
+    <li><a href="{% url 'pneumologia_artigos' %}">PNEUMOLOGIA</a></li>
+  </ul>
+</nav>
+{% endblock %}

@@ -10,6 +10,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import DetailView, TemplateView
 from hitcount.views import HitCountDetailView
 
+class InicioView(TemplateView):
+    template_name = 'mairimed/inicio.html'
+
 class ArtigoMixinDetailView(object):
 
     model = Artigo
@@ -50,7 +53,13 @@ class AdministracaoView(ArtigoMixinDetailView, TemplateView):
         context['hits_mes'] = hits_mes
         return context
 
-def inicio(request):
+class Lista_artigosView(ArtigoMixinDetailView, TemplateView):
+    template_name = 'artigos/lista_artigos.html'
+
+class EntrarView(ArtigoMixinDetailView, TemplateView):
+    template_name = 'mairimed/entrar.html'
+
+def lista_artigos(request):
     estudante = Estudante.objects
     lista_artigos = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-hit_count_generic__hits')
 
@@ -78,7 +87,7 @@ def inicio(request):
         'page_request_var': page_request_var
     }
 
-    return render(request, 'mairimed/inicio.html', conteudo)
+    return render(request, 'artigos/lista_artigos.html', conteudo)
 
 def termos_uso(request):
     return render(request, 'mairimed/termos_uso.html')

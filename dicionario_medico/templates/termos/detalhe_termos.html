@@ -1,18 +1,27 @@
 {% extends 'termos_base.html' %}
 
 {% block content %}
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
 
-<div class="artigo">
-    <h1>{{ termo.nome }}</h1>
-    <h2>Definição</h2>
-    <p>{{ termo.definicao|linebreaksbr }}</p>
 </div>
 
-<!--
-    <div class="artigo">
-        <h1>{{ termo.nome }}</h1>
-        <h2>Definição</h2>
-        <p>{{ termo.definicao|linebreaksbr }}</p>
-    </div>
--->
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
+  <div class="artigo">
+      <h1>{{ termo.nome }}</h1>
+      <h2>Definição</h2>
+      <p>{{ termo.definicao|linebreaksbr }}</p>
+  </div>
+</main>
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+</div>
+
 {% endblock %}
