@@ -9,18 +9,19 @@ urlpatterns = [
     url(r'^mairimed/sobre/$', views.sobre, name='sobre'),
 
 ### ARTIGOS ###
-    url(r'^artigo/infectologia/$', views.categorias_artigos, name='infectologia_artigos'),
     url(r'^artigo/cardiologia/$', views.categorias_artigos, name='cardiologia_artigos'),
+    url(r'^artigo/cirurgia/$', views.categorias_artigos, name='cirurgia_artigos'),
+    url(r'^artigo/dermatologia_artigos/$', views.categorias_artigos, name='dermatologia_artigos'),
     url(r'^artigo/endocrinologia/$', views.categorias_artigos, name='endocrinologia_artigos'),
+    url(r'^artigo/infectologia/$', views.categorias_artigos, name='infectologia_artigos'),
+    url(r'^artigo/med_emergencia_artigos/$', views.categorias_artigos, name='med_emergencia_artigos'),
     url(r'^artigo/nefrologia/$', views.categorias_artigos, name='nefrologia_artigos'),
+    url(r'^artigo/neurologia_artigos/$', views.categorias_artigos, name='neurologia_artigos'),
     url(r'^artigo/pediatria/$', views.categorias_artigos, name='pediatria_artigos'),
     url(r'^artigo/pneumologia/$', views.categorias_artigos, name='pneumologia_artigos'),
-    url(r'^artigo/cirurgia/$', views.categorias_artigos, name='cirurgia_artigos'),
-    url(r'^artigo/med_emergencia_artigos/$', views.categorias_artigos, name='med_emergencia_artigos'),
 
     url(r'^artigo/(?P<pk>\d+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
     url(r'^artigo/administracao/$', views.AdministracaoView.as_view(), name='administracao'),
-    url(r'^artigo/(?P<pk>\d+)/favoritos/$', views.favoritos_artigo, name='favoritos_artigo'),
 
 ### ESCS ###
     url(r'^escs/3_serie/$', views.categorias_artigos, name='3_serie'),
