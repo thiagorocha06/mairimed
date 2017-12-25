@@ -443,6 +443,14 @@
                 <h4>{{ artigo.subtop6|linebreaksbr }}</h4>
                 <p>{{ artigo.subtexto6|linebreaksbr }}</p>
               {% endif %}
+              {% if artigo.subtop7 %}
+                <h4>{{ artigo.subtop7|linebreaksbr }}</h4>
+                <p>{{ artigo.subtexto7|linebreaksbr }}</p>
+              {% endif %}
+              {% if artigo.subtop8 %}
+                <h4>{{ artigo.subtop8|linebreaksbr }}</h4>
+                <p>{{ artigo.subtexto8|linebreaksbr }}</p>
+              {% endif %}
               {% if artigo.top1_img1 %}
                 <img src="{{ artigo.top1_img1.url }}" width="700" />
               {% endif %}
