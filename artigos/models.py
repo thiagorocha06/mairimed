@@ -295,7 +295,7 @@ class Artigo(models.Model, HitCountMixin):
     algoritmo_img2_texto = models.CharField(max_length=200, blank=True, null=True)
     algoritmo_img3 = models.ImageField(upload_to='img', blank=True, null=True)
     algoritmo_img3_texto = models.CharField(max_length=200, blank=True, null=True)
-    referencias_top = models.CharField(max_length=200, blank=True, null=True, default="REFERENCIAS")
+    referencias_top = models.CharField(max_length=200, blank=True, null=True, default="REFERÊNCIAS")
     referencias = models.TextField(blank=True, null=True)
 
     def publicar(self):
