@@ -41,8 +41,10 @@ if not settings.DEBUG:
     # Application definition
 
     INSTALLED_APPS = [
-        'django.contrib.admin',
+        'django.contrib.sites',
+        'registration',
         'django.contrib.auth',
+        'django.contrib.admin',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
@@ -172,3 +174,7 @@ if not settings.DEBUG:
     # https://warehouse.python.org/project/whitenoise/
 
     #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+    # Djando Registration Redux Settings
+    ACCOUNT_ACTIVATION_DAYS = 7
+    REGISTRATION_AUTO_LOGIN = True

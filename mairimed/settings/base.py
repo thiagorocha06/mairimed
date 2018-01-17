@@ -38,10 +38,13 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'django.contrib.sites',
+    'registration',
     'django.contrib.auth',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'artigos',
@@ -151,3 +154,4 @@ LOGIN_REDIRECT_URL	=	'/'
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
+SITE_ID = 1

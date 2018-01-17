@@ -2,10 +2,72 @@
 {% load staticfiles%}
 
 {% block form-nav %}
-<a href="{% url 'entrar' %}" class="btn btn-outline-light">Entrar</a>
+
+{% if request.user.is_authenticated %}
+  <p>Olá, </p> {{user}}
+  <a href="{% url 'auth_logout' %}" class="btn btn-outline-light">Sair</a>
+{% else %}
+  <a href="{% url 'auth_login' %}" class="btn btn-outline-light">Entrar</a>
+{% endif %}
+
 {% endblock %}
 
 {% block carousel %}
+
+<!-- TEXTO PARA USUARIO -->
+
+{% if request.user.is_authenticated %}
+
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <!-- BARRA DIREITA -->
+    <div class="d-none d-xl-block col-xl-2 bd-toc">
+      <ul class="section-nav">
+        <!--
+        <h4 class="toc-entry toc-h2"><a href="#containers">Assista vídeos sobre o tema</a></h4>
+        <li class="toc-entry toc-h2"><a href="#responsive-breakpoints">Vídeo 1</a></li>
+        <li class="toc-entry toc-h2"><a href="#z-index">Vídeo 2</a></li>
+        -->
+      </ul>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+      <div class="artigo">
+        <p>Graficos Personalizados</p>
+      </div>
+    </main>
+
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+      <div class="bd-search d-flex align-items-center">
+        <a class="bd-toc-link">ESPECIALIDADES</a>
+        <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+        </button>
+      </div>
+
+      <nav class="collapse bd-links" id="bd-docs-nav">
+        <div class="bd-toc-item">
+          <a class="bd-toc-link" href="{% url 'cardiologia_artigos' %}">CARDIOLOGIA</a>
+          <a class="bd-toc-link" href="{% url 'cirurgia_artigos' %}">CIRURGIA</a>
+          <a class="bd-toc-link" href="{% url 'dermatologia_artigos' %}">DERMATOLOGIA</a>
+          <a class="bd-toc-link" href="{% url 'endocrinologia_artigos' %}">ENDOCRINOLOGIA</a>
+          <a class="bd-toc-link" href="{% url 'infectologia_artigos' %}">INFECTOLOGIA</a>
+          <a class="bd-toc-link" href="{% url 'med_emergencia_artigos' %}">MEDICINA DE EMERGÊNCIA</a>
+          <a class="bd-toc-link" href="{% url 'nefrologia_artigos' %}">NEFROLOGIA</a>
+          <a class="bd-toc-link" href="{% url 'neurologia_artigos' %}">NEUROLOGIA</a>
+          <a class="bd-toc-link" href="{% url 'pediatria_artigos' %}">PEDIATRIA</a>
+          <a class="bd-toc-link" href="{% url 'pneumologia_artigos' %}">PNEUMOLOGIA</a>
+        </div>
+      </nav>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- TEXTO GERAL -->
+
+{% else %}
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -135,5 +197,5 @@
       -->
 
   </div><!-- /.container -->
-
+{% endif %}
 {% endblock %}
