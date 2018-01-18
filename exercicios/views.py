@@ -3,15 +3,15 @@ from .models import Exercicio
 
 ### EXERCICIOS ###
 
+def categorias_lista(request):
+    return render(request, 'exercicios/categorias_lista.html')
+
 def categorias_exercicios(request):
-    return render(request, 'exercicios/categorias_exercicios.html')
-
-def exercicios_ecg(request):
-    exercicios = Exercicio.objects.filter(nome__isnull=False).order_by("pk")
-    return render(request, 'exercicios/exercicios_ecg.html', {'exercicios' : exercicios})
-
-def exercicios_rx(request):
-    return render(request, 'exercicios/exercicios_rx.html')
+    exercicios = Exercicio.objects.filter(data_de_criacao__isnull=False).order_by("pk")
+    conteudo = {
+        'exercicios' : exercicios,
+    }
+    return render(request, 'exercicios/categorias_exercicios.html', conteudo)
 
 def exercicios_resposta(request):
     exercicios = Exercicio.objects.filter(nome__isnull=False).order_by('pk')

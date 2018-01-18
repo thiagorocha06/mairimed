@@ -1,34 +1,26 @@
-{% extends "inicio_base.html" %}
-{% load staticfiles%}
-{% load hitcount_tags %}
+{% extends 'inicio_base.html' %}
 
 {% block content %}
-{% if request.user.is_authenticated and request.user.is_staff %}
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
+{% if request.user.is_authenticated %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+
+</div>
+
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+  <div class="texto-centro">
+    <h1>EXERCÍCIOS</h1>
+  </div>
   <div class="artigo">
-    <p>Total de artigos: {{ n_artigos }} </p>
-    <p>Total de hits em 24 horas: {{ hits_dia }}</p>
-    <p>Total de hits em uma semana: {{ hits_semana }}</p>
-    <p>Total de hits em um mês: {{ hits_mes }}</p>
+    <h2><a href="{% url 'cardiologia_exercicios' %}">CARDIOLOGIA</a></h2>
   </div>
 
-  {% for artigo in artigo_list %}
-      <div class="artigo">
-        <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
-        <p>{{ artigo.introducao|truncatechars:200 }}</p>
-        <dl class="dl-horizontal">
-          <dt>Hits Totais:</dt>
-          <dd>{% get_hit_count for artigo %}</dd>
-          <dt>Hits nos últimos 7 dias:</dt>
-          <dd>{% get_hit_count for artigo within "days=7" %}</dd>
-          <dt>Hits nas últimas 24 horas:</dt>
-          <dd>{% get_hit_count for artigo within "days=1" %}</dd>
-        </dl>
-      </div>
-  {% endfor %}
-</main>
 {% endif %}
+
+
 {% endblock %}
 
 {% block barra-esquerda %}

@@ -49,7 +49,7 @@
   <nav class="collapse bd-links" id="bd-docs-nav">
     <div class="bd-toc-item">
       <a class="bd-toc-link" href="/">INÍCIO</a>
-      <a class="bd-toc-link" href="#">EXERCÍCIOS</a>
+      <a class="bd-toc-link" href="{% url 'categorias_lista' %}">EXERCÍCIOS</a>
 
       {% if request.user.is_authenticated and request.user.is_staff %}
       <a class="bd-toc-link" href="{% url 'administracao' %}">CONTAGEM DE ARTIGOS</a>

@@ -1,8 +1,132 @@
-{% extends 'exercicios_base.html' %}
+{% extends 'inicio_base.html' %}
 
 {% block content %}
 
-  <div class="artigo">
-    
+{% if request.user.is_authenticated %}
+
+<!-- Especialidades -->
+  {% url 'cardiologia_exercicios' as cardiologia_exercicios %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+
+</div>
+
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
+<!-- Especialidades -->
+  {% if request.path == cardiologia_exercicios %}
+    <div class="texto-centro">
+      <h1>EXERCÍCIOS DE CARDIOLOGIA</h1>
+    </div>
+    {% for exercicio in exercicios %}
+      {% if exercicio.especialidade == "CARDIOLOGIA" %}
+        <div class="artigo">
+          <h2>Questão {{ forloop.counter }}</h2>
+          <p>{{ exercicio.prova }} - {{ exercicio.ano }}<br>{{ exercicio.instituicao }}</p>
+          <p>{{ exercicio.enunciado }}</p>
+          <ul>
+            <p>{{ exercicio.alternativa1 }}</p>
+            <p>{{ exercicio.alternativa2 }}</p>
+            <p>{{ exercicio.alternativa3 }}</p>
+            <p>{{ exercicio.alternativa4 }}</p>
+            <p>{{ exercicio.alternativa5 }}</p>
+          </ul>
+
+          <!-- Modal para Resposta -->
+          <div class="container">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#ModalResposta{{ forloop.counter }}">Resposta</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="ModalResposta{{ forloop.counter }}" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Resposta {{ forloop.counter }}</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <p>{{ exercicio.resposta }}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Modal para Comentário -->
+          {% if exercicio.comentario %}
+          <div class="container" style="padding">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#ModalComentario{{ forloop.counter }}">Comentário</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="ModalComentario{{ forloop.counter }}" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Comentário {{ forloop.counter }}</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <p>{{ exercicio.comentario }}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+{% endif %}
+
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+{% if request.user.is_authenticated %}
+
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+  <div class="bd-search d-flex align-items-center">
+    <a class="bd-toc-link"></a>
+    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+    </button>
   </div>
-{% endblock content %}
+
+  <nav class="collapse bd-links" id="bd-docs-nav">
+    <div class="bd-toc-item">
+      <a class="bd-toc-link" href="/">INÍCIO</a>
+      <a class="bd-toc-link" href="{% url 'categorias_lista' %}">EXERCÍCIOS</a>
+
+      {% if request.user.is_authenticated and request.user.is_staff %}
+      <a class="bd-toc-link" href="{% url 'administracao' %}">CONTAGEM DE ARTIGOS</a>
+      {% endif %}
+
+    </div>
+  </nav>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
