@@ -6,4 +6,5 @@ urlpatterns = [
 ### EXERCICIOS ###
     url(r'^exercicios/categorias_lista/$', views.categorias_lista, name='categorias_lista'),
     url(r'^exercicios/cardiologia/$', views.categorias_exercicios, name='cardiologia_exercicios'),
+    url(r'^exercicios/pediatria/$', views.categorias_exercicios, name='pediatria_exercicios'),
 ]

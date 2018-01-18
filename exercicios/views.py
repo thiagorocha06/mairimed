@@ -7,7 +7,7 @@ def categorias_lista(request):
     return render(request, 'exercicios/categorias_lista.html')
 
 def categorias_exercicios(request):
-    exercicios = Exercicio.objects.filter(data_de_criacao__isnull=False).order_by("pk")
+    exercicios = Exercicio.objects.filter(data_de_criacao__isnull=False).order_by("-pk")
     conteudo = {
         'exercicios' : exercicios,
     }

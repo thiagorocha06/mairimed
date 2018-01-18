@@ -19,4 +19,4 @@ class Exercicio(models.Model):
     comentario = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.especialidade
+        return self.enunciado[:100]
