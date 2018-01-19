@@ -4,6 +4,7 @@ from django.utils import timezone
 class Exercicio(models.Model):
     data_de_criacao = models.DateTimeField(default=timezone.now)
     especialidade = models.CharField(max_length=200, blank=True, null=True)
+    tema = models.CharField(max_length=200, blank=True, null=True)
     prova = models.CharField(max_length=200, blank=True, null=True)
     instituicao = models.CharField(max_length=200, blank=True, null=True)
     ano = models.CharField(max_length=200, blank=True, null=True)
