@@ -17,6 +17,8 @@ class Artigo(models.Model, HitCountMixin):
     categoria = models.CharField(max_length=200, blank=True, null=True)
     titulo = models.CharField(max_length=200)
 
+    apresentacao = models.CharField(max_length=200, blank=True, null=True)
+
     intro_top = models.CharField(max_length=200, blank=True, null=True, default="INTRODUÇÃO")
     introducao = models.TextField(blank=True, null=True)
     intro_top1 = models.CharField(max_length=200, blank=True, null=True)

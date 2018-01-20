@@ -6,11 +6,9 @@
 <!-- BARRA DIREITA -->
 <div class="d-none d-xl-block col-xl-2 bd-toc">
   <ul class="section-nav">
-    <!--
-    <h4 class="toc-entry toc-h2"><a href="#containers">Assista vídeos sobre o tema</a></h4>
-    <li class="toc-entry toc-h2"><a href="#responsive-breakpoints">Vídeo 1</a></li>
-    <li class="toc-entry toc-h2"><a href="#z-index">Vídeo 2</a></li>
-    -->
+    {% if artigo.apresentacao %}
+      <h4 class="toc-entry toc-h2"><a href="#apresentacao">Apresentação sobre o tema</a></h4>
+    {% endif %}
   </ul>
 </div>
 
@@ -689,6 +687,19 @@
                 <p>{{ artigo.referencias|linebreaksbr }}</p>
               {% endif %}
 
+              <!--
+              *******************
+              *** APRESENTAÇÃO ***
+              *******************
+              -->
+              {% if artigo.apresentacao %}
+                <h2 id="apresentacao">APRESENTAÇÃO</h2>
+                <iframe src="{{ artigo.apresentacao }}"
+                width="490px" height="470px" frameborder="0" marginwidth="0" marginheight="0"
+                scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen>
+                </iframe>
+              {% endif %}
+
 </main>
 
 {% endblock %}
@@ -768,6 +779,9 @@
     {% endif %}
     {% if artigo.algoritmo_img1 %}
     <a class="bd-toc-link" href="#algoritmo_img1">ALGORITMO</a>
+    {% endif %}
+    {% if artigo.referencias %}
+    <a class="bd-toc-link" href="#referencias">REFERÊNCIAS</a>
     {% endif %}
     </div>
   </nav>
