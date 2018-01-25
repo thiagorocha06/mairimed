@@ -39,7 +39,7 @@
       {% if exercicio.especialidade == "CARDIOLOGIA" %}
         <div class="artigo">
           <h2>Questão {{ forloop.counter }}</h2>
-          <p><font color="grey">{{ exercicio.prova }} - {{ exercicio.ano }}<br>{{ exercicio.instituicao }}</font></p>
+          <p><font color="grey">{{ exercicio.prova }} - {{ exercicio.ano }}<br>{{ exercicio.instituicao }} - {{ exercicio.localidade }}</font></p>
           <p>{{ exercicio.enunciado }}</p>
           {% if exercicio.exercicio_img1 %}
             <img src="{{ exercicio.exercicio_img1.url }}" width="300" />
