@@ -19,6 +19,18 @@
     <h1>Olá, {{user}}</h1>
   </div>
 
+  <div class="col-md-12">
+    <div class="heading" >
+      <div class="artigo">
+        <h1>Resumos mais acessados</h1>
+        {% for artigo in artigos_mais_vistos %}
+          <p><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</main>
 {% endif %}
 
 

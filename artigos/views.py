@@ -26,6 +26,7 @@ class InicioView(ArtigoMixinDetailView, TemplateView):
         context = super(InicioView, self).get_context_data(**kwargs)
         context['artigos_mais_vistos'] = Artigo.objects.all().order_by("-hit_count_generic__hits")[:5]
         context['ultimos_artigos'] = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:5]
+        context['lista_artigos'] = Artigo.objects.all()
         return context
 
 class PostCountHitDetailView(ArtigoMixinDetailView, HitCountDetailView):

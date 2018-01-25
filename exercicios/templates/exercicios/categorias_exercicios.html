@@ -6,21 +6,35 @@
 
 <!-- Especialidades -->
   {% url 'cardiologia_exercicios' as cardiologia_exercicios %}
+  {% url 'cirurgia_exercicios' as cirurgia_exercicios %}
+  {% url 'nefrologia_exercicios' as nefrologia_exercicios %}
   {% url 'pediatria_exercicios' as pediatria_exercicios %}
 
 <!-- BARRA DIREITA -->
 <div class="d-none d-xl-block col-xl-2 bd-toc">
-
+  <ul class="section-nav">
+    <h56class="toc-entry toc-h2">FILTRAR POR LOCALIDADE</h6>
+    <h6 class="toc-entry toc-h2"><a href="?q=DF">DF</a></h6>
+    <h6 class="toc-entry toc-h2"><a href="?q=SP">SP</a></h6>
+    <h6 class="toc-entry toc-h2"><a href="?q=RJ">RJ</a></h6>
+  </ul>
 </div>
 
 <!-- CONTEUDO -->
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
-<!-- Especialidades -->
+<!-- ESPECIALIDADES -->
+
+<!-- cardiologia -->
   {% if request.path == cardiologia_exercicios %}
     <div class="texto-centro">
       <h1>EXERCÍCIOS DE CARDIOLOGIA</h1>
     </div>
+
+    {% for exercicio in queryset_list %}
+      {{ exercicio.enunciado }}
+    {% endfor %}
+
     {% for exercicio in exercicios %}
       {% if exercicio.especialidade == "CARDIOLOGIA" %}
         <div class="artigo">
@@ -105,6 +119,181 @@
 
 {% endif %}
 
+<!-- cirurgia -->
+{% if request.path == cirurgia_exercicios %}
+  <div class="texto-centro">
+    <h1>EXERCÍCIOS DE CIRURGIA</h1>
+  </div>
+  {% for exercicio in exercicios %}
+    {% if exercicio.especialidade == "CIRURGIA" %}
+      <div class="artigo">
+        <h2>Questão {{ forloop.counter }}</h2>
+        <p><font color="grey">{{ exercicio.prova }} - {{ exercicio.ano }}<br>{{ exercicio.instituicao }}</font></p>
+        <p>{{ exercicio.enunciado }}</p>
+        {% if exercicio.exercicio_img1 %}
+          <img src="{{ exercicio.exercicio_img1.url }}" width="300" />
+        {% endif %}
+        {% if exercicio.exercicio_img2 %}
+          <img src="{{ exercicio.exercicio_img2.url }}" width="300" />
+        {% endif %}
+        <ul>
+          <p>{{ exercicio.alternativa1 }}</p>
+          <p>{{ exercicio.alternativa2 }}</p>
+          <p>{{ exercicio.alternativa3 }}</p>
+          <p>{{ exercicio.alternativa4 }}</p>
+          <p>{{ exercicio.alternativa5 }}</p>
+        </ul>
+
+        <!-- Modal para Resposta -->
+        <div class="container">
+          <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#ModalResposta{{ forloop.counter }}">Resposta</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="ModalResposta{{ forloop.counter }}" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Resposta {{ forloop.counter }}</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>{{ exercicio.resposta }}</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Modal para Comentário -->
+        {% if exercicio.comentario %}
+        <div class="container" style="padding">
+          <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#ModalComentario{{ forloop.counter }}">Comentário</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="ModalComentario{{ forloop.counter }}" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Comentário {{ forloop.counter }}</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>{{ exercicio.comentario }}</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- nefrologia -->
+{% if request.path == nefrologia_exercicios %}
+  <div class="texto-centro">
+    <h1>EXERCÍCIOS DE NEFROLOGIA</h1>
+  </div>
+  {% for exercicio in exercicios %}
+    {% if exercicio.especialidade == "NEFROLOGIA" %}
+      <div class="artigo">
+        <h2>Questão {{ forloop.counter }}</h2>
+        <p><font color="grey">{{ exercicio.prova }} - {{ exercicio.ano }}<br>{{ exercicio.instituicao }}</font></p>
+        <p>{{ exercicio.enunciado }}</p>
+        {% if exercicio.exercicio_img1 %}
+          <img src="{{ exercicio.exercicio_img1.url }}" width="300" />
+        {% endif %}
+        {% if exercicio.exercicio_img2 %}
+          <img src="{{ exercicio.exercicio_img2.url }}" width="300" />
+        {% endif %}
+        <ul>
+          <p>{{ exercicio.alternativa1 }}</p>
+          <p>{{ exercicio.alternativa2 }}</p>
+          <p>{{ exercicio.alternativa3 }}</p>
+          <p>{{ exercicio.alternativa4 }}</p>
+          <p>{{ exercicio.alternativa5 }}</p>
+        </ul>
+
+        <!-- Modal para Resposta -->
+        <div class="container">
+          <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#ModalResposta{{ forloop.counter }}">Resposta</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="ModalResposta{{ forloop.counter }}" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Resposta {{ forloop.counter }}</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>{{ exercicio.resposta }}</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Modal para Comentário -->
+        {% if exercicio.comentario %}
+        <div class="container" style="padding">
+          <!-- Trigger the modal with a button -->
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#ModalComentario{{ forloop.counter }}">Comentário</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="ModalComentario{{ forloop.counter }}" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Comentário {{ forloop.counter }}</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>{{ exercicio.comentario }}</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- pediatria -->
 {% if request.path == pediatria_exercicios %}
   <div class="texto-centro">
     <h1>EXERCÍCIOS DE PEDIATRIA</h1>

@@ -7,12 +7,18 @@
   {% url 'cirurgia_artigos' as cirurgia_artigos %}
   {% url 'dermatologia_artigos' as dermatologia_artigos %}
   {% url 'endocrinologia_artigos' as endocrinologia_artigos %}
+  {% url 'gastroenterologia_artigos' as gastroenterologia_artigos %}
+  {% url 'ginecologia_artigos' as ginecologia_artigos %}
+  {% url 'hematologia_artigos' as hematologia_artigos %}
+  {% url 'hepatologia_artigos' as hepatologia_artigos %}
   {% url 'infectologia_artigos' as infectologia_artigos %}
   {% url 'med_emergencia_artigos' as med_emergencia_artigos %}
-  {% url 'neurologia_artigos' as neurologia_artigos %}
   {% url 'nefrologia_artigos' as nefrologia_artigos %}
+  {% url 'neurologia_artigos' as neurologia_artigos %}
+  {% url 'obstetrícia_artigos' as obstetrícia_artigos %}
   {% url 'pediatria_artigos' as pediatria_artigos %}
   {% url 'pneumologia_artigos' as pneumologia_artigos %}
+  {% url 'reumatologia_artigos' as reumatologia_artigos %}
 
 <!-- ESCS -->
   {% url 'ha_3' as ha_3 %}
@@ -29,12 +35,12 @@
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
 <!-- Especialidades -->
-  {% if request.path == infectologia_artigos %}
+  {% if request.path == cardiologia_artigos %}
     <div class="texto-centro">
-      <h1>INFECTOLOGIA</h1>
+      <h1>CARDIOLOGIA</h1>
     </div>
     {% for artigo in artigos %}
-      {% if artigo.categoria == "INFECTOLOGIA" %}
+      {% if artigo.categoria == "CARDIOLOGIA" %}
         <div class="artigo">
           <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
@@ -43,12 +49,26 @@
     {% endfor %}
   {% endif %}
 
-  {% if request.path == cardiologia_artigos %}
+  {% if request.path == cirurgia_artigos %}
     <div class="texto-centro">
-      <h1>CARDIOLOGIA</h1>
+      <h1>CIRURGIA</h1>
     </div>
     {% for artigo in artigos %}
-      {% if artigo.categoria == "CARDIOLOGIA" %}
+      {% if artigo.categoria == "CIRURGIA" %}
+        <div class="artigo">
+          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <p>{{ artigo.introducao|truncatechars:200 }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if request.path == dermatologia_artigos %}
+    <div class="texto-centro">
+      <h1>DERMATOLOGIA</h1>
+    </div>
+    {% for artigo in artigos %}
+      {% if artigo.categoria == "DERMATOLOGIA" %}
         <div class="artigo">
           <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
@@ -71,12 +91,124 @@
     {% endfor %}
   {% endif %}
 
+  {% if request.path == gastroenterologia_artigos %}
+    <div class="texto-centro">
+      <h1>GASTROENTEROLOGIA</h1>
+    </div>
+    {% for artigo in artigos %}
+      {% if artigo.categoria == "GASTROENTEROLOGIA" %}
+        <div class="artigo">
+          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <p>{{ artigo.introducao|truncatechars:200 }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if request.path == ginecologia_artigos %}
+    <div class="texto-centro">
+      <h1>GINECOLOGIA</h1>
+    </div>
+    {% for artigo in artigos %}
+      {% if artigo.categoria == "GINECOLOGIA" %}
+        <div class="artigo">
+          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <p>{{ artigo.introducao|truncatechars:200 }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if request.path == hematologia_artigos %}
+    <div class="texto-centro">
+      <h1>HEMATOLOGIA</h1>
+    </div>
+    {% for artigo in artigos %}
+      {% if artigo.categoria == "HEMATOLOGIA" %}
+        <div class="artigo">
+          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <p>{{ artigo.introducao|truncatechars:200 }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if request.path == hepatologia_artigos %}
+    <div class="texto-centro">
+      <h1>HEPATOLOGIA</h1>
+    </div>
+    {% for artigo in artigos %}
+      {% if artigo.categoria == "HEPATOLOGIA" %}
+        <div class="artigo">
+          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <p>{{ artigo.introducao|truncatechars:200 }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if request.path == infectologia_artigos %}
+    <div class="texto-centro">
+      <h1>INFECTOLOGIA</h1>
+    </div>
+    {% for artigo in artigos %}
+      {% if artigo.categoria == "INFECTOLOGIA" %}
+        <div class="artigo">
+          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <p>{{ artigo.introducao|truncatechars:200 }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if request.path == med_emergencia_artigos %}
+    <div class="texto-centro">
+      <h1>MEDICINA DE EMERGÊNCIA</h1>
+    </div>
+    {% for artigo in artigos %}
+      {% if artigo.categoria == "MEDICINA DE EMERGÊNCIA" %}
+        <div class="artigo">
+          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <p>{{ artigo.introducao|truncatechars:200 }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
   {% if request.path == nefrologia_artigos %}
     <div class="texto-centro">
       <h1>NEFROLOGIA</h1>
     </div>
     {% for artigo in artigos %}
       {% if artigo.categoria == "NEFROLOGIA" %}
+        <div class="artigo">
+          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <p>{{ artigo.introducao|truncatechars:200 }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if request.path == neurologia_artigos %}
+    <div class="texto-centro">
+      <h1>NEUROLOGIA</h1>
+    </div>
+    {% for artigo in artigos %}
+      {% if artigo.categoria == "NEUROLOGIA" %}
+        <div class="artigo">
+          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <p>{{ artigo.introducao|truncatechars:200 }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% if request.path == obstetrícia_artigos %}
+    <div class="texto-centro">
+      <h1>OBSTETRÍCIA</h1>
+    </div>
+    {% for artigo in artigos %}
+      {% if artigo.categoria == "OBSTETRÍCIA" %}
         <div class="artigo">
           <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
@@ -113,54 +245,12 @@
     {% endfor %}
   {% endif %}
 
-  {% if request.path == cirurgia_artigos %}
+  {% if request.path == reumatologia_artigos %}
     <div class="texto-centro">
-      <h1>CIRURGIA</h1>
+      <h1>REUMATOLOGIA</h1>
     </div>
     {% for artigo in artigos %}
-      {% if artigo.categoria == "CIRURGIA" %}
-        <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
-          <p>{{ artigo.introducao|truncatechars:200 }}</p>
-        </div>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-
-  {% if request.path == med_emergencia_artigos %}
-    <div class="texto-centro">
-      <h1>MEDICINA DE EMERGÊNCIA</h1>
-    </div>
-    {% for artigo in artigos %}
-      {% if artigo.categoria == "MEDICINA DE EMERGÊNCIA" %}
-        <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
-          <p>{{ artigo.introducao|truncatechars:200 }}</p>
-        </div>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-
-  {% if request.path == neurologia_artigos %}
-    <div class="texto-centro">
-      <h1>NEUROLOGIA</h1>
-    </div>
-    {% for artigo in artigos %}
-      {% if artigo.categoria == "NEUROLOGIA" %}
-        <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
-          <p>{{ artigo.introducao|truncatechars:200 }}</p>
-        </div>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-
-  {% if request.path == dermatologia_artigos %}
-    <div class="texto-centro">
-      <h1>DERMATOLOGIA</h1>
-    </div>
-    {% for artigo in artigos %}
-      {% if artigo.categoria == "DERMATOLOGIA" %}
+      {% if artigo.categoria == "REUMATOLOGIA" %}
         <div class="artigo">
           <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>

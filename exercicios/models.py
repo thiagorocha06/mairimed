@@ -7,6 +7,7 @@ class Exercicio(models.Model):
     tema = models.CharField(max_length=200, blank=True, null=True)
     prova = models.CharField(max_length=200, blank=True, null=True)
     instituicao = models.CharField(max_length=200, blank=True, null=True)
+    localidade = models.CharField(max_length=200, blank=True, null=True)
     ano = models.CharField(max_length=200, blank=True, null=True)
     enunciado = models.TextField(blank=True, null=True)
     exercicio_img1 = models.ImageField(upload_to='img', blank=True, null=True)
