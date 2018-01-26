@@ -14,7 +14,7 @@ class CategoriasExerciciosView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(CategoriasExerciciosView, self).get_context_data(**kwargs)
         queryset_list = Exercicio.objects.filter(data_de_criacao__isnull=False).order_by("pk")
-        query = self.request.GET.get('q')
+        query = self.request.GET.get('localidade')
         if query:
             queryset_list = queryset_list.filter(
                 Q(localidade__icontains=query)
