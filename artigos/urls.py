@@ -2,12 +2,8 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.InicioView.as_view(), name='inicio'),
-    url(r'^mairimed/entrar$', views.EntrarView.as_view(), name='entrar'),
-    url(r'^mairimed/sair$', views.EntrarView.as_view(), name='sair'),
+
     url(r'^mairimed/lista_artigos/$', views.lista_artigos, name='lista_artigos'),
-    url(r'^mairimed/termos_uso/$', views.termos_uso, name='termos_uso'),
-    url(r'^mairimed/sobre/$', views.sobre, name='sobre'),
 
 ### ARTIGOS ###
     url(r'^artigo/cardiologia/$', views.categorias_artigos, name='cardiologia_artigos'),
@@ -28,7 +24,6 @@ urlpatterns = [
     url(r'^artigo/reumatologia_artigos/$', views.categorias_artigos, name='reumatologia_artigos'),
 
     url(r'^artigo/(?P<pk>\d+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
-    url(r'^artigo/administracao/$', views.AdministracaoView.as_view(), name='administracao'),
 
 ### ESCS ###
     url(r'^escs/3_serie/$', views.categorias_artigos, name='3_serie'),

@@ -23,7 +23,6 @@ class Exercicio(models.Model):
     alternativa7 = models.TextField(blank=True, null=True)
     alternativa8 = models.TextField(blank=True, null=True)
     alternativa9 = models.TextField(blank=True, null=True)
-    alternativa10 = models.TextField(blank=True, null=True)
     resposta = models.TextField(blank=True, null=True)
     comentario = models.TextField(blank=True, null=True)
 

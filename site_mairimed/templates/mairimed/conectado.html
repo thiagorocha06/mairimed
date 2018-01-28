@@ -1,0 +1,123 @@
+
+<!doctype html>
+{% extends "conectado_base.html" %}
+{% load staticfiles%}
+
+{% block barra-lateral %}
+
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'conectado' %}">
+          <span data-feather="home"></span>
+          Início
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          Resumos Médicos
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="book-open"></span>
+          Dicionário Médico
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          ESCS
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'quiz_index' %}">
+          <span data-feather="file"></span>
+          Exercícios
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'simulado_lista' %}">
+          <span data-feather="layers"></span>
+          Simulados
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'quiz_progress' %}">
+          <span data-feather="bar-chart-2"></span>
+          Progresso
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="users"></span>
+          Perfil
+        </a>
+      </li>
+    </ul>
+
+    <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Favoritos</span>
+        <a class="d-flex align-items-center text-muted" href="#">
+        <span data-feather="plus-circle"></span>
+      </a>
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          Cardiologia
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          Cirurgia
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          Social engagement
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span data-feather="file-text"></span>
+          Year-end sale
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</nav>
+
+{% endblock %}
+
+{% block conteudo %}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h2">Bem Vindo, {{user}}</h1>
+    <!-- <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <button class="btn btn-sm btn-outline-secondary">Share</button>
+        <button class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+      <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+        <span data-feather="calendar"></span>
+        This week
+      </button>
+    </div> -->
+  </div>
+
+  <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+
+  <h2>Resumos mais acessados</h2>
+  <div class="table-responsive">
+
+  </div>
+</main>
+
+{% endblock %}

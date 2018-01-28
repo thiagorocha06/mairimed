@@ -47,12 +47,17 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'site_mairimed',
     'artigos',
     'contas',
     'exercicios',
     'dicionario_medico',
     'dicionario_farmaceutico',
     'hitcount',
+    'quiz',
+    'multichoice',
+    'true_false',
+    'essay',
 ]
 
 MIDDLEWARE = [
@@ -150,7 +155,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'live-static', 'media-root', 'our_static')
 #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_root')
 
-LOGIN_REDIRECT_URL	=	'/'
+LOGIN_REDIRECT_URL	=	'/mairimed/conectado/'
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
