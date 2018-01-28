@@ -10,9 +10,9 @@
 
 
 {% if user.is_authenticated %}
-  <p>{% trans "You have already sat this exam and only one sitting is permitted" %}.</p>
+  <p>{% trans "Você já fez esse simulado e só pode ser feito uma vez" %}.</p>
 {% else %}
-  <p>{% trans "This exam is only accessible to signed in users" %}.</p>
+  <p>{% trans "Esse exercício só esta acessivel para usuários cadastrados" %}.</p>
 {% endif %}
 
 {% endblock %}

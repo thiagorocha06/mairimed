@@ -18,24 +18,6 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Resumos Médicos
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="book-open"></span>
-          Dicionário Médico
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          ESCS
-        </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="{% url 'quiz_index' %}">
           <span data-feather="file"></span>
           Exercícios
@@ -48,50 +30,38 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">
+        <a class="nav-link active" href="{% url 'quiz_progress' %}">
           <span data-feather="bar-chart-2"></span>
           Progresso
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'perfil' %}">
           <span data-feather="users"></span>
           Perfil
         </a>
       </li>
     </ul>
 
-    <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-      <span>Favoritos</span>
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <!-- <span>Favoritos</span>
         <a class="d-flex align-items-center text-muted" href="#">
         <span data-feather="plus-circle"></span>
-      </a>
+      </a> -->
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'lista_artigos' %}">
           <span data-feather="file-text"></span>
-          Cardiologia
+          Resumos Médicos
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Cirurgia
+        <a class="nav-link" href="{% url 'lista_termos' %}">
+          <span data-feather="book-open"></span>
+          Dicionário Médico
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Social engagement
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Year-end sale
-        </a>
-      </li> -->
     </ul>
   </div>
 </nav>
@@ -108,7 +78,7 @@
   {% if cat_scores %}
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
   <div class="texto-centro">
-    <h1>{% trans "PONTUAÇÕES" %}</h1>
+    <h1>{% trans "Progresso por categorias" %}</h1>
   </div>
 
   <table class="table table-bordered table-striped">
@@ -145,11 +115,9 @@
   {% if exams %}
 
   <hr>
-
-  <h1>{% trans "Simulados Feitos" %}</h1>
-  <p class="lead">
-	{% trans "Abaixo estão os resultados dos simulados que você realizou." %}
-  </p>
+  <div class="texto-centro">
+    <h1>{% trans "Simulados Feitos" %}</h1>
+  </div>
 
   <table class="table table-bordered table-striped">
 

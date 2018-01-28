@@ -1,19 +1,84 @@
-{%	extends	"mairimed/base.html"	%}
 
-{%	block	content	%}
+<!doctype html>
+{% extends "conectado_base.html" %}
+{% load staticfiles%}
 
-<div class="container">
-  <h1>Perfil</h1>
+{% block barra-lateral %}
 
-  <p>Usuário: {{ user }}</p>
-  <p>Primeiro Nome: {{ user.first_name }}</p>
-  <p>Último Nome: {{ user.last_name }}</p>
-  <p>Email: {{ user.email }}</p>
-  <p>Instituição de Ensino: {{ user.email }}</p>
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'conectado' %}">
+          <span data-feather="home"></span>
+          Início
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'quiz_index' %}">
+          <span data-feather="file"></span>
+          Exercícios
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'simulado_lista' %}">
+          <span data-feather="layers"></span>
+          Simulados
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'quiz_progress' %}">
+          <span data-feather="bar-chart-2"></span>
+          Progresso
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'perfil' %}">
+          <span data-feather="users"></span>
+          Perfil
+        </a>
+      </li>
+    </ul>
 
-  <p><a href="{% url 'editar_perfil'%}">Editar Perfil</a></p>
-  <p><a href="{% url 'mudar_senha'%}">Mudar Senha</a></p>
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <!-- <span>Favoritos</span>
+        <a class="d-flex align-items-center text-muted" href="#">
+        <span data-feather="plus-circle"></span>
+      </a> -->
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lista_artigos' %}">
+          <span data-feather="file-text"></span>
+          Resumos Médicos
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lista_termos' %}">
+          <span data-feather="book-open"></span>
+          Dicionário Médico
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-</div>
+{% endblock %}
+
+{% block conteudo %}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h2">Perfil</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <!-- <button class="btn btn-sm btn-outline-secondary">Editar</button> -->
+      </div>
+    </div>
+  </div>
+
+  <p>Nome: {{user}}</p>
+
+</main>
 
 {% endblock %}

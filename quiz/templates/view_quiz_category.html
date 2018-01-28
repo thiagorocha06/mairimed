@@ -3,7 +3,7 @@
 {% block title %}{% trans "Quizzes related to" %} {{ category.category }}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Quizzes in the" %} <strong>{{ category.category }} </strong>{% trans "category" %}</h1>
+<h1>{% trans "Exercícios em" %} <strong>{{ category.category }} </strong>{% trans "categoria" %}</h1>
 
   {% with object_list as quizzes %}
     {% if quizzes %}
@@ -17,7 +17,7 @@
         {% endfor %}
         </ul>
     {% else %}
-        <p>{% trans "There are no quizzes" %}</p>
+        <p>{% trans "Não há exercícios" %}</p>
     {% endif %}
   {% endwith %}
 {% endblock %}

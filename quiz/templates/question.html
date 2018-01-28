@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "conectado_base.html" %}
 {% load i18n%}
 
 {% load quiz_tags %}
@@ -6,77 +6,150 @@
 {% block title %} {{ quiz.title }} {% endblock %}
 {% block description %} {{ quiz.title }} - {{ quiz.description }} {% endblock %}
 
-{% block content %}
+{% block barra-lateral %}
 
-{% if previous.answers %}
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'conectado' %}">
+          <span data-feather="home"></span>
+          Início
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'quiz_index' %}">
+          <span data-feather="file"></span>
+          Exercícios
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'simulado_lista' %}">
+          <span data-feather="layers"></span>
+          Simulados
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'quiz_progress' %}">
+          <span data-feather="bar-chart-2"></span>
+          Progresso
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'perfil' %}">
+          <span data-feather="users"></span>
+          Perfil
+        </a>
+      </li>
+    </ul>
 
-  <p class="muted"><small>{% trans "The previous question" %}:</small></p>
-  <p>{{ previous.previous_question }}</p>
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <!-- <span>Favoritos</span>
+        <a class="d-flex align-items-center text-muted" href="#">
+        <span data-feather="plus-circle"></span>
+      </a> -->
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lista_artigos' %}">
+          <span data-feather="file-text"></span>
+          Resumos Médicos
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lista_termos' %}">
+          <span data-feather="book-open"></span>
+          Dicionário Médico
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-  {% if previous.previous_outcome %}
-	<div class="alert alert-success">
-  {% else %}
-	<div class="alert alert-warning">
-  {% endif %}
-  	  <p><small>
-		{% trans "Your answer was" %} </small>
-		<strong>
-		  {{ previous.previous_outcome|yesno:"correct,incorrect" }}
-		</strong>
-	  </p>
+{% endblock %}
 
-	</div>
+{% block conteudo %}
 
-	{% include 'correct_answer.html' %}
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
 
-	<p><strong>{% trans "Explanation" %}:</strong></p>
-	<div class="well " style="background-color: #fcf8e3;">
-	  <p>{{ previous.previous_question.explanation }}</p>
-	</div>
-
-	<hr>
-
-{% endif %}
-
-<br />
-
-{% if question %}
-
-{% if progress %}
-<div style="float: right;">
-{% trans "Question" %} {{ progress.0|add:1 }} {% trans "of" %} {{ progress.1 }}
 </div>
-{% endif %}
 
-<p>
-  <small class="muted">{% trans "Question category" %}:</small>
-  <strong>{{ question.category }}</strong>
-</p>
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+  <div class="artigo">
 
-<p class="lead">{{ question.content }}</p>
+    {% if previous.answers %}
 
-{% if question.figure %}
-    <img src="{{ question.figure.url }}" alt="{{ question.content }}" />
-{% endif %}
+      <p class="muted"><small>{% trans "A pergunta anterior" %}:</small></p>
+      <p>{{ previous.previous_question }}</p>
 
-<form action="" method="POST">{% csrf_token %}
-  <input type=hidden name="question_id" value="{{ question.id }}">
+      {% if previous.previous_outcome %}
+    	<div class="alert alert-success">
+      {% else %}
+    	<div class="alert alert-warning">
+      {% endif %}
+      	  <p><small>
+    		{% trans "Sua resposta foi" %} </small>
+    		<strong>
+    		  {{ previous.previous_outcome|yesno:"correct,incorrect" }}
+    		</strong>
+    	  </p>
 
-  <ul class="list-group">
+    	</div>
 
-	{% for answer in form.answers %}
-	  <li class="list-group-item">
-	    {{ answer }}
-	  </li>
-	{% endfor %}
+    	{% include 'correct_answer.html' %}
 
-  </ul>
-  <input type="submit" value={% trans "Check" %} class="btn btn-large btn-block btn-warning" >
-</form>
+    	<p><strong>{% trans "Comentário" %}:</strong></p>
+    	<div class="well " style="background-color: #fcf8e3;">
+    	  <p>{{ previous.previous_question.explanation }}</p>
+    	</div>
 
-{% endif %}
+    	<hr>
 
-<hr>
+    {% endif %}
 
+    <br />
+
+    {% if question %}
+
+    {% if progress %}
+    <div style="float: right;">
+    {% trans "Questão" %} {{ progress.0|add:1 }} {% trans "de" %} {{ progress.1 }}
+    </div>
+    {% endif %}
+
+    <p>
+      <small class="muted">{% trans "Categoria" %}:</small>
+      <strong>{{ question.category }}</strong>
+    </p>
+
+    <p class="lead">{{ question.content }}</p>
+
+    {% if question.figure %}
+        <img src="{{ question.figure.url }}" alt="{{ question.content }}" />
+    {% endif %}
+
+    <form action="" method="POST">{% csrf_token %}
+      <input type=hidden name="question_id" value="{{ question.id }}">
+
+      <ul class="list-group">
+
+    	{% for answer in form.answers %}
+    	  <li class="list-group-item">
+    	    {{ answer }}
+    	  </li>
+    	{% endfor %}
+
+      </ul>
+      <input type="submit" value={% trans "Responder" %} class="btn btn-large btn-block btn-warning" >
+    </form>
+
+    {% endif %}
+
+    <hr>
+
+  </div>
+</main>
 
 {% endblock %}

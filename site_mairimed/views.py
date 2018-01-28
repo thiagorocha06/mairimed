@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required, permission_required
+from django.utils.decorators import method_decorator
 from django.utils import timezone
 from artigos.models import Artigo
+from quiz.models import Quiz, Progress
 from django.views.generic import DetailView, TemplateView
 from hitcount.views import HitCountDetailView
 from django import forms
@@ -14,8 +17,27 @@ class ArtigoMixinDetailView(object):
         context['artigo_list'] = Artigo.objects.all().order_by("-hit_count_generic__hits")
         return context
 
-class ConectadoView(ArtigoMixinDetailView, TemplateView):
+class ConectadoView(TemplateView):
     template_name = 'mairimed/conectado.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(ConectadoView, self)\
+            .dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ConectadoView, self).get_context_data(**kwargs)
+        progress, c = Progress.objects.get_or_create(user=self.request.user)
+        lista_simulados = progress.list_all_cat_scores.items
+        lista_cat = ["teste", "teste2"]
+        lista_values = [0, 50]
+
+
+        context['cat_scores'] = progress.list_all_cat_scores
+        context['exams'] = progress.show_exams()
+        context['lista_cat'] = lista_cat
+        context['lista_values'] = lista_values
+        return context
 
 def inicio(request):
     artigos_mais_vistos = Artigo.objects.all().order_by("-hit_count_generic__hits")[:5]

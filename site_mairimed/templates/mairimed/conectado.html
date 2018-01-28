@@ -1,6 +1,8 @@
 
 <!doctype html>
 {% extends "conectado_base.html" %}
+{% load quiz_tags %}
+{% load i18n %}
 {% load staticfiles%}
 
 {% block barra-lateral %}
@@ -12,24 +14,6 @@
         <a class="nav-link active" href="{% url 'conectado' %}">
           <span data-feather="home"></span>
           Início
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Resumos Médicos
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="book-open"></span>
-          Dicionário Médico
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          ESCS
         </a>
       </li>
       <li class="nav-item">
@@ -51,44 +35,32 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'perfil' %}">
           <span data-feather="users"></span>
           Perfil
         </a>
       </li>
     </ul>
 
-    <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-      <span>Favoritos</span>
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <!-- <span>Favoritos</span>
         <a class="d-flex align-items-center text-muted" href="#">
         <span data-feather="plus-circle"></span>
-      </a>
+      </a> -->
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'lista_artigos' %}">
           <span data-feather="file-text"></span>
-          Cardiologia
+          Resumos Médicos
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Cirurgia
+        <a class="nav-link" href="{% url 'lista_termos' %}">
+          <span data-feather="book-open"></span>
+          Dicionário Médico
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Social engagement
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text"></span>
-          Year-end sale
-        </a>
-      </li> -->
     </ul>
   </div>
 </nav>
@@ -112,12 +84,109 @@
     </div> -->
   </div>
 
-  <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+  <!-- <canvas class="my-4" id="myChart" width="900" height="380"></canvas> -->
+  <p>Abaixo você confere seu progresso geral, mais detalhes podem ser acompanhados na página <a href="{% url 'quiz_progress' %}">Progresso</a></p>
 
-  <h2>Resumos mais acessados</h2>
-  <div class="table-responsive">
-
+  <div class="row">
+    <div class="col-md-4">
+        <canvas class="my-4" id="exerciciosChart1" width="900" height="300"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas class="my-4" id="exerciciosChart2" width="900" height="300"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas class="my-4" id="exerciciosChart3" width="900" height="300"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas class="my-4" id="exerciciosChart4" width="900" height="300"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas class="my-4" id="exerciciosChart5" width="900" height="300"></canvas>
+    </div>
+    <div class="col-md-4">
+        <canvas class="my-4" id="exerciciosChart6" width="900" height="300"></canvas>
+    </div>
   </div>
-</main>
+
+{% endblock %}
+
+{% block grafico %}
+
+{% if cat_scores %}
+
+<h2>{{ cat }}</h2>
+<script>
+  // var ctx = document.getElementById("myChart");
+  // var myChart = new Chart(ctx, {
+  //   type: 'line',
+  //   data: {
+  //     labels: ["Acertos", "Erros", "Percentagem"],
+  //     datasets: [{
+  //       data: ["{{value.0}}", "{{value.1}}", "{{value.2}}"],
+  //       lineTension: 0,
+  //       backgroundColor: 'transparent',
+  //       borderColor: '#ff9400',
+  //       borderWidth: 4,
+  //       pointBackgroundColor: '#ff9400'
+  //     }]
+  //   },
+  //   options: {
+  //     scales: {
+  //       yAxes: [{
+  //         ticks: {
+  //           beginAtZero: false
+  //         }
+  //       }]
+  //     },
+  //     legend: {
+  //       display: false,
+  //     }
+  //   }
+  // });
+
+"{% for cat, value in cat_scores.items %}"
+  var ctx = document.getElementById("exerciciosChart{{ forloop.counter }}");
+    var exerciciosChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["{{ cat }}", ""],
+            datasets: [{
+                label: '',
+                data: ["{{ value.2 }}", 100],
+                backgroundColor: [
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 159, 64, 0)',
+
+                ],
+                borderColor: [
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 159, 64, 0)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+"{% endfor %}"
+</script>
+
+{% endif %}
+
+<!-- {% if exams %}
+  <tr>
+  <td>{{ exam.quiz.title }}</td>
+  <td>{{ exam.current_score }}</td>
+  <td>{{ exam.get_max_score }}</td>
+  <td>{{ exam.get_percent_correct }}</td>
+  </tr>
+{% endif %} -->
 
 {% endblock %}
