@@ -3,6 +3,8 @@ from django.utils import timezone
 
 class Exercicio(models.Model):
     data_de_criacao = models.DateTimeField(default=timezone.now)
+    simulado = models.CharField(max_length=200, blank=True, null=True)
+    simulado_top = models.CharField(max_length=200, blank=True, null=True)
     especialidade = models.CharField(max_length=200, blank=True, null=True)
     tema = models.CharField(max_length=200, blank=True, null=True)
     prova = models.CharField(max_length=200, blank=True, null=True)
@@ -17,6 +19,11 @@ class Exercicio(models.Model):
     alternativa3 = models.TextField(blank=True, null=True)
     alternativa4 = models.TextField(blank=True, null=True)
     alternativa5 = models.TextField(blank=True, null=True)
+    alternativa6 = models.TextField(blank=True, null=True)
+    alternativa7 = models.TextField(blank=True, null=True)
+    alternativa8 = models.TextField(blank=True, null=True)
+    alternativa9 = models.TextField(blank=True, null=True)
+    alternativa10 = models.TextField(blank=True, null=True)
     resposta = models.TextField(blank=True, null=True)
     comentario = models.TextField(blank=True, null=True)
 
