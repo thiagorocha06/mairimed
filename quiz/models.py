@@ -563,6 +563,11 @@ class Question(models.Model):
                                            "you want displayed"),
                                verbose_name=_('Question'))
 
+    descricao = models.CharField(max_length=1000,
+                               blank=True,
+                               null=True,
+                               verbose_name=_('Descricao'))
+
     explanation = models.TextField(max_length=2000,
                                    blank=True,
                                    help_text=_("Explanation to be shown "
