@@ -28,12 +28,12 @@ class TF_Question(Question):
 
     def get_answers(self):
         return [{'correct': self.check_if_correct("True"),
-                 'content': 'True'},
+                 'content': 'Certo'},
                 {'correct': self.check_if_correct("False"),
-                 'content': 'False'}]
+                 'content': 'Errado'}]
 
     def get_answers_list(self):
-        return [(True, True), (False, False)]
+        return [(True, "Certo"), (False, 'Errado')]
 
     def answer_choice_to_string(self, guess):
         return str(guess)
