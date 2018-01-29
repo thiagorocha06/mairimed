@@ -568,6 +568,11 @@ class Question(models.Model):
                                null=True,
                                verbose_name=_('Descricao'))
 
+    enunciado = models.CharField(max_length=1000,
+                               blank=True,
+                               null=True,
+                               verbose_name=_('Enunciado'))
+
     explanation = models.TextField(max_length=2000,
                                    blank=True,
                                    help_text=_("Explanation to be shown "

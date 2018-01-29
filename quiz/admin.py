@@ -88,7 +88,7 @@ class ProgressAdmin(admin.ModelAdmin):
 class TFQuestionAdmin(admin.ModelAdmin):
     list_display = ('content', 'category', )
     list_filter = ('category',)
-    fields = ('descricao', 'content', 'category', 'sub_category',
+    fields = ('descricao', 'enunciado', 'content', 'category', 'sub_category',
               'figure', 'quiz', 'explanation', 'correct',)
 
     search_fields = ('content', 'explanation')
