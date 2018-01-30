@@ -14,6 +14,7 @@
     <!-- Custom styles-->
     <link rel="stylesheet" href="{% static 'css/artigos.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <!-- Documentation extras -->
     <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -30,22 +31,29 @@
 
   </head>
 
-  <body style="background-color:#F5F0ED">
+  <body style="background-color:#F5F0ED" ondragstart="return false" onselectstart="return false">
 
     <!-- Navbar -->
 
-    <nav class="navbar navbar-expand-lg navbar-light flex-column flex-md-row">
+    <header class="navbar navbar-expand-lg navbar-light flex-column flex-md-row">
+      {% if request.user.is_authenticated %}
+      <a class="navbar-brand" href="{% url 'conectado' %}">
+        <img src="{% static 'img/mairimed_logo4.png' %}" width="140" height="45" alt="">
+      </a>
+      {% else %}
       <a class="navbar-brand" href="{% url 'inicio' %}">
         <img src="{% static 'img/mairimed_logo4.png' %}" width="140" height="45" alt="">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      {% endif %}
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+      <div class="navbar-nav-scroll">
+        <ul class="navbar-nav bd-navbar-nav flex-row">
           <li class="nav-item">
+            {% if request.user.is_authenticated %}
+            <a class="nav-link" href="{% url 'conectado' %}">Início<span class="sr-only">(current)</span></a>
+            {% else %}
             <a class="nav-link" href="{% url 'inicio' %}">Início<span class="sr-only">(current)</span></a>
+            {% endif %}
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'lista_artigos' %}">Resumos Médicos</a>
@@ -68,12 +76,15 @@
             </div>
           </li>
         </ul>
-        <form type="get" action="" class="form-inline my-2 my-lg-0">
-          {% block form-nav %}
-          {% endblock %}
-        </form>
       </div>
-    </nav>
+
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      </ul>
+      <form type="get" action="" class="form-inline my-2 my-lg-0">
+        {% block form-nav %}
+        {% endblock %}
+      </form>
+    </header>
 
   <div class="container-fluid">
     <div class="row flex-xl-nowrap">
