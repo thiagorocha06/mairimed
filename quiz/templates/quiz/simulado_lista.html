@@ -43,10 +43,10 @@
             <span data-feather="plus-circle"></span>
           </a> -->
         </h6>
-      <a class="bd-toc-link" href="{% url 'lista_artigos' %}">
+      <a class="bd-toc-link" href="{% url 'lista_artigos' %}" target="_blank">
         <span data-feather="file-text"></span>
         Resumos Médicos</a>
-      <a class="bd-toc-link" href="{% url 'lista_termos' %}">
+      <a class="bd-toc-link" href="{% url 'lista_termos' %}" target="_blank">
         <span data-feather="book-open"></span>
         Dicionário Médico</a>
     </div>
@@ -75,8 +75,8 @@
 			<tr>
 			  <th>{% trans "Título" %}</th>
 			  <th>{% trans "Categoria" %}</th>
-			  <th>{% trans "Simulado" %}</th>
-			  <th>{% trans "Uma tentativa permitida" %}</th>
+			  <!-- <th>{% trans "Simulado" %}</th> -->
+			  <!-- <th>{% trans "Uma tentativa permitida" %}</th> -->
 			  <th></th>
 			</tr>
 		  </thead>
@@ -88,8 +88,8 @@
           <tr>
     			  <td>{{ quiz.title }}</td>
     			  <td>{{ quiz.category }}</td>
-    			  <td>{{ quiz.exam_paper }}</td>
-    			  <td>{{ quiz.single_attempt }}</td>
+    			  <!-- <td>{{ quiz.exam_paper }}</td> -->
+    			  <!-- <td>{{ quiz.single_attempt }}</td> -->
     			  <td>
     				<a href="{% url 'quiz_start_page' slug=quiz.url %}">
     				  {% trans "Detalhes" %}

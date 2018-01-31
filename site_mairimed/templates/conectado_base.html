@@ -32,12 +32,12 @@
   <body style="background-color:#ffffff" ondragstart="return false" onselectstart="return false">
     {% if request.user.is_authenticated %}
 
-    <header class="navbar navbar-expand-lg navbar-light sticky-top flex-column flex-md-row">
+    <header class="navbar navbar-expand-lg navbar-light sticky-top flex-column flex-md-row" style="background-color: #1F1102">
       <a class="navbar-brand" href="{% url 'conectado' %}">
-        <img src="{% static 'img/mairimed_logo4.png' %}" width="140" height="45" alt="">
+        <img src="{% static 'img/mairimed_logo5.png' %}" width="140" height="45" alt="">
       </a>
 
-      <div class="navbar-nav-scroll">
+      <!-- <div class="navbar-nav-scroll">
         <ul class="navbar-nav bd-navbar-nav flex-row">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'conectado' %}">Início<span class="sr-only">(current)</span></a>
@@ -63,7 +63,7 @@
             </div>
           </li>
         </ul>
-      </div>
+      </div> -->
 
       <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
       </ul>

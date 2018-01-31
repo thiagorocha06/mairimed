@@ -28,38 +28,33 @@ class ConectadoView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ConectadoView, self).get_context_data(**kwargs)
         progress, c = Progress.objects.get_or_create(user=self.request.user)
-        lista_simulados = progress.list_all_cat_scores.items
-        lista_cat = ["teste", "teste2"]
-        lista_values = [0, 50]
-
 
         context['cat_scores'] = progress.list_all_cat_scores
         context['exams'] = progress.show_exams()
-        context['lista_cat'] = lista_cat
-        context['lista_values'] = lista_values
         return context
 
-def inicio(request):
-    artigos_mais_vistos = Artigo.objects.all().order_by("-hit_count_generic__hits")[:5]
-    lista_artigos = Artigo.objects.all()
-    conteudo = {
-        'artigos_mais_vistos': artigos_mais_vistos,
-        'lista_artigos': lista_artigos
-    }
-    if request.user.is_authenticated():
-        return render(request, 'mairimed/conectado.html', conteudo)
-    else:
-        return render(request, 'mairimed/inicio.html', conteudo)
-
-# class InicioView(ArtigoMixinDetailView, TemplateView):
-#     template_name = 'mairimed/inicio.html'
+# def inicio(request):
+#     artigos_mais_vistos = Artigo.objects.all().order_by("-hit_count_generic__hits")[:5]
+#     lista_artigos = Artigo.objects.all()
+#     conteudo = {
 #
-#     def get_context_data(self, **kwargs):
-#         context = super(InicioView, self).get_context_data(**kwargs)
-#         context['artigos_mais_vistos'] = Artigo.objects.all().order_by("-hit_count_generic__hits")[:5]
-#         context['ultimos_artigos'] = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:5]
-#         context['lista_artigos'] = Artigo.objects.all()
-#         return context
+#         'artigos_mais_vistos': artigos_mais_vistos,
+#         'lista_artigos': lista_artigos
+#     }
+#     if request.user.is_authenticated():
+#         return render(request, 'mairimed/conectado.html', conteudo)
+#     else:
+#         return render(request, 'mairimed/inicio.html', conteudo)
+
+class InicioView(ArtigoMixinDetailView, TemplateView):
+    template_name = 'mairimed/inicio.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(InicioView, self).get_context_data(**kwargs)
+        context['artigos_mais_vistos'] = Artigo.objects.all().order_by("-hit_count_generic__hits")[:5]
+        context['ultimos_artigos'] = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:5]
+        context['lista_artigos'] = Artigo.objects.all()
+        return context
 
 class AdministracaoView(ArtigoMixinDetailView, TemplateView):
     template_name = 'mairimed/administracao_artigo.html'

@@ -45,10 +45,10 @@
             <span data-feather="plus-circle"></span>
           </a> -->
         </h6>
-      <a class="bd-toc-link" href="{% url 'lista_artigos' %}">
+      <a class="bd-toc-link" href="{% url 'lista_artigos' %}" target="_blank">
         <span data-feather="file-text"></span>
         Resumos Médicos</a>
-      <a class="bd-toc-link" href="{% url 'lista_termos' %}">
+      <a class="bd-toc-link" href="{% url 'lista_termos' %}" target="_blank">
         <span data-feather="book-open"></span>
         Dicionário Médico</a>
     </div>
@@ -71,6 +71,11 @@
 
     <h1>{{ quiz.title }}</h1>
     <h3>{% trans "Categoria" %}: {{ quiz.category }}</h3>
+    {% if quiz.exam_paper %}
+      <h4>{% trans "Este é um simulado. A correção das questões virá ao término de todas as questões" %}.</h4>
+    {% else %}
+      <h4>{% trans "Esta é uma lista de exercícios. A correção das questões virá ao término de cada questão" %}.</h4>
+    {% endif %}
     {% if quiz.single_attempt %}
       <h4>{% trans "Você só terá uma tentativa nesse simulado" %}.</h4>
     {% endif %}

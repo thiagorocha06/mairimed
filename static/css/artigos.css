@@ -367,7 +367,7 @@
 }
 
 .navbar {
-  background-color: #ff9400;
+  background-color: #ff9400; /*Altera cor da barra superior*/
 }
 .navbar .navbar-brand {
   color: #ecf0f1;
