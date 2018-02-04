@@ -50,9 +50,9 @@ class QuizAdminForm(forms.ModelForm):
 class QuizAdmin(admin.ModelAdmin):
     form = QuizAdminForm
 
-    list_display = ('title', 'category', )
-    list_filter = ('category',)
-    search_fields = ('description', 'category', )
+    list_display = ('title', 'especialidade', )
+    list_filter = ('especialidade',)
+    search_fields = ('description', 'especialidade', )
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -66,7 +66,7 @@ class SubCategoryAdmin(admin.ModelAdmin):
 
 
 class MCQuestionAdmin(admin.ModelAdmin):
-    list_display = ('content', 'category', )
+    list_display = ('content', 'category', 'sub_category',)
     list_filter = ('category',)
     fields = ('descricao', 'content', 'category', 'sub_category',
               'figure', 'quiz', 'explanation', 'answer_order')
@@ -86,7 +86,7 @@ class ProgressAdmin(admin.ModelAdmin):
 
 
 class TFQuestionAdmin(admin.ModelAdmin):
-    list_display = ('content', 'category', )
+    list_display = ('content', 'category', 'sub_category',)
     list_filter = ('category',)
     fields = ('descricao', 'enunciado', 'content', 'category', 'sub_category',
               'figure', 'quiz', 'explanation', 'correct',)
@@ -96,7 +96,7 @@ class TFQuestionAdmin(admin.ModelAdmin):
 
 
 class EssayQuestionAdmin(admin.ModelAdmin):
-    list_display = ('content', 'category', )
+    list_display = ('content', 'category', 'sub_category',)
     list_filter = ('category',)
     fields = ('descricao', 'content', 'category', 'sub_category', 'quiz', 'explanation', )
     search_fields = ('content', 'explanation')

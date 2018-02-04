@@ -25,6 +25,9 @@
       <a class="bd-toc-link" href="{% url 'conectado' %}">
         <span data-feather="home"></span>
         Início</a>
+      <a class="bd-toc-link" href="{% url 'especialidades' %}">
+        <span data-feather="file-text"></span>
+        Apostilas</a>
       <a class="bd-toc-link" href="{% url 'quiz_index' %}">
         <span data-feather="file"></span>
         Exercícios</a>
@@ -43,9 +46,6 @@
             <span data-feather="plus-circle"></span>
           </a> -->
         </h6>
-      <a class="bd-toc-link" href="{% url 'lista_artigos' %}" target="_blank">
-        <span data-feather="file-text"></span>
-        Resumos Médicos</a>
       <a class="bd-toc-link" href="{% url 'lista_termos' %}" target="_blank">
         <span data-feather="book-open"></span>
         Dicionário Médico</a>
@@ -74,7 +74,7 @@
 		  <thead>
 			<tr>
 			  <th>{% trans "Título" %}</th>
-			  <th>{% trans "Categoria" %}</th>
+			  <th>{% trans "Especialidade" %}</th>
 			  <!-- <th>{% trans "Simulado" %}</th> -->
 			  <!-- <th>{% trans "Uma tentativa permitida" %}</th> -->
 			  <th></th>
@@ -87,7 +87,7 @@
           {% if quiz.exam_paper == True %}
           <tr>
     			  <td>{{ quiz.title }}</td>
-    			  <td>{{ quiz.category }}</td>
+    			  <td>{{ quiz.especialidade }}</td>
     			  <!-- <td>{{ quiz.exam_paper }}</td> -->
     			  <!-- <td>{{ quiz.single_attempt }}</td> -->
     			  <td>

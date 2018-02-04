@@ -1,6 +1,7 @@
 
 <!doctype html>
 {% extends "conectado_base.html" %}
+{% load i18n %}
 {% load staticfiles%}
 
 {% block form-nav %}
@@ -26,6 +27,9 @@
       <a class="bd-toc-link" href="{% url 'conectado' %}">
         <span data-feather="home"></span>
         Início</a>
+      <a class="bd-toc-link" href="{% url 'especialidades' %}">
+        <span data-feather="file-text"></span>
+        Apostilas</a>
       <a class="bd-toc-link" href="{% url 'quiz_index' %}">
         <span data-feather="file"></span>
         Exercícios</a>
@@ -44,9 +48,6 @@
             <span data-feather="plus-circle"></span>
           </a> -->
         </h6>
-      <a class="bd-toc-link" href="{% url 'lista_artigos' %}" target="_blank">
-        <span data-feather="file-text"></span>
-        Resumos Médicos</a>
       <a class="bd-toc-link" href="{% url 'lista_termos' %}" target="_blank">
         <span data-feather="book-open"></span>
         Dicionário Médico</a>
@@ -59,17 +60,14 @@
 
 {% block content %}
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-    <h1 class="h2">Perfil</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-      <div class="btn-group mr-2">
-        <!-- <button class="btn btn-sm btn-outline-secondary">Editar</button> -->
-      </div>
-    </div>
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
+  <div class="texto-centro">
+    <h1>{% trans "Perfil" %}</h1>
   </div>
 
   <p>Nome: {{user}}</p>
+  <p>Conta: Interno</p>
 
 </main>
 

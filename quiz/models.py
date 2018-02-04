@@ -12,7 +12,6 @@ from django.conf import settings
 
 from model_utils.managers import InheritanceManager
 
-
 class CategoryManager(models.Manager):
 
     def new_category(self, category):
@@ -66,11 +65,11 @@ class SubCategory(models.Model):
 class Quiz(models.Model):
 
     title = models.CharField(
-        verbose_name=_("Title"),
+        verbose_name=_("Título"),
         max_length=60, blank=False)
 
     description = models.TextField(
-        verbose_name=_("Description"),
+        verbose_name=_("Descrição"),
         blank=True, help_text=_("a description of the quiz"))
 
     url = models.SlugField(
@@ -78,9 +77,13 @@ class Quiz(models.Model):
         help_text=_("a user friendly url"),
         verbose_name=_("user friendly url"))
 
+    especialidade = models.ForeignKey(
+        "artigos.Especialidade", null=True, blank=True,
+        verbose_name=_("Especialidade"))
+
     category = models.ForeignKey(
         Category, null=True, blank=True,
-        verbose_name=_("Category"))
+        verbose_name=_("Categoria"))
 
     random_order = models.BooleanField(
         blank=False, default=False,
@@ -104,7 +107,7 @@ class Quiz(models.Model):
         help_text=_("If yes, the result of each"
                     " attempt by a user will be"
                     " stored. Necessary for marking."),
-        verbose_name=_("Exam Paper"))
+        verbose_name=_("Simulado"))
 
     single_attempt = models.BooleanField(
         blank=False, default=False,

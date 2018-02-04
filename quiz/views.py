@@ -33,7 +33,7 @@ class QuizListView(ListView):
 
     def get_queryset(self):
         queryset = super(QuizListView, self).get_queryset()
-        return queryset.filter(draft=False)
+        return queryset.filter(draft=False).order_by('-category')
 
 class SimuladoListView(TemplateView):
     model = Quiz
@@ -41,7 +41,7 @@ class SimuladoListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(SimuladoListView, self).get_context_data(**kwargs)
-        context['quiz_list'] = Quiz.objects.all()
+        context['quiz_list'] = Quiz.objects.all().order_by('-category')
         return context
 
 class QuizDetailView(DetailView):

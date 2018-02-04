@@ -5,6 +5,7 @@ urlpatterns = [
 
     url(r'^mairimed/lista_artigos/$', views.lista_artigos, name='lista_artigos'),
 
+
 ### ARTIGOS ###
     url(r'^artigo/cardiologia/$', views.categorias_artigos, name='cardiologia_artigos'),
     url(r'^artigo/cirurgia/$', views.categorias_artigos, name='cirurgia_artigos'),
@@ -24,6 +25,8 @@ urlpatterns = [
     url(r'^artigo/reumatologia_artigos/$', views.categorias_artigos, name='reumatologia_artigos'),
 
     url(r'^artigo/(?P<pk>\d+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
+    url(r'^interno/(?P<pk>\d+)/$', views.PostCountHitDetailView2.as_view(), name='artigo_detail'),
+
 
 ### ESCS ###
     url(r'^escs/3_serie/$', views.categorias_artigos, name='3_serie'),

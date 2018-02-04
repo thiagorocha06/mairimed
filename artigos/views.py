@@ -26,6 +26,13 @@ class PostCountHitDetailView(ArtigoMixinDetailView, HitCountDetailView):
     count_hit = True
     template_name = 'artigos/detalhe_artigo.html'
 
+class PostCountHitDetailView2(ArtigoMixinDetailView, HitCountDetailView):
+    """
+    Generic hitcount class based view that will also perform the hitcount logic.
+    """
+    count_hit = True
+    template_name = 'artigos/artigo_detail.html'
+
 class Lista_artigosView(ArtigoMixinDetailView, TemplateView):
     template_name = 'artigos/lista_artigos.html'
 
@@ -71,3 +78,7 @@ def detalhe_artigo(request, pk):
     artigo = get_object_or_404(Artigo, pk=pk)
     estudante = Estudante.objects
     return render(request, 'artigos/detalhe_artigo.html', {'estudante': estudante, 'artigo': artigo})
+
+def artigos_detalhe(request, pk):
+    artigo = get_object_or_404(Artigo, pk=pk)
+    return render(request, 'artigos/artigos_detalhe.html', {'artigo': artigo})

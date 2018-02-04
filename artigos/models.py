@@ -4,6 +4,56 @@ from django.utils import timezone
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from hitcount.models import HitCount, HitCountMixin
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext as _
+from model_utils.managers import InheritanceManager
+from quiz.models import Quiz
+
+class EspecialidadeManager(models.Manager):
+
+    def nova_especialidade(self, especialidade):
+        nova_especialidade = self.create(especialidade=re.sub('\s+', '-', especialidade)
+                                   .lower())
+
+        nova_especialidade.save()
+        return nova_especialidade
+
+@python_2_unicode_compatible
+class Especialidade(models.Model):
+
+    especialidade = models.CharField(
+        verbose_name=_("Especialidade"),
+        max_length=250, blank=True,
+        unique=True, null=True)
+
+    objects = EspecialidadeManager()
+
+    class Meta:
+        verbose_name = _("Especialidade")
+        verbose_name_plural = _("Especialidades")
+
+    def __str__(self):
+        return self.especialidade
+
+@python_2_unicode_compatible
+class Tema(models.Model):
+
+    tema = models.CharField(
+        verbose_name=_("Tema"),
+        max_length=250, blank=True, null=True)
+
+    especialidade = models.ForeignKey(
+        Especialidade, null=True, blank=True,
+        verbose_name=_("Especialidade"))
+
+    objects = EspecialidadeManager()
+
+    class Meta:
+        verbose_name = _("Tema")
+        verbose_name_plural = _("Temas")
+
+    def __str__(self):
+        return self.tema + " (" + self.especialidade.especialidade + ")"
 
 class Artigo(models.Model, HitCountMixin):
     author = models.ForeignKey('auth.User')
@@ -12,6 +62,18 @@ class Artigo(models.Model, HitCountMixin):
         related_query_name='hit_count_generic_relation')
     data_de_criacao = models.DateTimeField(default=timezone.now)
     data_de_publicacao = models.DateTimeField(blank=True, null=True)
+
+    especialidade = models.ForeignKey(
+        Especialidade, null=True, blank=True,
+        verbose_name=_("Especialidade"))
+
+    tema = models.ForeignKey(
+        Tema, null=True, blank=True,
+        verbose_name=_("Tema"))
+
+    exercicios = models.ForeignKey(
+        Quiz, null=True, blank=True,
+        verbose_name=_("Exercícios"))
 
     modulo = models.CharField(max_length=200, blank=True, null=True)
     categoria = models.CharField(max_length=200, blank=True, null=True)

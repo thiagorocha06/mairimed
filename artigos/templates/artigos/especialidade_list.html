@@ -1,6 +1,8 @@
-{% extends 'conectado_base.html' %}
+<!doctype html>
+{% extends "conectado_base.html" %}
+{% load quiz_tags %}
 {% load i18n %}
-{% block title %}{% trans "All Quizzes" %}{% endblock %}
+{% load staticfiles %}
 
 {% block form-nav %}
 <ul class="navbar-nav px-3">
@@ -13,63 +15,35 @@
 {% block content %}
 
 <!-- BARRA DIREITA -->
-<div class="d-none d-xl-block col-xl-2 bd-toc" >
+<div class="d-none d-xl-block col-xl-2 bd-toc">
 
 </div>
 
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-
+<!-- CONTEUDO -->
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
   <div class="texto-centro">
-    <h1>{% trans "Lista de Exercícios" %}</h1>
+    <h1>{% trans "Apostilas" %}</h1>
   </div>
-    {% if quiz_list %}
-		<table class="table table-bordered table-striped">
 
-		  <thead>
-			<tr>
-			  <th>{% trans "Título" %}</th>
-			  <th>{% trans "Especialidade" %}</th>
-			  <!-- <th>{% trans "Simulado" %}</th>
-			  <th>{% trans "Uma tentativa permitida" %}</th> -->
-			  <th></th>
-			</tr>
-		  </thead>
+  <ul>
+    {% for especialidade in especialidade_list %}
+    <div class="artigo">
+      <h2><a href="{% url 'especialidade_lista' especialidade_name=especialidade.especialidade %}">
+    	  {{ especialidade.especialidade }}
+    	</a></h2>
+    </div>
+    {% endfor %}
+  </ul>
 
-		  <tbody>
-
-        {% for quiz in quiz_list %}
-          {% if quiz.exam_paper == False %}
-          <tr>
-    			  <td>{{ quiz.title }}</td>
-    			  <td>{{ quiz.especialidade }}</td>
-    			  <!-- <td>{{ quiz.exam_paper }}</td>
-    			  <td>{{ quiz.single_attempt }}</td> -->
-    			  <td>
-    				<a href="{% url 'quiz_start_page' slug=quiz.url %}">
-    				  {% trans "Detalhes" %}
-    				</a>
-    			</tr>
-
-          {% endif %}
-
-        {% endfor %}
-		  </tbody>
-
-		</table>
-
-	{% else %}
-        <p>{% trans "Não há exercícios disponíveis" %}.</p>
-    {% endif %}
 </main>
-
 {% endblock %}
 
 {% block barra-esquerda %}
 
-<div style="background-color:#F5F0ED" class="col-12 col-md-3 col-xl-2 bd-sidebar">
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
 
   <div class="bd-search d-flex align-items-center">
-    <a class="bd-toc-link">{{user}}</a>
+    <a style="" class="bd-toc-link">{{user}}</a>
     <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
     </button>
   </div>
@@ -79,10 +53,10 @@
       <a class="bd-toc-link" href="{% url 'conectado' %}">
         <span data-feather="home"></span>
         Início</a>
-      <a class="bd-toc-link" href="{% url 'especialidades' %}">
+      <a class="bd-toc-link active" href="{% url 'especialidades' %}">
         <span data-feather="file-text"></span>
         Apostilas</a>
-      <a class="bd-toc-link active" href="{% url 'quiz_index' %}">
+      <a class="bd-toc-link" href="{% url 'quiz_index' %}">
         <span data-feather="file"></span>
         Exercícios</a>
       <a class="bd-toc-link" href="{% url 'simulado_lista' %}">
