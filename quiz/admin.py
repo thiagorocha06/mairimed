@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Quiz, Category, SubCategory, Progress, Question
+from .models import Quiz, Progress, Question
 from multichoice.models import MCQuestion, Answer
 from true_false.models import TF_Question
 from essay.models import Essay_Question
@@ -54,21 +54,10 @@ class QuizAdmin(admin.ModelAdmin):
     list_filter = ('especialidade',)
     search_fields = ('description', 'especialidade', )
 
-
-class CategoryAdmin(admin.ModelAdmin):
-    search_fields = ('category', )
-
-
-class SubCategoryAdmin(admin.ModelAdmin):
-    search_fields = ('sub_category', )
-    list_display = ('sub_category', 'category',)
-    list_filter = ('category',)
-
-
 class MCQuestionAdmin(admin.ModelAdmin):
-    list_display = ('content', 'category', 'sub_category',)
-    list_filter = ('category',)
-    fields = ('descricao', 'content', 'category', 'sub_category',
+    list_display = ('content', 'especialidade', 'tema',)
+    list_filter = ('especialidade',)
+    fields = ('descricao', 'content', 'especialidade', 'tema',
               'figure', 'quiz', 'explanation', 'answer_order')
 
     search_fields = ('content', 'explanation')
@@ -86,9 +75,9 @@ class ProgressAdmin(admin.ModelAdmin):
 
 
 class TFQuestionAdmin(admin.ModelAdmin):
-    list_display = ('content', 'category', 'sub_category',)
-    list_filter = ('category',)
-    fields = ('descricao', 'enunciado', 'content', 'category', 'sub_category',
+    list_display = ('content', 'especialidade', 'tema',)
+    list_filter = ('especialidade',)
+    fields = ('descricao', 'enunciado', 'content', 'especialidade', 'tema',
               'figure', 'quiz', 'explanation', 'correct',)
 
     search_fields = ('content', 'explanation')
@@ -96,15 +85,13 @@ class TFQuestionAdmin(admin.ModelAdmin):
 
 
 class EssayQuestionAdmin(admin.ModelAdmin):
-    list_display = ('content', 'category', 'sub_category',)
-    list_filter = ('category',)
-    fields = ('descricao', 'content', 'category', 'sub_category', 'quiz', 'explanation', )
+    list_display = ('content', 'especialidade', 'tema',)
+    list_filter = ('especialidade',)
+    fields = ('descricao', 'content', 'especialidade', 'tema', 'quiz', 'explanation', )
     search_fields = ('content', 'explanation')
     filter_horizontal = ('quiz',)
 
 admin.site.register(Quiz, QuizAdmin)
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(SubCategory, SubCategoryAdmin)
 admin.site.register(MCQuestion, MCQuestionAdmin)
 admin.site.register(Progress, ProgressAdmin)
 admin.site.register(TF_Question, TFQuestionAdmin)

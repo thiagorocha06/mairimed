@@ -2,7 +2,7 @@ from django.conf.urls import url
 from . import views
 
 from .views import QuizListView, SimuladoListView, CategoriesListView,\
-    ViewQuizListByCategory, QuizUserProgressView, QuizMarkingList,\
+    ViewQuizListByEspecialidade, QuizUserProgressView, QuizMarkingList,\
     QuizMarkingDetail, QuizDetailView, QuizTake
 
 
@@ -21,7 +21,7 @@ urlpatterns = [
            name='quiz_category_list_all'),
 
        url(regex=r'^category/(?P<category_name>[\w|\W-]+)/$',
-           view=ViewQuizListByCategory.as_view(),
+           view=ViewQuizListByEspecialidade.as_view(),
            name='quiz_category_list_matching'),
 
        url(regex=r'^progress/$',

@@ -12,6 +12,8 @@ from django.conf import settings
 
 from model_utils.managers import InheritanceManager
 
+from artigos.models import Especialidade, Tema
+
 class CategoryManager(models.Manager):
 
     def new_category(self, category):
@@ -20,46 +22,6 @@ class CategoryManager(models.Manager):
 
         new_category.save()
         return new_category
-
-
-@python_2_unicode_compatible
-class Category(models.Model):
-
-    category = models.CharField(
-        verbose_name=_("Category"),
-        max_length=250, blank=True,
-        unique=True, null=True)
-
-    objects = CategoryManager()
-
-    class Meta:
-        verbose_name = _("Category")
-        verbose_name_plural = _("Categories")
-
-    def __str__(self):
-        return self.category
-
-
-@python_2_unicode_compatible
-class SubCategory(models.Model):
-
-    sub_category = models.CharField(
-        verbose_name=_("Sub-Category"),
-        max_length=250, blank=True, null=True)
-
-    category = models.ForeignKey(
-        Category, null=True, blank=True,
-        verbose_name=_("Category"))
-
-    objects = CategoryManager()
-
-    class Meta:
-        verbose_name = _("Sub-Category")
-        verbose_name_plural = _("Sub-Categories")
-
-    def __str__(self):
-        return self.sub_category + " (" + self.category.category + ")"
-
 
 @python_2_unicode_compatible
 class Quiz(models.Model):
@@ -78,12 +40,8 @@ class Quiz(models.Model):
         verbose_name=_("user friendly url"))
 
     especialidade = models.ForeignKey(
-        "artigos.Especialidade", null=True, blank=True,
+        Especialidade, null=True, blank=True,
         verbose_name=_("Especialidade"))
-
-    category = models.ForeignKey(
-        Category, null=True, blank=True,
-        verbose_name=_("Categoria"))
 
     random_order = models.BooleanField(
         blank=False, default=False,
@@ -219,8 +177,8 @@ class Progress(models.Model):
         score_before = self.score
         output = {}
 
-        for cat in Category.objects.all():
-            to_find = re.escape(cat.category) + r",(\d+),(\d+),"
+        for cat in Especialidade.objects.all():
+            to_find = re.escape(cat.especialidade) + r",(\d+),(\d+),"
             #  group 1 is score, group 2 is highest possible
 
             match = re.search(to_find, self.score, re.IGNORECASE)
@@ -235,11 +193,11 @@ class Progress(models.Model):
                 except:
                     percent = 0
 
-                output[cat.category] = [score, possible, percent]
+                output[cat.especialidade] = [score, possible, percent]
 
             else:  # if category has not been added yet, add it.
-                self.score += cat.category + ",0,0,"
-                output[cat.category] = [0, 0]
+                self.score += cat.especialidade + ",0,0,"
+                output[cat.especialidade] = [0, 0]
 
         if len(self.score) > len(score_before):
             # If a new category has been added, save changes.
@@ -254,7 +212,7 @@ class Progress(models.Model):
 
         Does not return anything.
         """
-        category_test = Category.objects.filter(category=question.category)\
+        category_test = Especialidade.objects.filter(especialidade=question.especialidade)\
                                         .exists()
 
         if any([item is False for item in [category_test,
@@ -264,7 +222,7 @@ class Progress(models.Model):
                                            isinstance(possible_to_add, int)]]):
             return _("error"), _("category does not exist or invalid score")
 
-        to_find = re.escape(str(question.category)) +\
+        to_find = re.escape(str(question.especialidade)) +\
             r",(?P<score>\d+),(?P<possible>\d+),"
 
         match = re.search(to_find, self.score, re.IGNORECASE)
@@ -276,7 +234,7 @@ class Progress(models.Model):
 
             new_score = ",".join(
                 [
-                    str(question.category),
+                    str(question.especialidade),
                     str(updated_score),
                     str(updated_possible), ""
                 ])
@@ -289,7 +247,7 @@ class Progress(models.Model):
             #  if not present but existing, add with the points passed in
             self.score += ",".join(
                 [
-                    str(question.category),
+                    str(question.especialidade),
                     str(score_to_add),
                     str(possible_to_add),
                     ""
@@ -545,13 +503,13 @@ class Question(models.Model):
                                   verbose_name=_("Quiz"),
                                   blank=True)
 
-    category = models.ForeignKey(Category,
-                                 verbose_name=_("Category"),
+    especialidade = models.ForeignKey(Especialidade,
+                                 verbose_name=_("Especialidade"),
                                  blank=True,
                                  null=True)
 
-    sub_category = models.ForeignKey(SubCategory,
-                                     verbose_name=_("Sub-Category"),
+    tema = models.ForeignKey(Tema,
+                                     verbose_name=_("Tema"),
                                      blank=True,
                                      null=True)
 
@@ -588,7 +546,7 @@ class Question(models.Model):
     class Meta:
         verbose_name = _("Question")
         verbose_name_plural = _("Questions")
-        ordering = ['category']
+        ordering = ['especialidade']
 
     def __str__(self):
         return self.content

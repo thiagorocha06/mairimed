@@ -33,9 +33,11 @@
       			  <h2><a href="{% url 'artigo_detail' pk=artigo.pk %}">
       				{{ artigo.titulo }}
       			  </a></h2>
+              {% if artigo.exercicios %}
               <h3> <a href="http://www.mairimed.com/questoes/{{artigo.exercicios.url}}">
                 Exercícios
               </a></h3>
+              {% endif %}
       			</div>
           {% endfor %}
           </ul>

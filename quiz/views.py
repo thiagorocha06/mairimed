@@ -7,7 +7,8 @@ from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView, TemplateView, FormView
 
 from .forms import QuestionForm, EssayForm
-from .models import Quiz, Category, Progress, Sitting, Question
+from .models import Quiz, Progress, Sitting, Question
+from artigos.models import Especialidade, Tema
 from essay.models import Essay_Question
 
 
@@ -33,7 +34,7 @@ class QuizListView(ListView):
 
     def get_queryset(self):
         queryset = super(QuizListView, self).get_queryset()
-        return queryset.filter(draft=False).order_by('-category')
+        return queryset.filter(draft=False).order_by('-especialidade')
 
 class SimuladoListView(TemplateView):
     model = Quiz
@@ -41,7 +42,7 @@ class SimuladoListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(SimuladoListView, self).get_context_data(**kwargs)
-        context['quiz_list'] = Quiz.objects.all().order_by('-category')
+        context['quiz_list'] = Quiz.objects.all().order_by('-especialidade')
         return context
 
 class QuizDetailView(DetailView):
@@ -59,32 +60,32 @@ class QuizDetailView(DetailView):
 
 
 class CategoriesListView(ListView):
-    model = Category
+    model = Especialidade
 
 
-class ViewQuizListByCategory(ListView):
+class ViewQuizListByEspecialidade(ListView):
     model = Quiz
     template_name = 'view_quiz_category.html'
 
     def dispatch(self, request, *args, **kwargs):
-        self.category = get_object_or_404(
-            Category,
-            category=self.kwargs['category_name']
+        self.especialidade = get_object_or_404(
+            Especialidade,
+            especialidade=self.kwargs['category_name']
         )
 
-        return super(ViewQuizListByCategory, self).\
+        return super(ViewQuizListByEspecialidade, self).\
             dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        context = super(ViewQuizListByCategory, self)\
+        context = super(ViewQuizListByEspecialidade, self)\
             .get_context_data(**kwargs)
 
-        context['category'] = self.category
+        context['category'] = self.especialidade
         return context
 
     def get_queryset(self):
-        queryset = super(ViewQuizListByCategory, self).get_queryset()
-        return queryset.filter(category=self.category, draft=False)
+        queryset = super(ViewQuizListByEspecialidade, self).get_queryset()
+        return queryset.filter(especialidade=self.especialidade, draft=False)
 
 
 class QuizUserProgressView(TemplateView):

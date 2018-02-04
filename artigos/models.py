@@ -7,7 +7,6 @@ from hitcount.models import HitCount, HitCountMixin
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 from model_utils.managers import InheritanceManager
-from quiz.models import Quiz
 
 class EspecialidadeManager(models.Manager):
 
@@ -72,7 +71,7 @@ class Artigo(models.Model, HitCountMixin):
         verbose_name=_("Tema"))
 
     exercicios = models.ForeignKey(
-        Quiz, null=True, blank=True,
+        'quiz.Quiz', null=True, blank=True,
         verbose_name=_("Exercícios"))
 
     modulo = models.CharField(max_length=200, blank=True, null=True)
