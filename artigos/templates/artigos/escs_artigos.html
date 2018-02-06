@@ -13,7 +13,7 @@
 <!-- 3ª serie - HA -->
   {% url 'ha_ped' as ha_ped %}
   {% url 'ha_abdome' as ha_abdome %}
-  {% url 'ha_cm' as ha_cm %}
+  {% url 'ha_cm_3' as ha_cm_3 %}
   {% url 'ha_neurolocom' as ha_neurolocom %}
 <!-- 4ª serie - MT -->
   {% url 'M401' as M401 %}
@@ -152,7 +152,7 @@
     {% endfor %}
   {% endif %}
 
-  {% if request.path == ha_cm %}
+  {% if request.path == ha_cm_3 %}
     <div class="texto-centro">
       <h1>CLÍNICA MÉDICA</h1>
     </div>
