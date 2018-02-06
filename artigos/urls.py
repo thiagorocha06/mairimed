@@ -42,9 +42,9 @@ urlpatterns = [
     url(r'^escs/M306/$', views.escs_artigos, name='M306'),
     url(r'^escs/M307/$', views.escs_artigos, name='M307'),
 # 3ª serie - HA
-    url(r'^escs/ha_ped/$', views.escs_artigos, name='ha_ped'),
+    url(r'^escs/ha_ped_3/$', views.escs_artigos, name='ha_ped_3'),
     url(r'^escs/ha_abdome/$', views.escs_artigos, name='ha_abdome'),
-    url(r'^escs/ha_cm/$', views.escs_artigos, name='ha_cm'),
+    url(r'^escs/ha_cm_3/$', views.escs_artigos, name='ha_cm_3'),
     url(r'^escs/ha_neurolocom/$', views.escs_artigos, name='ha_neurolocom'),
 
 # 4ª serie - MT

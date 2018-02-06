@@ -11,7 +11,7 @@
   {% url 'M306' as M306 %}
   {% url 'M307' as M307 %}
 <!-- 3ª serie - HA -->
-  {% url 'ha_ped' as ha_ped %}
+  {% url 'ha_ped_3' as ha_ped_3 %}
   {% url 'ha_abdome' as ha_abdome %}
   {% url 'ha_cm_3' as ha_cm_3 %}
   {% url 'ha_neurolocom' as ha_neurolocom %}
@@ -124,12 +124,12 @@
   {% endif %}
 
 <!-- 3ª serie - HA -->
-  {% if request.path == ha_ped %}
+  {% if request.path == ha_ped_3 %}
     <div class="texto-centro">
       <h1>PEDIATRIA</h1>
     </div>
     {% for artigo in artigos %}
-      {% if "ha_ped" in artigo.modulo %}
+      {% if "ha_ped_3" in artigo.modulo %}
         <div class="artigo">
           <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
@@ -157,7 +157,7 @@
       <h1>CLÍNICA MÉDICA</h1>
     </div>
     {% for artigo in artigos %}
-      {% if "ha_cm" in artigo.modulo %}
+      {% if "ha_cm_3" in artigo.modulo %}
         <div class="artigo">
           <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
