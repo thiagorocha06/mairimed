@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^artigo/obstetrícia_artigos/$', views.categorias_artigos, name='obstetrícia_artigos'),
     url(r'^artigo/pediatria/$', views.categorias_artigos, name='pediatria_artigos'),
     url(r'^artigo/pneumologia/$', views.categorias_artigos, name='pneumologia_artigos'),
+    url(r'^artigo/psiquiatria/$', views.categorias_artigos, name='psiquiatria_artigos'),
     url(r'^artigo/reumatologia_artigos/$', views.categorias_artigos, name='reumatologia_artigos'),
 
     url(r'^artigo/(?P<pk>\d+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
