@@ -1,0 +1,84 @@
+{% extends "exercicios/exercicio_base.html" %}
+{% load staticfiles%}
+{% load hitcount_tags %}
+{% load i18n %}
+
+<!-- PAGINA PARA USUARIO -->
+
+{% block content %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc" >
+
+</div>
+
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
+  <div class="texto-centro">
+    <h1>{% trans "Lista de Exercícios" %}</h1>
+  </div>
+  <div class="artigo">
+    {% if quiz_list %}
+		<table class="table table-bordered table-striped">
+
+		  <thead>
+			<tr>
+			  <th>{% trans "Tema" %}</th>
+			  <th>{% trans "Especialidade" %}</th>
+			  <!-- <th>{% trans "Simulado" %}</th>
+			  <th>{% trans "Uma tentativa permitida" %}</th> -->
+			  <th></th>
+			</tr>
+		  </thead>
+
+		  <tbody>
+
+        {% for quiz in quiz_list %}
+          {% if quiz.exam_paper == False %}
+          <tr>
+    			  <td>{{ quiz.title }}</td>
+    			  <td>{{ quiz.especialidade }}</td>
+    			  <!-- <td>{{ quiz.exam_paper }}</td>
+    			  <td>{{ quiz.single_attempt }}</td> -->
+    			  <td>
+    				<a href="{% url 'exercicio_iniciado' quiz_name=quiz.url %}">
+    				  {% trans "Iniciar" %}
+    				</a>
+    			</tr>
+
+          {% endif %}
+
+        {% endfor %}
+		  </tbody>
+
+		</table>
+
+	{% else %}
+        <p>{% trans "Não há exercícios disponíveis" %}.</p>
+    {% endif %}
+  </div>
+</main>
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+  <!-- <div class="bd-search d-flex align-items-center">
+    <a class="bd-toc-link">EXERCÍCIOS</a>
+    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+    </button>
+  </div>
+
+  <nav class="collapse bd-links" id="bd-docs-nav">
+    <div class="bd-toc-item">
+      <a class="bd-toc-link" href="{% url 'cardiologia_artigos' %}">POR ESTADO</a>
+      <a class="bd-toc-link" href="{% url 'cirurgia_artigos' %}">POR ESPECIALIDADE</a>
+    </div>
+
+  </nav> -->
+
+</div>
+
+{% endblock %}

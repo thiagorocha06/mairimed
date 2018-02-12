@@ -11,6 +11,245 @@ from .models import Quiz, Progress, Sitting, Question
 from artigos.models import Especialidade, Tema
 from essay.models import Essay_Question
 
+##############
+# EXERCICIOS #
+##############
+
+class ExercicioListView(ListView):
+    model = Quiz
+    template_name = 'exercicios/exercicios.html'
+
+    def get_queryset(self):
+        queryset = super(ExercicioListView, self).get_queryset()
+        return queryset.filter(draft=False).order_by('especialidade')
+
+class ExercicioIniciado(FormView):
+    form_class = QuestionForm
+    template_name = 'exercicios/exercicio_iniciado.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.quiz = get_object_or_404(Quiz, url=self.kwargs['quiz_name'])
+        if self.quiz.draft and not request.user.has_perm('quiz.change_quiz'):
+            raise PermissionDenied
+
+        self.logged_in_user = self.request.user.is_authenticated()
+
+        if self.logged_in_user:
+            self.sitting = Sitting.objects.user_sitting(request.user,
+                                                        self.quiz)
+        else:
+            self.sitting = self.anon_load_sitting()
+
+        if self.sitting is False:
+            return render(request, 'single_complete.html')
+
+        return super(ExercicioIniciado, self).dispatch(request, *args, **kwargs)
+
+    def get_form(self, form_class=None):
+        if form_class is None:
+            form_class = self.get_form_class()
+
+        if self.logged_in_user:
+            self.question = self.sitting.get_first_question()
+            self.progress = self.sitting.progress()
+        else:
+            self.question = self.anon_next_question()
+            self.progress = self.anon_sitting_progress()
+
+        if self.question.__class__ is Essay_Question:
+            form_class = EssayForm
+
+        return form_class(**self.get_form_kwargs())
+
+    def get_form_kwargs(self):
+        kwargs = super(ExercicioIniciado, self).get_form_kwargs()
+
+        return dict(kwargs, question=self.question)
+
+    def form_valid(self, form):
+        if self.logged_in_user:
+            self.form_valid_user(form)
+            if self.sitting.get_first_question() is False:
+                return self.final_result_user()
+        else:
+            self.form_valid_anon(form)
+            if not self.request.session[self.quiz.anon_q_list()]:
+                return self.final_result_anon()
+
+        self.request.POST = {}
+
+        return super(ExercicioIniciado, self).get(self, self.request)
+
+    def get_context_data(self, **kwargs):
+        context = super(ExercicioIniciado, self).get_context_data(**kwargs)
+        context['question'] = self.question
+        context['quiz'] = self.quiz
+        if hasattr(self, 'previous'):
+            context['previous'] = self.previous
+        if hasattr(self, 'progress'):
+            context['progress'] = self.progress
+        return context
+
+    def form_valid_user(self, form):
+        progress, c = Progress.objects.get_or_create(user=self.request.user)
+        guess = form.cleaned_data['answers']
+        is_correct = self.question.check_if_correct(guess)
+
+        if is_correct is True:
+            self.sitting.add_to_score(1)
+            progress.update_score(self.question, 1, 1)
+        else:
+            self.sitting.add_incorrect_question(self.question)
+            progress.update_score(self.question, 0, 1)
+
+        if self.quiz.answers_at_end is not True:
+            self.previous = {'previous_answer': guess,
+                             'previous_outcome': is_correct,
+                             'previous_question': self.question,
+                             'answers': self.question.get_answers(),
+                             'question_type': {self.question
+                                               .__class__.__name__: True}}
+        else:
+            self.previous = {}
+
+        self.sitting.add_user_answer(self.question, guess)
+        self.sitting.remove_first_question()
+
+    def final_result_user(self):
+        results = {
+            'quiz': self.quiz,
+            'score': self.sitting.get_current_score,
+            'max_score': self.sitting.get_max_score,
+            'percent': self.sitting.get_percent_correct,
+            'sitting': self.sitting,
+            'previous': self.previous,
+        }
+
+        self.sitting.mark_quiz_complete()
+
+        if self.quiz.answers_at_end:
+            results['questions'] =\
+                self.sitting.get_questions(with_answers=True)
+            results['incorrect_questions'] =\
+                self.sitting.get_incorrect_questions
+
+        if self.quiz.exam_paper is False:
+            self.sitting.delete()
+
+        return render(self.request, 'exercicios/exercicio_resultado.html', results)
+
+    def anon_load_sitting(self):
+        if self.quiz.single_attempt is True:
+            return False
+
+        if self.quiz.anon_q_list() in self.request.session:
+            return self.request.session[self.quiz.anon_q_list()]
+        else:
+            return self.new_anon_quiz_session()
+
+    def new_anon_quiz_session(self):
+        """
+        Sets the session variables when starting a quiz for the first time
+        as a non signed-in user
+        """
+        self.request.session.set_expiry(259200)  # expires after 3 days
+        questions = self.quiz.get_questions()
+        question_list = [question.id for question in questions]
+
+        if self.quiz.random_order is True:
+            random.shuffle(question_list)
+
+        if self.quiz.max_questions and (self.quiz.max_questions
+                                        < len(question_list)):
+            question_list = question_list[:self.quiz.max_questions]
+
+        # session score for anon users
+        self.request.session[self.quiz.anon_score_id()] = 0
+
+        # session list of questions
+        self.request.session[self.quiz.anon_q_list()] = question_list
+
+        # session list of question order and incorrect questions
+        self.request.session[self.quiz.anon_q_data()] = dict(
+            incorrect_questions=[],
+            order=question_list,
+        )
+
+        return self.request.session[self.quiz.anon_q_list()]
+
+    def anon_next_question(self):
+        next_question_id = self.request.session[self.quiz.anon_q_list()][0]
+        return Question.objects.get_subclass(id=next_question_id)
+
+    def anon_sitting_progress(self):
+        total = len(self.request.session[self.quiz.anon_q_data()]['order'])
+        answered = total - len(self.request.session[self.quiz.anon_q_list()])
+        return (answered, total)
+
+    def form_valid_anon(self, form):
+        guess = form.cleaned_data['answers']
+        is_correct = self.question.check_if_correct(guess)
+
+        if is_correct:
+            self.request.session[self.quiz.anon_score_id()] += 1
+            anon_session_score(self.request.session, 1, 1)
+        else:
+            anon_session_score(self.request.session, 0, 1)
+            self.request\
+                .session[self.quiz.anon_q_data()]['incorrect_questions']\
+                .append(self.question.id)
+
+        self.previous = {}
+        if self.quiz.answers_at_end is not True:
+            self.previous = {'previous_answer': guess,
+                             'previous_outcome': is_correct,
+                             'previous_question': self.question,
+                             'answers': self.question.get_answers(),
+                             'question_type': {self.question
+                                               .__class__.__name__: True}}
+
+        self.request.session[self.quiz.anon_q_list()] =\
+            self.request.session[self.quiz.anon_q_list()][1:]
+
+    def final_result_anon(self):
+        score = self.request.session[self.quiz.anon_score_id()]
+        q_order = self.request.session[self.quiz.anon_q_data()]['order']
+        max_score = len(q_order)
+        percent = int(round((float(score) / max_score) * 100))
+        session, session_possible = anon_session_score(self.request.session)
+        if score is 0:
+            score = "0"
+
+        results = {
+            'score': score,
+            'max_score': max_score,
+            'percent': percent,
+            'session': session,
+            'possible': session_possible
+        }
+
+        del self.request.session[self.quiz.anon_q_list()]
+
+        if self.quiz.answers_at_end:
+            results['questions'] = sorted(
+                self.quiz.question_set.filter(id__in=q_order)
+                                      .select_subclasses(),
+                key=lambda q: q_order.index(q.id))
+
+            results['incorrect_questions'] = (
+                self.request
+                    .session[self.quiz.anon_q_data()]['incorrect_questions'])
+
+        else:
+            results['previous'] = self.previous
+
+        del self.request.session[self.quiz.anon_q_data()]
+
+        return render(self.request, 'exercicios/exercicio_resultado.html', results)
+
+############
+### QUIZ ###
+############
 
 class QuizMarkerMixin(object):
     @method_decorator(login_required)

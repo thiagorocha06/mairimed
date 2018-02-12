@@ -3,10 +3,16 @@ from . import views
 
 from .views import QuizListView, SimuladoListView, CategoriesListView,\
     ViewQuizListByEspecialidade, QuizUserProgressView, QuizMarkingList,\
-    QuizMarkingDetail, QuizDetailView, QuizTake
+    QuizMarkingDetail, QuizDetailView, QuizTake, ExercicioIniciado
 
 
 urlpatterns = [
+
+        url(r'^exercicio$', views.ExercicioListView.as_view(), name='exercicios'),
+
+        url(regex=r'^(?P<quiz_name>[\w-]+)/iniciado/$',
+            view=ExercicioIniciado.as_view(),
+            name='exercicio_iniciado'),
 
        url(regex=r'^$',
            view=QuizListView.as_view(),

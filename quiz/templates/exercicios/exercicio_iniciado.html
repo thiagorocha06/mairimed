@@ -1,10 +1,5 @@
-{% extends "conectado_base.html" %}
-{% load i18n%}
-
-{% load quiz_tags %}
-
-{% block title %} {{ quiz.title }} {% endblock %}
-{% block description %} {{ quiz.title }} - {{ quiz.description }} {% endblock %}
+{% extends 'exercicios/exercicio_base.html' %}
+{% load i18n %}
 
 {% block form-nav %}
 <ul class="navbar-nav px-3">
@@ -12,52 +7,6 @@
       <a href="{% url 'auth_logout' %}" class="btn btn-outline-light">Sair</a>
   </li>
 </ul>
-{% endblock %}
-
-{% block barra-esquerda %}
-
-<div style="background-color:#F5F0ED" class="col-12 col-md-3 col-xl-2 bd-sidebar">
-
-  <div class="bd-search d-flex align-items-center">
-    <a class="bd-toc-link">{{user}}</a>
-    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
-    </button>
-  </div>
-
-  <nav class="collapse bd-links" id="bd-docs-nav">
-    <div class="bd-toc-item">
-      <a class="bd-toc-link" href="{% url 'conectado' %}">
-        <span data-feather="home"></span>
-        Início</a>
-      <a class="bd-toc-link" href="{% url 'especialidades' %}">
-        <span data-feather="file-text"></span>
-        Apostilas</a>
-      <a class="bd-toc-link" href="{% url 'quiz_index' %}">
-        <span data-feather="file"></span>
-        Exercícios</a>
-      <a class="bd-toc-link" href="{% url 'simulado_lista' %}">
-        <span data-feather="layers"></span>
-        Simulados</a>
-      <a class="bd-toc-link" href="{% url 'quiz_progress' %}">
-        <span data-feather="bar-chart-2"></span>
-        Progresso</a>
-      <a class="bd-toc-link" href="{% url 'perfil' %}">
-        <span data-feather="users"></span>
-        Perfil</a>
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <!-- <span>Favoritos</span>
-            <a class="d-flex align-items-center text-muted" href="#">
-            <span data-feather="plus-circle"></span>
-          </a> -->
-        </h6>
-      <a class="bd-toc-link" href="{% url 'lista_termos' %}" target="_blank">
-        <span data-feather="book-open"></span>
-        Dicionário Médico</a>
-    </div>
-  </nav>
-
-</div>
-
 {% endblock %}
 
 {% block content %}
@@ -148,5 +97,26 @@
 
   </div>
 </main>
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+  <!-- <div class="bd-search d-flex align-items-center">
+    <a class="bd-toc-link">EXERCÍCIOS POR:</a>
+    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+    </button>
+  </div>
+
+  <nav class="collapse bd-links" id="bd-docs-nav">
+    <div class="bd-toc-item">
+      <a class="bd-toc-link" href="{% url 'cardiologia_artigos' %}">ESTADO</a>
+      <a class="bd-toc-link" href="{% url 'cirurgia_artigos' %}">ESPECIALIDADE</a>
+    </div>
+  </nav> -->
+
+</div>
 
 {% endblock %}
