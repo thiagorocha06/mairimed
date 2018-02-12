@@ -21,7 +21,7 @@ class ExercicioListView(ListView):
 
     def get_queryset(self):
         queryset = super(ExercicioListView, self).get_queryset()
-        return queryset.filter(draft=False).order_by('especialidade')
+        return queryset.filter(draft=False).order_by('-especialidade')
 
 class ExercicioIniciado(FormView):
     form_class = QuestionForm
