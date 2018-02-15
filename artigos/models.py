@@ -52,7 +52,7 @@ class Tema(models.Model):
         verbose_name_plural = _("Temas")
 
     def __str__(self):
-        return self.tema + " (" + self.especialidade.especialidade + ")"
+        return self.tema
 
 class Artigo(models.Model, HitCountMixin):
     author = models.ForeignKey('auth.User')
@@ -61,6 +61,11 @@ class Artigo(models.Model, HitCountMixin):
         related_query_name='hit_count_generic_relation')
     data_de_criacao = models.DateTimeField(default=timezone.now)
     data_de_publicacao = models.DateTimeField(blank=True, null=True)
+
+    artigo_interno = models.BooleanField(
+        blank=True, default=False,
+        verbose_name=_("Artigo para Internos"),
+        help_text=_("Se marcado, o artigo sera mostrado apenas para internos conectados"))
 
     especialidade = models.ForeignKey(
         Especialidade, null=True, blank=True,

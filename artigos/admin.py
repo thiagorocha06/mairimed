@@ -2,7 +2,7 @@ from django.contrib import admin
 from artigos.models import Artigo, Especialidade, Tema
 
 class ArtigoModelAdmin(admin.ModelAdmin):
-    list_display = ["titulo", "data_de_criacao", "data_de_publicacao", "especialidade", "modulo"]
+    list_display = ["pk", "titulo", "data_de_criacao", "data_de_publicacao", "especialidade", "modulo"]
     list_filter = ["especialidade", "modulo"]
     search_fields = ["titulo"]
     class meta:

@@ -33,12 +33,12 @@ class PostCountHitDetailView2(ArtigoMixinDetailView, HitCountDetailView):
     count_hit = True
     template_name = 'artigos/artigo_detail.html'
 
-class Lista_artigosView(ArtigoMixinDetailView, TemplateView):
-    template_name = 'artigos/lista_artigos.html'
-
 def lista_artigos(request):
     estudante = Estudante.objects
-    lista_artigos = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-hit_count_generic__hits')
+    lista_artigos = Artigo.objects.filter(
+                    data_de_publicacao__lte=timezone.now(),
+                    artigo_interno=False
+                    ).order_by('-hit_count_generic__hits')
 
     #Pesquisa
     termo_pesquisa = request.GET.get("campo_pesquisa")
@@ -67,18 +67,20 @@ def lista_artigos(request):
     return render(request, 'artigos/lista_artigos.html', conteudo)
 
 def categorias_artigos(request):
-    artigos = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('data_de_publicacao')
+    artigos = Artigo.objects.filter(
+                    data_de_publicacao__lte=timezone.now(),
+                    artigo_interno=False
+                    ).order_by('data_de_publicacao')
     return render(request, 'artigos/categorias_artigos.html', {'artigos' : artigos})
 
 def escs_artigos(request):
-    artigos = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('data_de_publicacao')
+    artigos = Artigo.objects.filter(
+                    data_de_publicacao__lte=timezone.now(),
+                    artigo_interno=False
+                    ).order_by('data_de_publicacao')
     return render(request, 'artigos/escs_artigos.html', {'artigos' : artigos})
 
 def detalhe_artigo(request, pk):
     artigo = get_object_or_404(Artigo, pk=pk)
     estudante = Estudante.objects
     return render(request, 'artigos/detalhe_artigo.html', {'estudante': estudante, 'artigo': artigo})
-
-def artigos_detalhe(request, pk):
-    artigo = get_object_or_404(Artigo, pk=pk)
-    return render(request, 'artigos/artigos_detalhe.html', {'artigo': artigo})

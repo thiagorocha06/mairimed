@@ -72,10 +72,9 @@ class EspecialidadeListaView(ListView):
     model = Especialidade
     # django automaticamente gera: template_name = 'especialidade_list.html'
 
-
 class ViewArtigosListPorEspecialidade(ListView):
-    model = Artigo
-    # django automaticamente gera: template_name = 'artigo_list.html'
+    model = Tema
+    template_name = 'artigos/tema_list.html'
 
     def dispatch(self, request, *args, **kwargs):
         self.especialidade = get_object_or_404(
@@ -91,11 +90,38 @@ class ViewArtigosListPorEspecialidade(ListView):
             .get_context_data(**kwargs)
 
         context['especialidade'] = self.especialidade
+        context['artigo_list'] = Artigo.objects.all().order_by("-data_de_publicacao")
         return context
 
     def get_queryset(self):
         queryset = super(ViewArtigosListPorEspecialidade, self).get_queryset()
-        return queryset.filter(especialidade=self.especialidade, data_de_publicacao__lte=timezone.now()).order_by('data_de_publicacao')
+        especialidade_filter = list(queryset.filter(especialidade=self.especialidade).order_by('tema'))
+        return especialidade_filter
+
+
+# class ViewArtigosListPorEspecialidade(ListView):
+#     model = Artigo
+#     # django automaticamente gera: template_name = 'artigo_list.html'
+#
+#     def dispatch(self, request, *args, **kwargs):
+#         self.especialidade = get_object_or_404(
+#             Especialidade,
+#             especialidade=self.kwargs['especialidade_name']
+#         )
+#
+#         return super(ViewArtigosListPorEspecialidade, self).\
+#             dispatch(request, *args, **kwargs)
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(ViewArtigosListPorEspecialidade, self)\
+#             .get_context_data(**kwargs)
+#
+#         context['especialidade'] = self.especialidade
+#         return context
+#
+#     def get_queryset(self):
+#         queryset = super(ViewArtigosListPorEspecialidade, self).get_queryset()
+#         return queryset.filter(especialidade=self.especialidade, data_de_publicacao__lte=timezone.now()).order_by('data_de_publicacao')
 
 class AdministracaoView(ArtigoMixinDetailView, TemplateView):
     template_name = 'mairimed/administracao_artigo.html'
