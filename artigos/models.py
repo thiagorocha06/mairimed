@@ -45,6 +45,10 @@ class Tema(models.Model):
         Especialidade, null=True, blank=True,
         verbose_name=_("Especialidade"))
 
+    exercicios = models.ForeignKey(
+        'quiz.Quiz', null=True, blank=True,
+        verbose_name=_("Exercícios"))
+
     objects = EspecialidadeManager()
 
     class Meta:
@@ -74,10 +78,6 @@ class Artigo(models.Model, HitCountMixin):
     tema = models.ForeignKey(
         Tema, null=True, blank=True,
         verbose_name=_("Tema"))
-
-    exercicios = models.ForeignKey(
-        'quiz.Quiz', null=True, blank=True,
-        verbose_name=_("Exercícios"))
 
     modulo = models.CharField(max_length=200, blank=True, null=True)
     categoria = models.CharField(max_length=200, blank=True, null=True)

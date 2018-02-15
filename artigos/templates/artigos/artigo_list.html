@@ -25,30 +25,19 @@
     <h1>{{ especialidade.especialidade }}</h1>
   </div>
 
-    {% with object_list as temas %}
-      {% if temas %}
+    {% with object_list as artigos %}
+      {% if artigos %}
           <ul>
-          {% for tema in temas %}
+          {% for artigo in artigos %}
             <div class="artigo">
-      			  <h2>
-      				{{ tema.tema }}<br>
-      			  </h2>
-              {% if tema.exercicios %}
-              <h3> <a href="http://www.mairimed.com/questoes/{{tema.exercicios.url}}">
-                Exercícios sobre o tema</a>
-              </h3>
+      			  <h2><a href="{% url 'artigo_detail' pk=artigo.pk %}">
+      				{{ artigo.titulo }}
+      			  </a></h2>
+              {% if artigo.exercicios %}
+              <h3> <a href="http://www.mairimed.com/questoes/{{artigo.exercicios.url}}">
+                Exercícios
+              </a></h3>
               {% endif %}
-              <h4>
-                {% for artigo in artigo_list %}
-                  {% if tema.tema|stringformat:"s" == artigo.tema|stringformat:"s" %}
-                    <ul>
-                      <a href="{% url 'artigo_detail' pk=artigo.pk %}">
-              				{{ artigo.titulo }}
-              			  </a><br>
-                    </ul>
-                  {% endif %}
-                {% endfor %}
-              </h4>
       			</div>
           {% endfor %}
           </ul>
