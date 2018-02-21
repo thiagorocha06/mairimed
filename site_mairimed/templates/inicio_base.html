@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mairimed - Resumos Médicos</title>
+    <title>Mairimed</title>
     <meta name="description" content="O projeto mairimed tem o objetivo de fornecer conteúdo adequado para estudantes e profissionais da área da saúde.">
+    <meta NAME="KEYWORDS" CONTENT="resumos de medicina, medicina, residência médica, exercícios de medicina" >
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113535136-1"></script>
@@ -23,7 +24,6 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
     <!-- Custom styles-->
     <link rel="stylesheet" href="{% static 'css/artigos.css' %}">
-    <link rel="stylesheet" href="{% static 'css/heading.css' %}">
     <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
@@ -40,7 +40,7 @@
 
   </head>
 
-  <body style="background-color:#F5F0ED" ondragstart="return false" onselectstart="return false">
+  <body style="background-color:#FFF" ondragstart="return false" onselectstart="return false">
 
     <!-- Navbar -->
 
@@ -58,14 +58,14 @@
             <a class="nav-link" href="{% url 'inicio' %}">Início<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'lista_artigos' %}">Resumos Médicos</a>
+            <a class="nav-link" href="{% url 'lista_artigos' %}">Resumos de Medicina</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'exercicios' %}">Exercícios</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="{% url 'lista_termos' %}">Dicionário Médico</a>
-          </li>
+          </li> -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               ESCS

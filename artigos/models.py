@@ -71,6 +71,16 @@ class Artigo(models.Model, HitCountMixin):
         verbose_name=_("Artigo para Internos"),
         help_text=_("Se marcado, o artigo sera mostrado apenas para internos conectados"))
 
+    destaque_geral = models.BooleanField(
+        blank=True, default=False,
+        verbose_name=_("Artigo destaque geral"),
+        help_text=_("Se marcado, o artigo sera mostrado na página destaque geral"))
+
+    destaque_semana = models.BooleanField(
+        blank=True, default=False,
+        verbose_name=_("Artigo destaque da semana"),
+        help_text=_("Se marcado, o artigo sera mostrado na página destaque da semana"))
+
     especialidade = models.ForeignKey(
         Especialidade, null=True, blank=True,
         verbose_name=_("Especialidade"))
