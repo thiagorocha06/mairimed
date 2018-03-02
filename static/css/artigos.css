@@ -152,12 +152,34 @@
     color: #000;
 }
 
+.artigo h5, .artigo h4 a, .artigo h4 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 11pt;
+    font-style: italic;
+    color: #000;
+}
+
 .artigo p, .artigo p a, .artigo p a:visited {
   font-family: 'Ubuntu', sans-serif;
   font-size: 10pt;
   text-align: justify;
   text-justify: inter-word;
   color: #000;
+}
+
+.artigo li {
+  display: list-item;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 10pt;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #000;
+  /*padding-left: 1em;
+  text-indent: -.7em;*/
+  /*list-style-type: normal;*/
+  /*list-style-type: circle;*/
+  /*list-style-type: square;*/
+  /*word-wrap: break-word;*/
 }
 
 .artigo img {
@@ -168,181 +190,6 @@
 .artigo small{
   font-size: 8pt;
   color: #d45500;
-}
-
-/* BAARA LATERAL */
-
-.sidebar {
-  float: left;
-  width: 200px;
-  border: 1px solid #000;
-  position: fixed;
-}
-
-.barra-lateral {
-    margin-bottom: 20px;
-    background: #fff;
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-}
-
-.barra-lateral h1, .barra-lateral h1 a, .barra-lateral h1 a:visited {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 15pt;
-    font-weight: bold;
-    color: #d45500;
-}
-
-
-.barra-lateral h2, .barra-lateral h2 a, .barra-lateral h2 a:visited {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 10pt;
-    font-weight: bold;
-    color: #ff6600;
-}
-
-.barra-lateral h3, .barra-lateral h3 a, .barra-lateral h3 a:visited {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 7pt;
-    font-weight: bold;
-    color: #ff7f2a;
-}
-
-/* FARMACO CARD */
-.farmaco-card {
-  padding-top: 0px;
-  padding-right: 6px;
-  padding-bottom: 0px;
-  padding-left: 6px;
-  font-family: 'Ubuntu', sans-serif;
-}
-
-.farmaco-card h1 {
-    font-weight: bold;
-    font-size: 25pt;
-    color: #d45500;
-}
-
-.farmaco-card h2 {
-    font-size: 15pt;
-    color: #000;
-}
-
-.farmaco-card h3 {
-    display: inline-block;
-    font-weight: bold;
-    font-size: 10pt;
-    color: #878787;
-}
-
-.farmaco-card p {
-    display: inline-block;
-    font-size: 10pt;
-    color: #878787;
-}
-
-/* BARRA PRINCIPAL */
-
-.nav-justified > li > a:hover,
-.nav-justified > li > a:focus {
-    background-color: #ff9400;
-    border-bottom: 5px solid #fff;
-    color: #fff; /*Cor do texto em foco*/
-}
-
-.nav-justified > li > a {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-bottom: 0;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 13pt;
-  background-color: #ff9400; /* Old browsers */
-}
-
-.nav-justified > .active > a,
-.nav-justified > .active > a:hover,
-.nav-justified > .active > a:focus {
-  /*background-color: #ddd; Cor do fundo ativo*/
-  color: #fff; /*Cor do texto ativo*/
-  border-bottom: 5px solid #fff;
-}
-
-/* BARRA LATERAL */
-
-.nav-pills > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 0;
-  font-weight: bold;
-  color: #ff9400;
-  text-align: center;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 7pt;
-  background-color: #fff;
-  border-bottom: 1px solid #ff9400;
-}
-
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover,
-.nav-pills > .active > a:focus {
-  /*background-color: #ddd; Cor do fundo ativo*/
-  color: #ff9400; /*Cor do texto ativo*/
-  background-color: #fff;
-}
-
-.nav-pills > li > a:hover,
-.nav-pills > li > a:focus {
-    background-color: #ff9400;
-    color: #fff; /*Cor do texto em foco*/
-    text-decoration: none;
-}
-
-.nav-pills>li.active>a,
-.nav-pills>li.active>a:focus,
-.nav-pills>li.active>a:hover {
-    color: #fff;
-    background-color: #ff9400;
-}
-
-.nav-pills h1{
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-bottom: 0;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 8pt;
-  background-color: #d45500; /* Old browsers */
-}
-
-.nav-pills h2 {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-bottom: 0;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 8pt;
-  background-color: #ff6600; /* Old browsers */
-}
-
-.nav-pills h3 {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-bottom: 0;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 8pt;
-  background-color: #ff7f2a; /* Old browsers */
 }
 
 /* NAVBAR */

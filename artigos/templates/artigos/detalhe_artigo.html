@@ -13,6 +13,7 @@
 </div>
 
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
             <div class="artigo">
 
               <h1>{{ artigo.titulo }}</h1>
@@ -22,6 +23,7 @@
               ***** INTRODUCAO *****
               **********************
               -->
+
               {% if artigo.intro_top %}
                 <h2 id='introducao'>{{ artigo.intro_top }}</h2>
                 <p>{{ artigo.introducao|safe }}</p>
@@ -291,7 +293,7 @@
 
               <!-- EXAMES COMPLEMENTARES -->
               {% if artigo.exames_top_h2 %}
-                <h3 id='exames_complementares'>{{ artigo.exames_top_h2 }}</h3>
+                <h2 id='exames_complementares'>{{ artigo.exames_top_h2 }}</h2>
               {% endif %}
               {% if artigo.exames_top %}
                 <h3 id='exames_complementares'>{{ artigo.exames_top }}</h3>
@@ -344,13 +346,13 @@
 
               <!-- CRITERIOS DIAGNOSTICOS -->
               {% if artigo.criterios_top %}
-                <h3 id='criterios_diagnosticos'>{{ artigo.criterios_top }}</h3>
+                <h2 id='criterios_diagnosticos'>{{ artigo.criterios_top }}</h2>
                 <p>{{ artigo.criterios_diagnosticos|safe }}</p>
               {% endif %}
 
               <!-- DIAGNOSTICO DIFERENCIAL -->
               {% if artigo.dd_top_h2 %}
-                <h3 id='diagnostico_diferencial'>{{ artigo.dd_top_h2 }}</h3>
+                <h2 id='diagnostico_diferencial'>{{ artigo.dd_top_h2 }}</h2>
               {% endif %}
               {% if artigo.dd_top %}
                 <h3 id='diagnostico_diferencial'>{{ artigo.dd_top }}</h3>
