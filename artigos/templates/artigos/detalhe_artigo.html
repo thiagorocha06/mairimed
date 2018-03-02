@@ -24,11 +24,11 @@
               -->
               {% if artigo.intro_top %}
                 <h2 id='introducao'>{{ artigo.intro_top }}</h2>
-                <p>{{ artigo.introducao|linebreaksbr }}</p>
+                <p>{{ artigo.introducao|safe }}</p>
               {% endif %}
               {% if artigo.intro_texto1 %}
                 <h4>{{ artigo.intro_top1 }}</h4>
-                <p>{{ artigo.intro_texto1|linebreaksbr }}</p>
+                <p>{{ artigo.intro_texto1|safe }}</p>
               {% endif %}
               {% if artigo.intro_texto2 %}
                 <h4>{{ artigo.intro_top2 }}</h4>
@@ -70,7 +70,7 @@
               -->
               {% if artigo.epidemio_top %}
                 <h2 id='epidemiologia'>{{ artigo.epidemio_top }}</h2>
-                <p>{{ artigo.epidemiologia|linebreaksbr }}</p>
+                <p>{{ artigo.epidemiologia|safe }}</p>
               {% endif %}
               {% if artigo.epidemio_top1 %}
                 <h4>{{ artigo.epidemio_top1 }}</h4>
@@ -110,7 +110,7 @@
               -->
               {% if artigo.class_top %}
                 <h2 id='classificacao'>{{ artigo.class_top }}</h2>
-                <p>{{ artigo.classificacao|linebreaksbr }}</p>
+                <p>{{ artigo.classificacao|safe }}</p>
               {% endif %}
               {% if artigo.class_texto1 %}
                 <h4>{{ artigo.class_top1 }}</h4>
@@ -150,7 +150,7 @@
               -->
               {% if artigo.etio_top %}
                 <h2 id='etiologia_fisiopatologia'>{{ artigo.etio_top }}</h2>
-                <p>{{ artigo.etiologia_fisiopatologia|linebreaksbr }}</p>
+                <p>{{ artigo.etiologia_fisiopatologia|safe }}</p>
               {% endif %}
               {% if artigo.etio_top1 %}
                 <h4>{{ artigo.etio_top1|linebreaksbr }}</h4>
@@ -204,7 +204,7 @@
               -->
               {% if artigo.diag_top %}
                 <h2 id='diagnostico'>{{ artigo.diag_top }}</h2>
-                <p>{{ artigo.diagnostico|linebreaksbr }}</p>
+                <p>{{ artigo.diagnostico|safe }}</p>
               {% endif %}
 
               <!-- HISTORIA -->
@@ -215,7 +215,7 @@
                 <h3 id='historia_clinica'>{{ artigo.historia_top }}</h3>
               {% endif %}
               {% if artigo.historia_clinica %}
-                <p>{{ artigo.historia_clinica|linebreaksbr }}</p>
+                <p>{{ artigo.historia_clinica|safe }}</p>
               {% endif %}
               {% if artigo.historia_texto1 %}
                 <h4>{{ artigo.historia_top1 }}</h4>
@@ -256,7 +256,7 @@
                 <h3 id='exame_fisico'>{{ artigo.ef_top }}</h3>
               {% endif %}
               {% if artigo.exame_fisico %}
-                <p>{{ artigo.exame_fisico|linebreaksbr }}</p>
+                <p>{{ artigo.exame_fisico|safe }}</p>
               {% endif %}
               {% if artigo.ef_texto1 %}
                 <h4>{{ artigo.ef_top1 }}</h4>
@@ -297,7 +297,7 @@
                 <h3 id='exames_complementares'>{{ artigo.exames_top }}</h3>
               {% endif %}
               {% if artigo.exames_complementares %}
-                <p>{{ artigo.exames_complementares|linebreaksbr }}</p>
+                <p>{{ artigo.exames_complementares|safe }}</p>
               {% endif %}
               {% if artigo.exames_top1 %}
                 <h4>{{ artigo.exames_top1|linebreaksbr }}</h4>
@@ -345,7 +345,7 @@
               <!-- CRITERIOS DIAGNOSTICOS -->
               {% if artigo.criterios_top %}
                 <h3 id='criterios_diagnosticos'>{{ artigo.criterios_top }}</h3>
-                <p>{{ artigo.criterios_diagnosticos|linebreaksbr }}</p>
+                <p>{{ artigo.criterios_diagnosticos|safe }}</p>
               {% endif %}
 
               <!-- DIAGNOSTICO DIFERENCIAL -->
@@ -356,7 +356,7 @@
                 <h3 id='diagnostico_diferencial'>{{ artigo.dd_top }}</h3>
               {% endif %}
               {% if artigo.diagnostico_diferencial %}
-                <p>{{ artigo.diagnostico_diferencial|linebreaksbr }}</p>
+                <p>{{ artigo.diagnostico_diferencial|safe }}</p>
               {% endif %}
               {% if artigo.dd_top1 %}
                 <h4>{{ artigo.dd_top1 }}</h3>
@@ -415,7 +415,7 @@
               -->
               {% if artigo.top1 %}
                 <h2 id='top1'>{{ artigo.top1|linebreaksbr }}</h2>
-                <p>{{ artigo.texto1|linebreaksbr }}</p>
+                <p>{{ artigo.texto1|safe }}</p>
               {% endif %}
               {% if artigo.subtop1 %}
                 <h4>{{ artigo.subtop1|linebreaksbr }}</h4>
@@ -470,7 +470,7 @@
               -->
               {% if artigo.tratamento_top %}
                 <h2 id='tratamento_e_manejo'>{{ artigo.tratamento_top }}</h2>
-                <p>{{ artigo.tratamento_e_manejo|linebreaksbr }}</p>
+                <p>{{ artigo.tratamento_e_manejo|safe }}</p>
               {% endif %}
 
               <!-- MEDIDAS GERAIS -->
@@ -575,7 +575,7 @@
               <!-- PROFILAXIA -->
               {% if artigo.profilaxia_top %}
                 <h2 id='profilaxia'>{{ artigo.profilaxia_top }}</h2>
-                <p>{{ artigo.profilaxia|linebreaksbr }}</p>
+                <p>{{ artigo.profilaxia|safe }}</p>
               {% endif %}
               {% if artigo.profilaxia_top1 %}
                 <h4>{{ artigo.profilaxia_top1 }}</h4>
@@ -611,7 +611,7 @@
               <!-- PROGNOSTICO -->
               {% if artigo.prognostico_top %}
                 <h2 id='prognostico'>{{ artigo.prognostico_top }}</h2>
-                <p>{{ artigo.prognostico|linebreaksbr }}</p>
+                <p>{{ artigo.prognostico|safe }}</p>
               {% endif %}
               {% if artigo.prognostico_img %}
                 <img src="{{ artigo.prognostico_img.url }}" width="700" />
@@ -623,7 +623,7 @@
               <!-- COMPLICACOES -->
               {% if artigo.complicacoes_top %}
                 <h2 id='complicacoes'>{{ artigo.complicacoes_top }}</h2>
-                <p>{{ artigo.complicacoes|linebreaksbr }}</p>
+                <p>{{ artigo.complicacoes|safe }}</p>
               {% endif %}
               {% if artigo.complicacoes_top1 %}
                 <h4>{{ artigo.complicacoes_top1 }}</h4>
@@ -684,7 +684,7 @@
               -->
               {% if artigo.referencias %}
                 <h2 id="referencias">{{ artigo.referencias_top }}</h2>
-                <p>{{ artigo.referencias|linebreaksbr }}</p>
+                <p>{{ artigo.referencias|safe }}</p>
               {% endif %}
 
               <!--
