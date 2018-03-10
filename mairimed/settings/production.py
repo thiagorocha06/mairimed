@@ -59,6 +59,7 @@ if not settings.DEBUG:
         'multichoice',
         'true_false',
         'essay',
+        'pagedown',
     ]
 
     MIDDLEWARE = [

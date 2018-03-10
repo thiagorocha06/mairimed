@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'multichoice',
     'true_false',
     'essay',
+    'pagedown',
 ]
 
 MIDDLEWARE = [

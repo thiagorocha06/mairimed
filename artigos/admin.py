@@ -1,7 +1,13 @@
 from django.contrib import admin
 from artigos.models import Artigo, Especialidade, Tema
+from django.db import models
+
+from pagedown.widgets import AdminPagedownWidget
 
 class ArtigoModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget },
+    }
     list_display = ["pk", "titulo", "data_de_criacao", "data_de_publicacao", "especialidade", "modulo"]
     list_filter = ["especialidade", "modulo"]
     search_fields = ["titulo"]

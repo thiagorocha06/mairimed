@@ -1,0 +1,38 @@
+/* HEADING */
+
+.heading h1, .heading h1 a, .heading h1 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.heading h2, .heading h2 a, .heading h2 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15pt;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.heading h3, .heading h3 a, .heading h3 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    color: #ff7f2a;
+}
+
+.heading h4, .heading h4 a, .heading h4 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+    color: #000;
+}
+
+.heading p, .heading p a, .heading p a:visited {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 11pt;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #000;
+  padding-left: 10px;
+}
