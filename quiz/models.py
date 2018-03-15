@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 import re
 import json
-
+import datetime
 from django.db import models
 from django.core.exceptions import ValidationError, ImproperlyConfigured
 from django.core.validators import MaxValueValidator
@@ -502,6 +502,14 @@ class Question(models.Model):
     quiz = models.ManyToManyField(Quiz,
                                   verbose_name=_("Quiz"),
                                   blank=True)
+
+    YEAR_CHOICES = [(r,r) for r in range(2000, datetime.date.today().year+1)]
+
+    ano = models.IntegerField(choices=YEAR_CHOICES,
+                              default=datetime.datetime.now().year,
+                              verbose_name=_("Ano"),
+                              blank=True,
+                              null=True)
 
     especialidade = models.ForeignKey(Especialidade,
                                  verbose_name=_("Especialidade"),
