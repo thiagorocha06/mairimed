@@ -52,7 +52,7 @@ if not settings.DEBUG:
         'site_mairimed',
         'artigos',
         'contas',
-        # 'dicionario_medico',
+        'dicionario_medico',
         # 'dicionario_farmaceutico',
         'hitcount',
         'quiz',

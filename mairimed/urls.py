@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'', include('site_mairimed.urls')),
     url(r'', include('artigos.urls')),
     url(r'', include('contas.urls')),
-    # url(r'', include('dicionario_medico.urls')),
+    url(r'', include('dicionario_medico.urls')),
     # url(r'', include('dicionario_farmaceutico.urls')),
     url(r'^questoes/', include('quiz.urls')),
     url(r'^accounts/', include('registration.backends.default.urls')),

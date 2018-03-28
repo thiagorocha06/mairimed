@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'site_mairimed',
     'artigos',
     'contas',
-    # 'dicionario_medico',
+    'dicionario_medico',
     # 'dicionario_farmaceutico',
     'hitcount',
     'quiz',
