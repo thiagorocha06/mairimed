@@ -33,12 +33,11 @@
       			  <h2>
       				{{ tema.tema }}<br>
       			  </h2>
+              <div class="col-md-8">
+                <hr style="background-color:#ff9400ff" class="featurette-divider">
+              </div>
               {% if tema.exercicios %}
-              <h3> <a href="http://www.mairimed.com/questoes/{{tema.exercicios.url}}">
-                Exercícios sobre o tema</a>
-              </h3>
-              {% endif %}
-              <h4>
+              <h3>
                 {% for artigo in artigo_list %}
                   {% if tema.tema|stringformat:"s" == artigo.tema|stringformat:"s" %}
                     <ul>
@@ -48,7 +47,13 @@
                     </ul>
                   {% endif %}
                 {% endfor %}
-              </h4>
+              </h3>
+              <ul>
+                <h3> <a href="http://www.mairimed.com/questoes/{{tema.exercicios.url}}">
+                  EXERCÍCIOS SOBRE O TEMA</a>
+                </h3>
+              </ul>
+              {% endif %}
       			</div>
           {% endfor %}
           </ul>

@@ -33,31 +33,9 @@
     -->
     {% if artigo.intro_top %}
       <h2 id='introducao'>{{ artigo.intro_top }}</h2>
+    {% endif %}
+    {% if artigo.introducao %}
       <p>{{ artigo.introducao|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.intro_texto1 %}
-      <h4>{{ artigo.intro_top1 }}</h4>
-      <p>{{ artigo.intro_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.intro_texto2 %}
-      <h4>{{ artigo.intro_top2 }}</h4>
-      <p>{{ artigo.intro_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.intro_texto3 %}
-      <h4>{{ artigo.intro_top3 }}</h4>
-      <p>{{ artigo.intro_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.intro_texto4 %}
-      <h4>{{ artigo.intro_top4 }}</h4>
-      <p>{{ artigo.intro_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.intro_texto5 %}
-      <h4>{{ artigo.intro_top5 }}</h4>
-      <p>{{ artigo.intro_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.intro_texto6 %}
-      <h4>{{ artigo.intro_top6 }}</h4>
-      <p>{{ artigo.intro_texto6|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.intro_figura1 %}
       <img src="{{ artigo.intro_figura1.url }}" width="700" />
@@ -79,31 +57,9 @@
     -->
     {% if artigo.epidemio_top %}
       <h2 id='epidemiologia'>{{ artigo.epidemio_top }}</h2>
+    {% endif %}
+    {% if artigo.epidemiologia %}
       <p>{{ artigo.epidemiologia|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.epidemio_top1 %}
-      <h4>{{ artigo.epidemio_top1 }}</h4>
-      <p>{{ artigo.epidemio_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.epidemio_top2 %}
-      <h4>{{ artigo.epidemio_top2 }}</h4>
-      <p>{{ artigo.epidemio_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.epidemio_top3 %}
-      <h4>{{ artigo.epidemio_top3 }}</h4>
-      <p>{{ artigo.epidemio_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.epidemio_top4 %}
-      <h4>{{ artigo.epidemio_top4 }}</h4>
-      <p>{{ artigo.epidemio_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.epidemio_top5 %}
-      <h4>{{ artigo.epidemio_top5 }}</h4>
-      <p>{{ artigo.epidemio_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.epidemio_top6 %}
-      <h4>{{ artigo.epidemio_top6 }}</h4>
-      <p>{{ artigo.epidemio_texto6|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.epidemio_figura %}
       <img src="{{ artigo.epidemio_figura.url }}" width="700" />
@@ -119,31 +75,9 @@
     -->
     {% if artigo.class_top %}
       <h2 id='classificacao'>{{ artigo.class_top }}</h2>
+    {% endif %}
+    {% if artigo.classificacao %}
       <p>{{ artigo.classificacao|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.class_texto1 %}
-      <h4>{{ artigo.class_top1 }}</h4>
-      <p>{{ artigo.class_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.class_texto2 %}
-      <h4>{{ artigo.class_top2 }}</h4>
-      <p>{{ artigo.class_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.class_texto3 %}
-      <h4>{{ artigo.class_top3 }}</h4>
-      <p>{{ artigo.class_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.class_texto4 %}
-      <h4>{{ artigo.class_top4 }}</h4>
-      <p>{{ artigo.class_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.class_texto5 %}
-      <h4>{{ artigo.class_top5 }}</h4>
-      <p>{{ artigo.class_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.class_texto6 %}
-      <h4>{{ artigo.class_top6 }}</h4>
-      <p>{{ artigo.class_texto6|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.clas_figura %}
       <img src="{{ artigo.clas_figura.url }}" width="700" />
@@ -159,39 +93,9 @@
     -->
     {% if artigo.etio_top %}
       <h2 id='etiologia_fisiopatologia'>{{ artigo.etio_top }}</h2>
+    {% endif %}
+    {% if artigo.etiologia_fisiopatologia %}
       <p>{{ artigo.etiologia_fisiopatologia|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.etio_top1 %}
-      <h4>{{ artigo.etio_top1|linebreaksbr }}</h4>
-      <p>{{ artigo.etio_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.etio_top2 %}
-      <h4>{{ artigo.etio_top2|linebreaksbr }}</h4>
-      <p>{{ artigo.etio_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.etio_top3 %}
-      <h4>{{ artigo.etio_top3|linebreaksbr }}</h4>
-      <p>{{ artigo.etio_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.etio_top4 %}
-      <h4>{{ artigo.etio_top4|linebreaksbr }}</h4>
-      <p>{{ artigo.etio_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.etio_top5 %}
-      <h4>{{ artigo.etio_top5|linebreaksbr }}</h4>
-      <p>{{ artigo.etio_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.etio_top6 %}
-      <h4>{{ artigo.etio_top6|linebreaksbr }}</h4>
-      <p>{{ artigo.etio_texto6|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.etio_top7 %}
-      <h4>{{ artigo.etio_top7|linebreaksbr }}</h4>
-      <p>{{ artigo.etio_texto7|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.etio_top8 %}
-      <h4>{{ artigo.etio_top8|linebreaksbr }}</h4>
-      <p>{{ artigo.etio_texto8|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.etio_img1 %}
       <img src="{{ artigo.etio_img1.url }}" width="700" />
@@ -213,6 +117,8 @@
     -->
     {% if artigo.diag_top %}
       <h2 id='diagnostico'>{{ artigo.diag_top }}</h2>
+    {% endif %}
+    {% if artigo.diagnostico %}
       <p>{{ artigo.diagnostico|linebreaksbr }}</p>
     {% endif %}
 
@@ -225,30 +131,6 @@
     {% endif %}
     {% if artigo.historia_clinica %}
       <p>{{ artigo.historia_clinica|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.historia_texto1 %}
-      <h4>{{ artigo.historia_top1 }}</h4>
-      <p>{{ artigo.historia_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.historia_texto2 %}
-      <h4>{{ artigo.historia_top2 }}</h4>
-      <p>{{ artigo.historia_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.historia_texto3 %}
-      <h4>{{ artigo.historia_top3 }}</h4>
-      <p>{{ artigo.historia_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.historia_texto4 %}
-      <h4>{{ artigo.historia_top4 }}</h4>
-      <p>{{ artigo.historia_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.historia_texto5 %}
-      <h4>{{ artigo.historia_top5 }}</h4>
-      <p>{{ artigo.historia_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.historia_texto6 %}
-      <h4>{{ artigo.historia_top6 }}</h4>
-      <p>{{ artigo.historia_texto6|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.historia_figura %}
       <img src="{{ artigo.historia_figura.url }}" width="700" />
@@ -267,30 +149,6 @@
     {% if artigo.exame_fisico %}
       <p>{{ artigo.exame_fisico|linebreaksbr }}</p>
     {% endif %}
-    {% if artigo.ef_texto1 %}
-      <h4>{{ artigo.ef_top1 }}</h4>
-      <p>{{ artigo.ef_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.ef_texto2 %}
-      <h4>{{ artigo.ef_top2 }}</h4>
-      <p>{{ artigo.ef_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.ef_texto3 %}
-      <h4>{{ artigo.ef_top3 }}</h4>
-      <p>{{ artigo.ef_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.ef_texto4 %}
-      <h4>{{ artigo.ef_top4 }}</h4>
-      <p>{{ artigo.ef_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.ef_texto5 %}
-      <h4>{{ artigo.ef_top5 }}</h4>
-      <p>{{ artigo.ef_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.ef_texto6 %}
-      <h4>{{ artigo.ef_top6 }}</h4>
-      <p>{{ artigo.ef_texto6|linebreaksbr }}</p>
-    {% endif %}
     {% if artigo.ef_figura %}
       <img src="{{ artigo.ef_figura.url }}" width="700" />
     {% endif %}
@@ -307,30 +165,6 @@
     {% endif %}
     {% if artigo.exames_complementares %}
       <p>{{ artigo.exames_complementares|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.exames_top1 %}
-      <h4>{{ artigo.exames_top1|linebreaksbr }}</h4>
-      <p>{{ artigo.exames_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.exames_top2 %}
-      <h4>{{ artigo.exames_top2|linebreaksbr }}</h4>
-      <p>{{ artigo.exames_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.exames_top3 %}
-      <h4>{{ artigo.exames_top3|linebreaksbr }}</h4>
-      <p>{{ artigo.exames_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.exames_top4 %}
-      <h4>{{ artigo.exames_top4|linebreaksbr }}</h4>
-      <p>{{ artigo.exames_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.exames_top5 %}
-      <h4>{{ artigo.exames_top5|linebreaksbr }}</h4>
-      <p>{{ artigo.exames_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.exames_top6 %}
-      <h4>{{ artigo.exames_top6|linebreaksbr }}</h4>
-      <p>{{ artigo.exames_texto6|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.exames_img1 %}
       <img src="{{ artigo.exames_img1.url }}" width="700" />
@@ -354,6 +188,7 @@
     <!-- CRITERIOS DIAGNOSTICOS -->
     {% if artigo.criterios_top %}
       <h3 id='criterios_diagnosticos'>{{ artigo.criterios_top }}</h3>
+    {% if artigo.criterios_diagnosticos %}
       <p>{{ artigo.criterios_diagnosticos|linebreaksbr }}</p>
     {% endif %}
 
@@ -366,42 +201,6 @@
     {% endif %}
     {% if artigo.diagnostico_diferencial %}
       <p>{{ artigo.diagnostico_diferencial|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.dd_top1 %}
-      <h4>{{ artigo.dd_top1 }}</h3>
-    {% endif %}
-    {% if artigo.dd_texto1 %}
-      <p>{{ artigo.dd_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.dd_top2 %}
-      <h4>{{ artigo.dd_top2 }}</h3>
-    {% endif %}
-    {% if artigo.dd_texto2 %}
-      <p>{{ artigo.dd_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.dd_top3 %}
-      <h4>{{ artigo.dd_top3 }}</h3>
-    {% endif %}
-    {% if artigo.dd_texto3 %}
-      <p>{{ artigo.dd_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.dd_top4 %}
-      <h4>{{ artigo.dd_top4 }}</h3>
-    {% endif %}
-    {% if artigo.dd_texto4 %}
-      <p>{{ artigo.dd_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.dd_top5 %}
-      <h4>{{ artigo.dd_top5 }}</h3>
-    {% endif %}
-    {% if artigo.dd_texto5 %}
-      <p>{{ artigo.dd_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.dd_top6 %}
-      <h4>{{ artigo.dd_top6 }}</h3>
-    {% endif %}
-    {% if artigo.dd_texto6 %}
-      <p>{{ artigo.dd_texto6|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.dd_img %}
       <img src="{{ artigo.dd_img.url }}" width="700" />
@@ -424,39 +223,9 @@
     -->
     {% if artigo.top1 %}
       <h2 id='top1'>{{ artigo.top1|linebreaksbr }}</h2>
+    {% endif %}
+    {% if artigo.texto1 %}
       <p>{{ artigo.texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.subtop1 %}
-      <h4>{{ artigo.subtop1|linebreaksbr }}</h4>
-      <p>{{ artigo.subtexto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.subtop2 %}
-      <h4>{{ artigo.subtop2|linebreaksbr }}</h4>
-      <p>{{ artigo.subtexto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.subtop3 %}
-      <h4>{{ artigo.subtop3|linebreaksbr }}</h4>
-      <p>{{ artigo.subtexto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.subtop4 %}
-      <h4>{{ artigo.subtop4|linebreaksbr }}</h4>
-      <p>{{ artigo.subtexto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.subtop5 %}
-      <h4>{{ artigo.subtop5|linebreaksbr }}</h4>
-      <p>{{ artigo.subtexto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.subtop6 %}
-      <h4>{{ artigo.subtop6|linebreaksbr }}</h4>
-      <p>{{ artigo.subtexto6|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.subtop7 %}
-      <h4>{{ artigo.subtop7|linebreaksbr }}</h4>
-      <p>{{ artigo.subtexto7|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.subtop8 %}
-      <h4>{{ artigo.subtop8|linebreaksbr }}</h4>
-      <p>{{ artigo.subtexto8|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.top1_img1 %}
       <img src="{{ artigo.top1_img1.url }}" width="700" />
@@ -479,99 +248,9 @@
     -->
     {% if artigo.tratamento_top %}
       <h2 id='tratamento_e_manejo'>{{ artigo.tratamento_top }}</h2>
+    {% endif %}
+    {% if artigo.tratamento_e_manejo %}
       <p>{{ artigo.tratamento_e_manejo|linebreaksbr }}</p>
-    {% endif %}
-
-    <!-- MEDIDAS GERAIS -->
-    {% if artigo.medidas_top %}
-      <h3>{{ artigo.medidas_top }}</h3>
-    {% endif %}
-    {% if artigo.tratamento_nao_medicamentoso %}
-      <p>{{ artigo.tratamento_nao_medicamentoso|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.medidas_top1 %}
-      <h4>{{ artigo.medidas_top1 }}</h4>
-      <p>{{ artigo.medidas_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.medidas_top2 %}
-      <h4>{{ artigo.medidas_top2 }}</h4>
-      <p>{{ artigo.medidas_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.medidas_top3 %}
-      <h4>{{ artigo.medidas_top3 }}</h4>
-      <p>{{ artigo.medidas_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.medidas_top4 %}
-      <h4>{{ artigo.medidas_top4 }}</h4>
-      <p>{{ artigo.medidas_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.medidas_top5 %}
-      <h4>{{ artigo.medidas_top5 }}</h4>
-      <p>{{ artigo.medidas_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.medidas_top6 %}
-      <h4>{{ artigo.medidas_top6 }}</h4>
-      <p>{{ artigo.medidas_texto6|linebreaksbr }}</p>
-    {% endif %}
-
-    <!-- TRATAMENTO FARMACOLÓGICO -->
-    {% if artigo.trat_med_top %}
-      <h3>{{ artigo.trat_med_top }}</h3>
-      <p>{{ artigo.tratamento_medicamentoso|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.med_top1 %}
-      <h4>{{ artigo.med_top1|linebreaksbr }}</h4>
-      <p>{{ artigo.med_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.med_top2 %}
-      <h4>{{ artigo.med_top2|linebreaksbr }}</h4>
-      <p>{{ artigo.med_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.med_top3 %}
-      <h4>{{ artigo.med_top3|linebreaksbr }}</h4>
-      <p>{{ artigo.med_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.med_top4 %}
-      <h4>{{ artigo.med_top4|linebreaksbr }}</h4>
-      <p>{{ artigo.med_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.med_top5 %}
-      <h4>{{ artigo.med_top5|linebreaksbr }}</h4>
-      <p>{{ artigo.med_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.med_top6 %}
-      <h4>{{ artigo.med_top6|linebreaksbr }}</h4>
-      <p>{{ artigo.med_texto6|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.med_top7 %}
-      <h4>{{ artigo.med_top7|linebreaksbr }}</h4>
-      <p>{{ artigo.med_texto7|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.med_top8 %}
-      <h4>{{ artigo.med_top8|linebreaksbr }}</h4>
-      <p>{{ artigo.med_texto8|linebreaksbr }}</p>
-    {% endif %}
-
-    <!-- TRATAMENTO INTERVENCIONISTA -->
-    {% if artigo.trat_int_top %}
-      <h3>{{ artigo.trat_int_top }}</h3>
-      <p>{{ artigo.tratamento_intervencionista|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.trat_int_top1 %}
-      <h4>{{ artigo.trat_int_top1 }}</h4>
-      <p>{{ artigo.trat_int_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.trat_int_top2 %}
-      <h4>{{ artigo.trat_int_top2 }}</h4>
-      <p>{{ artigo.trat_int_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.trat_int_top3 %}
-      <h4>{{ artigo.trat_int_top3 }}</h4>
-      <p>{{ artigo.trat_int_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.trat_int_top4 %}
-      <h4>{{ artigo.trat_int_top4 }}</h4>
-      <p>{{ artigo.trat_int_texto4|linebreaksbr }}</p>
     {% endif %}
 
     {% if artigo.trat_figura %}
@@ -584,31 +263,9 @@
     <!-- PROFILAXIA -->
     {% if artigo.profilaxia_top %}
       <h2 id='profilaxia'>{{ artigo.profilaxia_top }}</h2>
+    {% endif %}
+    {% if artigo.profilaxia %}
       <p>{{ artigo.profilaxia|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.profilaxia_top1 %}
-      <h4>{{ artigo.profilaxia_top1 }}</h4>
-      <p>{{ artigo.profilaxia_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.profilaxia_top2 %}
-      <h4>{{ artigo.profilaxia_top2 }}</h4>
-      <p>{{ artigo.profilaxia_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.profilaxia_top3 %}
-      <h4>{{ artigo.profilaxia_top3 }}</h4>
-      <p>{{ artigo.profilaxia_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.profilaxia_top4 %}
-      <h4>{{ artigo.profilaxia_top4 }}</h4>
-      <p>{{ artigo.profilaxia_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.profilaxia_top5 %}
-      <h4>{{ artigo.profilaxia_top5 }}</h4>
-      <p>{{ artigo.profilaxia_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.profilaxia_top6 %}
-      <h4>{{ artigo.profilaxia_top6 }}</h4>
-      <p>{{ artigo.profilaxia_texto6|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.prof_figura %}
       <img src="{{ artigo.prof_figura.url }}" width="700" />
@@ -620,6 +277,8 @@
     <!-- PROGNOSTICO -->
     {% if artigo.prognostico_top %}
       <h2 id='prognostico'>{{ artigo.prognostico_top }}</h2>
+    {% endif %}
+    {% if artigo.prognostico %}
       <p>{{ artigo.prognostico|linebreaksbr }}</p>
     {% endif %}
     {% if artigo.prognostico_img %}
@@ -632,31 +291,9 @@
     <!-- COMPLICACOES -->
     {% if artigo.complicacoes_top %}
       <h2 id='complicacoes'>{{ artigo.complicacoes_top }}</h2>
+    {% endif %}
+    {% if artigo.complicacoes %}
       <p>{{ artigo.complicacoes|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.complicacoes_top1 %}
-      <h4>{{ artigo.complicacoes_top1 }}</h4>
-      <p>{{ artigo.complicacoes_texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.complicacoes_top2 %}
-      <h4>{{ artigo.complicacoes_top2 }}</h4>
-      <p>{{ artigo.complicacoes_texto2|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.complicacoes_top3 %}
-      <h4>{{ artigo.complicacoes_top3 }}</h4>
-      <p>{{ artigo.complicacoes_texto3|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.complicacoes_top4 %}
-      <h4>{{ artigo.complicacoes_top4 }}</h4>
-      <p>{{ artigo.complicacoes_texto4|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.complicacoes_top5 %}
-      <h4>{{ artigo.complicacoes_top5 }}</h4>
-      <p>{{ artigo.complicacoes_texto5|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.complicacoes_top6 %}
-      <h4>{{ artigo.complicacoes_top6 }}</h4>
-      <p>{{ artigo.complicacoes_texto6|linebreaksbr }}</p>
     {% endif %}
 
     <!--
