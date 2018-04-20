@@ -1,0 +1,9 @@
+Nome: {{name}}
+
+Email: {{email}}
+
+Usuário: {% if username %}{{username}}{% else %}anonymous{% endif %}
+
+Assunto: {{subject}}
+
+{{description}}

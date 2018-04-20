@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^accounts/login/$', auth_views.LoginView.as_view()),
     url('^', include('django.contrib.auth.urls')),
+    url('^contact/', include('contactus.urls')),
 ]
 
 if settings.DEBUG:

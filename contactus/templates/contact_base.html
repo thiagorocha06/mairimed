@@ -3,12 +3,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Jekyll v3.6.0">
     <title>Mairimed - Resumos de Medicina</title>
     <meta name="description" content="O projeto mairimed tem o objetivo de fornecer conteúdo adequado para estudantes e profissionais da área da saúde.">
-    <meta name="KEYWORDS" content="resumos de medicina, medicina, residência médica, exercícios de medicina" >
-
+    <meta NAME="KEYWORDS" CONTENT="resumos de medicina, medicina, residência médica, exercícios de medicina" >
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113535136-1"></script>
     <script>
@@ -21,18 +20,21 @@
 
     <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
     <!-- Custom styles-->
     <link rel="stylesheet" href="{% static 'css/artigos.css' %}">
-    <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <!-- Documentation extras -->
     <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
-
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/carousel.js' %}"></script>
+
+    <!-- Meta
+    <meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    -->
 
     <!-- Icon for FF, Chrome, Opera -->
     <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="16x16">
@@ -40,21 +42,16 @@
 
   </head>
 
-  <body style="background-color:#FFF" ondragstart="return false" onselectstart="return false">
+  <body style="background-color:#F5F0ED" ondragstart="return false" onselectstart="return false">
 
-    <!-- Navbar -->
-
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <header class="navbar navbar-expand-lg navbar-light sticky-top flex-column flex-md-row">
       <a class="navbar-brand" href="{% url 'inicio' %}">
         <img src="{% static 'img/mairimed_logo4.png' %}" width="140" height="45" alt="">
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+      <div class="navbar-nav-scroll">
+        <ul class="navbar-nav bd-navbar-nav flex-row">
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'inicio' %}">Início<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
@@ -77,49 +74,55 @@
               <a class="dropdown-item" href="{% url 'ha_4' %}">Habilidades e Atitudes</a>
             </div>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{% url 'contactus' %}">Contato</a>
           </li>
         </ul>
       </div>
-      <form class="form-inline my-2 my-lg-0" type="get" action="">
-        {% if request.user.is_authenticated %}
-          <a href="{% url 'conectado' %}" class="btn btn-outline-light">Área Exclusiva</a>
-          <!-- <p style="color: white">{{user}}. <a style="color: white" href="{% url 'conectado' %}" >Minha Conta</a> </p> -->
-        {% else %}
-          <a href="{% url 'login' %}" class="btn btn-outline-light">Entrar</a>
-        {% endif %}
+
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      </ul>
+      <form type="get" action="" class="form-inline my-2 my-lg-0">
+        {% block form-nav %}
+        {% endblock %}
       </form>
-    </nav>
+    </header>
 
-  <div class="container-fluid">
-    <div class="row flex-xl-nowrap">
-    <!-- BARRA ESQUERDA -->
-    {% block barra-esquerda %}
-    {% endblock %}
-    <!-- CONTEUDO -->
-    {% block content %}
-    {% endblock %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+        <!-- CONTEUDO -->
+        {% block content %}
+        {% endblock %}
+        </div>
+      </div>
     </div>
-  </div>
-  <!-- CAROUSEL -->
-  {% block carousel %}
-  {% endblock %}
 
-  <!-- FOOTER -->
-  <footer class="blog-footer">
-   <div class="container">
-     <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
-     <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
-     <p>&copy; 2017-2018 mairimed.com</p>
-   </div>
-  </footer>
+    <!-- FOOTER -->
+    <footer class="blog-footer">
+     <div class="container">
+       <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
+       <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
+       <p>&copy; 2017-2018 mairimed.com</p>
+     </div>
+    </footer>
 
+  <!-- Bootstrap core JavaScript-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.17/marked.min.js"> </script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $(".content-markdown").each(function(){
+          var content = $(this).text()
+          console.log(content)
+          var markedContent = marked(content)
+          console.log(markedContent)
+          $(this).html(markedContent)
+    })
+  })
+  </script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </body>
 </html>

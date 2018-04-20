@@ -60,6 +60,7 @@ if not settings.DEBUG:
         'true_false',
         'essay',
         'pagedown',
+        'contactus',
     ]
 
     MIDDLEWARE = [
@@ -172,8 +173,13 @@ if not settings.DEBUG:
 
     LOGIN_REDIRECT_URL	=	'/mairimed/interno/'
 
-    EMAIL_HOST = 'localhost'
-    EMAIL_PORT = 1025
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = 'mairimedcontato@gmail.com'
+    EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+    DEFAULT_FROM_EMAIL = 'mairimedcontato@gmail.com'
+    DEFAULT_TO_EMAIL = 'mairimedcontato@gmail.com'
 
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
@@ -183,3 +189,5 @@ if not settings.DEBUG:
     # Djando Registration Redux Settings
     ACCOUNT_ACTIVATION_DAYS = 7
     REGISTRATION_AUTO_LOGIN = True
+
+    CONTACT_US_EMAIL = 'mairimed.com@gmail.com'

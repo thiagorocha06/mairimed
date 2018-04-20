@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*flm&m-1e_enl0(un8=4lv217df_2(_y0hx+i2ggg5-uk295he'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'true_false',
     'essay',
     'pagedown',
+    'contactus',
 ]
 
 MIDDLEWARE = [
@@ -157,6 +158,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'live-static', 'media-root', 'our_static')
 
 LOGIN_REDIRECT_URL	=	'/mairimed/interno/'
 
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mairimedcontato@gmail.com'
+EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+DEFAULT_FROM_EMAIL = 'mairimedcontato@gmail.com'
+DEFAULT_TO_EMAIL = 'mairimedcontato@gmail.com'
 SITE_ID = 1
+
+CONTACT_US_EMAIL = 'mairimed.com@gmail.com'
