@@ -177,7 +177,7 @@ if not settings.DEBUG:
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_PORT = 587
     EMAIL_HOST_USER = 'mairimedcontato@gmail.com'
-    EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
     DEFAULT_FROM_EMAIL = 'mairimedcontato@gmail.com'
     DEFAULT_TO_EMAIL = 'mairimedcontato@gmail.com'
 
