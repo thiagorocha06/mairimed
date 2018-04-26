@@ -24,6 +24,11 @@ urlpatterns = [
     url(r'^artigo/psiquiatria/$', views.categorias_artigos, name='psiquiatria_artigos'),
     url(r'^artigo/reumatologia_artigos/$', views.categorias_artigos, name='reumatologia_artigos'),
 
+    url(r'^artigo/ciclo_clinico/$', view=views.CicloClinicoListaView.as_view(), name='ciclo_clinico'),
+    url(r'^ciclo_clinico/(?P<especialidade_name>[\w|\W-]+)/$',
+        view=views.ViewCicloClinicoPorEspecialidade.as_view(),
+        name='ciclo_clinico_especialidade'),
+
     url(r'^artigo/(?P<pk>\d+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
     url(r'^interno/(?P<pk>\d+)/$', views.PostCountHitDetailView2.as_view(), name='artigo_detail'),
 

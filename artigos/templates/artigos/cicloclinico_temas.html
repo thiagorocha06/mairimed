@@ -1,0 +1,74 @@
+<!doctype html>
+{% extends "artigos_base.html" %}
+{% load quiz_tags %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block form-nav %}
+<ul class="navbar-nav px-3">
+  <li class="nav-item text-nowrap">
+      <a href="{% url 'auth_logout' %}" class="btn btn-outline-light">Sair</a>
+  </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+
+</div>
+
+<!-- CONTEUDO -->
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <div class="texto-centro">
+    <h1>{{ especialidade.especialidade }}</h1>
+  </div>
+
+    {% with object_list as temas %}
+      {% if temas %}
+
+          {% for tema in temas %}
+            <div class="artigo">
+      			  <h2>
+      				{{ tema.tema }}<br>
+      			  </h2>
+              <div class="col-md-8">
+                <hr style="background-color:#ff9400ff" class="featurette-divider">
+              </div>
+              {% if tema.exercicios %}
+              <h3>
+                {% for artigo in artigo_list %}
+                  {% if tema.tema|stringformat:"s" == artigo.tema|stringformat:"s" %}
+                    <ul>
+                      <a href="{% url 'detalhe_artigo' pk=artigo.pk %}">
+              				{{ artigo.titulo }}
+              			  </a><br>
+                    </ul>
+                  {% endif %}
+                {% endfor %}
+              </h3>
+              <ul>
+                <h4> <a href="http://www.mairimed.com/questoes/{{tema.exercicios.url}}">
+                  EXERCÍCIOS SOBRE O TEMA</a>
+                </h4>
+              </ul>
+              {% endif %}
+      			</div>
+          {% endfor %}
+
+      {% else %}
+          <p>{% trans "Não há resumos" %}</p>
+      {% endif %}
+    {% endwith %}
+
+</main>
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-1">
+
+</div>
+
+{% endblock %}

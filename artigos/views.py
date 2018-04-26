@@ -7,8 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import DetailView, TemplateView
+from django.views.generic import DetailView, TemplateView, ListView
 from hitcount.views import HitCountDetailView
+from artigos.models import Artigo, Especialidade, Tema
 
 class ArtigoMixinDetailView(object):
 
@@ -79,6 +80,36 @@ def escs_artigos(request):
                     artigo_interno=False
                     ).order_by('data_de_publicacao')
     return render(request, 'artigos/escs_artigos.html', {'artigos' : artigos})
+
+class CicloClinicoListaView(ListView):
+    template_name = 'artigos/cicloclinico_esp.html'
+    model = Especialidade
+
+class ViewCicloClinicoPorEspecialidade(ListView):
+    model = Tema
+    template_name = 'artigos/cicloclinico_temas.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.especialidade = get_object_or_404(
+            Especialidade,
+            especialidade=self.kwargs['especialidade_name']
+        )
+
+        return super(ViewCicloClinicoPorEspecialidade, self).\
+            dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ViewCicloClinicoPorEspecialidade, self)\
+            .get_context_data(**kwargs)
+
+        context['especialidade'] = self.especialidade
+        context['artigo_list'] = Artigo.objects.all().order_by("-data_de_publicacao")
+        return context
+
+    def get_queryset(self):
+        queryset = super(ViewCicloClinicoPorEspecialidade, self).get_queryset()
+        especialidade_filter = list(queryset.filter(especialidade=self.especialidade).order_by('tema'))
+        return especialidade_filter
 
 def detalhe_artigo(request, pk):
     artigo = get_object_or_404(Artigo, pk=pk)

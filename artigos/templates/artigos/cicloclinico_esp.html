@@ -1,0 +1,42 @@
+<!doctype html>
+{% extends "artigos_base.html" %}
+{% load quiz_tags %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block form-nav %}
+<input type="text" class="form-control mr-sm-2" name="campo_pesquisa"  placeholder="Pesquisar Resumo" value="{{ request.GET.campo_pesquisa }}" >
+<input type="submit" class="btn btn-outline-light" value="Pesquisar">
+{% endblock %}
+
+{% block content %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+
+</div>
+
+<!-- CONTEUDO -->
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <div class="texto-centro">
+    <h1>{% trans "ESPECIALIDADES" %}</h1>
+  </div>
+
+    {% for especialidade in especialidade_list %}
+    <div class="artigo">
+      <h2><a href="{% url 'ciclo_clinico_especialidade' especialidade_name=especialidade.especialidade %}">
+    	  {{ especialidade.especialidade }}
+    	</a></h2>
+    </div>
+    {% endfor %}
+
+</main>
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-1">
+
+</div>
+
+{% endblock %}
