@@ -29,6 +29,11 @@ urlpatterns = [
         view=views.ViewCicloClinicoPorEspecialidade.as_view(),
         name='ciclo_clinico_especialidade'),
 
+    url(r'^artigo/ciclo_basico/$', view=views.CicloBasicoListaView.as_view(), name='ciclo_basico'),
+    url(r'^ciclo_basico/(?P<temabasico_name>[\w|\W-]+)/$',
+        view=views.ViewCicloBasicoPorTema.as_view(),
+        name='ciclo_basico_tema'),
+
     url(r'^artigo/(?P<pk>\d+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
     url(r'^interno/(?P<pk>\d+)/$', views.PostCountHitDetailView2.as_view(), name='artigo_detail'),
 

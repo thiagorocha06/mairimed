@@ -20,7 +20,6 @@
 
     <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
     <!-- Custom styles-->
@@ -55,10 +54,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'inicio' %}">INÍCIO<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{% url 'ciclo_basico' %}">CICLO BÁSICO</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'ciclo_clinico' %}">CICLO CLÍNICO</a>
           </li>
           <li class="nav-item">

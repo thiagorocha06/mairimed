@@ -58,6 +58,23 @@ class Tema(models.Model):
     def __str__(self):
         return self.tema
 
+@python_2_unicode_compatible
+class TemaBasico(models.Model):
+
+    tema_basico = models.CharField(
+        verbose_name=_("Tema Básico"),
+        max_length=250, blank=True,
+        unique=True, null=True)
+
+    objects = EspecialidadeManager()
+
+    class Meta:
+        verbose_name = _("Tema Básico")
+        verbose_name_plural = _("Temas Básicos")
+
+    def __str__(self):
+        return self.tema_basico
+
 class Artigo(models.Model, HitCountMixin):
     author = models.ForeignKey('auth.User')
     hit_count_generic = GenericRelation(
@@ -88,6 +105,10 @@ class Artigo(models.Model, HitCountMixin):
     tema = models.ForeignKey(
         Tema, null=True, blank=True,
         verbose_name=_("Tema"))
+
+    tema_basico = models.ForeignKey(
+        TemaBasico, null=True, blank=True,
+        verbose_name=_("Tema Basico"))
 
     modulo = models.CharField(max_length=200, blank=True, null=True)
     categoria = models.CharField(max_length=200, blank=True, null=True)

@@ -36,18 +36,27 @@
               <div class="col-md-8">
                 <hr style="background-color:#ff9400ff" class="featurette-divider">
               </div>
-              {% if tema.exercicios %}
+
               <h3>
                 {% for artigo in artigo_list %}
                   {% if tema.tema|stringformat:"s" == artigo.tema|stringformat:"s" %}
-                    <ul>
-                      <a href="{% url 'detalhe_artigo' pk=artigo.pk %}">
-              				{{ artigo.titulo }}
-              			  </a><br>
-                    </ul>
+                    {% if artigo.artigo_interno == False %}
+                      <ul>
+                        <a href="{% url 'detalhe_artigo' pk=artigo.pk %}">
+                				{{ artigo.titulo }}
+                			  </a><br>
+                      </ul>
+                    {% endif %}
+                    {% if artigo.artigo_interno == True %}
+                      <ul>
+                        <a>{{ artigo.titulo }}</a><i class="material-icons" style="font-size: 18px">lock</i>
+                      </ul>
+                    {% endif %}
                   {% endif %}
                 {% endfor %}
               </h3>
+
+              {% if tema.exercicios %}
               <ul>
                 <h4> <a href="http://www.mairimed.com/questoes/{{tema.exercicios.url}}">
                   EXERCÍCIOS SOBRE O TEMA</a>
