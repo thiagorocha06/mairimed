@@ -521,10 +521,11 @@ class Question(models.Model):
                                      blank=True,
                                      null=True)
 
-    figure = models.ImageField(upload_to='uploads/%Y/%m/%d',
+    figure = models.ImageField(upload_to='img/quiz',
                                blank=True,
                                null=True,
                                verbose_name=_("Figure"))
+
 
     content = models.TextField(max_length=2000,
                                blank=False,
