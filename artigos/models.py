@@ -111,8 +111,12 @@ class Artigo(models.Model, HitCountMixin):
         verbose_name=_("Tema Basico"))
 
     modulo = models.CharField(max_length=200, blank=True, null=True)
-    categoria = models.CharField(max_length=200, blank=True, null=True)
     titulo = models.CharField(max_length=200)
+
+    url = models.SlugField(
+        max_length=60, blank=False, null=True,
+        help_text=_("a user friendly url"),
+        verbose_name=_("user friendly url"))
 
     apresentacao = models.CharField(max_length=200, blank=True, null=True)
 

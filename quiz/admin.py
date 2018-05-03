@@ -55,7 +55,7 @@ class QuizAdmin(admin.ModelAdmin):
     search_fields = ('description', 'especialidade', )
 
 class MCQuestionAdmin(admin.ModelAdmin):
-    list_display = ('content', 'especialidade', 'tema',)
+    list_display = ('pk', 'content', 'especialidade', 'tema',)
     list_filter = ('especialidade',  'ano',)
     fields = ('descricao', 'ano', 'content', 'especialidade', 'tema',
               'figure', 'quiz', 'explanation', 'answer_order')
@@ -75,7 +75,7 @@ class ProgressAdmin(admin.ModelAdmin):
 
 
 class TFQuestionAdmin(admin.ModelAdmin):
-    list_display = ('content', 'especialidade', 'tema',)
+    list_display = ('pk', 'content', 'especialidade', 'tema',)
     list_filter = ('especialidade',)
     fields = ('descricao', 'ano', 'enunciado', 'content', 'especialidade', 'tema',
               'figure', 'quiz', 'explanation', 'correct',)
@@ -85,7 +85,7 @@ class TFQuestionAdmin(admin.ModelAdmin):
 
 
 class EssayQuestionAdmin(admin.ModelAdmin):
-    list_display = ('content', 'especialidade', 'tema',)
+    list_display = ("pk", 'content', 'especialidade', 'tema',)
     list_filter = ('especialidade', 'ano',)
     fields = ('descricao', 'ano', 'content', 'especialidade', 'tema', 'quiz', 'explanation', )
     search_fields = ('content', 'explanation')

@@ -24,6 +24,7 @@ class PostCountHitDetailView(ArtigoMixinDetailView, HitCountDetailView):
     """
     Generic hitcount class based view that will also perform the hitcount logic.
     """
+    
     count_hit = False
     template_name = 'artigos/detalhe_artigo.html'
 
