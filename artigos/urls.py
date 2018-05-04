@@ -34,7 +34,7 @@ urlpatterns = [
         view=views.ViewCicloBasicoPorTema.as_view(),
         name='ciclo_basico_tema'),
 
-    url(r'^artigo/(?P<pk>\d+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
+    url(r'^artigo/(?P<slug>[\w-]+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
     url(r'^interno/(?P<pk>\d+)/$', views.PostCountHitDetailView2.as_view(), name='artigo_detail'),
 
 

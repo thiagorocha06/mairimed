@@ -8,7 +8,7 @@ class ArtigoModelAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': AdminPagedownWidget },
     }
-    list_display = ["pk", "titulo", "data_de_publicacao", "especialidade", "tema", "tema_basico"]
+    list_display = ["titulo", "data_de_publicacao", "especialidade", "tema", "tema_basico"]
     list_filter = ["especialidade", "tema"]
     search_fields = ["titulo"]
     class meta:

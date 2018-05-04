@@ -46,7 +46,7 @@
     {% for artigo in artigos %}
       {% if "M301" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -60,7 +60,7 @@
     {% for artigo in artigos %}
       {% if "M302" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -74,7 +74,7 @@
     {% for artigo in artigos %}
       {% if "M303" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -88,7 +88,7 @@
     {% for artigo in artigos %}
       {% if "M304" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -102,7 +102,7 @@
     {% for artigo in artigos %}
       {% if "M306" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -116,7 +116,7 @@
     {% for artigo in artigos %}
       {% if "M307" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -131,7 +131,7 @@
     {% for artigo in artigos %}
       {% if "ha_ped_3" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -145,7 +145,7 @@
     {% for artigo in artigos %}
       {% if "ha_abdome" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -159,7 +159,7 @@
     {% for artigo in artigos %}
       {% if "ha_cm_3" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -173,7 +173,7 @@
     {% for artigo in artigos %}
       {% if "ha_neurolocom" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -189,7 +189,7 @@
     {% for artigo in artigos %}
       {% if "M401" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -203,7 +203,7 @@
     {% for artigo in artigos %}
       {% if "M402" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -217,7 +217,7 @@
     {% for artigo in artigos %}
       {% if "M403" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -231,7 +231,7 @@
     {% for artigo in artigos %}
       {% if "M404" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -245,7 +245,7 @@
     {% for artigo in artigos %}
       {% if "M406" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -259,7 +259,7 @@
     {% for artigo in artigos %}
       {% if "M407" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -274,7 +274,7 @@
     {% for artigo in artigos %}
       {% if "ha_ped_emerg" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -288,7 +288,7 @@
     {% for artigo in artigos %}
       {% if "ha_ped_amb" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -302,7 +302,7 @@
     {% for artigo in artigos %}
       {% if "ha_cm_emerg" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -316,7 +316,7 @@
     {% for artigo in artigos %}
       {% if "ha_cm_amb" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -330,7 +330,7 @@
     {% for artigo in artigos %}
       {% if "ha_cirurgia" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}
@@ -344,7 +344,7 @@
     {% for artigo in artigos %}
       {% if "ha_go" in artigo.modulo %}
         <div class="artigo">
-          <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+          <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
           <p>{{ artigo.introducao|truncatechars:200 }}</p>
         </div>
       {% endif %}

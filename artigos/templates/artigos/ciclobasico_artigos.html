@@ -5,11 +5,7 @@
 {% load staticfiles %}
 
 {% block form-nav %}
-<ul class="navbar-nav px-3">
-  <li class="nav-item text-nowrap">
-      <a href="{% url 'auth_logout' %}" class="btn btn-outline-light">Sair</a>
-  </li>
-</ul>
+
 {% endblock %}
 
 {% block content %}
@@ -28,7 +24,7 @@
   {% for artigo in artigo_list %}
     {% if artigo.tema_basico|stringformat:"s" == temabasico.tema_basico|stringformat:"s" %}
       <div class="artigo">
-        <h2><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></h2>
+        <h2><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></h2>
       </div>
     {% endif %}
   {% endfor %}

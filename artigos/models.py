@@ -154,7 +154,6 @@ class Artigo(models.Model, HitCountMixin):
     ef_figura_texto = models.CharField(max_length=200, blank=True, null=True)
 
     exames_top_h2 = models.CharField(max_length=200, blank=True, null=True)
-    exames_top = models.CharField(max_length=200, blank=True, null=True,)
     exames_complementares = models.TextField(blank=True, null=True)
     exames_img1 = models.ImageField(upload_to='img', blank=True, null=True)
     exames_img1_texto = models.CharField(max_length=200, blank=True, null=True)
@@ -167,7 +166,6 @@ class Artigo(models.Model, HitCountMixin):
     criterios_diagnosticos = models.TextField(blank=True, null=True)
 
     dd_top_h2 = models.CharField(max_length=200, blank=True, null=True)
-    dd_top = models.CharField(max_length=200, blank=True, null=True,)
     diagnostico_diferencial = models.TextField(blank=True, null=True)
     dd_img = models.ImageField(upload_to='img', blank=True, null=True)
     dd_img_texto = models.CharField(max_length=200, blank=True, null=True)

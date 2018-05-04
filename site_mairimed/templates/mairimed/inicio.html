@@ -79,7 +79,7 @@
               <h1>Resumos mais vistos</h1>
               {% for artigo in lista_artigos %}
                 {% if artigo.destaque_geral == True %}
-                  <p><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></p>
+                  <p><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></p>
                 {% endif %}
               {% endfor %}
             </div>
@@ -92,7 +92,7 @@
               <h1>Resumos mais vistos da semana</h1>
                 {% for artigo in lista_artigos %}
                   {% if artigo.destaque_semana == True %}
-                    <p><a href="{% url 'detalhe_artigo' pk=artigo.pk %}">{{ artigo.titulo }}</a></p>
+                    <p><a href="{% url 'detalhe_artigo' slug=artigo.url %}">{{ artigo.titulo }}</a></p>
                   {% endif %}
                 {% endfor %}
               </div>
