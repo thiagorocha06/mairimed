@@ -20,6 +20,9 @@ urlpatterns = [
     url('^contact/', include('contactus.urls')),
 ]
 
+handler404 = 'site_mairimed.views.handler404'
+handler500 = 'site_mairimed.views.handler500'
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

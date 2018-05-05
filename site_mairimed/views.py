@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 from django.utils import timezone
@@ -7,6 +8,12 @@ from quiz.models import Quiz, Progress
 from django.views.generic import DetailView, TemplateView, ListView
 from hitcount.views import HitCountDetailView
 from django import forms
+
+def handler404(request):
+    return render(request, 'mairimed/404.html')
+
+def handler500(request):
+    return render(request, 'mairimed/500.html')
 
 class ArtigoMixinDetailView(object):
 
