@@ -17,7 +17,10 @@
             <div class="artigo">
 
               <h1>{{ artigo.titulo }}</h1>
-              <!-- <small>({{ artigo.especialidade }})</small> <small>({{ artigo.tema }})</small> -->
+              <small>({{ artigo.especialidade }})</small> <small>({{ artigo.tema }})</small>
+              <div class="col-md-8">
+                <hr style="background-color:#ff9400ff" class="featurette-divider">
+              </div>
 
               <!--
               **********************
@@ -356,15 +359,15 @@
     <a class="bd-toc-link" href="#diagnostico">{{ artigo.diag_top }}</a>
     {% endif %}
 
-    {% if artigo.exames_top %}
-    <a class="bd-toc-link" href="#exames_complementares">{{ artigo.exames_top }}</a>
+    {% if artigo.exames_top_h2 %}
+    <a class="bd-toc-link" href="#exames_complementares">{{ artigo.exames_top_h2 }}</a>
     {% endif %}
 
     {% if artigo.criterios_top %}
     <a class="bd-toc-link" href="#criterios_diagnosticos">{{ artigo.criterios_top }}</a>
     {% endif %}
-    {% if artigo.dd_top %}
-    <a class="bd-toc-link" href="#diagnostico_diferencial">{{ artigo.dd_top }}</a>
+    {% if artigo.dd_top_h2 %}
+    <a class="bd-toc-link" href="#diagnostico_diferencial">{{ artigo.dd_top_h2 }}</a>
     {% endif %}
 
     {% if artigo.top1 %}
