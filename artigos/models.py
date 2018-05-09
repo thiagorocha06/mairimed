@@ -41,6 +41,10 @@ class Tema(models.Model):
         verbose_name=_("Tema"),
         max_length=250, blank=True, null=True)
 
+    ordem = models.CharField(
+        verbose_name=_("Ordem"),
+        max_length=250, blank=False, null=True)
+
     especialidade = models.ForeignKey(
         Especialidade, null=True, blank=True,
         verbose_name=_("Especialidade"))

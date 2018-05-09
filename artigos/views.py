@@ -90,6 +90,7 @@ def escs_artigos(request):
 class CicloClinicoListaView(ListView):
     template_name = 'artigos/cicloclinico_esp.html'
     model = Especialidade
+    ordering = ['especialidade']
 
 class ViewCicloClinicoPorEspecialidade(ListView):
     model = Tema
@@ -114,12 +115,13 @@ class ViewCicloClinicoPorEspecialidade(ListView):
 
     def get_queryset(self):
         queryset = super(ViewCicloClinicoPorEspecialidade, self).get_queryset()
-        especialidade_filter = list(queryset.filter(especialidade=self.especialidade).order_by('tema'))
+        especialidade_filter = list(queryset.filter(especialidade=self.especialidade).order_by('ordem'))
         return especialidade_filter
 
 class CicloBasicoListaView(ListView):
     template_name = 'artigos/ciclobasico_tema.html'
     model = TemaBasico
+    ordering = ['tema_basico']
 
 class ViewCicloBasicoPorTema(ListView):
     model = Artigo
