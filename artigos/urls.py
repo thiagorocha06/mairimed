@@ -1,41 +1,26 @@
 from django.conf.urls import url
 from . import views
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import RedirectView
 
 urlpatterns = [
 
-    url(r'^mairimed/lista_artigos/$', views.lista_artigos, name='lista_artigos'),
-
-
-### ARTIGOS ###
-    # url(r'^artigo/cardiologia/$', views.categorias_artigos, name='cardiologia_artigos'),
-    # url(r'^artigo/cirurgia/$', views.categorias_artigos, name='cirurgia_artigos'),
-    # url(r'^artigo/dermatologia_artigos/$', views.categorias_artigos, name='dermatologia_artigos'),
-    # url(r'^artigo/endocrinologia/$', views.categorias_artigos, name='endocrinologia_artigos'),
-    # url(r'^artigo/gastroenterologia/$', views.categorias_artigos, name='gastroenterologia_artigos'),
-    # url(r'^artigo/go/$', views.categorias_artigos, name='go_artigos'),
-    # url(r'^artigo/hematologia/$', views.categorias_artigos, name='hematologia_artigos'),
-    # url(r'^artigo/hepatologia/$', views.categorias_artigos, name='hepatologia_artigos'),
-    # url(r'^artigo/infectologia/$', views.categorias_artigos, name='infectologia_artigos'),
-    # url(r'^artigo/med_emergencia_artigos/$', views.categorias_artigos, name='med_emergencia_artigos'),
-    # url(r'^artigo/nefrologia/$', views.categorias_artigos, name='nefrologia_artigos'),
-    # url(r'^artigo/neurologia_artigos/$', views.categorias_artigos, name='neurologia_artigos'),
-    # url(r'^artigo/pediatria/$', views.categorias_artigos, name='pediatria_artigos'),
-    # url(r'^artigo/pneumologia/$', views.categorias_artigos, name='pneumologia_artigos'),
-    # url(r'^artigo/psiquiatria/$', views.categorias_artigos, name='psiquiatria_artigos'),
-    # url(r'^artigo/reumatologia_artigos/$', views.categorias_artigos, name='reumatologia_artigos'),
-
-    url(r'^artigo/ciclo_clinico/$', view=views.CicloClinicoListaView.as_view(), name='ciclo_clinico'),
+    url(r'^artigos/ciclo_clinico/$', view=views.CicloClinicoListaView.as_view(), name='ciclo_clinico'),
     url(r'^ciclo_clinico/(?P<especialidade_name>[\w|\W-]+)/$',
         view=views.ViewCicloClinicoPorEspecialidade.as_view(),
         name='ciclo_clinico_especialidade'),
 
-    url(r'^artigo/ciclo_basico/$', view=views.CicloBasicoListaView.as_view(), name='ciclo_basico'),
+    url(r'^artigos/ciclo_basico/$', view=views.CicloBasicoListaView.as_view(), name='ciclo_basico'),
     url(r'^ciclo_basico/(?P<temabasico_name>[\w|\W-]+)/$',
         view=views.ViewCicloBasicoPorTema.as_view(),
         name='ciclo_basico_tema'),
 
-    url(r'^artigo/(?P<slug>[\w-]+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
+    url(r'^artigos/(?P<slug>[\w-]+)/$', views.PostCountHitDetailView.as_view(), name='detalhe_artigo'),
+    # url(r'^artigo/(?P<pk>\d+)/$', views.RedirecionamentoView.as_view(), name='artigo_detail'),
     url(r'^interno/(?P<pk>\d+)/$', views.PostCountHitDetailView2.as_view(), name='artigo_detail'),
+
+    url(r'^artigo/(?P<pk>\d+)/$', RedirectView.as_view(url='/artigos/ciclo_clinico', permanent=False)),
+    url(r'^mairimed/lista_artigos/$', RedirectView.as_view(url='/artigos/ciclo_clinico', permanent=False)),
 
 
 ### ESCS ###

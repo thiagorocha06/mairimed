@@ -35,6 +35,11 @@ class PostCountHitDetailView2(ArtigoMixinDetailView, HitCountDetailView):
     count_hit = True
     template_name = 'artigos/artigo_detail.html'
 
+class RedirecionamentoView(ArtigoMixinDetailView, HitCountDetailView):
+    count_hit = False
+    template_name = 'artigos/detalhe_artigo.html'
+    slug_field = 'url'
+
 def lista_artigos(request):
     estudante = Estudante.objects
     lista_artigos = Artigo.objects.filter(
