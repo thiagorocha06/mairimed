@@ -7,7 +7,7 @@
  }
 
  .google-auto-placed:after {
-   /*content: 'PUBLICIDADE';*/
+   content: 'PUBLICIDADE';
    text-align: center;
    color: #666;
    font-size: 12px;
