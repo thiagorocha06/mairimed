@@ -1,0 +1,15 @@
+.google-auto-placed:before {
+  content: 'CONTINUA DEPOIS DA PUBLICIDADE';
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  padding-top: 10px;
+ }
+
+ .google-auto-placed:after {
+   /*content: 'PUBLICIDADE';*/
+   text-align: center;
+   color: #666;
+   font-size: 12px;
+   padding-bottom: 10px;
+  }
