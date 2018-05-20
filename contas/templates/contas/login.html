@@ -1,18 +1,45 @@
-{%	extends	"base.html"	%}
-{%	block	content	%}
-		{%	if	form.errors	%}
-				<p>Your	username	and	password	didn't	match.	Please	try	again.</p>
-		{%	endif	%}
-		<div class="container">
-			<form	method="post"	action="{%	url	'login'	%}">
-				<div class="">
-					<h1>Entrar</h1>
-				</div>
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-				{%	csrf_token	%}
-						{{ form.as_p }}
-						<button type="submit">Entrar</button>
-				</form>
+{% block content %}
 
-		</div>
-{%	endblock	%}
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
+  <div id="login">
+        <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+        <div class="control-group">
+            <label class="control-label" for="username">Usuário</label>
+            <div class="controls">
+                <input type="text" id="username" name="username"  placeholder="Usuário">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password">Senha</label>
+            <div class="controls">
+                <input type="password" name="password" id="password" placeholder="Senha">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">Entrar</button>
+            </div>
+        </div>
+        </form>
+    </div>
+
+</main>
+
+{% endblock %}
+
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2">
+
+</div>
+
+{% endblock %}

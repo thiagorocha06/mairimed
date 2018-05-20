@@ -21,9 +21,6 @@ def cadastro(request):
         args = {'form' : form}
         return render(request, 'contas/cadastro.html', args)
 
-class EntrarView(TemplateView):
-    template_name = 'contas/entrar.html'
-
 @login_required
 def perfil(request):
     args = {'user': request.user}

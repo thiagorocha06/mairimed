@@ -6,9 +6,8 @@ from django.contrib.auth.views import (
 from . import views
 
 urlpatterns = [
-    url(r'^entrar$', views.EntrarView.as_view(), name='entrar'),
     url(r'^sair$', logout, {'template_name': 'contas/logout.html'}, name='logout'),
-    # url(r'^login/$', login, {'template_name': 'contas/login.html'}, name='login'),
+    url(r'^login/$', login, {'template_name': 'contas/login.html'}, name='login'),
     url(r'^logout/$', logout, {'template_name': 'contas/logout.html'}, name='logout'),
     url(r'^cadastro/$', views.cadastro, name='cadastro'),
     url(r'^perfil/$', views.perfil, name='perfil'),
