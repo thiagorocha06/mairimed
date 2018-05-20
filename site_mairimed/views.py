@@ -154,9 +154,6 @@ class AdministracaoView(ArtigoMixinDetailView, TemplateView):
         context['hits_mes'] = hits_mes
         return context
 
-class EntrarView(ArtigoMixinDetailView, TemplateView):
-    template_name = 'mairimed/entrar.html'
-
 def termos_uso(request):
     return render(request, 'mairimed/termos_uso.html')
 

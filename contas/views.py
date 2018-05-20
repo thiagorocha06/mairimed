@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-from contas.formularios import (
-    FormularioCadastro,
-    FormularioEdicaoPerfil,
-    )
+from contas.formularios import (FormularioCadastro,FormularioEdicaoPerfil,)
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import update_session_auth_hash, authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import *
+from django.shortcuts import render_to_response,redirect
+from django.template import RequestContext
+from django.views.generic import DetailView, TemplateView, ListView
 
 def cadastro(request):
     if request.method == "POST":
@@ -19,6 +20,9 @@ def cadastro(request):
 
         args = {'form' : form}
         return render(request, 'contas/cadastro.html', args)
+
+class EntrarView(TemplateView):
+    template_name = 'contas/entrar.html'
 
 @login_required
 def perfil(request):

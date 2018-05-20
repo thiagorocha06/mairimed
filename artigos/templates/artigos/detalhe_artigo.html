@@ -14,10 +14,18 @@
 
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
+  {% if artigo.artigo_interno == False %}
+
             <div class="artigo">
 
               <h1>{{ artigo.titulo }}</h1>
-              <small>({{ artigo.especialidade }})</small> <small>({{ artigo.tema }})</small>
+              {% if artigo.tema %}
+                <small>({{ artigo.especialidade }})</small> <small>({{ artigo.tema }})</small>
+              {% endif %}
+              {% if artigo.tema_basico %}
+                <small>({{ artigo.tema_basico }})</small>
+              {% endif %}
+
               <div class="col-md-8">
                 <hr style="background-color:#ff9400ff" class="featurette-divider">
               </div>
@@ -317,6 +325,46 @@
                 scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen>
                 </iframe>
               {% endif %}
+
+            </div>
+
+    {% endif %}
+
+    {% if artigo.artigo_interno == True %}
+    <div class="texto-centro">
+      <h1>RESUMO NÃO DISPONÍVEL NO MOMENTO</h1>
+    </div>
+
+    <div class="artigo">
+      <p>Entre com uma conta:</p>
+      <div id="login">
+        <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+        <div class="control-group">
+            <label class="control-label" for="username">Usuário</label>
+            <div class="controls">
+                <input type="text" id="username" name="username"  placeholder="Usuário">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password">Senha</label>
+            <div class="controls">
+                <input type="password" name="password" id="password" placeholder="Senha">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">Entrar</button>
+            </div>
+        </div>
+        </form>
+      </div>
+    </div>
+
+    {% endif %}
 
 </main>
 

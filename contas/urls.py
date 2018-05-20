@@ -6,7 +6,9 @@ from django.contrib.auth.views import (
 from . import views
 
 urlpatterns = [
-    url(r'^login/$', login, {'template_name': 'contas/login.html'}, name='login'),
+    url(r'^entrar$', views.EntrarView.as_view(), name='entrar'),
+    url(r'^sair$', logout, {'template_name': 'contas/logout.html'}, name='logout'),
+    # url(r'^login/$', login, {'template_name': 'contas/login.html'}, name='login'),
     url(r'^logout/$', logout, {'template_name': 'contas/logout.html'}, name='logout'),
     url(r'^cadastro/$', views.cadastro, name='cadastro'),
     url(r'^perfil/$', views.perfil, name='perfil'),
@@ -17,4 +19,5 @@ urlpatterns = [
     url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
     password_reset_confirm, name='password_reset_confirm'),
     url(r'^reset-password/complete/$', password_reset_complete, name='password_reset_complete'),
+
 ]
