@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 from django.utils import timezone
 from artigos.models import Artigo, Especialidade, Tema
+from portal_saude.models import Materia, Assunto, Patologia
 from quiz.models import Quiz, Progress
 from django.views.generic import DetailView, TemplateView, ListView
 from hitcount.views import HitCountDetailView
@@ -40,19 +41,6 @@ class ConectadoView(TemplateView):
         context['exams'] = progress.show_exams()
         return context
 
-# def inicio(request):
-#     artigos_mais_vistos = Artigo.objects.all().order_by("-hit_count_generic__hits")[:5]
-#     lista_artigos = Artigo.objects.all()
-#     conteudo = {
-#
-#         'artigos_mais_vistos': artigos_mais_vistos,
-#         'lista_artigos': lista_artigos
-#     }
-#     if request.user.is_authenticated():
-#         return render(request, 'mairimed/conectado.html', conteudo)
-#     else:
-#         return render(request, 'mairimed/inicio.html', conteudo)
-
 class InicioView(ArtigoMixinDetailView, TemplateView):
     template_name = 'mairimed/inicio.html'
 
@@ -61,6 +49,16 @@ class InicioView(ArtigoMixinDetailView, TemplateView):
         context['artigos_mais_vistos'] = Artigo.objects.all().order_by("-hit_count_generic__hits")[:5]
         context['ultimos_artigos'] = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:5]
         context['lista_artigos'] = Artigo.objects.all()
+        return context
+
+class InicioNovoView(ArtigoMixinDetailView, TemplateView):
+    template_name = 'mairimed/inicio_novo.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(InicioNovoView, self).get_context_data(**kwargs)
+        context['patologias'] = Patologia.objects.all()
+        context['assuntos'] = Assunto.objects.all()
+        context['materias'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:4]
         return context
 
 class EspecialidadesDetalhesView(ArtigoMixinDetailView, TemplateView):
@@ -104,31 +102,6 @@ class ViewArtigosListPorEspecialidade(ListView):
         queryset = super(ViewArtigosListPorEspecialidade, self).get_queryset()
         especialidade_filter = list(queryset.filter(especialidade=self.especialidade).order_by('tema'))
         return especialidade_filter
-
-
-# class ViewArtigosListPorEspecialidade(ListView):
-#     model = Artigo
-#     # django automaticamente gera: template_name = 'artigo_list.html'
-#
-#     def dispatch(self, request, *args, **kwargs):
-#         self.especialidade = get_object_or_404(
-#             Especialidade,
-#             especialidade=self.kwargs['especialidade_name']
-#         )
-#
-#         return super(ViewArtigosListPorEspecialidade, self).\
-#             dispatch(request, *args, **kwargs)
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(ViewArtigosListPorEspecialidade, self)\
-#             .get_context_data(**kwargs)
-#
-#         context['especialidade'] = self.especialidade
-#         return context
-#
-#     def get_queryset(self):
-#         queryset = super(ViewArtigosListPorEspecialidade, self).get_queryset()
-#         return queryset.filter(especialidade=self.especialidade, data_de_publicacao__lte=timezone.now()).order_by('data_de_publicacao')
 
 class AdministracaoView(ArtigoMixinDetailView, TemplateView):
     template_name = 'mairimed/administracao_artigo.html'

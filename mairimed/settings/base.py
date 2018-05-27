@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'essay',
     'pagedown',
     'contactus',
+    'portal_saude',
 ]
 
 MIDDLEWARE = [

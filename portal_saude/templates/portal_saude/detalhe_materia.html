@@ -1,0 +1,41 @@
+<!doctype html>
+{% extends "inicio_base_novo.html" %}
+{% load staticfiles %}
+
+{% block form-nav %}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+  <ul class="section-nav">
+
+  </ul>
+</div>
+
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
+  <div class="artigo">
+
+    <h1>{{ materia.titulo }}</h1>
+
+    <p>{{ materia.texto1|linebreaksbr }}</p>
+      {% if materia.figura_menor %}
+        <img src="{{ materia.figura_menor.url }}" width="700" />
+      {% endif %}
+
+  </div>
+
+</main>
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2">
+
+</div>
+
+{% endblock %}

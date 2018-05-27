@@ -61,6 +61,7 @@ if not settings.DEBUG:
         'essay',
         'pagedown',
         'contactus',
+        'portal_saude',
     ]
 
     MIDDLEWARE = [

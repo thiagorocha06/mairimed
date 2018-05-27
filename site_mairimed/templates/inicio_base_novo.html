@@ -1,0 +1,172 @@
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mairimed - Resumos de Medicina</title>
+    <meta name="description" content="O projeto mairimed tem o objetivo de fornecer conteúdo adequado para estudantes e profissionais da área da saúde.">
+    <meta name="KEYWORDS" content="resumos de medicina, medicina, residência médica, exercícios de medicina" >
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113535136-1"></script>
+
+    <!-- Google Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5705627321786233",
+        enable_page_level_ads: true
+      });
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles-->
+    <link rel="stylesheet" href="{% static 'css/artigos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/headings.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/slideshow.css' %}"> -->
+
+    <!-- Documentation extras -->
+    <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/carousel.js' %}"></script>
+    <script src="{% static 'js/megamenu.js' %}"></script>
+    <!-- <script src="{% static 'js/slideshow.js' %}"></script> -->
+
+    <!-- Icon for FF, Chrome, Opera -->
+    <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="32x32">
+
+  </head>
+
+  <body style="background-color:#EDEDED" ondragstart="return false" onselectstart="return false">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light static">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{% url 'inicio' %}" style="float:left; padding-left:30">
+      <img src="{% static 'img/mairimed_logo6.svg' %}" width="180" height="55" alt="">
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <div class="dropdown">
+            <button class="dropbtn">PORTAL DA SAÚDE</button>
+            <div class="dropdown-content">
+              <!-- <div class="row">
+                <div class="col-md-3">
+              		<h2 class="sub-menu-heading">TEMAS</h2>
+              	</div>
+              </div> -->
+              <div class="row">
+              	<div class="col-md-3">
+                  <h2 class="sub-menu-heading">MEDICINA</h2>
+              		<a href="#">DIABETES</a>
+              		<a href="#">HIPERTENSÃO ARTERIAL</a>
+              		<a href="#">SAÚDE DA MULHER</a>
+              	</div>
+              	<div class="col-md-3">
+                  <h2 class="sub-menu-heading">DIETA</h2>
+                  <a href="#">DIABETES</a>
+              		<a href="#">HIPERTENSÃO ARTERIAL</a>
+              		<a href="#">SAÚDE DA MULHER</a>
+              	</div>
+              	<div class="col-md-3">
+                  <h2 class="sub-menu-heading">EXERCÍCIO FÍSICO</h2>
+                  <a href="#">DIABETES</a>
+              		<a href="#">HIPERTENSÃO ARTERIAL</a>
+              		<a href="#">SAÚDE DA MULHER</a>
+              	</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <button class="dropbtn"><a href="{% url 'ciclo_clinico' %}">PROFISSIONAL</a></button>
+            <div class="dropdown-content">
+              <div class="row">
+              	<div class="col-md-3">
+              		<h2 class="sub-menu-heading">CICLO BÁSICO</h2>
+                  <a href="#">CONCEPÇÃO E FORMAÇÃO DO SER HUMANO</a>
+                  <a href="#">METABOLISMO</a>
+                  <a href="#">SEMIOLOGIA</a>
+                  <a href="{% url 'ciclo_basico' %}">VER TODOS TEMAS</a>
+              	</div>
+              	<div class="col-md-3">
+                  <h2 class="sub-menu-heading">CICLO CLÍNICO</h2>
+                  <a href="#">CARDIOLOGIA</a>
+                  <a href="#">CIRURGIA</a>
+                  <a href="#">DERMATOLOGIA</a>
+                  <a href="#">EMERGÊNCIA</a>
+                  <a href="{% url 'ciclo_clinico' %}">VER TODAS ESPECIALIZAÇÕES</a>
+              	</div>
+              	<div class="col-md-3">
+                  <h2 class="sub-menu-heading">ESCS 4ª SÉRIE</h2>
+                  <a href="{% url '4_serie' %}">MÓDULOS TEMÁTICOS</a>
+                  <a href="{% url 'ha_4' %}">HABILIDADES E ATITUDES</a>
+              	</div>
+                <div class="col-md-3">
+                  <h2 class="sub-menu-heading">ESCS 3ª SÉRIE</h2>
+                  <a href="{% url '3_serie' %}">MÓDULOS TEMÁTICOS</a>
+                  <a href="{% url 'ha_3' %}">HABILIDADES E ATITUDES</a>
+              	</div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0" type="get" action="">
+      {% if request.user.is_authenticated %}
+        <a href="{% url 'conectado' %}" class="btn btn-light">Área Exclusiva</a>
+        <!-- <p style="color: white">{{user}}. <a style="color: white" href="{% url 'conectado' %}" >Minha Conta</a> </p> -->
+      {% else %}
+        <a href="{% url 'login' %}" class="btn btn-light">Entrar</a>
+      {% endif %}
+    </form>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+    <!-- BARRA ESQUERDA -->
+    {% block barra-esquerda %}
+    {% endblock %}
+    <!-- CONTEUDO -->
+    {% block content %}
+    {% endblock %}
+    </div>
+  </div>
+  <!-- CAROUSEL -->
+  {% block carousel %}
+  {% endblock %}
+
+  <!-- FOOTER -->
+  <footer class="blog-footer">
+   <div class="container">
+     <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
+     <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
+     <p>&copy; 2017-2018 mairimed.com</p>
+   </div>
+  </footer>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </body>
+</html>
