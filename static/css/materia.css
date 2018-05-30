@@ -1,0 +1,129 @@
+
+.texto-centro{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.texto-centro h1, .texto-centro h2, .texto-centro h3, .texto-centro h4 {
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  font-weight: bold;
+  color: #d45500;
+  font-size: 20pt;
+}
+
+/* ARTIGO */
+
+.artigo {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.artigo h1, .artigo h1 a, .artigo h1 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24pt;
+    font-weight: bold;
+    color: #455A64;
+    text-align: center;
+}
+
+.artigo h2, .artigo h2 a, .artigo h2 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #455A64;
+}
+
+.artigo h3, .artigo h3 a, .artigo h3 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #455A64;
+    margin-bottom: 15px;
+}
+
+.artigo h4, .artigo h4 a, .artigo h4 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+    color: #000;
+}
+
+.artigo h5, .artigo h4 a, .artigo h4 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 11pt;
+    font-style: italic;
+    color: #000;
+    text-align: center;
+}
+
+.artigo p, .artigo p a, .artigo p a:visited {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 15pt;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #000;
+}
+
+.artigo li {
+  display: list-item;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 10pt;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #000;
+  /*padding-left: 1em;
+  text-indent: -.7em;*/
+  /*list-style-type: normal;*/
+  /*list-style-type: circle;*/
+  /*list-style-type: square;*/
+  /*word-wrap: break-word;*/
+}
+
+.artigo img {
+  display: block;
+  margin: auto;
+}
+
+.artigo small{
+  font-size: 8pt;
+  color: #d45500;
+}
+
+/* PROPAGANDA */
+
+.propaganda {
+  margin-top: 35px;
+  margin-bottom: 20px;
+  background-color: white;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.propaganda p, .propaganda p a, .propaganda p a:visited {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 8pt;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #000;
+}
+
+.propaganda h1, .propaganda h1 a, .propaganda h1 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    color: #455A64;
+    text-align: center;
+}

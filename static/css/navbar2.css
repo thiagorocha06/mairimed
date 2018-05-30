@@ -166,8 +166,9 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 800px;
+    /*background-color: #f1f1f1;*/
+    background-color: white;
+    min-width: 534px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -179,7 +180,7 @@
     text-decoration: none;
     display: block;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 14px;
     border-bottom: solid 2px #ccc;
 }
 

@@ -10,7 +10,7 @@ class MateriaModelAdmin(admin.ModelAdmin):
     }
     list_display = ["titulo", "data_de_publicacao", "assunto", "patologia"]
     list_filter = ["assunto", "patologia"]
-    search_fields = ["titulo"]
+    search_fields = ["titulo", 'assunto']
     class meta:
         model = Materia
 

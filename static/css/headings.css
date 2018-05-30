@@ -23,6 +23,23 @@
   color: black;
 }
 
+.topicosdiv{
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.topicosdiv p a, .topicosdiv p a:visited, .topicosdiv p a:hover {
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  color: #455A64;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
 .mytextdiv{
   display:flex;
   flex-direction:row;
@@ -30,6 +47,7 @@
   padding: 10px;
   padding-top: 20px;
 }
+
 .mytexttitle{
   flex-grow:0;
   font-family: 'Ubuntu', sans-serif;
@@ -57,7 +75,7 @@
 .carousel-caption {
   font-size: 1.25rem;
   padding-bottom: 120px;
-  background-color: #fff;
+  background-color: #FFDEB0;
   left:0;
 	right:0;
 	bottom:0;
@@ -225,7 +243,7 @@
   font-family: 'Ubuntu', sans-serif;
   font-size: 15pt;
   font-weight: bold;
-  color: #d45500;
+  color: #ff9400ff;
 }
 
 .mairi-card-azul {

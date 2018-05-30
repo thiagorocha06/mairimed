@@ -57,8 +57,11 @@ class InicioNovoView(ArtigoMixinDetailView, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(InicioNovoView, self).get_context_data(**kwargs)
         context['patologias'] = Patologia.objects.all()
-        context['assuntos'] = Assunto.objects.all()
-        context['materias'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:4]
+        context['materias'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')
+        context['materia_saude'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[4]).order_by('-data_de_publicacao')[:4]
+        context['materia_alimentacao'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[3]).order_by('-data_de_publicacao')[:4]
+        context['materia_exercicio'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[1]).order_by('-data_de_publicacao')[:4]
+        context['materia_bemestar'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[5]).order_by('-data_de_publicacao')[:4]
         return context
 
 class EspecialidadesDetalhesView(ArtigoMixinDetailView, TemplateView):

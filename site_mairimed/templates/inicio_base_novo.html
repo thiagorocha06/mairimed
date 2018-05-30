@@ -9,6 +9,10 @@
     <meta name="description" content="O projeto mairimed tem o objetivo de fornecer conteúdo adequado para estudantes e profissionais da área da saúde.">
     <meta name="KEYWORDS" content="resumos de medicina, medicina, residência médica, exercícios de medicina" >
 
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113535136-1"></script>
 
@@ -23,14 +27,17 @@
 
     <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> -->
     <!-- Custom styles-->
-    <link rel="stylesheet" href="{% static 'css/artigos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/materia.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar2.css' %}">
     <link rel="stylesheet" href="{% static 'css/headings.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/slider.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/adsense_artigos.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'css/slideshow.css' %}"> -->
 
     <!-- Documentation extras -->
@@ -40,6 +47,7 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/carousel.js' %}"></script>
     <script src="{% static 'js/megamenu.js' %}"></script>
+    <script src="{% static 'js/slider.js' %}"></script>
     <!-- <script src="{% static 'js/slideshow.js' %}"></script> -->
 
     <!-- Icon for FF, Chrome, Opera -->
@@ -63,31 +71,18 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <div class="dropdown">
-            <button class="dropbtn">PORTAL DA SAÚDE</button>
+            <button class="dropbtn"><a href="{% url 'inicio_novo' %}">PORTAL DA SAÚDE</a></button>
             <div class="dropdown-content">
-              <!-- <div class="row">
-                <div class="col-md-3">
-              		<h2 class="sub-menu-heading">TEMAS</h2>
-              	</div>
-              </div> -->
               <div class="row">
-              	<div class="col-md-3">
-                  <h2 class="sub-menu-heading">MEDICINA</h2>
-              		<a href="#">DIABETES</a>
-              		<a href="#">HIPERTENSÃO ARTERIAL</a>
-              		<a href="#">SAÚDE DA MULHER</a>
+              	<div class="col-md-6">
+              		<a href="{% url 'saude_portal'%}">SAÚDE</a>
+              		<a href="{% url 'alimentacao_portal'%}">ALIMENTAÇÃO</a>
+              		<a href="{% url 'exercicios_portal'%}">EXERCÍCIO FÍSICO</a>
+                  <a href="{% url 'bemestar_portal'%}">BEM-ESTAR</a>
               	</div>
-              	<div class="col-md-3">
-                  <h2 class="sub-menu-heading">DIETA</h2>
-                  <a href="#">DIABETES</a>
-              		<a href="#">HIPERTENSÃO ARTERIAL</a>
-              		<a href="#">SAÚDE DA MULHER</a>
-              	</div>
-              	<div class="col-md-3">
-                  <h2 class="sub-menu-heading">EXERCÍCIO FÍSICO</h2>
-                  <a href="#">DIABETES</a>
-              		<a href="#">HIPERTENSÃO ARTERIAL</a>
-              		<a href="#">SAÚDE DA MULHER</a>
+              	<div class="col-md-6">
+                  {% block navpatologia %}
+                  {% endblock %}
               	</div>
               </div>
             </div>
@@ -95,33 +90,20 @@
         </li>
         <li class="nav-item">
           <div class="dropdown">
-            <button class="dropbtn"><a href="{% url 'ciclo_clinico' %}">PROFISSIONAL</a></button>
+            <button class="dropbtn"><a href="{% url 'ciclo_clinico' %}">MEDICINA</a></button>
             <div class="dropdown-content">
               <div class="row">
-              	<div class="col-md-3">
-              		<h2 class="sub-menu-heading">CICLO BÁSICO</h2>
-                  <a href="#">CONCEPÇÃO E FORMAÇÃO DO SER HUMANO</a>
-                  <a href="#">METABOLISMO</a>
-                  <a href="#">SEMIOLOGIA</a>
-                  <a href="{% url 'ciclo_basico' %}">VER TODOS TEMAS</a>
+              	<div class="col-md-6">
+                  <a href="{% url 'inicio' %}">INÍCIO</a>
+              		<a href="{% url 'ciclo_basico' %}">CICLO BÁSICO</a>
+                  <a href="{% url 'ciclo_clinico' %}">CICLO CLÍNICO</a>
+                  <a href="{% url 'exercicios' %}">EXERCÍCIOS</a>
               	</div>
-              	<div class="col-md-3">
-                  <h2 class="sub-menu-heading">CICLO CLÍNICO</h2>
-                  <a href="#">CARDIOLOGIA</a>
-                  <a href="#">CIRURGIA</a>
-                  <a href="#">DERMATOLOGIA</a>
-                  <a href="#">EMERGÊNCIA</a>
-                  <a href="{% url 'ciclo_clinico' %}">VER TODAS ESPECIALIZAÇÕES</a>
-              	</div>
-              	<div class="col-md-3">
-                  <h2 class="sub-menu-heading">ESCS 4ª SÉRIE</h2>
-                  <a href="{% url '4_serie' %}">MÓDULOS TEMÁTICOS</a>
-                  <a href="{% url 'ha_4' %}">HABILIDADES E ATITUDES</a>
-              	</div>
-                <div class="col-md-3">
-                  <h2 class="sub-menu-heading">ESCS 3ª SÉRIE</h2>
-                  <a href="{% url '3_serie' %}">MÓDULOS TEMÁTICOS</a>
-                  <a href="{% url 'ha_3' %}">HABILIDADES E ATITUDES</a>
+              	<div class="col-md-6">
+                  <a href="{% url '3_serie' %}">3ª - MÓDULOS TEMÁTICOS</a>
+                  <a href="{% url 'ha_3' %}">3ª - HABILIDADES E ATITUDES</a>
+                  <a href="{% url '4_serie' %}">4ª - MÓDULOS TEMÁTICOS</a>
+                  <a href="{% url 'ha_4' %}">4ª - HABILIDADES E ATITUDES</a>
               	</div>
               </div>
             </div>
@@ -167,6 +149,17 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.17/marked.min.js"> </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $(".content-markdown").each(function(){
+            var content = $(this).text()
+            console.log(content)
+            var markedContent = marked(content)
+            console.log(markedContent)
+            $(this).html(markedContent)
+      })
+    })
+    </script>
   </body>
 </html>
