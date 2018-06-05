@@ -58,10 +58,10 @@ class Materia(models.Model, HitCountMixin):
         verbose_name=_("Materia destaque geral 3"),
         help_text=_("Se marcado, a materia sera mostrado na página destaque geral como número 3"))
 
-    destaque_semana = models.BooleanField(
+    destaque_patologia = models.BooleanField(
         blank=True, default=False,
-        verbose_name=_("Materia destaque da semana"),
-        help_text=_("Se marcado, o materia sera mostrado na página destaque da semana"))
+        verbose_name=_("Materia destaque da patologia"),
+        help_text=_("Se marcado, o materia sera mostrado na página destaque da patologia. Marcar 3 por patologia"))
 
     patologia = models.ForeignKey(
         Patologia, null=True, blank=True,

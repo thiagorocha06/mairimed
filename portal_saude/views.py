@@ -56,15 +56,6 @@ class ExerciciosPortalView(TemplateView):
         context['materia_saude_list'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[1]).order_by('titulo')
         return context
 
-class AlimentacaoPortalView(TemplateView):
-    model = Materia
-    template_name = "portal_saude/alimentacao_portal.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(AlimentacaoPortalView, self).get_context_data(**kwargs)
-        context['materia_saude_list'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[3]).order_by('titulo')
-        return context
-
 class BemestarPortalView(TemplateView):
     model = Materia
     template_name = "portal_saude/bemestar_portal.html"

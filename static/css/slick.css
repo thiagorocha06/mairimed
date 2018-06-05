@@ -1,0 +1,186 @@
+/* Slider */
+.slick-slider
+{
+    position: relative;
+
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    height: 400px;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+
+    height: auto;
+
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+.anuncio-slider {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #455A64;
+  text-align: center;
+}
+
+.divs-slider .slick-slide {
+  padding-left: 20px;
+}
+
+.divs-slider .slick-track {
+  height: 430px;
+}
+
+/*.slick-prev:after {
+  content: "<";
+  color: red;
+  font-size: 30px;
+}
+
+.slick-next:after {
+  content: ">";
+  color: red;
+  font-size: 30px;
+}*/
+
+.arrows{
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  padding: 10px;
+  padding-top: 180px;
+}
+
+.arrows p {
+  color: #ff9400ff;
+  font-size: 60px;
+}
+
+.arrows2{
+  display: none;
+}
+
+.arrows2 p {
+  color: #ff9400ff;
+  font-size: 60px;
+}
+
+/*now just wrap size specific styling in a media query.*/
+@media (max-width: 800px) {
+    .arrows {
+          display: none !important
+          /*!important added to overule jquery adding the style directly on element*/
+    }
+}
+
+@media (max-width: 800px) {
+    .arrows2 {
+          display: flex;
+          flex-direction:row;
+          align-items: center;
+          /*!important added to overule jquery adding the style directly on element*/
+    }
+}

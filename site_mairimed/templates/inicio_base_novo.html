@@ -36,9 +36,7 @@
     <link rel="stylesheet" href="{% static 'css/headings.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'css/slider.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/adsense_artigos.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'css/slideshow.css' %}"> -->
 
     <!-- Documentation extras -->
     <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
@@ -47,8 +45,10 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/carousel.js' %}"></script>
     <script src="{% static 'js/megamenu.js' %}"></script>
-    <script src="{% static 'js/slider.js' %}"></script>
-    <!-- <script src="{% static 'js/slideshow.js' %}"></script> -->
+
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
 
     <!-- Icon for FF, Chrome, Opera -->
     <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="16x16">
@@ -74,15 +74,30 @@
             <button class="dropbtn"><a href="{% url 'inicio_novo' %}">PORTAL DA SAÚDE</a></button>
             <div class="dropdown-content">
               <div class="row">
-              	<div class="col-md-6">
+              	<div class="col-md-12">
               		<a href="{% url 'saude_portal'%}">SAÚDE</a>
               		<a href="{% url 'alimentacao_portal'%}">ALIMENTAÇÃO</a>
               		<a href="{% url 'exercicios_portal'%}">EXERCÍCIO FÍSICO</a>
                   <a href="{% url 'bemestar_portal'%}">BEM-ESTAR</a>
               	</div>
-              	<div class="col-md-6">
+              	<!-- <div class="col-md-6">
                   {% block navpatologia %}
                   {% endblock %}
+              	</div> -->
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <button class="dropbtn"><a href="{% url 'ciclo_clinico' %}">RESIDÊNCIA MÉDICA</a></button>
+            <div class="dropdown-content">
+              <div class="row">
+              	<div class="col-md-12">
+                  <a href="{% url 'inicio' %}">INÍCIO</a>
+              		<a href="{% url 'ciclo_basico' %}">CICLO BÁSICO</a>
+                  <a href="{% url 'ciclo_clinico' %}">CICLO CLÍNICO</a>
+                  <a href="{% url 'exercicios' %}">EXERCÍCIOS</a>
               	</div>
               </div>
             </div>
@@ -90,16 +105,10 @@
         </li>
         <li class="nav-item">
           <div class="dropdown">
-            <button class="dropbtn"><a href="{% url 'ciclo_clinico' %}">MEDICINA</a></button>
+            <button class="dropbtn"><a href="{% url 'ciclo_clinico' %}">ESCS</a></button>
             <div class="dropdown-content">
               <div class="row">
-              	<div class="col-md-6">
-                  <a href="{% url 'inicio' %}">INÍCIO</a>
-              		<a href="{% url 'ciclo_basico' %}">CICLO BÁSICO</a>
-                  <a href="{% url 'ciclo_clinico' %}">CICLO CLÍNICO</a>
-                  <a href="{% url 'exercicios' %}">EXERCÍCIOS</a>
-              	</div>
-              	<div class="col-md-6">
+              	<div class="col-md-12">
                   <a href="{% url '3_serie' %}">3ª - MÓDULOS TEMÁTICOS</a>
                   <a href="{% url 'ha_3' %}">3ª - HABILIDADES E ATITUDES</a>
                   <a href="{% url '4_serie' %}">4ª - MÓDULOS TEMÁTICOS</a>
@@ -131,7 +140,7 @@
     {% endblock %}
     </div>
   </div>
-  <!-- CAROUSEL -->
+  <!-- CONTEUDO INICIO -->
   {% block carousel %}
   {% endblock %}
 
@@ -140,6 +149,7 @@
    <div class="container">
      <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
      <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
+     <p><a href="{% url 'contactus' %}">Contato</a></p>
      <p>&copy; 2017-2018 mairimed.com</p>
    </div>
   </footer>
@@ -150,16 +160,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.17/marked.min.js"> </script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $(".content-markdown").each(function(){
-            var content = $(this).text()
-            console.log(content)
-            var markedContent = marked(content)
-            console.log(markedContent)
-            $(this).html(markedContent)
-      })
-    })
-    </script>
+    <!-- Markdown JavaScript-->
+    <script src="{% static 'js/markdown.js' %}"></script>
+    <!-- Slider JavaScript-->
+    <script src="{% static 'js/slick.js' %}"></script>
+    <script src="{% static 'js/myslick.js' %}"></script>
   </body>
 </html>

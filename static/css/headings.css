@@ -36,7 +36,7 @@
   flex-direction:row;
   align-items: center;
   color: #455A64;
-  font-size: 12pt;
+  font-size: 10pt;
   font-weight: bold;
 }
 
@@ -236,7 +236,8 @@
 .mairi-card-laranja {
   box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   border-top: 4px solid #ff9400ff;
-  padding:0.01em 16px
+  padding:0.01em 16px;
+
 }
 
 .mairi-card-laranja h1{
@@ -249,7 +250,8 @@
 .mairi-card-azul {
   box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   border-top: 4px solid #2196F3;
-  padding:0.01em 16px
+  padding:0.01em 16px;
+  max-height: 200px;
 }
 
 .mairi-card-azul h1{
@@ -262,7 +264,8 @@
 .mairi-card-verde {
   box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   border-top: 4px solid #009688;
-  padding:0.01em 16px
+  padding:0.01em 16px;
+  max-height: 200px;
 }
 
 .mairi-card-verde h1{
@@ -275,7 +278,8 @@
 .mairi-card-vermelho {
   box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   border-top: 4px solid #F44336;
-  padding:0.01em 16px
+  padding:0.01em 16px;
+  max-height: 200px;
 }
 
 .mairi-card-vermelho h1{
@@ -288,7 +292,8 @@
 .mairi-card-amarelo {
   box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
   border-top: 4px solid #FFA000;
-  padding:0.01em 16px
+  padding:0.01em 16px;
+  max-height: 200px;
 }
 
 .mairi-card-amarelo h1{

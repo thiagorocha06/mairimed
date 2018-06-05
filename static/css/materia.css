@@ -109,16 +109,16 @@
   padding-top: 10px;
   padding-right: 20px;
   padding-bottom: 10px;
-  padding-left: 20px;
 }
 
-.propaganda p, .propaganda p a, .propaganda p a:visited {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 8pt;
-  text-align: justify;
-  text-justify: inter-word;
-  color: #000;
-}
+/*.propaganda p, .propaganda p a, .propaganda p a:visited {
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  color: #455A64;
+  font-size: 4pt;
+  font-weight: bold;
+}*/
 
 .propaganda h1, .propaganda h1 a, .propaganda h1 a:visited {
     font-family: 'Ubuntu', sans-serif;

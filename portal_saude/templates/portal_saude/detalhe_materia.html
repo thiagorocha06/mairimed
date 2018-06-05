@@ -19,11 +19,38 @@
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
   <div class="artigo">
-    <a href="{% url 'patologias_portal' patologia_name=materia.patologia %}">
-      <small>{{ materia.patologia }}</small>
-    </a>
+    {% if materia.assunto|stringformat:"s" == "SAÚDE" %}
+      <a href="{% url 'saude_portal' %}">
+        <small>{{ materia.assunto }}</small>
+      </a>
+      <small> > </small>
+    {% endif %}
+    {% if materia.assunto|stringformat:"s" == "ALIMENTAÇÃO" %}
+      <a href="{% url 'alimentacao_portal' %}">
+        <small>{{ materia.assunto }}</small>
+      </a>
+    {% endif %}
+    {% if materia.assunto|stringformat:"s" == "EXERCÍCIO FÍSICO" %}
+      <a href="{% url 'exercicios_portal' %}">
+        <small>{{ materia.assunto }}</small>
+      </a>
+    {% endif %}
+    {% if materia.assunto|stringformat:"s" == "BEM-ESTAR" %}
+      <a href="{% url 'bemestar_portal' %}">
+        <small>{{ materia.assunto }}</small>
+      </a>
+    {% endif %}
+    {% if materia.patologia %}
+      <a href="{% url 'patologias_portal' patologia_name=materia.patologia %}">
+        <small>{{ materia.patologia }}</small>
+      </a>
+    {% endif %}
+
     <h1>{{ materia.titulo }}</h1>
-    <h5>{{ materia.top1 }}</h5>
+
+    {% if materia.top1 %}
+      <h5>{{ materia.top1 }}</h5>
+    {% endif %}
     <!-- {% if materia.figura_menor %}
       <img src="{{ materia.figura_menor.url }}" width="130" />
     {% endif %} -->
@@ -37,19 +64,21 @@
 {% block barra-esquerda %}
 
 <div class="col-12 col-md-3 col-xl-2">
-  <div class="propaganda">
-    <h1>Mais sobre {{ materia.patologia }}</h1>
-      {% for mat in materia_list %}
-        {% if mat.patologia|stringformat:"s" == materia.patologia|stringformat:"s" %}
-        <div class="topicosdiv">
-          <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_menor.url }}" height='50' width="50"></a>
-          <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
-          {{ mat.titulo }}
-          </a></p>
-        </div>
-        {% endif %}
-      {% endfor %}
-  </div>
+  {% if materia.patologia %}
+    <div class="propaganda">
+      <h1>Mais sobre {{ materia.patologia }}</h1>
+        {% for mat in materia_list %}
+          {% if mat.patologia|stringformat:"s" == materia.patologia|stringformat:"s" %}
+          <div class="topicosdiv">
+            <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ mat.figura_menor.url }}" height='50' width="50"></a>
+            <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
+            {{ mat.titulo }}
+            </a></p>
+          </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+  {% endif %}
 </div>
 
 {% endblock %}
