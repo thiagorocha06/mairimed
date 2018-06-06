@@ -16,12 +16,12 @@ class MateriaModelAdmin(admin.ModelAdmin):
 
 class AssuntoAdmin(admin.ModelAdmin):
     search_fields = ('assunto', )
-    list_display = ('assunto',)
+    list_display = ('assunto', 'pk')
     # list_filter = ('especialidade',)
 
 class PatologiaAdmin(admin.ModelAdmin):
     search_fields = ('patologia', )
-    list_display = ('patologia',)
+    list_display = ('patologia')
     # list_filter = ('especialidade',)
 
 admin.site.register(Materia, MateriaModelAdmin)
