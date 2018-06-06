@@ -26,7 +26,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <div class="mairi-card mairi-container" style="min-height:400px">
         <div class="anuncio-slider">
 
@@ -75,9 +75,19 @@
 
     <!-- PROPAGANDA -->
 
-    <div class="col-md-6">
-      <div class="mairi-card mairi-container" style="min-height:400px">
-
+    <div class="col-md-4">
+      <div class="mairi-card mairi-container" style="max-height:400px">
+        <p style="font-size: 12px; color: #666; text-align: center;">ANUNCIO</p>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- anuncio1 -->
+        <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5705627321786233"
+           data-ad-slot="5686167727"
+           data-ad-format="auto"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
     </div>
 
@@ -90,7 +100,7 @@
               {% for materia in materia_saude %}
                 {% if materia.assunto|stringformat:"s" == "SAÚDE" %}
                 <div class="topicosdiv">
-                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_menor.url }}" height='50' width="50"></a>
+                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="50"></a>
                   <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
                   {{ materia.titulo }}
                   </a></p>
@@ -108,7 +118,7 @@
               {% for materia in materia_alimentacao %}
                 {% if materia.assunto|stringformat:"s" == "ALIMENTAÇÃO" %}
                 <div class="topicosdiv">
-                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_menor.url }}" height='50' width="60"></a>
+                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="60"></a>
                   <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
                   {{ materia.titulo }}
                   </a></p>
@@ -126,7 +136,7 @@
               {% for materia in materia_exercicio %}
                 {% if materia.assunto|stringformat:"s" == "EXERCÍCIO FÍSICO" %}
                 <div class="topicosdiv">
-                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_menor.url }}" height='50' width="50"></a>
+                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="50"></a>
                   <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
                   {{ materia.titulo }}
                   </a></p>
@@ -143,7 +153,7 @@
               <hr>
               {% for materia in materia_bemestar %}
                 <div class="topicosdiv">
-                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_menor.url }}" height='50' width="50"></a>
+                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="50"></a>
                   <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
                   {{ materia.titulo }}
                   </a></p>
@@ -166,12 +176,7 @@
       <!-- PATOLOGIAS -->
 
       <div class="row">
-        <div class="col-md-1">
-          <div class="arrows">
-            <p class="prev"> < </p>
-          </div>
-        </div>
-        <div class="col-md-10">
+        <div class="col-md-12">
         <div class="divs-slider">
 
       {% for patologia in patologias %}
@@ -184,7 +189,7 @@
                     {% if materia.destaque_patologia %}
                       {% if patologia.patologia|stringformat:"s" == materia.patologia|stringformat:"s" %}
                       <div class="topicosdiv">
-                        <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_menor.url }}" height='50' width="50"></a>
+                        <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="50"></a>
                         <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
                         {{ materia.titulo }}
                         </a></p>
@@ -199,7 +204,7 @@
         </div>
 
         </div>
-        <div class="arrows2">
+        <!-- <div class="arrows2">
           <p class="prev"> < </p>
           <hr>
           <p class="next" style="margin-left:300px"> > </p>
@@ -208,7 +213,7 @@
           <div class="arrows">
             <p class="next"> > </p>
           </div>
-        </div>
+        </div> -->
       </div>
 
 
@@ -217,7 +222,7 @@
     <div class="mytextdiv">
       <div class="divider"></div>
       <div class="mytexttitle">
-        MEDICINA
+        RESIDÊNCIA MÉDICA
       </div>
       <div class="divider"></div>
     </div>

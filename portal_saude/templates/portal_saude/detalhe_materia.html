@@ -51,8 +51,8 @@
     {% if materia.top1 %}
       <h5>{{ materia.top1 }}</h5>
     {% endif %}
-    <!-- {% if materia.figura_menor %}
-      <img src="{{ materia.figura_menor.url }}" width="130" />
+    <!-- {% if materia.figura_maior %}
+      <img src="{{ materia.figura_maior.url }}" width="130" />
     {% endif %} -->
 
     <div class="artigo content-markdown"><p>{{ materia.texto1 }}</p></div>
@@ -70,7 +70,7 @@
         {% for mat in materia_list %}
           {% if mat.patologia|stringformat:"s" == materia.patologia|stringformat:"s" %}
           <div class="topicosdiv">
-            <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ mat.figura_menor.url }}" height='50' width="50"></a>
+            <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
             <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
             {{ mat.titulo }}
             </a></p>

@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('.anuncio-slider').slick({
       dots: true,
-      arrows: true,
+      arrows: false,
       autoplay: true,
       autoplaySpeed: 3000,
       pauseOnHover: true,
@@ -17,8 +17,6 @@ $(document).ready(function(){
         // autoplay: true,
         // autoplaySpeed: 2000,
         // centerMode: true,
-        prevArrow: $('.prev'),
-        nextArrow: $('.next'),
         responsive: [
         {
           breakpoint: 1224,

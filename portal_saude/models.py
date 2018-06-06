@@ -77,8 +77,6 @@ class Materia(models.Model, HitCountMixin):
                             help_text=_("Corresponde à figura de destaque geral"))
     titulo_figura_texto = models.CharField(max_length=200, blank=True, null=True,
                             help_text=_("Corresponde ao texto de destaque geral"))
-    figura_menor = models.ImageField(upload_to='img/portal_saude', blank=True, null=True,
-                            help_text=_("Corresponde à figura de destaque menor"))
 
     url = models.SlugField(
         max_length=60, blank=False, null=True,
