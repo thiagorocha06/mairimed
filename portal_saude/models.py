@@ -43,21 +43,6 @@ class Materia(models.Model, HitCountMixin):
     data_de_criacao = models.DateTimeField(default=timezone.now)
     data_de_publicacao = models.DateTimeField(blank=True, null=True)
 
-    destaque_geral1 = models.BooleanField(
-        blank=True, default=False,
-        verbose_name=_("Materia destaque geral 1"),
-        help_text=_("Se marcado, a materia sera mostrado na página destaque geral como número 1"))
-
-    destaque_geral2 = models.BooleanField(
-        blank=True, default=False,
-        verbose_name=_("Materia destaque geral 2"),
-        help_text=_("Se marcado, a materia sera mostrado na página destaque geral como número 2"))
-
-    destaque_geral3 = models.BooleanField(
-        blank=True, default=False,
-        verbose_name=_("Materia destaque geral 3"),
-        help_text=_("Se marcado, a materia sera mostrado na página destaque geral como número 3"))
-
     destaque_patologia = models.BooleanField(
         blank=True, default=False,
         verbose_name=_("Materia destaque da patologia"),

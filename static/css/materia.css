@@ -127,3 +127,22 @@
     color: #455A64;
     text-align: center;
 }
+
+.materia_destaque {
+
+}
+
+.materia_destaque h1 {
+  padding-top: 35px;
+  color: #455A64;
+  font-size: 16pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+.materia_destaque p {
+  padding-top: 10px;
+  color: #455A64;
+  font-size: 12pt;
+  text-align: center;
+}

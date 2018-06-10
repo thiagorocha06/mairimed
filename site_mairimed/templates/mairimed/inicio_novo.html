@@ -25,69 +25,61 @@
 {% block carousel %}
 
 <div class="container">
+
   <div class="row">
     <div class="col-md-6">
       <div class="mairi-card mairi-container" style="min-height:400px">
         <div class="anuncio-slider">
 
-          {% for materia in materias %}
-            {% if materia.destaque_geral1 == True %}
+          {% for mat in ultimas_materias %}
             <div>
-              <a href="{% url 'detalhe_materia' slug=materia.url %}"><img class="third-slide" src="{{ materia.figura_maior.url }}" height='350' width="100%" alt="Third slide"></a>
+              <a href="{% url 'detalhe_materia' slug=mat.url %}"><img class="third-slide" src="{{ mat.figura_maior.url }}" height='350' width="100%"></a>
                 <div>
-                  <p><a href="{% url 'detalhe_materia' slug=materia.url %}">
-                  {{ materia.titulo }}
+                  <p><a href="{% url 'detalhe_materia' slug=mat.url %}">
+                  {{ mat.titulo }}
                   </a></p>
                   <!-- <p>{{materia.titulo_figura_texto}}</p> -->
                 </div>
             </div>
-            {% endif %}
-          {% endfor %}
-
-          {% for materia in materias %}
-            {% if materia.destaque_geral2 == True %}
-            <div>
-              <a href="{% url 'detalhe_materia' slug=materia.url %}"><img class="third-slide" src="{{ materia.figura_maior.url }}" height='350' width="100%" alt="Third slide"></a>
-                <div>
-                  <p><a href="{% url 'detalhe_materia' slug=materia.url %}">
-                  {{ materia.titulo }}
-                </a></p>
-                </div>
-            </div>
-            {% endif %}
-          {% endfor %}
-          {% for materia in materias %}
-            {% if materia.destaque_geral3 == True %}
-            <div>
-              <a href="{% url 'detalhe_materia' slug=materia.url %}"><img class="third-slide" src="{{ materia.figura_maior.url }}" height='350' width="100%" alt="Third slide"></a>
-                <div>
-                  <p><a href="{% url 'detalhe_materia' slug=materia.url %}">
-                  {{ materia.titulo }}
-                  </a></p>
-                </div>
-            </div>
-            {% endif %}
           {% endfor %}
 
         </div>
       </div>
     </div>
 
-    <!-- PROPAGANDA -->
+    <div class="col-md-3">
+      <div class="mairi-card mairi-container" style="min-height:400px">
 
-    <div class="col-md-6">
-      <div class="mairi-card mairi-container" style="max-height:400px">
-        <p style="font-size: 12px; color: #666; text-align: center;">ANUNCIO</p>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- anuncio1 -->
-        <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-5705627321786233"
-           data-ad-slot="5686167727"
-           data-ad-format="auto"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <div class="materia_destaque">
+          <a href="{% url 'detalhe_materia' slug=materia_destaque1.url %}"><img src="{{ materia_destaque1.figura_maior.url }}" height='200' width="100%"></a>
+          <h1 style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia_destaque1.url %}">
+          {{ materia_destaque1.titulo }}
+          </a></h1>
+          <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia_destaque1.url %}">
+          {% if materia_destaque1.top1 %}
+            {{ materia_destaque1.top1 }}
+          {% endif %}
+          </a></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="mairi-card mairi-container" style="min-height:400px">
+
+        <div class="materia_destaque">
+          <a href="{% url 'detalhe_materia' slug=materia_destaque2.url %}"><img src="{{ materia_destaque2.figura_maior.url }}" height='200' width="100%"></a>
+          <h1 style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia_destaque2.url %}">
+          {{ materia_destaque2.titulo }}
+          </a></h1>
+          <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia_destaque2.url %}">
+          {% if materia_destaque2.top1 %}
+            {{ materia_destaque2.top1 }}
+          {% endif %}
+          </a></p>
+        </div>
+
       </div>
     </div>
 
@@ -165,10 +157,22 @@
 
       </div>
 
+      <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- anuncio1 -->
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
       <div class="mytextdiv">
         <div class="divider"></div>
         <div class="mytexttitle">
-          CONHEÇA A DOENÇA
+          CONHEÇA MAIS
         </div>
         <div class="divider"></div>
       </div>
@@ -222,7 +226,7 @@
     <div class="mytextdiv">
       <div class="divider"></div>
       <div class="mytexttitle">
-        RESIDÊNCIA MÉDICA
+        EDUCAÇÃO MÉDICA
       </div>
       <div class="divider"></div>
     </div>
@@ -252,6 +256,19 @@
         </div>
       </div>
     </div>
+
+    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- anuncio1 -->
+    <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5705627321786233"
+       data-ad-slot="5686167727"
+       data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <p style="font-size: 12px; color: #666; text-align: center;">...</p>
 
   </div><!-- /.container -->
 
