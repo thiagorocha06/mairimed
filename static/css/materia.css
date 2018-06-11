@@ -128,12 +128,19 @@
     text-align: center;
 }
 
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 770px) {
+  #mais-sobre {
+    display: none !important
+  }
+}
+
 .materia_destaque {
 
 }
 
 .materia_destaque h1 {
-  padding-top: 35px;
+  padding-top: 10px;
   color: #455A64;
   font-size: 16pt;
   font-weight: bold;

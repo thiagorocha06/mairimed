@@ -48,36 +48,26 @@
     </div>
 
     <div class="col-md-3">
-      <div class="mairi-card mairi-container" style="min-height:400px">
+      <div class="mairi-card mairi-container" style="min-height:300px">
 
         <div class="materia_destaque">
           <a href="{% url 'detalhe_materia' slug=materia_destaque1.url %}"><img src="{{ materia_destaque1.figura_maior.url }}" height='200' width="100%"></a>
           <h1><a href="{% url 'detalhe_materia' slug=materia_destaque1.url %}">
           {{ materia_destaque1.titulo }}
           </a></h1>
-          <p><a href="{% url 'detalhe_materia' slug=materia_destaque1.url %}">
-          {% if materia_destaque1.top1 %}
-            {{ materia_destaque1.top1 }}
-          {% endif %}
-          </a></p>
         </div>
 
       </div>
     </div>
 
     <div class="col-md-3">
-      <div class="mairi-card mairi-container" style="min-height:400px">
+      <div class="mairi-card mairi-container" style="min-height:300px">
 
         <div class="materia_destaque">
           <a href="{% url 'detalhe_materia' slug=materia_destaque2.url %}"><img src="{{ materia_destaque2.figura_maior.url }}" height='200' width="100%"></a>
           <h1><a href="{% url 'detalhe_materia' slug=materia_destaque2.url %}">
           {{ materia_destaque2.titulo }}
           </a></h1>
-          <p><a href="{% url 'detalhe_materia' slug=materia_destaque2.url %}">
-          {% if materia_destaque2.top1 %}
-            {{ materia_destaque2.top1 }}
-          {% endif %}
-          </a></p>
         </div>
 
       </div>

@@ -16,7 +16,7 @@
 </div>
 
 <!-- CONTEUDO -->
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+<main class="col-12 col-md-9 col-xl-8 bd-content" role="main">
 
   <div class="artigo">
     {% if materia.assunto|stringformat:"s" == "SAÚDE" %}
@@ -63,15 +63,16 @@
 
 {% block barra-esquerda %}
 
-<div class="col-12 col-md-3 col-xl-2">
+<div class="col-12 col-md-3 col-xl-2" id="mais-sobre">
+
   {% if materia.patologia %}
     <div class="propaganda">
       <h1>Mais sobre {{ materia.patologia }}</h1>
         {% for mat in materia_list %}
           {% if mat.patologia|stringformat:"s" == materia.patologia|stringformat:"s" %}
           <div class="topicosdiv">
-            <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
-            <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
+            <a href="{% url 'detalhe_materia' slug=mat.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
+            <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=mat.url %}">
             {{ mat.titulo }}
             </a></p>
           </div>
@@ -79,6 +80,55 @@
         {% endfor %}
     </div>
   {% endif %}
+
+  {% if materia.assunto|stringformat:"s" == "ALIMENTAÇÃO" %}
+    <div class="propaganda">
+      <h1>Mais sobre ALIMENTAÇÃO</h1>
+        {% for mat in materia_list %}
+          {% if mat.assunto|stringformat:"s" == "ALIMENTAÇÃO" %}
+          <div class="topicosdiv">
+            <a href="{% url 'detalhe_materia' slug=mat.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
+            <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=mat.url %}">
+            {{ mat.titulo }}
+            </a></p>
+          </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if materia.assunto|stringformat:"s" == "EXERCÍCIO FÍSICO" %}
+    <div class="propaganda">
+      <h1>Mais sobre EXERCÍCIO FÍSICO</h1>
+        {% for mat in materia_list %}
+          {% if mat.assunto|stringformat:"s" == "EXERCÍCIO FÍSICO" %}
+          <div class="topicosdiv">
+            <a href="{% url 'detalhe_materia' slug=mat.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
+            <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=mat.url %}">
+            {{ mat.titulo }}
+            </a></p>
+          </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if materia.assunto|stringformat:"s" == "BEM-ESTAR" %}
+    <div class="propaganda">
+      <h1>Mais sobre BEM-ESTAR</h1>
+        {% for mat in materia_list %}
+          {% if mat.assunto|stringformat:"s" == "BEM-ESTAR" %}
+          <div class="topicosdiv">
+            <a href="{% url 'detalhe_materia' slug=mat.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
+            <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=mat.url %}">
+            {{ mat.titulo }}
+            </a></p>
+          </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+  {% endif %}
+
 </div>
 
 {% endblock %}
