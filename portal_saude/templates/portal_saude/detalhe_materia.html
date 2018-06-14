@@ -35,8 +35,8 @@
         <small>{{ materia.assunto }}</small>
       </a>
     {% endif %}
-    {% if materia.assunto|stringformat:"s" == "PLANTAS MEDICINAIS" %}
-      <a href="{% url 'plantasmedicinais_portal' %}">
+    {% if materia.assunto|stringformat:"s" == "MEDICAMENTOS" %}
+      <a href="{% url 'medicamentos_portal' %}">
         <small>{{ materia.assunto }}</small>
       </a>
     {% endif %}
