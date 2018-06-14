@@ -131,9 +131,9 @@
 
         <div class="col-md-3">
           <div class="mairi-card-amarelo mairi-container" style="min-height:460px">
-            <a href="{% url 'bemestar_portal' %}"><br><h1>BEM-ESTAR</h1></a>
+            <a href="{% url 'plantasmedicinais_portal' %}"><br><h1>PLANTAS MEDICINAIS</h1></a>
               <hr>
-              {% for materia in materia_bemestar %}
+              {% for materia in materia_plantasmedicinais %}
                 <div class="topicosdiv">
                   <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="50"></a>
                   <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">

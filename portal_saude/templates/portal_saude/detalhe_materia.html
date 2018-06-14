@@ -35,8 +35,8 @@
         <small>{{ materia.assunto }}</small>
       </a>
     {% endif %}
-    {% if materia.assunto|stringformat:"s" == "BEM-ESTAR" %}
-      <a href="{% url 'bemestar_portal' %}">
+    {% if materia.assunto|stringformat:"s" == "PLANTAS MEDICINAIS" %}
+      <a href="{% url 'plantasmedicinais_portal' %}">
         <small>{{ materia.assunto }}</small>
       </a>
     {% endif %}
@@ -113,11 +113,11 @@
     </div>
   {% endif %}
 
-  {% if materia.assunto|stringformat:"s" == "BEM-ESTAR" %}
+  {% if materia.assunto|stringformat:"s" == "PLANTAS MEDICINAIS" %}
     <div class="propaganda">
-      <h1>Mais sobre BEM-ESTAR</h1>
+      <h1>Mais sobre PLANTAS MEDICINAIS</h1>
         {% for mat in materia_list %}
-          {% if mat.assunto|stringformat:"s" == "BEM-ESTAR" %}
+          {% if mat.assunto|stringformat:"s" == "PLANTAS MEDICINAIS" %}
           <div class="topicosdiv">
             <a href="{% url 'detalhe_materia' slug=mat.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
             <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=mat.url %}">
