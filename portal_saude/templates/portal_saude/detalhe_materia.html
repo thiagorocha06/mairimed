@@ -11,12 +11,33 @@
 <!-- BARRA DIREITA -->
 <div class="d-none d-xl-block col-xl-2 bd-toc">
   <ul class="section-nav">
-
+    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- anuncio1 -->
+    <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5705627321786233"
+       data-ad-slot="5686167727"
+       data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
   </ul>
 </div>
 
 <!-- CONTEUDO -->
 <main class="col-12 col-md-9 col-xl-8 bd-content" role="main">
+  <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- anuncio1 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5705627321786233"
+     data-ad-slot="5686167727"
+     data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
   <div class="artigo">
     {% if materia.assunto|stringformat:"s" == "SAÚDE" %}
@@ -84,7 +105,7 @@
   {% if materia.assunto|stringformat:"s" == "ALIMENTAÇÃO" %}
     <div class="propaganda">
       <h1>Mais sobre ALIMENTAÇÃO</h1>
-        {% for mat in materia_list %}
+        {% for mat in materia_alimentacao %}
           {% if mat.assunto|stringformat:"s" == "ALIMENTAÇÃO" %}
           <div class="topicosdiv">
             <a href="{% url 'detalhe_materia' slug=mat.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
@@ -100,7 +121,7 @@
   {% if materia.assunto|stringformat:"s" == "EXERCÍCIO FÍSICO" %}
     <div class="propaganda">
       <h1>Mais sobre EXERCÍCIO FÍSICO</h1>
-        {% for mat in materia_list %}
+        {% for mat in materia_exercicio %}
           {% if mat.assunto|stringformat:"s" == "EXERCÍCIO FÍSICO" %}
           <div class="topicosdiv">
             <a href="{% url 'detalhe_materia' slug=mat.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
@@ -113,11 +134,11 @@
     </div>
   {% endif %}
 
-  {% if materia.assunto|stringformat:"s" == "PLANTAS MEDICINAIS" %}
+  {% if materia.assunto|stringformat:"s" == "MEDICAMENTOS" %}
     <div class="propaganda">
-      <h1>Mais sobre PLANTAS MEDICINAIS</h1>
-        {% for mat in materia_list %}
-          {% if mat.assunto|stringformat:"s" == "PLANTAS MEDICINAIS" %}
+      <h1>Mais sobre MEDICAMENTOS</h1>
+        {% for mat in materia_medicamentos %}
+          {% if mat.assunto|stringformat:"s" == "MEDICAMENTOS" %}
           <div class="topicosdiv">
             <a href="{% url 'detalhe_materia' slug=mat.url %}"><img src="{{ mat.figura_maior.url }}" height='50' width="50"></a>
             <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=mat.url %}">

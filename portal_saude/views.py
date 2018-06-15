@@ -27,6 +27,10 @@ class MateriaCountHitDetailView(MateriaMixinDetailView, HitCountDetailView):
     def get_context_data(self, **kwargs):
         context = super(MateriaMixinDetailView, self).get_context_data(**kwargs)
         context['materia_list'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('data_de_publicacao')
+        context['materia_saude'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[7]).order_by('-data_de_publicacao')[:4]
+        context['materia_alimentacao'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[6]).order_by('-data_de_publicacao')[:4]
+        context['materia_exercicio'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[1]).order_by('-data_de_publicacao')[:4]
+        context['materia_medicamentos'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[5]).order_by('-data_de_publicacao')[:4]
         return context
 
 class SaudePortalView(TemplateView):

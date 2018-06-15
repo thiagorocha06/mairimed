@@ -4,8 +4,8 @@ from . import views
 from .views import EspecialidadeListaView, ViewArtigosListPorEspecialidade
 
 urlpatterns = [
-    url(r'^$', views.InicioView.as_view(), name='inicio'),
-    url(r'^inicio_novo/$', views.InicioNovoView.as_view(), name='inicio_novo'),
+    url(r'^$', views.InicioNovoView.as_view(), name='inicio'),
+    url(r'^educacao_medica/$', views.InicioView.as_view(), name='educacao_medica'),
     url(r'^mairimed/termos_uso/$', views.termos_uso, name='termos_uso'),
     url(r'^mairimed/sobre/$', views.sobre, name='sobre'),
     url(r'^mairimed/interno/$', views.ConectadoView.as_view(), name='conectado'),
