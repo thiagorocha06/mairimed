@@ -1,9 +1,17 @@
+from django.views import generic
+from django.views.decorators.csrf import csrf_exempt
+import json
+import requests
+import random
+from django.http.response import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 from django.utils import timezone
 from artigos.models import Artigo, Especialidade, Tema
+from dicionario_farmaceutico.models import Farmaco
+from dicionario_medico.models import Doenca
 from portal_saude.models import Materia, Assunto, Patologia
 from quiz.models import Quiz, Progress
 from django.views.generic import DetailView, TemplateView, ListView
@@ -41,22 +49,22 @@ class ConectadoView(TemplateView):
         context['exams'] = progress.show_exams()
         return context
 
-class InicioView(ArtigoMixinDetailView, TemplateView):
-    template_name = 'mairimed/inicio.html'
+class EducacaoMedicaView(ArtigoMixinDetailView, TemplateView):
+    template_name = 'mairimed/educacao_medica.html'
 
     def get_context_data(self, **kwargs):
-        context = super(InicioView, self).get_context_data(**kwargs)
+        context = super(EducacaoMedicaView, self).get_context_data(**kwargs)
         context['artigos_mais_vistos'] = Artigo.objects.all().order_by("-hit_count_generic__hits")[:5]
         context['ultimos_artigos'] = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:5]
         context['lista_artigos'] = Artigo.objects.all()
         return context
 
-class InicioNovoView(ArtigoMixinDetailView, TemplateView):
-    template_name = 'mairimed/inicio_novo.html'
+class InicioView(ArtigoMixinDetailView, TemplateView):
+    template_name = 'mairimed/inicio.html'
 
     def get_context_data(self, **kwargs):
-        context = super(InicioNovoView, self).get_context_data(**kwargs)
-        context['ultimas_materias'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:3]
+        context = super(InicioView, self).get_context_data(**kwargs)
+        context['ultimas_materias'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:1]
         context['materia_destaque1'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[3]
         context['materia_destaque2'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[4]
         context['patologias'] = Patologia.objects.all()
@@ -138,3 +146,52 @@ def termos_uso(request):
 
 def sobre(request):
     return render(request, 'mairimed/sobre.html')
+
+def chat(request):
+    context = {}
+    return render(request, 'mairimed/chatbot.html', context)
+
+def respond_to_websockets(message):
+    lista_farmacos = Farmaco.objects.filter(nome__isnull=False).order_by('nome')
+    jokes = {
+    'nimesulida': ["""A nimesulida ou nimesulide é um medicamento da classe dos anti-inflamatórios não esteróides (AINEs),
+        que atua através da inibição da enzima ciclooxigenase e, consequentemente, da cascata do ácido araquidónico,
+         que é responsável pela síntese de substâncias envolvidas na inflamação, tais como as prostaglandinas. Desta forma,
+          a nimesulida combate os processos inflamatórios, as dores e a febre."""],
+     'stupid': ["""Yo' Mama is so stupid, she needs a recipe to make ice cubes.""",
+                """Yo' Mama is so stupid, she thinks DNA is the National Dyslexics Association."""],
+     'dumb':   ["""Yo' Mama is so dumb, when God was giving out brains, she thought they were milkshakes and asked for extra thick.""",
+                """Yo' Mama is so dumb, she locked her keys inside her motorcycle."""]
+     }
+
+    result_message = {
+        'type': 'text'
+    }
+
+    for farmaco in lista_farmacos:
+        if farmaco.nome == message['text']:
+            result_message['text'] = farmaco.introducao+" Para saber mais sobre "+farmaco.nome+" ou outro fármaco, digite:"+'\n'+"nome e o assunto\
+            (indicações, farmacodinâmica, farmacocinética, contraindicações,\
+            risco na gravidez, interações ou reações adversas)"
+            return result_message
+        elif farmaco.nome in message['text'] and "indicações" in message['text']:
+            result_message['text'] = "Indicações para "+farmaco.nome+" : "+farmaco.indicacoes
+            return result_message
+        else:
+            pass
+
+    if 'Nimesulida' in message['text'] or 'nimesulida' in message['text']:
+        result_message['text'] = random.choice(jokes['nimesulida'])
+
+    elif 'stupid' in message['text']:
+        result_message['text'] = random.choice(jokes['stupid'])
+
+    elif 'dumb' in message['text']:
+        result_message['text'] = random.choice(jokes['dumb'])
+
+    elif message['text'] in ['oi', 'olá', 'Oi', "Olá"]:
+        result_message['text'] = "Olá! Digite um medicamento ou uma doença que você deseja consultar."
+    else:
+        result_message['text'] = "Não sei uma resposta para essa mensagem. Digite um medicamento ou uma doença que você deseja consultar."
+
+    return result_message

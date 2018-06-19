@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'artigos',
     'contas',
     'dicionario_medico',
-    # 'dicionario_farmaceutico',
+    'dicionario_farmaceutico',
     'hitcount',
     'quiz',
     'multichoice',
@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'pagedown',
     'contactus',
     'portal_saude',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -169,3 +170,10 @@ DEFAULT_TO_EMAIL = 'mairimedcontato@gmail.com'
 SITE_ID = 1
 
 CONTACT_US_EMAIL = 'mairimed.com@gmail.com'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "site_mairimed.routing.channel_routing",
+    },
+}

@@ -27,9 +27,10 @@
 <div class="container">
 
   <div class="row">
+
     <div class="col-md-6">
       <div class="mairi-card mairi-container" style="min-height:400px">
-        <div class="anuncio-slider">
+        <!-- <div class="anuncio-slider"> -->
 
           {% for mat in ultimas_materias %}
             <div>
@@ -43,35 +44,40 @@
             </div>
           {% endfor %}
 
-        </div>
+        <!-- </div> -->
       </div>
     </div>
 
-    <div class="col-md-3">
-      <div class="mairi-card mairi-container" style="min-height:300px">
+    <div class="col-md-6">
 
-        <div class="materia_destaque">
-          <a href="{% url 'detalhe_materia' slug=materia_destaque1.url %}"><img src="{{ materia_destaque1.figura_maior.url }}" height='200' width="100%"></a>
-          <h1><a href="{% url 'detalhe_materia' slug=materia_destaque1.url %}">
-          {{ materia_destaque1.titulo }}
-          </a></h1>
+      <div id="wrap" class="BotMainDiv" ng-controller="ChatCtrl" style="min-height:400px;">
+          <!-- Begin page content -->
+          <div class="mairi-card mairi-container" id="body-container" style="">
+              <div  id="sub-body-container">
+
+                  <div  id="messages-container"></div>
+                  <div class="error-notification alert alert-info" style="display:none;"></div>
+
+              </div>
+          </div>
+
         </div>
 
-      </div>
-    </div>
+        <div class="non-error mairi-card">
+            <div class="botAccentColor">
 
-    <div class="col-md-3">
-      <div class="mairi-card mairi-container" style="min-height:300px">
+                <div class="row" id="send-box">
+                    <div id="messageToSend" contenteditable="true" class="pull-left" data-ph="Digite sua mensagem..."></div>
+                    <div class="pull-right send-button-div">
+                        <button  id="messageSendButton" type="button" onclick="sendTextMessage()">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="materia_destaque">
-          <a href="{% url 'detalhe_materia' slug=materia_destaque2.url %}"><img src="{{ materia_destaque2.figura_maior.url }}" height='200' width="100%"></a>
-          <h1><a href="{% url 'detalhe_materia' slug=materia_destaque2.url %}">
-          {{ materia_destaque2.titulo }}
-          </a></h1>
+            </div>
         </div>
-
       </div>
-    </div>
 
       <!-- ASSUNTOS -->
 

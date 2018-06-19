@@ -53,7 +53,7 @@ if not settings.DEBUG:
         'artigos',
         'contas',
         'dicionario_medico',
-        # 'dicionario_farmaceutico',
+        'dicionario_farmaceutico',
         'hitcount',
         'quiz',
         'multichoice',
@@ -62,6 +62,7 @@ if not settings.DEBUG:
         'pagedown',
         'contactus',
         'portal_saude',
+        'channels',
     ]
 
     MIDDLEWARE = [
@@ -192,3 +193,10 @@ if not settings.DEBUG:
     REGISTRATION_AUTO_LOGIN = True
 
     CONTACT_US_EMAIL = 'mairimed.com@gmail.com'
+
+    CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "site_mairimed.routing.channel_routing",
+        },
+    }

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Termo
+from .models import Termo, Doenca
 
 class TermoModelAdmin(admin.ModelAdmin):
     list_display = ["nome", "tipo"]
@@ -8,4 +8,11 @@ class TermoModelAdmin(admin.ModelAdmin):
     class meta:
         model = Termo
 
+class DoencaModelAdmin(admin.ModelAdmin):
+    list_display = ["nome"]
+    search_fields = ["nome"]
+    class meta:
+        model = Doenca
+
 admin.site.register(Termo, TermoModelAdmin)
+admin.site.register(Doenca, DoencaModelAdmin)

@@ -1,0 +1,103 @@
+{% extends "inicio_base_novo.html" %}
+{% load staticfiles%}
+{% load hitcount_tags %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+{% endblock %}
+
+<!-- PAGINA GERAL -->
+
+{% block carousel %}
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-6">
+
+      <div id="wrap" class="BotMainDiv" ng-controller="ChatCtrl" style="min-height:400px;">
+          <!-- Begin page content -->
+          <div class="mairi-card mairi-container" id="body-container" style="">
+              <div  id="sub-body-container">
+
+                  <div  id="messages-container"></div>
+                  <div class="error-notification alert alert-info" style="display:none;"></div>
+
+              </div>
+          </div>
+
+        </div>
+
+        <div class="non-error mairi-card">
+            <div class="botAccentColor">
+
+                <div class="row" id="send-box">
+                    <div id="messageToSend" contenteditable="true" class="pull-left" data-ph="Digite sua mensagem..."></div>
+                    <div class="pull-right send-button-div">
+                        <button  id="messageSendButton" type="button" onclick="sendTextMessage()">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+
+      </div>
+
+    </div>
+
+  <div class="row">
+      <div class="col-md-12">
+        <div class="mairi-card-laranja row mairi-container">
+          <div class="col-md-7">
+            <br><h1 class="featurette-heading" style="color:#d45500">RESUMOS DE MEDICINA</h1><br>
+            <p class="lead">Divididos por especialidade.</p>
+            <p><a class="btn btn-lg btn-light" href="{% url 'ciclo_clinico' %}" role="button">Acessar Resumos</a></p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="{% static 'img/mairimed_topico1.svg' %}" width="500" height="200" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <div class="mairi-card-laranja row mairi-container">
+          <div class="col-md-7 push-md-5">
+            <br><h1 class="featurette-heading" style="color:#d45500">EXERCÍCIOS DE MEDICINA</h1><br>
+            <p class="lead">Divididos por tema e especialidade.</p>
+            <p><a class="btn btn-lg btn-light" href="{% url 'exercicios' %}" role="button">Acessar Exercícios</a></p>
+          </div>
+          <div class="col-md-5 pull-md-7">
+            <img class="featurette-image img-fluid mx-auto" src="{% static 'img/mairimed_topico2.svg' %}" width="500" height="200" alt="Generic placeholder image">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- anuncio1 -->
+    <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5705627321786233"
+       data-ad-slot="5686167727"
+       data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <p style="font-size: 12px; color: #666; text-align: center;">...</p>
+
+  </div><!-- /.container -->
+
+{% endblock %}
