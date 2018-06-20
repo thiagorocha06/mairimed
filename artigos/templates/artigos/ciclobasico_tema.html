@@ -19,14 +19,16 @@
 <!-- CONTEUDO -->
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
   <!-- anuncio1 -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5705627321786233"
-       data-ad-slot="5686167727"
-       data-ad-format="auto"></ins>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+  <div class="anuncio-top">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
   <div class="texto-centro">
     <h1>{% trans "CICLO BÁSICO" %}</h1>
@@ -59,7 +61,7 @@
 
   <nav class="collapse bd-links" id="bd-docs-nav">
     <div class="bd-toc-item">
-      <a class="bd-toc-link active" href="{% url 'educacao_medica' %}">
+      <a class="bd-toc-link" href="{% url 'educacao_medica' %}">
         <h1><span data-feather="home"></span> Início</h1></a>
       <a class="bd-toc-link active" href="{% url 'ciclo_basico' %}">
         <h1><span data-feather="book-open"></span> Cíclo Básico</h1></a>

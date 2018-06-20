@@ -191,3 +191,14 @@
   font-size: 8pt;
   color: #d45500;
 }
+
+/* PROPAGANDA */
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 740px) {
+
+    .anuncio-top {
+      display: none !important;
+    }
+
+}

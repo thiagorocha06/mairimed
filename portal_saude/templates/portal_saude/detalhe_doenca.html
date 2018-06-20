@@ -1,0 +1,74 @@
+<!doctype html>
+{% extends "inicio_base.html" %}
+{% load staticfiles %}
+
+{% block form-nav %}
+
+{% endblock %}
+
+{% block content %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+  <ul class="section-nav">
+    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- anuncio1 -->
+    <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5705627321786233"
+       data-ad-slot="5686167727"
+       data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </ul>
+</div>
+
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 bd-content" role="main">
+  <div class="anuncio-top">
+    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- anuncio1 -->
+    <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5705627321786233"
+       data-ad-slot="5686167727"
+       data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <div class="artigo">
+
+    <h1>{{ doenca.nome }}</h1>
+
+    <div class="artigo content-markdown"><p>{{ doenca.introducao }}</p></div>
+    <div class="artigo content-markdown"><p>{{ doenca.manifestacoes }}</p></div>
+    <div class="artigo content-markdown"><p>{{ doenca.exames }}</p></div>
+    <div class="artigo content-markdown"><p>{{ doenca.tratamento }}</p></div>
+  </div>
+
+</main>
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2" id="mais-sobre">
+
+    <div class="propaganda">
+      <h1>Mais Doenças</h1>
+        {% for doenca in doencas_list %}
+          <div class="topicosdiv">
+            <p style="margin-left:15px"><a href="{% url 'detalhe_doenca' slug=doenca.url %}">
+            {{ doenca.nome }}
+            </a></p>
+          </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,16 +1,6 @@
-{% extends "inicio_base_novo.html" %}
+{% extends "inicio_base.html" %}
 {% load staticfiles%}
 {% load hitcount_tags %}
-
-<!-- {% block navpatologia %}
-  {% for patologia in patologias %}
-    {% if forloop.counter < 5 %}
-      <a href="{% url 'patologias_portal' patologia_name=patologia.patologia %}">
-        {{ patologia.patologia }}
-      </a>
-    {% endif %}
-  {% endfor %}
-{% endblock %} -->
 
 {% block content %}
 
@@ -19,8 +9,6 @@
 {% block barra-esquerda %}
 
 {% endblock %}
-
-<!-- PAGINA GERAL -->
 
 {% block carousel %}
 
@@ -44,17 +32,14 @@
 
         <div class="col-md-3">
           <div class="mairi-card-azul mairi-container" style="min-height:460px">
-            <a href="{% url 'saude_portal' %}"><br><h1>SAÚDE</h1></a>
+            <a href="{% url 'doenca_portal' %}"><br><h1>DOENÇAS</h1></a>
               <hr>
-              {% for materia in materia_saude %}
-                {% if materia.assunto|stringformat:"s" == "SAÚDE" %}
+              {% for doenca in doencas %}
                 <div class="topicosdiv">
-                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="50"></a>
-                  <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
-                  {{ materia.titulo }}
+                  <p style="margin-left:15px"><a href="{% url 'detalhe_doenca' slug=doenca.url %}">
+                  {{ doenca.nome }}
                   </a></p>
                 </div>
-                {% endif %}
               {% endfor %}
               <hr>
           </div>
@@ -62,17 +47,14 @@
 
         <div class="col-md-3">
           <div class="mairi-card-verde mairi-container" style="min-height:460px">
-            <a href="{% url 'alimentacao_portal' %}"><br><h1>ALIMENTAÇÃO</h1></a>
+            <a href="{% url 'alimentos_portal' %}"><br><h1>ALIMENTAÇÃO</h1></a>
               <hr>
-              {% for materia in materia_alimentacao %}
-                {% if materia.assunto|stringformat:"s" == "ALIMENTAÇÃO" %}
+              {% for alimento in alimentos %}
                 <div class="topicosdiv">
-                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="60"></a>
-                  <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
-                  {{ materia.titulo }}
+                  <p style="margin-left:15px"><a href="{% url 'detalhe_alimento' slug=alimento.url %}">
+                  {{ alimento.nome }}
                   </a></p>
                 </div>
-                {% endif %}
               {% endfor %}
               <hr>
           </div>
@@ -80,17 +62,14 @@
 
         <div class="col-md-3">
           <div class="mairi-card-vermelho mairi-container" style="min-height:460px">
-            <a href="{% url 'exercicios_portal' %}"><br><h1>EXERCÍCIO FÍSICO</h1></a>
+            <a href="{% url 'termos_portal' %}"><br><h1>TERMOS MÉDICOS</h1></a>
               <hr>
-              {% for materia in materia_exercicio %}
-                {% if materia.assunto|stringformat:"s" == "EXERCÍCIO FÍSICO" %}
+              {% for termo in termos %}
                 <div class="topicosdiv">
-                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="50"></a>
-                  <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
-                  {{ materia.titulo }}
+                  <p style="margin-left:15px"><a href="{% url 'detalhe_termo' slug=termo.url %}">
+                  {{ termo.nome }}
                   </a></p>
                 </div>
-                {% endif %}
               {% endfor %}
               <hr>
           </div>
@@ -98,13 +77,12 @@
 
         <div class="col-md-3">
           <div class="mairi-card-amarelo mairi-container" style="min-height:460px">
-            <a href="{% url 'medicamentos_portal' %}"><br><h1>MEDICAMENTOS</h1></a>
+            <a href="{% url 'farmacos_portal' %}"><br><h1>FÁRMACOS</h1></a>
               <hr>
-              {% for materia in materia_medicamentos %}
+              {% for farmaco in farmacos %}
                 <div class="topicosdiv">
-                  <a href="{% url 'detalhe_materia' slug=materia.url %}"><img src="{{ materia.figura_maior.url }}" height='50' width="50"></a>
-                  <p style="margin-left:15px"><a href="{% url 'detalhe_materia' slug=materia.url %}">
-                  {{ materia.titulo }}
+                  <p style="margin-left:15px"><a href="{% url 'detalhe_farmaco' slug=farmaco.url %}">
+                  {{ farmaco.nome }}
                   </a></p>
                 </div>
               {% endfor %}
