@@ -87,6 +87,13 @@ def escs_artigos(request):
                     ).order_by('data_de_publicacao')
     return render(request, 'artigos/escs_artigos.html', {'artigos' : artigos})
 
+def escs(request):
+    artigos = Artigo.objects.filter(
+                    data_de_publicacao__lte=timezone.now(),
+                    artigo_interno=False
+                    ).order_by('data_de_publicacao')
+    return render(request, 'artigos/escs.html', {'artigos' : artigos})
+
 class CicloClinicoListaView(ListView):
     template_name = 'artigos/cicloclinico_esp.html'
     model = Especialidade

@@ -32,7 +32,6 @@
     </script>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
     <!-- Custom styles-->
     <link rel="stylesheet" href="{% static 'css/materia.css' %}">
@@ -114,7 +113,7 @@
         </li>
         <li class="nav-item">
           <div class="dropdown">
-            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'ciclo_clinico' %}">ESCS</a></button>
+            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'escs' %}">ESCS</a></button>
             <div class="dropdown-content">
               <div class="row">
               	<div class="col-md-12">
@@ -259,7 +258,7 @@
 
             $('.error-notification').hide();
             $('.non-error').show();
-            $('#messages-container').html('<div class="msg-row"><div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-sides-padding msg-animate"><div class="bot-icon-div">Mairimed:</div><div class="panel message-panel bot-msg "><div class="panel-body bot-msg-body"><div><div class="message-text">Olá! Digite um medicamento ou uma doença que você deseja consultar</div></div></div></div></div></div>');
+            $('#messages-container').html('<div class="chatcontainer"><div class="msg-animate">Mairimed:</div><div class="message-text">Olá! Digite um medicamento ou uma doença que você deseja consultar</div>');
             message = {}
             message.command= 'start'
             chatsock.send(JSON.stringify(message)); // START TALKING!

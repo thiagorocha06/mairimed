@@ -14,11 +14,13 @@ function add_message_to_chat(data, formatted_div){
 	var chat = $('#messages-container');
 	var new_source = data["source"];
 	if (new_source == "BOT"){
-		chat.append('<div class="msg-row"><div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-sides-padding msg-animate"><div class="bot-icon-div">Mairimed:</div><div class="panel message-panel bot-msg "><div class="panel-body bot-msg-body"><div><div class="message-text">'+formatted_div+'</div></div></div></div></div></div>');
+		// chat.append('<div class="msg-row"><div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-sides-padding msg-animate"><div class="bot-icon-div">Mairimed:</div><div class="card message-card bot-msg "><div class="card-body bot-msg-body"><div><div class="message-text">'+formatted_div+'</div></div></div></div></div></div>');
+		chat.append('<div class="chatcontainer"><div class="msg-animate">Mairimed:</div><div class="message-text">'+formatted_div+'</div>');
 	}else if(new_source == "CANDIDATE"){
 
 		var child = $('<div class="msg-row">');
-		$(child).append('<div class="row"><div class="col-xs-10 col-sm-10 col-md-10 col-lg-10  pull-right no-sides-padding msg-animate"><div class="panel message-panel user-msg"><div class="panel-body user-msg-body"><div class="message-text"><span></span></div></div></div><div class="user-msg-bubble">Você</div></div>');
+		// $(child).append('<div class="row"><div class="col-xs-10 col-sm-10 col-md-10 col-lg-10  pull-right no-sides-padding msg-animate"><div class="card message-card user-msg"><div class="card-body user-msg-body"><div class="message-text"><span></span></div></div></div><div class="user-msg-bubble">Você</div></div>');
+		$(child).append('<div class="chatcontainer darker"><div class="msg-animate">Você:</div><div class="message-text'+formatted_div+'</div>');
 		$(child).find('span').html(formatted_div);
 		chat.append(child);
 	}

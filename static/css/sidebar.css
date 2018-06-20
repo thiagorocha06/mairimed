@@ -3,8 +3,8 @@ body {
 }
 
 .feather {
-  width: 16px;
-  height: 16px;
+  width: 30px;
+  height: 30px;
   vertical-align: text-bottom;
 }
 
@@ -63,6 +63,25 @@ body {
 /*
  * Links
 */
+
+.bd-toc-link {
+  margin-top: 10px;
+}
+
+.bd-toc-item h1 {
+  font-size: 20px;
+}
+
+.bd-toc-item p {
+  font-size: 10px;
+}
+
+.bd-toc-link.not-active{
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: #BDBDBD;
+}
 
 .bd-toc-link.active{
   background-color: #F5F0ED

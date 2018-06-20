@@ -24,6 +24,7 @@ urlpatterns = [
 
 
 ### ESCS ###
+    url(r'^escs/$', views.escs, name='escs'),
     url(r'^escs/3_serie/$', views.categorias_artigos, name='3_serie'),
     url(r'^escs/ha_3/$', views.categorias_artigos, name='ha_3'),
     url(r'^escs/4_serie/$', views.categorias_artigos, name='4_serie'),

@@ -20,332 +20,359 @@
 </div>
 
 <!-- CONTEUDO -->
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
-  <div class="artigo">
+  {% if artigo.artigo_interno == False %}
 
-    <h1>{{ artigo.titulo }}</h1>
+            <div class="artigo">
 
-    <!--
-    **********************
-    ***** INTRODUCAO *****
-    **********************
-    -->
-    {% if artigo.intro_top %}
-      <h2 id='introducao'>{{ artigo.intro_top }}</h2>
-    {% endif %}
-    {% if artigo.introducao %}
-      <p>{{ artigo.introducao|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.intro_figura1 %}
-      <img src="{{ artigo.intro_figura1.url }}" width="700" />
-    {% endif %}
-    {% if artigo.intro_figura1_texto %}
-      <p><small>{{ artigo.intro_figura1_texto|linebreaksbr }}</small></p>
-    {% endif %}
-    {% if artigo.intro_figura2 %}
-      <img src="{{ artigo.intro_figura2.url }}" width="700" />
-    {% endif %}
-    {% if artigo.intro_figura2_texto %}
-      <p><small>{{ artigo.intro_figura2_texto|linebreaksbr }}</small></p>
+              <h1>{{ artigo.titulo }}</h1>
+              {% if artigo.tema %}
+                <small>({{ artigo.especialidade }})</small> <small>({{ artigo.tema }})</small>
+              {% endif %}
+              {% if artigo.tema_basico %}
+                <small>({{ artigo.tema_basico }})</small>
+              {% endif %}
+
+              <div class="col-md-8">
+                <hr style="background-color:#ff9400ff" class="featurette-divider">
+              </div>
+
+              <!--
+              **********************
+              ***** INTRODUCAO *****
+              **********************
+              -->
+
+              {% if artigo.intro_top %}
+                <h2 id='introducao'>{{ artigo.intro_top }}</h2>
+              {% endif %}
+              {% if artigo.introducao %}
+                <div class="artigo content-markdown"><p>{{ artigo.introducao }}</p></div>
+              {% endif %}
+              {% if artigo.intro_figura1 %}
+                <img src="{{ artigo.intro_figura1.url }}" width="700" />
+              {% endif %}
+              {% if artigo.intro_figura1_texto %}
+                <p><small>{{ artigo.intro_figura1_texto|linebreaksbr }}</small></p>
+              {% endif %}
+              {% if artigo.intro_figura2 %}
+                <img src="{{ artigo.intro_figura2.url }}" width="700" />
+              {% endif %}
+              {% if artigo.intro_figura2_texto %}
+                <p><small>{{ artigo.intro_figura2_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!--
+              **********************
+              *** EPIDEMIOLOGIA ****
+              **********************
+              -->
+              {% if artigo.epidemio_top %}
+                <h2 id='epidemiologia'>{{ artigo.epidemio_top }}</h2>
+              {% endif %}
+              {% if artigo.epidemiologia %}
+                <div class="artigo content-markdown"><p>{{ artigo.epidemiologia }}</p></div>
+              {% endif %}
+              {% if artigo.epidemio_figura %}
+                <img src="{{ artigo.epidemio_figura.url }}" width="700" />
+              {% endif %}
+              {% if artigo.epidemio_figura_texto %}
+                <p><small>{{ artigo.epidemio_figura_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!--
+              **********************
+              *** CLASSIFICACAO ****
+              **********************
+              -->
+              {% if artigo.class_top %}
+                <h2 id='classificacao'>{{ artigo.class_top }}</h2>
+              {% endif %}
+              {% if artigo.classificacao %}
+                <div class="artigo content-markdown"><p>{{ artigo.classificacao }}</p></div>
+              {% endif %}
+              {% if artigo.clas_figura %}
+                <img src="{{ artigo.clas_figura.url }}" width="700" />
+              {% endif %}
+              {% if artigo.clas_figura_texto %}
+                <p><small>{{ artigo.clas_figura_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!--
+              **************************
+              ETIOLOGIA E FISIOPATOLOGIA
+              **************************
+              -->
+              {% if artigo.etio_top %}
+                <h2 id='etiologia_fisiopatologia'>{{ artigo.etio_top }}</h2>
+              {% endif %}
+              {% if artigo.etiologia_fisiopatologia %}
+                <div class="artigo content-markdown"><p>{{ artigo.etiologia_fisiopatologia }}</p></div>
+              {% endif %}
+              {% if artigo.etio_img1 %}
+                <img src="{{ artigo.etio_img1.url }}" width="700" />
+              {% endif %}
+              {% if artigo.etio_img1_texto %}
+                <p><small>{{ artigo.etio_img1_texto|linebreaksbr }}</small></p>
+              {% endif %}
+              {% if artigo.etio_img2 %}
+                <img src="{{ artigo.etio_img2.url }}" width="700" />
+              {% endif %}
+              {% if artigo.etio_img2_texto %}
+                <p><small>{{ artigo.etio_img2_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!--
+              *********************
+              **** DIAGNOSTICO ****
+              *********************
+              -->
+              {% if artigo.diag_top %}
+                <h2 id='diagnostico'>{{ artigo.diag_top }}</h2>
+              {% endif %}
+              {% if artigo.diagnostico %}
+                <div class="artigo content-markdown"><p>{{ artigo.diagnostico }}</p></div>
+              {% endif %}
+              {% if artigo.historia_figura %}
+                <img src="{{ artigo.historia_figura.url }}" width="700" />
+              {% endif %}
+              {% if artigo.historia_figura_texto %}
+                <p><small>{{ artigo.historia_figura_texto|linebreaksbr }}</small></p>
+              {% endif %}
+              {% if artigo.ef_figura %}
+                <img src="{{ artigo.ef_figura.url }}" width="700" />
+              {% endif %}
+              {% if artigo.ef_figura_texto %}
+                <p><small>{{ artigo.ef_figura_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!-- EXAMES COMPLEMENTARES -->
+              {% if artigo.exames_top_h2 %}
+                <h2 id='exames_complementares'>{{ artigo.exames_top_h2 }}</h2>
+              {% endif %}
+              {% if artigo.exames_complementares %}
+                <div class="artigo content-markdown"><p>{{ artigo.exames_complementares }}</p></div>
+              {% endif %}
+              {% if artigo.exames_img1 %}
+                <img src="{{ artigo.exames_img1.url }}" width="700" />
+              {% endif %}
+              {% if artigo.exames_img1_texto %}
+                <p><small>{{ artigo.exames_img1_texto|linebreaksbr }}</small></p>
+              {% endif %}
+              {% if artigo.exames_img2 %}
+                <img src="{{ artigo.exames_img2.url }}" width="700" />
+              {% endif %}
+              {% if artigo.exames_img2_texto %}
+                <p><small>{{ artigo.exames_img2_texto|linebreaksbr }}</small></p>
+              {% endif %}
+              {% if artigo.exames_img3 %}
+                <img src="{{ artigo.exames_img3.url }}" width="700" />
+              {% endif %}
+              {% if artigo.exames_img3_texto %}
+                <p><small>{{ artigo.exames_img3_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!-- CRITERIOS DIAGNOSTICOS -->
+              {% if artigo.criterios_top %}
+                <h2 id='criterios_diagnosticos'>{{ artigo.criterios_top }}</h2>
+              {% endif %}
+              {% if artigo.criterios_diagnosticos %}
+                <div class="artigo content-markdown"><p>{{ artigo.criterios_diagnosticos }}</p></div>
+              {% endif %}
+
+              <!-- DIAGNOSTICO DIFERENCIAL -->
+              {% if artigo.dd_top_h2 %}
+                <h2 id='diagnostico_diferencial'>{{ artigo.dd_top_h2 }}</h2>
+              {% endif %}
+              {% if artigo.diagnostico_diferencial %}
+                <div class="artigo content-markdown"><p>{{ artigo.diagnostico_diferencial }}</p></div>
+              {% endif %}
+              {% if artigo.dd_img %}
+                <img src="{{ artigo.dd_img.url }}" width="700" />
+              {% endif %}
+              {% if artigo.dd_img_texto %}
+                <p><small>{{ artigo.dd_img_texto|linebreaksbr }}</small></p>
+              {% endif %}
+              {% if artigo.diag_figura %}
+                <img src="{{ artigo.diag_figura.url }}" width="700" />
+              {% endif %}
+              {% if artigo.diag_figura_texto %}
+                <p><small>{{ artigo.diag_figura_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!--
+              ********************
+              **TOPICO ACESSORIO**
+              ********************
+              -->
+              {% if artigo.top1 %}
+                <h2 id='top1'>{{ artigo.top1|linebreaksbr }}</h2>
+              {% endif %}
+              {% if artigo.texto1 %}
+                <div class="artigo content-markdown"><p>{{ artigo.texto1 }}</p></div>
+              {% endif %}
+              {% if artigo.top1_img1 %}
+                <img src="{{ artigo.top1_img1.url }}" width="700" />
+              {% endif %}
+              {% if artigo.top1_img1_texto %}
+                <p><small>{{ artigo.top1_img1_texto|linebreaksbr }}</small></p>
+              {% endif %}
+              {% if artigo.top1_img2 %}
+                <img src="{{ artigo.top1_img2.url }}" width="700" />
+              {% endif %}
+              {% if artigo.top1_img2_texto %}
+                <p><small>{{ artigo.top1_img2_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!--
+              ********************
+              **** TRATAMENTO ****
+              ********************
+              -->
+              {% if artigo.tratamento_top %}
+                <h2 id='tratamento_e_manejo'>{{ artigo.tratamento_top }}</h2>
+              {% endif %}
+              {% if artigo.tratamento_e_manejo %}
+                <div class="artigo content-markdown"><p>{{ artigo.tratamento_e_manejo }}</p></div>
+              {% endif %}
+
+              {% if artigo.trat_figura %}
+                <img src="{{ artigo.trat_figura.url }}" width="700" />
+              {% endif %}
+              {% if artigo.trat_figura_texto %}
+                <p><small>{{ artigo.trat_figura_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!-- PROFILAXIA -->
+              {% if artigo.profilaxia_top %}
+                <h2 id='profilaxia'>{{ artigo.profilaxia_top }}</h2>
+              {% endif %}
+              {% if artigo.profilaxia %}
+                <div class="artigo content-markdown"><p>{{ artigo.profilaxia }}</p></div>
+              {% endif %}
+
+              {% if artigo.prof_figura %}
+                <img src="{{ artigo.prof_figura.url }}" width="700" />
+              {% endif %}
+              {% if artigo.prof_figura_texto %}
+                <p><small>{{ artigo.prof_figura_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!-- PROGNOSTICO -->
+              {% if artigo.prognostico_top %}
+                <h2 id='prognostico'>{{ artigo.prognostico_top }}</h2>
+              {% endif %}
+              {% if artigo.prognostico %}
+                <div class="artigo content-markdown"><p>{{ artigo.prognostico }}</p></div>
+              {% endif %}
+
+              {% if artigo.prognostico_img %}
+                <img src="{{ artigo.prognostico_img.url }}" width="700" />
+              {% endif %}
+              {% if artigo.prognostico_img_texto %}
+                <p><small>{{ artigo.prognostico_img_texto|linebreaksbr }}</small></p>
+              {% endif %}
+
+              <!-- COMPLICACOES -->
+              {% if artigo.complicacoes_top %}
+                <h2 id='complicacoes'>{{ artigo.complicacoes_top }}</h2>
+              {% endif %}
+              {% if artigo.complicacoes_top %}
+                <div class="artigo content-markdown"><p>{{ artigo.complicacoes }}</p></div>
+              {% endif %}
+
+              <!--
+              *******************
+              **** ALGORITMO ****
+              *******************
+              -->
+              {% if artigo.algoritmo_img1 %}
+                <h2 id='algoritmo_img1'>{{ artigo.algoritmo_top }}</h2>
+                {% if artigo.algoritmo_img1 %}
+                  <img src="{{ artigo.algoritmo_img1.url }}" width="700" />
+                {% endif %}
+                {% if artigo.algoritmo_img1_texto %}
+                  <p><small>{{ artigo.algoritmo_img1_texto|linebreaksbr }}</small></p>
+                {% endif %}
+                {% if artigo.algoritmo_img2 %}
+                  <img src="{{ artigo.algoritmo_img2.url }}" width="700" />
+                {% endif %}
+                {% if artigo.algoritmo_img2_texto %}
+                  <p><small>{{ artigo.algoritmo_img2_texto|linebreaksbr }}</small></p>
+                {% endif %}
+                {% if artigo.algoritmo_img3 %}
+                  <img src="{{ artigo.algoritmo_img3.url }}" width="700" />
+                {% endif %}
+                {% if artigo.algoritmo_img3_texto %}
+                  <p><small>{{ artigo.algoritmo_img3_texto|linebreaksbr }}</small></p>
+                {% endif %}
+              {% endif %}
+
+              <!--
+              *******************
+              *** REFERENCIAS ***
+              *******************
+              -->
+              {% if artigo.referencias_top %}
+                <h2 id="referencias">{{ artigo.referencias_top }}</h2>
+              {% endif %}
+              {% if artigo.referencias %}
+                <div class="artigo content-markdown"><p>{{ artigo.referencias }}</p></div>
+              {% endif %}
+
+              <!--
+              *******************
+              *** APRESENTAÇÃO ***
+              *******************
+              -->
+              {% if artigo.apresentacao %}
+                <h2 id="apresentacao">APRESENTAÇÃO</h2>
+                <iframe src="{{ artigo.apresentacao }}"
+                width="490px" height="470px" frameborder="0" marginwidth="0" marginheight="0"
+                scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen>
+                </iframe>
+              {% endif %}
+
+            </div>
+
     {% endif %}
 
-    <!--
-    **********************
-    *** EPIDEMIOLOGIA ****
-    **********************
-    -->
-    {% if artigo.epidemio_top %}
-      <h2 id='epidemiologia'>{{ artigo.epidemio_top }}</h2>
-    {% endif %}
-    {% if artigo.epidemiologia %}
-      <p>{{ artigo.epidemiologia|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.epidemio_figura %}
-      <img src="{{ artigo.epidemio_figura.url }}" width="700" />
-    {% endif %}
-    {% if artigo.epidemio_figura_texto %}
-      <p><small>{{ artigo.epidemio_figura_texto|linebreaksbr }}</small></p>
-    {% endif %}
+    {% if artigo.artigo_interno == True %}
+    <div class="texto-centro">
+      <h1>RESUMO NÃO DISPONÍVEL NO MOMENTO</h1>
+    </div>
 
-    <!--
-    **********************
-    *** CLASSIFICACAO ****
-    **********************
-    -->
-    {% if artigo.class_top %}
-      <h2 id='classificacao'>{{ artigo.class_top }}</h2>
-    {% endif %}
-    {% if artigo.classificacao %}
-      <p>{{ artigo.classificacao|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.clas_figura %}
-      <img src="{{ artigo.clas_figura.url }}" width="700" />
-    {% endif %}
-    {% if artigo.clas_figura_texto %}
-      <p><small>{{ artigo.clas_figura_texto|linebreaksbr }}</small></p>
-    {% endif %}
+    <div class="artigo">
+      <p>Entre com uma conta:</p>
+      <div id="login">
+        <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+        <div class="control-group">
+            <label class="control-label" for="username">Usuário</label>
+            <div class="controls">
+                <input type="text" id="username" name="username"  placeholder="Usuário">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password">Senha</label>
+            <div class="controls">
+                <input type="password" name="password" id="password" placeholder="Senha">
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">Entrar</button>
+            </div>
+        </div>
+        </form>
+      </div>
+    </div>
 
-    <!--
-    **************************
-    ETIOLOGIA E FISIOPATOLOGIA
-    **************************
-    -->
-    {% if artigo.etio_top %}
-      <h2 id='etiologia_fisiopatologia'>{{ artigo.etio_top }}</h2>
     {% endif %}
-    {% if artigo.etiologia_fisiopatologia %}
-      <p>{{ artigo.etiologia_fisiopatologia|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.etio_img1 %}
-      <img src="{{ artigo.etio_img1.url }}" width="700" />
-    {% endif %}
-    {% if artigo.etio_img1_texto %}
-      <p><small>{{ artigo.etio_img1_texto|linebreaksbr }}</small></p>
-    {% endif %}
-    {% if artigo.etio_img2 %}
-      <img src="{{ artigo.etio_img2.url }}" width="700" />
-    {% endif %}
-    {% if artigo.etio_img2_texto %}
-      <p><small>{{ artigo.etio_img2_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-    <!--
-    *********************
-    **** DIAGNOSTICO ****
-    *********************
-    -->
-    {% if artigo.diag_top %}
-      <h2 id='diagnostico'>{{ artigo.diag_top }}</h2>
-    {% endif %}
-    {% if artigo.diagnostico %}
-      <p>{{ artigo.diagnostico|linebreaksbr }}</p>
-    {% endif %}
-
-    <!-- HISTORIA -->
-    {% if artigo.historia_top_h2 %}
-      <h2 id='historia_top_h2'>{{ artigo.historia_top_h2 }}</h2>
-    {% endif %}
-    {% if artigo.historia_top %}
-      <h3 id='historia_clinica'>{{ artigo.historia_top }}</h3>
-    {% endif %}
-    {% if artigo.historia_clinica %}
-      <p>{{ artigo.historia_clinica|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.historia_figura %}
-      <img src="{{ artigo.historia_figura.url }}" width="700" />
-    {% endif %}
-    {% if artigo.historia_figura_texto %}
-      <p><small>{{ artigo.historia_figura_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-    <!-- EXAME FISICO -->
-    {% if artigo.ef_top_h2 %}
-      <h2 id='ef_top_h2'>{{ artigo.ef_top_h2 }}</h2>
-    {% endif %}
-    {% if artigo.ef_top %}
-      <h3 id='exame_fisico'>{{ artigo.ef_top }}</h3>
-    {% endif %}
-    {% if artigo.exame_fisico %}
-      <p>{{ artigo.exame_fisico|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.ef_figura %}
-      <img src="{{ artigo.ef_figura.url }}" width="700" />
-    {% endif %}
-    {% if artigo.ef_figura_texto %}
-      <p><small>{{ artigo.ef_figura_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-    <!-- EXAMES COMPLEMENTARES -->
-    {% if artigo.exames_top_h2 %}
-      <h3 id='exames_complementares'>{{ artigo.exames_top_h2 }}</h3>
-    {% endif %}
-    {% if artigo.exames_top %}
-      <h3 id='exames_complementares'>{{ artigo.exames_top }}</h3>
-    {% endif %}
-    {% if artigo.exames_complementares %}
-      <p>{{ artigo.exames_complementares|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.exames_img1 %}
-      <img src="{{ artigo.exames_img1.url }}" width="700" />
-    {% endif %}
-    {% if artigo.exames_img1_texto %}
-      <p><small>{{ artigo.exames_img1_texto|linebreaksbr }}</small></p>
-    {% endif %}
-    {% if artigo.exames_img2 %}
-      <img src="{{ artigo.exames_img2.url }}" width="700" />
-    {% endif %}
-    {% if artigo.exames_img2_texto %}
-      <p><small>{{ artigo.exames_img2_texto|linebreaksbr }}</small></p>
-    {% endif %}
-    {% if artigo.exames_img3 %}
-      <img src="{{ artigo.exames_img3.url }}" width="700" />
-    {% endif %}
-    {% if artigo.exames_img3_texto %}
-      <p><small>{{ artigo.exames_img3_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-    <!-- CRITERIOS DIAGNOSTICOS -->
-    {% if artigo.criterios_top %}
-      <h3 id='criterios_diagnosticos'>{{ artigo.criterios_top }}</h3>
-    {% if artigo.criterios_diagnosticos %}
-      <p>{{ artigo.criterios_diagnosticos|linebreaksbr }}</p>
-    {% endif %}
-
-    <!-- DIAGNOSTICO DIFERENCIAL -->
-    {% if artigo.dd_top_h2 %}
-      <h3 id='diagnostico_diferencial'>{{ artigo.dd_top_h2 }}</h3>
-    {% endif %}
-    {% if artigo.dd_top %}
-      <h3 id='diagnostico_diferencial'>{{ artigo.dd_top }}</h3>
-    {% endif %}
-    {% if artigo.diagnostico_diferencial %}
-      <p>{{ artigo.diagnostico_diferencial|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.dd_img %}
-      <img src="{{ artigo.dd_img.url }}" width="700" />
-    {% endif %}
-    {% if artigo.dd_img_texto %}
-      <p><small>{{ artigo.dd_img_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-    {% if artigo.diag_figura %}
-      <img src="{{ artigo.diag_figura.url }}" width="700" />
-    {% endif %}
-    {% if artigo.diag_figura_texto %}
-      <p><small>{{ artigo.diag_figura_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-    <!--
-    ********************
-    **TOPICO ACESSORIO**
-    ********************
-    -->
-    {% if artigo.top1 %}
-      <h2 id='top1'>{{ artigo.top1|linebreaksbr }}</h2>
-    {% endif %}
-    {% if artigo.texto1 %}
-      <p>{{ artigo.texto1|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.top1_img1 %}
-      <img src="{{ artigo.top1_img1.url }}" width="700" />
-    {% endif %}
-    {% if artigo.top1_img1_texto %}
-      <p><small>{{ artigo.top1_img1_texto|linebreaksbr }}</small></p>
-    {% endif %}
-    {% if artigo.top1_img2 %}
-      <img src="{{ artigo.top1_img2.url }}" width="700" />
-    {% endif %}
-    {% if artigo.top1_img2_texto %}
-      <p><small>{{ artigo.top1_img2_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-
-    <!--
-    ********************
-    **** TRATAMENTO ****
-    ********************
-    -->
-    {% if artigo.tratamento_top %}
-      <h2 id='tratamento_e_manejo'>{{ artigo.tratamento_top }}</h2>
-    {% endif %}
-    {% if artigo.tratamento_e_manejo %}
-      <p>{{ artigo.tratamento_e_manejo|linebreaksbr }}</p>
-    {% endif %}
-
-    {% if artigo.trat_figura %}
-      <img src="{{ artigo.trat_figura.url }}" width="700" />
-    {% endif %}
-    {% if artigo.trat_figura_texto %}
-      <p><small>{{ artigo.trat_figura_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-    <!-- PROFILAXIA -->
-    {% if artigo.profilaxia_top %}
-      <h2 id='profilaxia'>{{ artigo.profilaxia_top }}</h2>
-    {% endif %}
-    {% if artigo.profilaxia %}
-      <p>{{ artigo.profilaxia|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.prof_figura %}
-      <img src="{{ artigo.prof_figura.url }}" width="700" />
-    {% endif %}
-    {% if artigo.prof_figura_texto %}
-      <p><small>{{ artigo.prof_figura_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-    <!-- PROGNOSTICO -->
-    {% if artigo.prognostico_top %}
-      <h2 id='prognostico'>{{ artigo.prognostico_top }}</h2>
-    {% endif %}
-    {% if artigo.prognostico %}
-      <p>{{ artigo.prognostico|linebreaksbr }}</p>
-    {% endif %}
-    {% if artigo.prognostico_img %}
-      <img src="{{ artigo.prognostico_img.url }}" width="700" />
-    {% endif %}
-    {% if artigo.prognostico_img_texto %}
-      <p><small>{{ artigo.prognostico_img_texto|linebreaksbr }}</small></p>
-    {% endif %}
-
-    <!-- COMPLICACOES -->
-    {% if artigo.complicacoes_top %}
-      <h2 id='complicacoes'>{{ artigo.complicacoes_top }}</h2>
-    {% endif %}
-    {% if artigo.complicacoes %}
-      <p>{{ artigo.complicacoes|linebreaksbr }}</p>
-    {% endif %}
-
-    <!--
-    *******************
-    **** ALGORITMO ****
-    *******************
-    -->
-    {% if artigo.algoritmo_img1 %}
-      <h2 id='algoritmo_img1'>{{ artigo.algoritmo_top }}</h2>
-      {% if artigo.algoritmo_img1 %}
-        <img src="{{ artigo.algoritmo_img1.url }}" width="700" />
-      {% endif %}
-      {% if artigo.algoritmo_img1_texto %}
-        <p><small>{{ artigo.algoritmo_img1_texto|linebreaksbr }}</small></p>
-      {% endif %}
-      {% if artigo.algoritmo_img2 %}
-        <img src="{{ artigo.algoritmo_img2.url }}" width="700" />
-      {% endif %}
-      {% if artigo.algoritmo_img2_texto %}
-        <p><small>{{ artigo.algoritmo_img2_texto|linebreaksbr }}</small></p>
-      {% endif %}
-      {% if artigo.algoritmo_img3 %}
-        <img src="{{ artigo.algoritmo_img3.url }}" width="700" />
-      {% endif %}
-      {% if artigo.algoritmo_img3_texto %}
-        <p><small>{{ artigo.algoritmo_img3_texto|linebreaksbr }}</small></p>
-      {% endif %}
-    {% endif %}
-
-    <!--
-    *******************
-    *** REFERENCIAS ***
-    *******************
-    -->
-    {% if artigo.referencias %}
-      <h2 id="referencias">{{ artigo.referencias_top }}</h2>
-      <p>{{ artigo.referencias|linebreaksbr }}</p>
-    {% endif %}
-
-    <!--
-    *******************
-    *** APRESENTAÇÃO ***
-    *******************
-    -->
-    {% if artigo.apresentacao %}
-      <h2 id="apresentacao">APRESENTAÇÃO</h2>
-      <iframe src="{{ artigo.apresentacao }}"
-      width="490px" height="470px" frameborder="0" marginwidth="0" marginheight="0"
-      scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen>
-      </iframe>
-    {% endif %}
-  </div>
 
 </main>
 {% endblock %}
