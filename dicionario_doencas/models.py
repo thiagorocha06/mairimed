@@ -3,10 +3,10 @@ from django.utils.translation import ugettext as _
 
 class Doenca(models.Model):
     nome = models.CharField(max_length=200, blank=False)
-    introducao = models.TextField(max_length=50, blank=True, null=True)
-    manifestacoes = models.TextField(max_length=50, blank=True, null=True)
-    exames = models.TextField(max_length=50, blank=True, null=True)
-    tratamento = models.TextField(max_length=50, blank=True, null=True)
+    introducao = models.TextField(max_length=500, blank=True, null=True)
+    manifestacoes = models.TextField(max_length=500, blank=True, null=True)
+    exames = models.TextField(max_length=500, blank=True, null=True)
+    tratamento = models.TextField(max_length=500, blank=True, null=True)
 
     url = models.SlugField(
         max_length=60, blank=False, null=True,
