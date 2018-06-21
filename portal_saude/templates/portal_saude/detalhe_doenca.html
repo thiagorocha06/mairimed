@@ -46,19 +46,23 @@
     <h1>{{ doenca.nome }}</h1>
 
     {% if doenca.introducao %}
-      <h3>INTRODUÇÃO</h3>
+      <h3>Introdução</h3>
       <div class="artigo content-markdown"><p>{{ doenca.introducao }}</p></div>
     {% endif %}
     {% if doenca.manifestacoes %}
-      <h3>MANIFESTAÇÕES</h3>
+      <h3>Manifestações Clínicas</h3>
       <div class="artigo content-markdown"><p>{{ doenca.manifestacoes }}</p></div>
     {% endif %}
     {% if doenca.exames %}
-      <h3>EXAMES</h3>
+      <h3>Exames</h3>
       <div class="artigo content-markdown"><p>{{ doenca.exames }}</p></div>
     {% endif %}
+    {% if doenca.diagnostico %}
+      <h3>Diagnóstico</h3>
+      <div class="artigo content-markdown"><p>{{ doenca.diagnostico }}</p></div>
+    {% endif %}
     {% if doenca.tratamento %}
-      <h3>TRATAMENTO</h3>
+      <h3>Tratamento</h3>
       <div class="artigo content-markdown"><p>{{ doenca.tratamento }}</p></div>
     {% endif %}
     {% if doenca.texto %}

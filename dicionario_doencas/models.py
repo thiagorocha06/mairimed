@@ -6,6 +6,7 @@ class Doenca(models.Model):
     introducao = models.TextField(max_length=500, blank=True, null=True)
     manifestacoes = models.TextField(max_length=500, blank=True, null=True)
     exames = models.TextField(max_length=500, blank=True, null=True)
+    diagnostico = models.TextField(max_length=500, blank=True, null=True)
     tratamento = models.TextField(max_length=500, blank=True, null=True)
     texto = models.TextField(blank=True, null=True)
 
