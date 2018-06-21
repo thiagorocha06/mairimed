@@ -57,8 +57,8 @@ class DoencaDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DoencaDetailView, self).get_context_data(**kwargs)
-        context['doencas'] = Doenca.objects.order_by('-nome')
-        context['doencas_list'] = Doenca.objects.order_by('-pk')[:5]
+        context['doencas'] = Doenca.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')
+        context['doencas_list'] = Doenca.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:5]
         return context
 
 class FarmacoDetailView(DetailView):
@@ -69,8 +69,8 @@ class FarmacoDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(FarmacoDetailView, self).get_context_data(**kwargs)
-        context['farmacos'] = Farmaco.objects.order_by('-nome')
-        context['farmacos_list'] = Farmaco.objects.order_by('-pk')[:5]
+        context['farmacos'] = Farmaco.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')
+        context['farmacos_list'] = Farmaco.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:5]
         return context
 
 class TermoDetailView(DetailView):
@@ -91,7 +91,7 @@ class DoencasPortalView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(DoencasPortalView, self).get_context_data(**kwargs)
-        context['doencas_list'] = Doenca.objects.order_by('-nome')
+        context['doencas_list'] = Doenca.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')
         return context
 
 class AlimentosPortalView(TemplateView):
@@ -100,7 +100,7 @@ class AlimentosPortalView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(AlimentosPortalView, self).get_context_data(**kwargs)
-        context['alimentos_list'] = Alimento.objects.order_by('-nome')
+        context['alimentos_list'] = Alimento.objects.order_by('nome')
         return context
 
 class TermosPortalView(TemplateView):
@@ -109,7 +109,7 @@ class TermosPortalView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TermosPortalView, self).get_context_data(**kwargs)
-        context['termos_list'] = Termo.objects.order_by('-nome')
+        context['termos_list'] = Termo.objects.order_by('nome')
         return context
 
 class FarmacosPortalView(TemplateView):
@@ -118,7 +118,7 @@ class FarmacosPortalView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(FarmacosPortalView, self).get_context_data(**kwargs)
-        context['farmacos_list'] = Farmaco.objects.order_by('-nome')
+        context['farmacos_list'] = Farmaco.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')
         return context
 
 class ViewMateriaPorPaotologia(ListView):

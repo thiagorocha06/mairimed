@@ -68,10 +68,10 @@ class InicioView(ArtigoMixinDetailView, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(InicioView, self).get_context_data(**kwargs)
         context['patologias'] = Patologia.objects.all()
-        context['alimentos'] = Alimento.objects.order_by('-nome')[:4]
-        context['doencas'] = Doenca.objects.order_by('-nome')[:4]
-        context['farmacos'] = Farmaco.objects.order_by('-nome')[:4]
-        context['termos'] = Termo.objects.order_by('-nome')[:4]
+        context['alimentos'] = Alimento.objects.order_by('nome')[:4]
+        context['doencas'] = Doenca.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:4]
+        context['farmacos'] = Farmaco.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:4]
+        context['termos'] = Termo.objects.order_by('nome')[:4]
 
         context['materias'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')
         context['materia_saude'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[7]).order_by('-data_de_publicacao')[:4]

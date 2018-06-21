@@ -73,6 +73,14 @@
       <h3>Uso na Gravidez</h3>
       <div class="artigo content-markdown"><p>{{ farmaco.gravidez }}</p></div>
     {% endif %}
+    {% if farmaco.gravidez %}
+      <h3>Uso na Gravidez</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.gravidez }}</p></div>
+    {% endif %}
+    {% if farmaco.lactacao %}
+      <h3>Uso durante a Lactação</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.lactacao }}</p></div>
+    {% endif %}
     {% if farmaco.interacoes %}
       <h3>Interações</h3>
       <div class="artigo content-markdown"><p>{{ farmaco.interacoes }}</p></div>
@@ -80,6 +88,10 @@
     {% if farmaco.posologia %}
       <h3>Posologia</h3>
       <div class="artigo content-markdown"><p>{{ farmaco.posologia }}</p></div>
+    {% endif %}
+    {% if farmaco.pediatria %}
+      <h3>Pediatria</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.pediatria }}</p></div>
     {% endif %}
     {% if farmaco.reacoes %}
       <h3>Reações Adversas</h3>

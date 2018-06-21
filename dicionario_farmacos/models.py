@@ -1,7 +1,10 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import ugettext as _
 
 class Farmaco(models.Model):
+    data_de_criacao = models.DateTimeField(default=timezone.now)
+    data_de_publicacao = models.DateTimeField(blank=True, null=True)
     nome = models.CharField(max_length=200, blank=False)
     introducao = models.TextField(max_length=1000, blank=True, null=True)
     indicacoes = models.TextField(max_length=1000, blank=True, null=True)

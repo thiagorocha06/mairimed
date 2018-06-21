@@ -65,6 +65,10 @@
       <h3>Tratamento</h3>
       <div class="artigo content-markdown"><p>{{ doenca.tratamento }}</p></div>
     {% endif %}
+    {% if doenca.prescricao %}
+      <h3>Prescrição</h3>
+      <div class="artigo content-markdown"><p>{{ doenca.prescricao }}</p></div>
+    {% endif %}
     {% if doenca.texto %}
       <div class="artigo content-markdown"><p>{{ doenca.texto }}</p></div>
     {% endif %}

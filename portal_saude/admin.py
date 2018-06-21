@@ -28,24 +28,36 @@ class PatologiaAdmin(admin.ModelAdmin):
     # list_filter = ('especialidade',)
 
 class AlimentoModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget },
+    }
     list_display = ["nome", "tipo"]
     search_fields = ["nome"]
     class meta:
         model = Alimento
 
 class DoencaModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget },
+    }
     list_display = ["nome"]
     search_fields = ["nome"]
     class meta:
         model = Doenca
 
 class FarmacoModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget },
+    }
     list_display = ["nome"]
     search_fields = ["nome"]
     class meta:
         model = Farmaco
 
 class TermoModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget },
+    }
     list_display = ["nome", "tipo"]
     list_filter = ["tipo"]
     search_fields = ["nome"]
