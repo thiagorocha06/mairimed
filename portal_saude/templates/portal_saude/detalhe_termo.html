@@ -50,6 +50,9 @@
     <h1>{{ termo.nome }}</h1>
 
     <div class="artigo content-markdown"><p>{{ termo.definicao }}</p></div>
+    {% if termo.texto %}
+      <div class="artigo content-markdown"><p>{{ termo.texto }}</p></div>
+    {% endif %}
   </div>
 
 </main>

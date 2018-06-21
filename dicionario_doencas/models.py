@@ -7,6 +7,7 @@ class Doenca(models.Model):
     manifestacoes = models.TextField(max_length=500, blank=True, null=True)
     exames = models.TextField(max_length=500, blank=True, null=True)
     tratamento = models.TextField(max_length=500, blank=True, null=True)
+    texto = models.TextField(blank=True, null=True)
 
     url = models.SlugField(
         max_length=60, blank=False, null=True,

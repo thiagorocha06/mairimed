@@ -45,16 +45,49 @@
 
     <h1>{{ farmaco.nome }}</h1>
 
-    <div class="artigo content-markdown"><p>{{ farmaco.introducao }}</p></div>
-    <div class="artigo content-markdown"><p>{{ farmaco.indicacoes }}</p></div>
-    <div class="artigo content-markdown"><p>{{ farmaco.farmacodinamica }}</p></div>
-    <div class="artigo content-markdown"><p>{{ farmaco.farmacocinetica }}</p></div>
-    <div class="artigo content-markdown"><p>{{ farmaco.contraindicacoes }}</p></div>
-    <div class="artigo content-markdown"><p>{{ farmaco.precaucoes }}</p></div>
-    <div class="artigo content-markdown"><p>{{ farmaco.gravidez }}</p></div>
-    <div class="artigo content-markdown"><p>{{ farmaco.interacoes }}</p></div>
-    <div class="artigo content-markdown"><p>{{ farmaco.posologia }}</p></div>
-    <div class="artigo content-markdown"><p>{{ farmaco.reacoes }}</p></div>
+    {% if farmaco.introducao %}
+      <h3>INTRODUÇÃO</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.introducao }}</p></div>
+    {% endif %}
+    {% if farmaco.indicacoes %}
+      <h3>INDICAÇÕES</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.indicacoes }}</p></div>
+    {% endif %}
+    {% if farmaco.farmacodinamica %}
+      <h3>FARMACODINÂMICA</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.farmacodinamica }}</p></div>
+    {% endif %}
+    {% if farmaco.farmacocinetica %}
+      <h3>FARMACOCINÉTICA</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.farmacocinetica }}</p></div>
+    {% endif %}
+    {% if farmaco.contraindicacoes %}
+      <h3>CONTRAINDICAÇÕES</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.contraindicacoes }}</p></div>
+    {% endif %}
+    {% if farmaco.precaucoes %}
+      <h3>PRECAUÇÕES</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.precaucoes }}</p></div>
+    {% endif %}
+    {% if farmaco.gravidez %}
+      <h3>USO NA GRAVIDEZ</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.gravidez }}</p></div>
+    {% endif %}
+    {% if farmaco.interacoes %}
+      <h3>INTERAÇÕES</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.interacoes }}</p></div>
+    {% endif %}
+    {% if farmaco.posologia %}
+      <h3>POSOLOGIA</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.posologia }}</p></div>
+    {% endif %}
+    {% if farmaco.reacoes %}
+      <h3>REAÇÕES ADVERSAS</h3>
+      <div class="artigo content-markdown"><p>{{ farmaco.reacoes }}</p></div>
+    {% endif %}
+    {% if farmaco.texto %}
+      <div class="artigo content-markdown"><p>{{ farmaco.texto }}</p></div>
+    {% endif %}
 
   </div>
 

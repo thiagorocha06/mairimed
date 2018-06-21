@@ -49,7 +49,34 @@
 
     <h1>{{ alimento.nome }}</h1>
 
-    <div class="artigo content-markdown"><p>{{ alimento.texto }}</p></div>
+    {% if alimento.nome_cientifico %}
+      <p style="font-weight: bold">Nome científico:</p>
+      <div class="artigo content-markdown"><p>{{ alimento.nome_cientifico }}</p></div>
+    {% endif %}
+    {% if alimento.nomes_populares %}
+      <p style="font-weight: bold">Nomes populares:</p>
+      <div class="artigo content-markdown"><p>{{ alimento.nomes_populares }}</p></div>
+    {% endif %}
+    {% if alimento.componentes %}
+      <h3>COMPONENTES</h3>
+      <div class="artigo content-markdown"><p>{{ alimento.componentes }}</p></div>
+    {% endif %}
+    {% if alimento.tabela_nutricional %}
+      <h3>TABELA NUTRICIONAL</h3>
+      <div class="artigo content-markdown"><p>{{ alimento.tabela_nutricional }}</p></div>
+    {% endif %}
+    {% if alimento.beneficios %}
+      <h3>BENEFÍCIOS</h3>
+      <div class="artigo content-markdown"><p>{{ alimento.beneficios }}</p></div>
+    {% endif %}
+    {% if alimento.consumo %}
+      <h3>CONSUMO</h3>
+      <div class="artigo content-markdown"><p>{{ alimento.consumo }}</p></div>
+    {% endif %}
+    {% if alimento.texto %}
+      <div class="artigo content-markdown"><p>{{ alimento.texto }}</p></div>
+    {% endif %}
+
   </div>
 
 </main>
