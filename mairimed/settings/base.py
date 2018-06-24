@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'contactus',
     'portal_saude',
     'channels',
+    'chatbot',
 ]
 
 MIDDLEWARE = [
@@ -176,6 +177,6 @@ CONTACT_US_EMAIL = 'mairimed.com@gmail.com'
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "site_mairimed.routing.channel_routing",
+        "ROUTING": "chatbot.routing.channel_routing",
     },
 }

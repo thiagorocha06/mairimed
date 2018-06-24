@@ -1,4 +1,4 @@
-{% extends "inicio_base_novo.html" %}
+{% extends "inicio_base.html" %}
 {% load staticfiles%}
 {% load hitcount_tags %}
 
@@ -99,5 +99,70 @@
     <p style="font-size: 12px; color: #666; text-align: center;">...</p>
 
   </div><!-- /.container -->
+
+{% endblock %}
+
+{% block websockets %}
+
+<script src="{% static 'js/reconnecting-websocket.min.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'js/internal-chatbox.js' %}" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+    // START WEBSOCKETS
+    var supportsWebSockets = ('WebSocket' in window || 'MozWebSocket' in window) && WebSocket;
+    if(!supportsWebSockets){
+        $(".very-old-browser-notification").show();
+        $(".non-error").hide();
+    }else{
+        $(".very-old-browser-notification").hide();
+        $(".non-error").show();
+    }
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+
+    // Calls the websocket connect channel
+    var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + "/chat/stream/test-chat");
+
+
+    $("#messageToSend").keypress(function (e) {
+        var key = e.which;
+        if (key == 13)  // trigger message send when 'enter' key is clicked
+        {
+            $('#messageSendButton').trigger('click');
+            return false;
+        }
+    });
+
+    // Code that is called when the socket is succesfully opened
+    chatsock.onopen = function(message) {
+
+        $('.error-notification').hide();
+        $('.non-error').show();
+        $('#messages-container').html('<div class="chatcontainer"><div class="msg-animate">Mairimed:</div><div class="message-text">Olá! Digite um medicamento ou uma doença que você deseja consultar</div>');
+        message = {}
+        message.command= 'start'
+        chatsock.send(JSON.stringify(message)); // START TALKING!
+    }
+    chatsock.onmessage = function(message){
+        processAndDisplayChatMessage(message);
+    };
+
+    chatsock.onclose = function(message){
+        console.log("connection lost ... ");
+    }
+
+    chatsock.onerror = function(message){
+        console.log("Error reconnecting ... ");
+        $('.error-notification').html("Não foi possível conectar ao servidor. Por favor tente novamente em alguns minutos (recarregando a página). Se o problema persistir, por favor entre em contato (mairimed.com@gmail.com).")
+        $('.error-notification').show();
+        $('.non-error').hide();
+        $("#body-container").scrollTop( $('#body-container')[0].scrollHeight );
+    }
+
+    $(document).ready(function() {
+        $("#body-container").scrollTop( $('#body-container')[0].scrollHeight );
+    });
+
+</script>
 
 {% endblock %}

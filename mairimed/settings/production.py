@@ -65,6 +65,7 @@ if not settings.DEBUG:
         'contactus',
         'portal_saude',
         'channels',
+        'chatbot',
     ]
 
     MIDDLEWARE = [
@@ -199,6 +200,6 @@ if not settings.DEBUG:
     CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "site_mairimed.routing.channel_routing",
+        "ROUTING": "chatbot.routing.channel_routing",
         },
     }

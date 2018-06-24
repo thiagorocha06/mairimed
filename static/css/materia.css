@@ -59,7 +59,14 @@
     color: #000;
 }
 
-.artigo h5, .artigo h4 a, .artigo h4 a:visited {
+.artigo h5, .artigo h5 a, .artigo h5 a:visited {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16pt;
+    font-style: italic;
+    color: #000;
+}
+
+.artigo h6, .artigo h6 a, .artigo h6 a:visited {
     font-family: 'Ubuntu', sans-serif;
     font-size: 11pt;
     font-style: italic;

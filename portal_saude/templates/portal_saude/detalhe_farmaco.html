@@ -73,10 +73,6 @@
       <h3>Uso na Gravidez</h3>
       <div class="artigo content-markdown"><p>{{ farmaco.gravidez }}</p></div>
     {% endif %}
-    {% if farmaco.gravidez %}
-      <h3>Uso na Gravidez</h3>
-      <div class="artigo content-markdown"><p>{{ farmaco.gravidez }}</p></div>
-    {% endif %}
     {% if farmaco.lactacao %}
       <h3>Uso durante a Lactação</h3>
       <div class="artigo content-markdown"><p>{{ farmaco.lactacao }}</p></div>
@@ -100,6 +96,7 @@
     {% if farmaco.texto %}
       <div class="artigo content-markdown"><p>{{ farmaco.texto }}</p></div>
     {% endif %}
+    <div><p style="font-size:12px; color: grey">O conteúdo sobre fármacos é baseado nas informações fornecidas pela Anvisa, combinadas com informações adicionais da literatura médica.</p></div>
 
   </div>
 
