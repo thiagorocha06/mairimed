@@ -127,10 +127,8 @@
       var ws_scheme = "ws://"
     };
 
-    var inbox = new ReconnectingWebSocket(ws_scheme + location.host + "/receive");
-    var outbox = new ReconnectingWebSocket(ws_scheme + location.host + "/submit");
     // Calls the websocket connect channel
-    var chatsock = new ReconnectingWebSocket(ws_scheme + window.location.host + "/chat/stream/test-chat");
+    var chatsock = new ReconnectingWebSocket(ws_scheme + window.location.host + "/chat/stream/");
 
 
     $("#messageToSend").keypress(function (e) {
