@@ -64,8 +64,6 @@ if not settings.DEBUG:
         'pagedown',
         'contactus',
         'portal_saude',
-        'channels',
-        'chatbot',
         'chatterbot.ext.django_chatterbot',
     ]
 
@@ -75,7 +73,7 @@ if not settings.DEBUG:
         'name': 'Django ChatterBot Example',
         'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
         'training_data': [
-            'chatterbot.corpus.english.greetings'
+            'chatterbot.corpus.portuguese.greetings'
         ],
         'django_app_name': 'django_chatterbot',
         "read_only": "True"

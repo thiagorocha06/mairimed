@@ -62,8 +62,6 @@ INSTALLED_APPS = [
     'pagedown',
     'contactus',
     'portal_saude',
-    'channels',
-    'chatbot',
     'chatterbot.ext.django_chatterbot',
 ]
 
@@ -73,7 +71,7 @@ CHATTERBOT = {
     'name': 'Django ChatterBot Example',
     'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
     'training_data': [
-        'chatterbot.corpus.english.greetings'
+        'chatterbot.corpus.portuguese.greetings'
     ],
     'django_app_name': 'django_chatterbot',
     "read_only": "True"
