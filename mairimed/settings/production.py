@@ -73,7 +73,7 @@ if not settings.DEBUG:
         'name': 'Django ChatterBot Example',
         'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
         'training_data': [
-            'chatterbot.corpus.portuguese.greetings'
+            'corpus.atenolol',
         ],
         'django_app_name': 'django_chatterbot',
         "read_only": "True"
