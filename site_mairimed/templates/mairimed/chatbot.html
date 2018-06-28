@@ -1,6 +1,5 @@
 {% extends "inicio_base.html" %}
 {% load staticfiles%}
-{% load hitcount_tags %}
 
 {% block content %}
 
@@ -16,42 +15,32 @@
 
 <div class="container">
 
+  <p style="text-align:center">O assistente mairimed encontra-se em fase de desenvolvimento.</p>
+
   <div class="row">
 
     <div class="col-md-3">
 
     </div>
 
+    <!-- Dialogo com o Bot -->
+
     <div class="col-md-6">
 
-      <div id="wrap" class="BotMainDiv" ng-controller="ChatCtrl" style="min-height:400px;">
-          <!-- Begin page content -->
-          <div class="mairi-card mairi-container" id="body-container" style="">
-              <div  id="sub-body-container">
-
-                  <div  id="messages-container"></div>
-                  <div class="error-notification alert alert-info" style="display:none;"></div>
-
-              </div>
-          </div>
-
+      <div id="wrap" class="col-xs-6 offset-xs-3">
+        <div class="mairi-card mairi-container">
+          <ul class="list-group chat-log js-chat-log">
+          </ul>
         </div>
 
-        <div class="non-error mairi-card">
-            <div class="botAccentColor">
-
-                <div class="row" id="send-box">
-                    <div id="messageToSend" contenteditable="true" class="pull-left" data-ph="Digite sua mensagem..."></div>
-                    <div class="pull-right send-button-div">
-                        <button  id="messageSendButton" type="button" onclick="sendTextMessage()">
-                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-
-            </div>
+        <div class="input-group input-group-lg mt-1">
+          <input type="text" class="form-control js-text" placeholder="Digite uma mensagem..."/>
+          <span class="input-group-btn">
+            <button class="btn btn-primary js-say">Enviar</button>
+          </span>
         </div>
       </div>
+    </div>
 
       <div class="col-md-3">
 
@@ -59,117 +48,161 @@
 
     </div>
 
-  <div class="row">
-      <div class="col-md-12">
-        <div class="mairi-card-laranja row mairi-container">
-          <div class="col-md-7">
-            <br><h1 class="featurette-heading" style="color:#d45500">RESUMOS DE MEDICINA</h1><br>
-            <p class="lead">Divididos por especialidade.</p>
-            <p><a class="btn btn-lg btn-light" href="{% url 'ciclo_clinico' %}" role="button">Acessar Resumos</a></p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="{% static 'img/mairimed_topico1.svg' %}" width="500" height="200" alt="Generic placeholder image">
-          </div>
-        </div>
+    <div class="anuncio-top">
+      <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- anuncio1 -->
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
 
-        <div class="mairi-card-laranja row mairi-container">
-          <div class="col-md-7 push-md-5">
-            <br><h1 class="featurette-heading" style="color:#d45500">EXERCÍCIOS DE MEDICINA</h1><br>
-            <p class="lead">Divididos por tema e especialidade.</p>
-            <p><a class="btn btn-lg btn-light" href="{% url 'exercicios' %}" role="button">Acessar Exercícios</a></p>
-          </div>
-          <div class="col-md-5 pull-md-7">
-            <img class="featurette-image img-fluid mx-auto" src="{% static 'img/mairimed_topico2.svg' %}" width="500" height="200" alt="Generic placeholder image">
-          </div>
-        </div>
+  <!-- <div class="row">
+
+    <div class="col-md-3">
+      <div class="mairi-card-azul mairi-container" style="min-height:460px">
+        <a href="#"><br><h1>DOENÇAS</h1></a>
+          <hr>
+          {% for doenca in doencas %}
+            <div class="topicosdiv">
+              <p style="margin-left:15px"><a href="#">
+              {{ doenca.nome }}
+              </a></p>
+            </div>
+          {% endfor %}
+          <hr>
       </div>
     </div>
 
-    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- anuncio1 -->
-    <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5705627321786233"
-       data-ad-slot="5686167727"
-       data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <p style="font-size: 12px; color: #666; text-align: center;">...</p>
+    <div class="col-md-3">
+      <div class="mairi-card-verde mairi-container" style="min-height:460px">
+        <a href="#"><br><h1>ALIMENTAÇÃO</h1></a>
+          <hr>
+          {% for alimento in alimentos %}
+            <div class="topicosdiv">
+              <p style="margin-left:15px"><a href="#">
+              {{ alimento.nome }}
+              </a></p>
+            </div>
+          {% endfor %}
+          <hr>
+      </div>
+    </div>
 
-  </div><!-- /.container -->
+    <div class="col-md-3">
+      <div class="mairi-card-vermelho mairi-container" style="min-height:460px">
+        <a href="#"><br><h1>TERMOS MÉDICOS</h1></a>
+          <hr>
+          {% for termo in termos %}
+            <div class="topicosdiv">
+              <p style="margin-left:15px"><a href="#">
+              {{ termo.nome }}
+              </a></p>
+            </div>
+          {% endfor %}
+          <hr>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="mairi-card-amarelo mairi-container" style="min-height:460px">
+        <a href="#"><br><h1>FÁRMACOS</h1></a>
+          <hr>
+          {% for farmaco in farmacos %}
+            <div class="topicosdiv">
+              <p style="margin-left:15px"><a href="#">
+              {{ farmaco.nome }}
+              </a></p>
+            </div>
+          {% endfor %}
+          <hr>
+      </div>
+    </div>
+
+  </div> -->
+
+</div><!-- /.container -->
 
 {% endblock %}
 
 {% block websockets %}
 
-<script src="{% static 'js/reconnecting-websocket.min.js' %}" type="text/javascript" charset="utf-8"></script>
-<script src="{% static 'js/internal-chatbox.js' %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/js.cookie.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script>
+  var chatterbotUrl = '{% url "chatterbot" %}';
+  var csrftoken = Cookies.get('csrftoken');
 
-<script type="text/javascript">
+  function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
 
-    // START WEBSOCKETS
-    var supportsWebSockets = ('WebSocket' in window || 'MozWebSocket' in window) && WebSocket;
-    if(!supportsWebSockets){
-        $(".very-old-browser-notification").show();
-        $(".non-error").hide();
-    }else{
-        $(".very-old-browser-notification").hide();
-        $(".non-error").show();
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
     }
-    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+  });
 
-    // Support TLS-specific URLs, when appropriate.
-    if (window.location.protocol == "https:") {
-      var ws_scheme = "wss://";
-    } else {
-      var ws_scheme = "ws://"
-    };
+  var $chatlog = $('.js-chat-log');
+  var $input = $('.js-text');
+  var $sayButton = $('.js-say');
 
-    // Calls the websocket connect channel
-    var chatsock = new ReconnectingWebSocket(ws_scheme + window.location.host + "/chat/stream/");
+  function createRow(text) {
+    var $row = $('<li class="list-group-item"></li>');
 
+    $row.text(text);
+    $chatlog.append($row);
+  }
 
-    $("#messageToSend").keypress(function (e) {
-        var key = e.which;
-        if (key == 13)  // trigger message send when 'enter' key is clicked
-        {
-            $('#messageSendButton').trigger('click');
-            return false;
-        }
+  function submitInput() {
+    var inputData = {
+      'text': $input.val()
+    }
+
+    // Display the user's input on the web page
+    createRow(inputData.text);
+
+    var $submit = $.ajax({
+      type: 'POST',
+      url: chatterbotUrl,
+      data: JSON.stringify(inputData),
+      contentType: 'application/json'
     });
 
-    // Code that is called when the socket is succesfully opened
-    chatsock.onopen = function(message) {
+    $submit.done(function(statement) {
+        createRow(statement.text);
 
-        $('.error-notification').hide();
-        $('.non-error').show();
-        $('#messages-container').html('<div class="chatcontainer"><div class="msg-animate">Mairimed:</div><div class="message-text">Olá! Digite um medicamento ou uma doença que você deseja consultar</div>');
-        message = {}
-        message.command= 'start'
-        chatsock.send(JSON.stringify(message)); // START TALKING!
-    }
-    chatsock.onmessage = function(message){
-        processAndDisplayChatMessage(message);
-    };
+        // Clear the input field
+        $input.val('');
 
-    chatsock.onclose = function(message){
-        console.log("connection lost ... ");
-    }
-
-    chatsock.onerror = function(message){
-        console.log("Error reconnecting ... ");
-        $('.error-notification').html("Não foi possível conectar ao servidor. Por favor tente novamente em alguns minutos (recarregando a página). Se o problema persistir, por favor entre em contato (mairimed.com@gmail.com).")
-        $('.error-notification').show();
-        $('.non-error').hide();
-        $("#body-container").scrollTop( $('#body-container')[0].scrollHeight );
-    }
-
-    $(document).ready(function() {
-        $("#body-container").scrollTop( $('#body-container')[0].scrollHeight );
+        // Scroll to the bottom of the chat interface
+        $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
     });
 
+    $submit.fail(function() {
+      // TODO: Handle errors
+    });
+  }
+
+  $sayButton.click(function() {
+    submitInput();
+  });
+
+  $input.keydown(function(event) {
+    // Submit the input when the enter button is pressed
+    if (event.keyCode == 13) {
+      submitInput();
+    }
+  });
 </script>
 
 {% endblock %}

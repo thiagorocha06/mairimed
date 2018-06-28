@@ -64,7 +64,21 @@ INSTALLED_APPS = [
     'portal_saude',
     'channels',
     'chatbot',
+    'chatterbot.ext.django_chatterbot',
 ]
+
+# ChatterBot settings
+
+CHATTERBOT = {
+    'name': 'Django ChatterBot Example',
+    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'training_data': [
+        'chatterbot.corpus.english.greetings'
+    ],
+    'django_app_name': 'django_chatterbot',
+    "read_only": "True"
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

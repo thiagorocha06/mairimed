@@ -1,10 +1,12 @@
 from django.conf.urls import url
 from . import views
-from .views import chat
-from .views import EspecialidadeListaView, ViewArtigosListPorEspecialidade
+from .views import chat, inicio_novo
+from .views import EspecialidadeListaView, ViewArtigosListPorEspecialidade, ChatterBotApiView
 
 urlpatterns = [
     url(r'^chat/$', chat, name='chat'),
+    url(r'^api/chatterbot/', ChatterBotApiView.as_view(), name='chatterbot'),
+    url(r'^inicio_novo/$', inicio_novo, name='inicio_novo'),
     url(r'^$', views.InicioView.as_view(), name='inicio'),
     url(r'^educacao_medica/$', views.EducacaoMedicaView.as_view(), name='educacao_medica'),
     url(r'^mairimed/termos_uso/$', views.termos_uso, name='termos_uso'),

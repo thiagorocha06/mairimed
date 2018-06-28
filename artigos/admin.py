@@ -19,7 +19,7 @@ class EspecialidadeAdmin(admin.ModelAdmin):
 
 class TemaAdmin(admin.ModelAdmin):
     search_fields = ('tema', )
-    list_display = ('tema', 'especialidade',)
+    list_display = ('tema', 'ordem', 'especialidade',)
     list_filter = ('especialidade',)
 
 class TemaBasicoAdmin(admin.ModelAdmin):

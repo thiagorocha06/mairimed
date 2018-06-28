@@ -1,24 +1,7 @@
-{% extends "contact_base.html" %}
-
-{% block title %}Contact Us{% endblock %}
-
-{% block css %}
-    <style>
-        .form-group .help-block {
-            display: none;
-        }
-        .form-group.has-error .help-block {
-            display: block;
-        }
-        input[name='decoy'],
-        p.decoy {
-            display: none !important;
-        }
-
-    </style>
-{% endblock %}
+{% extends "inicio_base.html" %}
 
 {% block content %}
+<main class="col-12 col-md-9 col-xl-8 bd-content" role="main">
     <div class="artigo">
         <h2 class="title">Entre em contato conosco</h2>
         <br />
@@ -70,8 +53,29 @@
             </div>
         </form>
     </div>
+  </main>
 {% endblock %}
 
 {% block barra-esquerda %}
 
+<div class="col-12 col-md-3 col-xl-2" id="mais-sobre">
+
+</div>
+
+{% endblock %}
+
+{% block css %}
+    <style>
+        .form-group .help-block {
+            display: none;
+        }
+        .form-group.has-error .help-block {
+            display: block;
+        }
+        input[name='decoy'],
+        p.decoy {
+            display: none !important;
+        }
+
+    </style>
 {% endblock %}

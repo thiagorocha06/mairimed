@@ -72,7 +72,6 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- LOGO -->
     <a class="navbar-brand" href="{% url 'inicio' %}" style="float:left; padding-left:30">
       <img src="{% static 'img/mairimed_logo6.svg' %}" width="180" height="55" alt="">
     </a>
@@ -81,7 +80,22 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <div class="dropdown">
-            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'educacao_medica' %}">EDUCAÇÃO MÉDICA</a></button>
+            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'chat' %}">ASSISTENTE</a></button>
+            <!-- <div class="dropdown-content">
+              <div class="row">
+              	<div class="col-md-12">
+              		<a href="{% url 'doenca_portal'%}">DOENÇAS</a>
+              		<a href="{% url 'alimentos_portal'%}">ALIMENTAÇÃO</a>
+              		<a href="{% url 'termos_portal'%}">TERMOS MÉDICOS</a>
+                  <a href="{% url 'farmacos_portal'%}">FÁRMACOS</a>
+              	</div>
+              </div>
+            </div> -->
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'educacao_medica' %}">EDUCAÇÃO</a></button>
             <div class="dropdown-content">
               <div class="row">
               	<div class="col-md-12">
@@ -97,11 +111,16 @@
         <li class="nav-item">
           <div class="dropdown">
             <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'escs' %}">ESCS</a></button>
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="dropdown">
-            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'chat' %}">ASSISTENTE</a></button>
+            <div class="dropdown-content">
+              <div class="row">
+              	<div class="col-md-12">
+                  <a href="{% url '3_serie' %}">3ª - MÓDULOS TEMÁTICOS</a>
+                  <a href="{% url 'ha_3' %}">3ª - HABILIDADES E ATITUDES</a>
+                  <a href="{% url '4_serie' %}">4ª - MÓDULOS TEMÁTICOS</a>
+                  <a href="{% url 'ha_4' %}">4ª - HABILIDADES E ATITUDES</a>
+              	</div>
+              </div>
+            </div>
           </div>
         </li>
       </ul>
