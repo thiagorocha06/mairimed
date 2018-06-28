@@ -2046,7 +2046,7 @@ input, select, textarea {
 		justify-content: center;
 		position: relative;
 		height: 24em;
-		background: url("/static/img/inicio.jpg") center center;
+		background: url("https://s3-sa-east-1.amazonaws.com/mairimed/img/inicio.jpg") center center;
 		background-size: cover;
 		padding: 0;
 	}

@@ -34,9 +34,11 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
     <!-- Custom styles-->
+    <link rel="stylesheet" href="{% static 'css/materia.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar2.css' %}">
     <link rel="stylesheet" href="{% static 'css/headings.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <link rel="stylesheet" href="{% static 'css/adsense_artigos.css' %}">
     <link rel="stylesheet" href="{% static 'css/bot.css' %}"/>
 
@@ -56,6 +58,8 @@
     <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="32x32">
 
     <!-- Chatbot -->
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+
     <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -112,80 +116,19 @@
     </form>
   </nav>
 
-  <div class="container">
-
-    <p style="text-align:center">O assistente mairimed encontra-se em fase de desenvolvimento.</p>
-
-    <div class="row">
-
-      <div class="col-md-3">
-        <div class="anuncio-top">
-          <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- anuncio1 -->
-          <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5705627321786233"
-             data-ad-slot="5686167727"
-             data-ad-format="auto"></ins>
-          <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
-      </div>
-
-      <!-- Dialogo com o Bot -->
-
-      <div class="col-md-6">
-
-        <div id="wrap" class="col-xs-6 offset-xs-3">
-          <div class="mairi-card mairi-container">
-            <ul class="list-group chat-log js-chat-log">
-            </ul>
-          </div>
-
-          <div class="input-group input-group-lg mt-1">
-            <input type="text" class="form-control js-text" placeholder="Digite uma mensagem..."/>
-            <span class="input-group-btn">
-              <button class="btn btn-primary js-say">Enviar</button>
-            </span>
-          </div>
-        </div>
-      </div>
-
-        <div class="col-md-3">
-          <div class="anuncio">
-            <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- anuncio1 -->
-            <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-5705627321786233"
-               data-ad-slot="5686167727"
-               data-ad-format="auto"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="anuncio-top">
-        <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- anuncio1 -->
-        <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-5705627321786233"
-           data-ad-slot="5686167727"
-           data-ad-format="auto"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-
-  </div><!-- /.container -->
+  <div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+    <!-- CONTEUDO -->
+    {% block content %}
+    {% endblock %}
+    <!-- BARRA ESQUERDA -->
+    {% block barra-esquerda %}
+    {% endblock %}
+    </div>
+  </div>
+  <!-- CONTEUDO INICIO -->
+  {% block carousel %}
+  {% endblock %}
 
   <!-- FOOTER -->
   <footer class="blog-footer">
@@ -206,78 +149,8 @@
     <!-- Markdown JavaScript-->
     <script src="{% static 'js/markdown.js' %}"></script>
 
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/js.cookie.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-    <script>
-      var chatterbotUrl = '{% url "chatterbot" %}';
-      var csrftoken = Cookies.get('csrftoken');
-
-      function csrfSafeMethod(method) {
-        // these HTTP methods do not require CSRF protection
-        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-      }
-
-      $.ajaxSetup({
-        beforeSend: function(xhr, settings) {
-          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-          }
-        }
-      });
-
-      var $chatlog = $('.js-chat-log');
-      var $input = $('.js-text');
-      var $sayButton = $('.js-say');
-
-      function createRow(text) {
-        var $row = $('<li class="list-group-item"></li>');
-
-        $row.text(text);
-        $chatlog.append($row);
-      }
-
-      function submitInput() {
-        var inputData = {
-          'text': $input.val()
-        }
-
-        // Display the user's input on the web page
-        createRow(inputData.text);
-
-        var $submit = $.ajax({
-          type: 'POST',
-          url: chatterbotUrl,
-          data: JSON.stringify(inputData),
-          contentType: 'application/json'
-        });
-
-        $submit.done(function(statement) {
-            createRow(statement.text);
-
-            // Clear the input field
-            $input.val('');
-
-            // Scroll to the bottom of the chat interface
-            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
-        });
-
-        $submit.fail(function() {
-          // TODO: Handle errors
-        });
-      }
-
-      $sayButton.click(function() {
-        submitInput();
-      });
-
-      $input.keydown(function(event) {
-        // Submit the input when the enter button is pressed
-        if (event.keyCode == 13) {
-          submitInput();
-        }
-      });
-    </script>
+    {% block chatterbot %}
+    {% endblock %}
 
   </body>
 </html>

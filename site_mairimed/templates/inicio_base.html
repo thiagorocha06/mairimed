@@ -1,4 +1,5 @@
 {% load staticfiles %}
+<!DOCTYPE HTML>
 
 <html>
   <head>
@@ -31,179 +32,94 @@
       });
     </script>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
-    <!-- Custom styles-->
-    <link rel="stylesheet" href="{% static 'css/materia.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar2.css' %}">
-    <link rel="stylesheet" href="{% static 'css/headings.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/adsense_artigos.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bot.css' %}"/>
-
-    <!-- Documentation extras -->
-    <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
-
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/megamenu.js' %}"></script>
-
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
-    <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
-
     <!-- Icon for FF, Chrome, Opera -->
     <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="16x16">
     <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="32x32">
 
-    <!-- Chatbot -->
-    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
-
-    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+    <!-- Custom styles-->
+		<link rel="stylesheet" href="{% static 'css/navtransparent.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
   </head>
 
-  <body style="background-color:#EDEDED">
+	<body class="no-sidebar is-preload">
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light static">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- LOGO -->
-    <a class="navbar-brand" href="{% url 'inicio' %}" style="float:left; padding-left:30">
-      <img src="{% static 'img/mairimed_logo6.svg' %}" width="180" height="55" alt="">
-    </a>
+		<div id="page-wrapper">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <div class="dropdown">
-            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'educacao_medica' %}">EDUCAÇÃO MÉDICA</a></button>
-            <div class="dropdown-content">
-              <div class="row">
-              	<div class="col-md-12">
-                  <a href="{% url 'educacao_medica' %}">INÍCIO</a>
-              		<a href="{% url 'ciclo_basico' %}">CICLO BÁSICO</a>
-                  <a href="{% url 'ciclo_clinico' %}">CICLO CLÍNICO</a>
-                  <a href="{% url 'exercicios' %}">EXERCÍCIOS</a>
-              	</div>
-              </div>
-            </div>
+			<!-- Header -->
+				<section id="header" class="wrapper">
+
+					<!-- Logo -->
+          <div id="logomarca">
+            <a class="navbar-brand" href="{% url 'inicio' %}">
+              <img src="{% static 'img/mairimed_logo6.svg' %}" width="180" height="55" alt="">
+            </a>
           </div>
-        </li>
-        <li class="nav-item">
-          <div class="dropdown">
-            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'escs' %}">ESCS</a></button>
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="dropdown">
-            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="{% url 'chat' %}">ASSISTENTE</a></button>
-          </div>
-        </li>
-      </ul>
+					<!-- <div id="logo">
+						<h1><a href="index.html">Escape Velocity</a></h1>
+						<p>A free responsive site template by HTML5 UP</p>
+					</div> -->
+
+					<!-- Nav -->
+						<nav id="nav">
+              <a class="navbar-brand" href="{% url 'inicio' %}" style="float:left; margin-left:30px;">
+                <img src="{% static 'img/mairimed_logo6.svg' %}" width="180" height="55" alt="">
+              </a>
+							<ul>
+								<li>
+									<a href="{% url 'educacao_medica' %}">EDUCAÇÃO MÉDICA</a>
+									<ul>
+										<li><a href="{% url 'educacao_medica' %}">INÍCIO</a></li>
+										<li><a href="{% url 'ciclo_basico' %}">CICLO BÁSICO</a></li>
+										<li><a href="{% url 'ciclo_clinico' %}">CICLO CLÍNICO</a></li>
+										<li><a href="{% url 'exercicios' %}">EXERCÍCIOS</a></li>
+									</ul>
+								</li>
+                <li><a href="{% url 'escs' %}">ESCS</a></li>
+                <li class="current"><a href="{% url 'chat' %}">Assistente</a></li>
+                <li class="current"><a href="{% url 'login' %}">Entrar</a></li>
+							</ul>
+						</nav>
+
+				</section>
+
+      <!-- Main -->
+			<div id="main" class="wrapper style2">
+
+      <!-- CONTEUDO -->
+      {% block content %}
+      {% endblock %}
+
+      <!-- BARRA ESQUERDA -->
+      {% block barra-esquerda %}
+      {% endblock %}
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="inicio-footer">
+       <div class="container">
+         <ul style="list-style-type: none;">
+           <li><a href="{% url 'termos_uso' %}">Termos de uso</a></li>
+           <li><a href="{% url 'sobre' %}">Sobre mairimed.com</a></li>
+           <li><a href="{% url 'contactus' %}">Contato</a></li>
+         </ul>
+       </div>
+       <div id="copyright">
+          <ul>
+            <li>&copy; 2017-2018 mairimed.com</li><li>Design based: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </footer>
+
     </div>
-    <form class="form-inline my-2 my-lg-0" type="get" action="">
-      {% if request.user.is_authenticated %}
-        <a href="{% url 'conectado' %}" class="btn btn-light">Área Exclusiva</a>
-        <!-- <p style="color: white">{{user}}. <a style="color: white" href="{% url 'conectado' %}" >Minha Conta</a> </p> -->
-      {% else %}
-        <a href="{% url 'login' %}" class="btn btn-light">Entrar</a>
-      {% endif %}
-    </form>
-  </nav>
 
-  <div class="container-fluid">
-    <div class="row flex-xl-nowrap">
-    <!-- CONTEUDO -->
-    {% block content %}
-    {% endblock %}
-    <!-- BARRA ESQUERDA -->
-    {% block barra-esquerda %}
-    {% endblock %}
-    </div>
-  </div>
-  <!-- CONTEUDO INICIO -->
-  {% block carousel %}
-  {% endblock %}
-
-  <!-- FOOTER -->
-  <footer class="blog-footer">
-   <div class="container">
-     <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
-     <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
-     <p><a href="{% url 'contactus' %}">Contato</a></p>
-     <p>&copy; 2017-2018 mairimed.com</p>
-   </div>
-  </footer>
-
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.17/marked.min.js"> </script>
-    <!-- Markdown JavaScript-->
-    <script src="{% static 'js/markdown.js' %}"></script>
-    <!-- Slider JavaScript-->
-    <script src="{% static 'js/slick.js' %}"></script>
-    <script src="{% static 'js/myslick.js' %}"></script>
-
-    <script type="text/javascript">
-        // Standard javascript code for csrf cookies
-        function getCookie(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie != '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = jQuery.trim(cookies[i]);
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-        var csrftoken = getCookie('csrftoken');
-            // });
-
-        function csrfSafeMethod(method) {
-            // these HTTP methods do not require CSRF protection
-            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-        }
-        function sameOrigin(url) {
-            // test that a given url is a same-origin URL
-            // url could be relative or scheme relative or absolute
-            var host = document.location.host; // host + port
-            var protocol = document.location.protocol;
-            var sr_origin = '//' + host;
-            var origin = protocol + sr_origin;
-            // Allow absolute or scheme relative URLs to same origin
-            return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
-                (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
-                // or any other URL that isn't scheme relative or absolute i.e relative.
-                !(/^(\/\/|http:|https:).*/.test(url));
-        }
-        $.ajaxSetup({
-            beforeSend: function(xhr, settings) {
-                if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
-                    // Send the token to same-origin, relative URLs only.
-                    // Send the token only if the method warrants CSRF protection
-                    // Using the CSRFToken value acquired earlier
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                }
-        }
-    });
-
-    </script>
-
-    {% block websockets %}
-    {% endblock %}
+    <!-- Scripts -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/navtransparent/jquery.dropotron.min.js' %}"></script>
+    <script src="{% static 'js/navtransparent/breakpoints.min.js' %}"></script>
+    <script src="{% static 'js/navtransparent/browser.min.js' %}"></script>
+    <script src="{% static 'js/navtransparent/util.js' %}"></script>
+    <script src="{% static 'js/navtransparent/main.js' %}"></script>
 
   </body>
 </html>
