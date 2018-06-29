@@ -1,4 +1,6 @@
 boto==2.48.0
+certifi==2018.4.16
+chardet==3.0.4
 ChatterBot==0.8.7
 chatterbot-corpus==1.1.2
 dj-database-url==0.4.2
@@ -10,6 +12,7 @@ django-registration-redux==2.0
 django-storages==1.6.5
 future==0.16.0
 gunicorn==19.7.1
+idna==2.7
 mathparse==0.1.1
 msgpack-python==0.5.6
 nltk==3.3
@@ -21,5 +24,7 @@ python-dateutil==2.6.1
 python-twitter==3.4.2
 pytz==2017.3
 PyYAML==3.12
+requests==2.19.1
 SQLAlchemy==1.2.8
+urllib3==1.23
 whitenoise==3.3.1
