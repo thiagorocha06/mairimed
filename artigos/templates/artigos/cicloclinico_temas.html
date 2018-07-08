@@ -48,7 +48,7 @@
               <h3>
                 {% for artigo in artigo_list %}
                   {% if tema.tema|stringformat:"s" == artigo.tema|stringformat:"s" %}
-                    {% if artigo.artigo_interno == False %}
+                    {% if artigo.artigo_interno == False and artigo.artigo_inativo == False %}
                       <ul>
                         <a href="{% url 'detalhe_artigo' slug=artigo.url %}">
                 				{{ artigo.titulo }}
@@ -60,6 +60,12 @@
                         <a>{{ artigo.titulo }}</a><i class="material-icons" style="font-size: 18px">lock</i>
                       </ul>
                     {% endif %}
+                  {% endif %}
+                  {% if artigo.artigo_inativo == True %}
+                    <ul>
+                      <a style="pointer-events: none; cursor: default; text-decoration: none; color: #BDBDBD;" href="{% url 'detalhe_artigo' slug=artigo.url %}">
+                        {{ artigo.titulo }}</a>
+                    </ul>
                   {% endif %}
                 {% endfor %}
               </h3>

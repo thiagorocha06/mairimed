@@ -14,7 +14,7 @@
 
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
-  {% if artigo.artigo_interno == False %}
+  {% if artigo.artigo_interno == False and artigo.artigo_inativo == False %}
 
             <div class="artigo">
 
@@ -330,11 +330,13 @@
 
     {% endif %}
 
-    {% if artigo.artigo_interno == True %}
+    {% if artigo.artigo_inativo == True %}
     <div class="texto-centro">
       <h1>RESUMO NÃO DISPONÍVEL NO MOMENTO</h1>
     </div>
+    {% endif %}
 
+    {% if artigo.artigo_interno == True %}
     <div class="artigo">
       <p>Entre com uma conta:</p>
       <div id="login">
@@ -363,7 +365,6 @@
         </form>
       </div>
     </div>
-
     {% endif %}
 
 </main>
@@ -419,7 +420,7 @@
       {% endif %}
 
       {% if artigo.top1 %}
-      <a class="bd-toc-link" href="#top1">{{ artigo.top1|linebreaksbr }}</a>
+      <a class="bd-toc-link" href="#top1">{{ artigo.top1 }}</a>
       {% endif %}
 
       {% if artigo.tratamento_top %}

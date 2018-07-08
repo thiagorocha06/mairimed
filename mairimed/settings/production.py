@@ -73,7 +73,7 @@ if not settings.DEBUG:
         'name': 'Django ChatterBot Example',
         'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
         'training_data': [
-            'corpus.atenolol',
+            'corpus.clortalidona', 'corpus.indapamida',
         ],
         'django_app_name': 'django_chatterbot',
         "read_only": "True"

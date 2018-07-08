@@ -1,73 +1,65 @@
 <!doctype html>
-{% extends "inicio_base.html" %}
-{% load staticfiles %}
-
-{% block form-nav %}
-
-{% endblock %}
+{% extends "assistente_base.html" %}
 
 {% block content %}
 
-<!-- BARRA DIREITA -->
-<div class="d-none d-xl-block col-xl-2 bd-toc">
-  <ul class="section-nav">
-    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- anuncio1 -->
-    <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5705627321786233"
-       data-ad-slot="5686167727"
-       data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </ul>
-</div>
+<div class="row">
 
-<!-- CONTEUDO -->
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-
-  <div class="mairi-card" style="background-color:#F44336">
-    <h1 style="color: #fff; margin-bottom:15px; text-align:center; font-weight:bold">TERMOS</h1>
+  <div class="col-md-2">
+    <div class="anuncio-top">
+      <p style="font-size: 12px; color: #666; text-align: center; margin-top: 25px;">PUBLICIDADE</p>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- anuncio1 -->
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
   </div>
 
-  <div class="artigo mairi-card">
+  <!-- CONTEUDO -->
+  <main class="col-md-8" role="main">
 
-    <hr style="background-color:#F44336; margin-bottom:25px">
+    <div class="mairi-card" style="background-color:#F44336">
+      <h1 style="color: #fff; margin-bottom:15px; margin-top:25px; text-align:center; font-weight:bold">TERMOS</h1>
+    </div>
 
-    {% for termo in termos_list %}
-      <h3 style="margin-left:15px"><a href="{% url 'detalhe_termo' slug=termo.url %}">
-      {{ termo.nome }}
-      </a></h3>
-      <hr>
-    {% endfor %}
+    <div class="artigo mairi-card">
 
-  </div>
+      <hr style="background-color:#F44336; margin-bottom:25px">
 
-</main>
-{% endblock %}
-
-{% block barra-esquerda %}
-
-<div class="col-12 col-md-3 col-xl-2">
-
-</div>
-
-<!-- <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
-
-  <div class="bd-search d-flex align-items-center">
-    <a class="bd-toc-link">TÓPICOS</a>
-    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
-    </button>
-  </div>
-
-  <nav class="collapse bd-links" id="bd-docs-nav">
-    <div class="bd-toc-item">
+      {% for termo in termos_list %}
+        <h3 style="margin-left:15px"><a href="{% url 'detalhe_termo' slug=termo.url %}">
+        {{ termo.nome }}
+        </a></h3>
+        <hr>
+      {% endfor %}
 
     </div>
-  </nav>
 
-</div> -->
+  </main>
 
-{% endblock %}
+  <div class="col-md-2">
+    <div class="anuncio-top">
+      <p style="font-size: 12px; color: #666; text-align: center; margin-top: 25px;">PUBLICIDADE</p>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- anuncio1 -->
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+      <script>
+      </ul>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+
+  </div>
+
+  {% endblock %}

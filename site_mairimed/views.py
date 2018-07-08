@@ -215,6 +215,7 @@ class ChatterBotApiView(View):
 
         * The JSON data should contain a 'text' attribute.
         """
+        # busca o texto digitado pelo usuario
         input_data = json.loads(request.read().decode('utf-8'))
 
         if 'text' not in input_data:
@@ -223,10 +224,17 @@ class ChatterBotApiView(View):
                     'The attribute "text" is required.'
                 ]
             }, status=400)
-
+        # busca a conversa extistente ou cria uma nova caso nao exista
         conversation = self.get_conversation(request)
-
+        # busca uma resposta para o texto digitado pelo usuario e retorna um statement
         response = self.chatterbot.get_response(input_data, conversation.id)
+
+        result_message = {
+        'type': 'text'
+        }
+        result_message['text'] = "Assistente Mairimed: "
+
+        # response_data = result_message
         response_data = response.serialize()
 
         return JsonResponse(response_data, status=200)

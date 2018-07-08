@@ -1,101 +1,98 @@
 <!doctype html>
-{% extends "inicio_base.html" %}
-{% load staticfiles %}
-
-{% block form-nav %}
-
-{% endblock %}
+{% extends "assistente_base.html" %}
 
 {% block content %}
 
-<!-- BARRA DIREITA -->
-<div class="d-none d-xl-block col-xl-2 bd-toc">
-  <ul class="section-nav">
-    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- anuncio1 -->
-    <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5705627321786233"
-       data-ad-slot="5686167727"
-       data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </ul>
-</div>
+<div class="row">
 
-<!-- CONTEUDO -->
-<main class="col-12 col-md-9 col-xl-8 bd-content" role="main">
-  <div class="anuncio-top">
-    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- anuncio1 -->
-    <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5705627321786233"
-       data-ad-slot="5686167727"
-       data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
-
-  <div class="artigo">
-
-      <!-- <a href="#">
-        <small>{{ alimento.tipo }}</small>
-      </a> -->
-
-    <h1>{{ alimento.nome }}</h1>
-
-    {% if alimento.nome_cientifico %}
-      <p style="font-weight: bold">Nome científico:</p>
-      <div class="artigo content-markdown"><p>{{ alimento.nome_cientifico }}</p></div>
-    {% endif %}
-    {% if alimento.nomes_populares %}
-      <p style="font-weight: bold">Nomes populares:</p>
-      <div class="artigo content-markdown"><p>{{ alimento.nomes_populares }}</p></div>
-    {% endif %}
-    {% if alimento.componentes %}
-      <h3>Componentes</h3>
-      <div class="artigo content-markdown"><p>{{ alimento.componentes }}</p></div>
-    {% endif %}
-    {% if alimento.tabela_nutricional %}
-      <h3>Tabela Nutricional</h3>
-      <div class="artigo content-markdown"><p>{{ alimento.tabela_nutricional }}</p></div>
-    {% endif %}
-    {% if alimento.beneficios %}
-      <h3>Benefícios</h3>
-      <div class="artigo content-markdown"><p>{{ alimento.beneficios }}</p></div>
-    {% endif %}
-    {% if alimento.consumo %}
-      <h3>Consumo</h3>
-      <div class="artigo content-markdown"><p>{{ alimento.consumo }}</p></div>
-    {% endif %}
-    {% if alimento.texto %}
-      <div class="artigo content-markdown"><p>{{ alimento.texto }}</p></div>
-    {% endif %}
-
-  </div>
-
-</main>
-{% endblock %}
-
-{% block barra-esquerda %}
-
-<div class="col-12 col-md-3 col-xl-2" id="mais-sobre">
-
-    <div class="propaganda">
-      <h1>Mais Alimentos</h1>
-        {% for alimento in alimentos_list %}
-          <div class="topicosdiv">
-            <p style="margin-left:15px"><a href="{% url 'detalhe_alimento' slug=alimento.url %}">
-            {{ alimento.nome }}
-            </a></p>
-          </div>
-        {% endfor %}
+  <div class="col-md-2">
+    <div class="anuncio-top">
+      <p style="font-size: 12px; color: #666; text-align: center; margin-top: 25px;">PUBLICIDADE</p>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- anuncio1 -->
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
+  </div>
+
+  <!-- CONTEUDO -->
+  <main class="col-md-8" role="main">
+    <div class="anuncio-top">
+      <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- anuncio1 -->
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <div class="artigo">
+
+        <!-- <a href="#">
+          <small>{{ alimento.tipo }}</small>
+        </a> -->
+
+      <h1>{{ alimento.nome }}</h1>
+
+      {% if alimento.nome_cientifico %}
+        <p style="font-weight: bold">Nome científico:</p>
+        <div class="artigo content-markdown"><p>{{ alimento.nome_cientifico }}</p></div>
+      {% endif %}
+      {% if alimento.nomes_populares %}
+        <p style="font-weight: bold">Nomes populares:</p>
+        <div class="artigo content-markdown"><p>{{ alimento.nomes_populares }}</p></div>
+      {% endif %}
+      {% if alimento.componentes %}
+        <h3>Componentes</h3>
+        <div class="artigo content-markdown"><p>{{ alimento.componentes }}</p></div>
+      {% endif %}
+      {% if alimento.tabela_nutricional %}
+        <h3>Tabela Nutricional</h3>
+        <div class="artigo content-markdown"><p>{{ alimento.tabela_nutricional }}</p></div>
+      {% endif %}
+      {% if alimento.beneficios %}
+        <h3>Benefícios</h3>
+        <div class="artigo content-markdown"><p>{{ alimento.beneficios }}</p></div>
+      {% endif %}
+      {% if alimento.consumo %}
+        <h3>Consumo</h3>
+        <div class="artigo content-markdown"><p>{{ alimento.consumo }}</p></div>
+      {% endif %}
+      {% if alimento.texto %}
+        <div class="artigo content-markdown"><p>{{ alimento.texto }}</p></div>
+      {% endif %}
+
+    </div>
+
+  </main>
+
+  <div class="col-md-2">
+    <div class="anuncio-top">
+      <p style="font-size: 12px; color: #666; text-align: center; margin-top: 25px;">PUBLICIDADE</p>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- anuncio1 -->
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+      <script>
+      </ul>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
 
 </div>
 

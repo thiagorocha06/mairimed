@@ -1,32 +1,28 @@
 <!doctype html>
-{% extends "inicio_base.html" %}
-{% load staticfiles %}
-
-{% block form-nav %}
-
-{% endblock %}
+{% extends "assistente_base.html" %}
 
 {% block content %}
 
-<!-- BARRA DIREITA -->
-<div class="d-none d-xl-block col-xl-2 bd-toc">
-  <ul class="section-nav">
-    <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- anuncio1 -->
-    <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-5705627321786233"
-       data-ad-slot="5686167727"
-       data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </ul>
-</div>
+<div class="row">
+
+  <div class="col-md-2">
+    <div class="anuncio-top">
+      <p style="font-size: 12px; color: #666; text-align: center; margin-top: 25px;">PUBLICIDADE</p>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- anuncio1 -->
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
 
 <!-- CONTEUDO -->
-<main class="col-12 col-md-9 col-xl-8 bd-content" role="main">
+<main class="col-md-8" role="main">
   <div class="anuncio-top">
     <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -82,7 +78,7 @@
       <div class="artigo content-markdown"><p>{{ farmaco.interacoes }}</p></div>
     {% endif %}
     {% if farmaco.posologia %}
-      <h3>Posologia</h3>
+      <h3 id="posologia">Posologia</h3>
       <div class="artigo content-markdown"><p>{{ farmaco.posologia }}</p></div>
     {% endif %}
     {% if farmaco.pediatria %}
@@ -101,22 +97,23 @@
   </div>
 
 </main>
-{% endblock %}
 
-{% block barra-esquerda %}
-
-<div class="col-12 col-md-3 col-xl-2" id="mais-sobre">
-
-    <div class="propaganda">
-      <h1>Mais Fármacos</h1>
-        {% for farmaco in farmacos_list %}
-          <div class="topicosdiv">
-            <p style="margin-left:15px"><a href="{% url 'detalhe_farmaco' slug=farmaco.url %}">
-            {{ farmaco.nome }}
-            </a></p>
-          </div>
-        {% endfor %}
-    </div>
+<div class="col-md-2">
+  <div class="anuncio-top">
+    <p style="font-size: 12px; color: #666; text-align: center; margin-top: 25px;">PUBLICIDADE</p>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- anuncio1 -->
+    <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5705627321786233"
+       data-ad-slot="5686167727"
+       data-ad-format="auto"></ins>
+    <script>
+    </ul>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</div>
 
 </div>
 

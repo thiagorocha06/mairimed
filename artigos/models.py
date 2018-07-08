@@ -87,6 +87,11 @@ class Artigo(models.Model, HitCountMixin):
     data_de_criacao = models.DateTimeField(default=timezone.now)
     data_de_publicacao = models.DateTimeField(blank=True, null=True)
 
+    artigo_inativo = models.BooleanField(
+        blank=True, default=False,
+        verbose_name=_("Artigo inativo"),
+        help_text=_("Se marcado, o artigo sera mostrado como inativo"))
+
     artigo_interno = models.BooleanField(
         blank=True, default=False,
         verbose_name=_("Artigo para Internos"),

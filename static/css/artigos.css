@@ -114,6 +114,13 @@
 
 /* ARTIGO */
 
+.artigo-item.not-active{
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: #BDBDBD;
+}
+
 .artigo {
   margin-top: 20px;
   margin-bottom: 20px;
