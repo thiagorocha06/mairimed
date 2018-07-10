@@ -65,6 +65,7 @@ if not settings.DEBUG:
         'contactus',
         'portal_saude',
         'chatterbot.ext.django_chatterbot',
+        'links_uteis'
     ]
 
     # ChatterBot settings

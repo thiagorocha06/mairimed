@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'contactus',
     'portal_saude',
     'chatterbot.ext.django_chatterbot',
+    'links_uteis'
 ]
 
 # ChatterBot settings

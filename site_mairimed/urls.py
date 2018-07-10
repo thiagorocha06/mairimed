@@ -1,7 +1,8 @@
 from django.conf.urls import url
 from . import views
-from .views import chat, inicio_novo
+from .views import chat
 from .views import EspecialidadeListaView, ViewArtigosListPorEspecialidade, ChatterBotApiView
+from links_uteis.views import ViewLinkporInstituicao
 
 urlpatterns = [
     url(r'^assistente/$', chat, name='chat'),
@@ -12,6 +13,7 @@ urlpatterns = [
     url(r'^mairimed/sobre/$', views.sobre, name='sobre'),
     url(r'^mairimed/interno/$', views.ConectadoView.as_view(), name='conectado'),
     url(r'^mairimed/especialidades/$', view=views.EspecialidadeListaView.as_view(), name='especialidades'),
+    url(r'^diretrizes/$', ViewLinkporInstituicao.as_view(), name='diretrizes'),
     # url(r'^mairimed/especialidades_detalhes$', views.EspecialidadeDetailView.as_view(), name='especialidades_detalhes'),
 
     url(r'^especialidade/(?P<especialidade_name>[\w|\W-]+)/$',

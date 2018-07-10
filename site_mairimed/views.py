@@ -160,9 +160,9 @@ def chat(request):
     context = {}
     return render(request, 'mairimed/chatbot.html', context)
 
-def inicio_novo(request):
+def diretrizes(request):
     context = {}
-    return render(request, 'mairimed/inicio_novo.html', context)
+    return render(request, 'mairimed/diretrizes.html', context)
 
 # CHATBOT
 

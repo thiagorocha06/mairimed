@@ -1,0 +1,59 @@
+{% extends "inicio_base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="title">DIRETRIZES</div>
+  <div class="container">
+
+    <!-- Content -->
+      <div id="content">
+        <article class="box post">
+          <header class="style1">
+							<h2>Links para as principais diretrizes médicas<br class="mobile-hide" /></h2>
+							<p></p>
+						</header>
+
+            <!-- anuncio1 -->
+            <div class="anuncio-top">
+              <ins class="adsbygoogle"
+                   style="display:block"
+                   data-ad-client="ca-pub-5705627321786233"
+                   data-ad-slot="5686167727"
+                   data-ad-format="auto"></ins>
+              <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+
+            {% with object_list as instituicoes %}
+              {% if instituicoes %}
+
+                  {% for instituicao in instituicoes %}
+              			  <h2>
+              				{{ instituicao.instituicao }}<br>
+              			  </h2>
+
+                      <p>
+                        {% for link in links_list %}
+                          {% if instituicao.instituicao|stringformat:"s" == link.instituicao|stringformat:"s" %}
+                            <ul>
+                              <a target="_blank" href="{{ link.link }}">
+                      				{{ link.nome }}
+                      			  </a><br>
+                            </ul>
+                          {% endif %}
+                        {% endfor %}
+                      </p>
+                  {% endfor %}
+
+              {% else %}
+                  <p>{% trans "Não há links" %}</p>
+              {% endif %}
+            {% endwith %}
+
+        </article>
+			</div>
+
+		</div>
+
+{% endblock %}
