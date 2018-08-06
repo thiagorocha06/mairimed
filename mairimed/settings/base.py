@@ -68,12 +68,16 @@ INSTALLED_APPS = [
 # ChatterBot settings
 
 CHATTERBOT = {
-    'name': 'Django ChatterBot Example',
-    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'name': 'Mairimed Assistente',
+    'trainer': 'chat.extras.trainers.ChatterBotCorpusTrainer',
     'training_data': [
-        'chatterbot.corpus.portuguese.greetings'
+        'chatterbot.corpus.custom.cumprimentos',
+        'chatterbot.corpus.custom.elogio',
+        'chatterbot.corpus.custom.atenolol',
+        'chatterbot.corpus.custom.clortalidona',
+        'chatterbot.corpus.custom.indapamida',
     ],
-    'django_app_name': 'django_chatterbot',
+    'django_app_name': 'chat',
     "read_only": "True"
 
 }
