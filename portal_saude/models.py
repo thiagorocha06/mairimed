@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
-from hitcount.models import HitCount, HitCountMixin
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 from model_utils.managers import InheritanceManager
@@ -35,11 +34,8 @@ class Patologia(models.Model):
     def __str__(self):
         return self.patologia
 
-class Materia(models.Model, HitCountMixin):
-    author = models.ForeignKey('auth.User')
-    hit_count_generic = GenericRelation(
-        HitCount, object_id_field='object_pk',
-        related_query_name='hit_count_generic_relation')
+class Materia(models.Model):
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE,)
     data_de_criacao = models.DateTimeField(default=timezone.now)
     data_de_publicacao = models.DateTimeField(blank=True, null=True)
 
@@ -50,11 +46,11 @@ class Materia(models.Model, HitCountMixin):
 
     patologia = models.ForeignKey(
         Patologia, null=True, blank=True,
-        verbose_name=_("Patologia"))
+        verbose_name=_("Patologia"), on_delete=models.CASCADE,)
 
     assunto = models.ForeignKey(
         Assunto, null=True, blank=True,
-        verbose_name=_("Assunto"))
+        verbose_name=_("Assunto"), on_delete=models.CASCADE,)
 
     titulo = models.CharField(max_length=200)
 

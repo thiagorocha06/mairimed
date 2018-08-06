@@ -1,0 +1,13 @@
+categories:
+- greetings
+conversations:
+- - Hello
+  - Hi
+- - Hi
+  - Hello
+- - Greetings!
+  - Hello
+- - Hello
+  - Greetings!
+- - Hi, How is it going?
+  - Good

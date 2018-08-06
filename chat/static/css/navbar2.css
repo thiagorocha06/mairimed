@@ -1,0 +1,234 @@
+/* NAVBAR */
+
+.navbar {
+  background-color: white; /*Altera cor da barra superior*/
+  border-bottom: 4px solid #ff9400;
+}
+
+.navbar .navbar-nav .dropdown-menu {
+  background-color: white; /*Altera cor do fundo do menu*/
+  border-color: #ffffff;
+}
+.navbar .navbar-nav .nav-link {
+  color: #ff9400; /*Altera cor do texto da barra superior*/
+  border-radius: .25rem;
+  margin: 0 0.25em;
+}
+.navbar .nav > li.dropdown.open.active > a:hover,
+.navbar .nav > li.dropdown.open > a
+{
+  color: #ff9400; /*Altera cor do texto da barra superior do menu*/
+  background-color: #ff9400;
+  border-color: #fff;
+}
+.navbar .navbar-nav .nav-link:not(.disabled):hover,
+.navbar .navbar-nav .nav-link:not(.disabled):focus {
+  color: #ff9400; /*Altera cor do texto em foco*/
+  border: 0.5px solid #fff;
+  background-color: #ecf0f1;
+}
+.navbar .navbar-nav .dropdown-menu .dropdown-divider {
+  border-top-color: #ff9400; /*Altera cor do divisor do menu*/
+}
+.navbar .navbar-nav .dropdown-menu .dropdown-item {
+  color: #ff9400; /*Altera cor dos itens do menu*/
+}
+.navbar .navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar .navbar-nav .dropdown-menu .dropdown-item:focus,
+.navbar .navbar-nav .dropdown-menu .dropdown-item.active {
+  color: #ff9400;
+  background-color: #ecf0f1; /*Altera cor do fundo dos itens do menu em foco*/
+}
+
+.navbar .dropdown-header{
+  color: #ff9400; /*Altera cor do titulo dos itens do menu*/
+}
+
+@media (max-width: 575px) {
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #ff9400;
+  }
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #ff9400;
+  }
+  .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #ff9400;
+    background-color: #ffffff;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #ff9400;
+  }
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #ff9400;
+  }
+  .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #ff9400;
+    background-color: #ffffff;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #ff9400;
+  }
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #ff9400;
+  }
+  .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #ff9400;
+    background-color: #ffffff;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: #ff9400;
+  }
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: #ff9400;
+  }
+  .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: #ff9400;
+    background-color: #ffffff;
+  }
+}
+
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item {
+  color: #ff9400;
+}
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+  color: #ff9400;
+}
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
+  color: #ff9400;
+  background-color: #ffffff;
+}
+
+/*------------------------------------------------------
+----------------- MEGAMENU -----------------------------
+--------------------------------------------------------*/
+
+/* Dropdown Button */
+
+.dropbtn {
+    background-color: white;
+    color: #455A64;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    font-weight: bold;
+    border-left: solid 1px #ccc;
+}
+
+.dropbtn a:hover {
+    background-color: white;
+    color: #455A64;
+    font-size: 16px;
+    border: none;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown h1 {
+  color: black;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+  font-size: 17px;
+  padding: 14px 16px;
+}
+
+.dropdown h1:hover {
+  color: black;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+  font-size: 17px;
+  padding: 14px 12px;
+  border-bottom: solid 2px #ff9400;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    /*background-color: #f1f1f1;*/
+    background-color: white;
+    min-width: 267px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #455A64;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: solid 2px #ccc;
+}
+
+.dropdown-content h1 {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.dropdown-content h2 {
+    color: #455A64;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: solid 2px #455A64;
+}
+
+.dropdown-content h3 {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  /*background-color: #ddd;*/
+  border-bottom: solid 2px #ff9400;
+
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: white;
+    border-bottom: solid 2px #ff9400;
+}
+
+/*------------------------------------------------------
+--------------------------------------------------------*/

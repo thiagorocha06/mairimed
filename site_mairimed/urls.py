@@ -1,12 +1,11 @@
 from django.conf.urls import url
 from . import views
 from .views import chat
-from .views import EspecialidadeListaView, ViewArtigosListPorEspecialidade, ChatterBotApiView
+from .views import EspecialidadeListaView, ViewArtigosListPorEspecialidade
 from links_uteis.views import ViewLinkporInstituicao
 
 urlpatterns = [
     url(r'^assistente/$', chat, name='chat'),
-    url(r'^api/chatterbot/', ChatterBotApiView.as_view(), name='chatterbot'),
     url(r'^$', views.InicioView.as_view(), name='inicio'),
     url(r'^educacao_medica/$', views.EducacaoMedicaView.as_view(), name='educacao_medica'),
     url(r'^mairimed/termos_uso/$', views.termos_uso, name='termos_uso'),
@@ -37,6 +36,4 @@ urlpatterns = [
     url(r'^pediatria/$', views.especialidades, name='pediatria'),
     url(r'^pneumologia/$', views.especialidades, name='pneumologia'),
     url(r'^reumatologia/$', views.especialidades, name='reumatologia'),
-
-    url(r'^artigo/administracao/$', views.AdministracaoView.as_view(), name='administracao'),
 ]

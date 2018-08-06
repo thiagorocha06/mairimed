@@ -22,7 +22,7 @@ class Link(models.Model):
     link = models.CharField(max_length=200, help_text=_("link"))
     instituicao = models.ForeignKey(
         Instituicao, null=True, blank=True,
-        verbose_name=_("Instituicao"))
+        verbose_name=_("Instituicao"), on_delete=models.CASCADE,)
 
     def __str__(self):
         return self.nome

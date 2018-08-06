@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import DetailView, TemplateView, ListView
-from hitcount.views import HitCountDetailView
 from artigos.models import Artigo, Especialidade, Tema, TemaBasico
 
 class ArtigoMixinDetailView(object):
@@ -17,26 +16,17 @@ class ArtigoMixinDetailView(object):
 
     def get_context_data(self, **kwargs):
         context = super(ArtigoMixinDetailView, self).get_context_data(**kwargs)
-        context['artigo_list'] = Artigo.objects.all().order_by("-hit_count_generic__hits")
+        context['artigo_list'] = Artigo.objects.all().order_by("-titulo")
         return context
 
-class PostCountHitDetailView(ArtigoMixinDetailView, HitCountDetailView):
-    """
-    Generic hitcount class based view that will also perform the hitcount logic.
-    """
-    count_hit = False
+class PostCountHitDetailView(TemplateView):
     template_name = 'artigos/detalhe_artigo.html'
     slug_field = 'url'
 
-class PostCountHitDetailView2(ArtigoMixinDetailView, HitCountDetailView):
-    """
-    Generic hitcount class based view that will also perform the hitcount logic.
-    """
-    count_hit = True
+class PostCountHitDetailView2(TemplateView):
     template_name = 'artigos/artigo_detail.html'
 
-class RedirecionamentoView(ArtigoMixinDetailView, HitCountDetailView):
-    count_hit = False
+class RedirecionamentoView(TemplateView):
     template_name = 'artigos/detalhe_artigo.html'
     slug_field = 'url'
 

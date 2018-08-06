@@ -3,7 +3,6 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
-from hitcount.models import HitCount, HitCountMixin
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 from model_utils.managers import InheritanceManager
@@ -47,11 +46,13 @@ class Tema(models.Model):
 
     especialidade = models.ForeignKey(
         Especialidade, null=True, blank=True,
-        verbose_name=_("Especialidade"))
+        verbose_name=_("Especialidade"),
+        on_delete=models.CASCADE,)
 
     exercicios = models.ForeignKey(
         'quiz.Quiz', null=True, blank=True,
-        verbose_name=_("Exercícios"))
+        verbose_name=_("Exercícios"),
+        on_delete=models.CASCADE,)
 
     objects = EspecialidadeManager()
 
@@ -79,11 +80,8 @@ class TemaBasico(models.Model):
     def __str__(self):
         return self.tema_basico
 
-class Artigo(models.Model, HitCountMixin):
-    author = models.ForeignKey('auth.User')
-    hit_count_generic = GenericRelation(
-        HitCount, object_id_field='object_pk',
-        related_query_name='hit_count_generic_relation')
+class Artigo(models.Model):
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE,)
     data_de_criacao = models.DateTimeField(default=timezone.now)
     data_de_publicacao = models.DateTimeField(blank=True, null=True)
 
@@ -109,15 +107,18 @@ class Artigo(models.Model, HitCountMixin):
 
     especialidade = models.ForeignKey(
         Especialidade, null=True, blank=True,
-        verbose_name=_("Especialidade"))
+        verbose_name=_("Especialidade"),
+        on_delete=models.CASCADE,)
 
     tema = models.ForeignKey(
         Tema, null=True, blank=True,
-        verbose_name=_("Tema"))
+        verbose_name=_("Tema"),
+        on_delete=models.CASCADE,)
 
     tema_basico = models.ForeignKey(
         TemaBasico, null=True, blank=True,
-        verbose_name=_("Tema Basico"))
+        verbose_name=_("Tema Basico"),
+        on_delete=models.CASCADE,)
 
     modulo = models.CharField(max_length=200, blank=True, null=True)
     titulo = models.CharField(max_length=200)

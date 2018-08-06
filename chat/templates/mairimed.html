@@ -1,0 +1,206 @@
+{% extends "inicio_base.html" %}
+{% load staticfiles%}
+
+{% block content %}
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+{% endblock %}
+
+<!-- PAGINA GERAL -->
+
+{% block carousel %}
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-3">
+
+      <a href="#">SOM</a>
+
+    </div>
+
+    <!-- Dialogo com o Bot -->
+
+    <div class="col-md-6">
+      <div id="wrap" class="col-xs-6 offset-xs-3">
+        <div class="mairi-card mairi-container">
+          <ul class="list-group chat-log js-chat-log">
+          </ul>
+        </div>
+
+        <div class="input-group input-group-lg mt-1">
+          <input type="text" class="form-control js-text" placeholder="Digite uma mensagem..."/>
+          <span class="input-group-btn">
+            <button class="btn btn-primary js-say">Enviar</button>
+          </span>
+        </div>
+      </div>
+    </div>
+
+      <div class="col-md-3">
+
+      </div>
+
+    </div>
+
+    <div class="anuncio-top">
+      <p style="font-size: 12px; color: #666; text-align: center;">PUBLICIDADE</p>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- anuncio1 -->
+      <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5705627321786233"
+         data-ad-slot="5686167727"
+         data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="mairi-card-azul mairi-container" style="min-height:460px">
+        <a href="#"><br><h1>DOENÇAS</h1></a>
+          <hr>
+          {% for doenca in doencas %}
+            <div class="topicosdiv">
+              <p style="margin-left:15px"><a href="#">
+              {{ doenca.nome }}
+              </a></p>
+            </div>
+          {% endfor %}
+          <hr>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="mairi-card-verde mairi-container" style="min-height:460px">
+        <a href="#"><br><h1>ALIMENTAÇÃO</h1></a>
+          <hr>
+          {% for alimento in alimentos %}
+            <div class="topicosdiv">
+              <p style="margin-left:15px"><a href="#">
+              {{ alimento.nome }}
+              </a></p>
+            </div>
+          {% endfor %}
+          <hr>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="mairi-card-vermelho mairi-container" style="min-height:460px">
+        <a href="#"><br><h1>TERMOS MÉDICOS</h1></a>
+          <hr>
+          {% for termo in termos %}
+            <div class="topicosdiv">
+              <p style="margin-left:15px"><a href="#">
+              {{ termo.nome }}
+              </a></p>
+            </div>
+          {% endfor %}
+          <hr>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="mairi-card-amarelo mairi-container" style="min-height:460px">
+        <a href="#"><br><h1>FÁRMACOS</h1></a>
+          <hr>
+          {% for farmaco in farmacos %}
+            <div class="topicosdiv">
+              <p style="margin-left:15px"><a href="#">
+              {{ farmaco.nome }}
+              </a></p>
+            </div>
+          {% endfor %}
+          <hr>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /.container -->
+
+{% endblock %}
+
+{% block websockets %}
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/js.cookie.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script>
+  var chatterbotUrl = '{% url "chatterbot" %}';
+  var csrftoken = Cookies.get('csrftoken');
+
+  function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    }
+  });
+
+  var $chatlog = $('.js-chat-log');
+  var $input = $('.js-text');
+  var $sayButton = $('.js-say');
+
+  function createRow(text) {
+    var $row = $('<li class="list-group-item"></li>');
+
+    $row.text(text);
+    $chatlog.append($row);
+  }
+
+  function submitInput() {
+    var inputData = {
+      'text': $input.val()
+    }
+
+    // Display the user's input on the web page
+    createRow(inputData.text);
+
+    var $submit = $.ajax({
+      type: 'POST',
+      url: chatterbotUrl,
+      data: JSON.stringify(inputData),
+      contentType: 'application/json'
+    });
+
+    $submit.done(function(statement) {
+        createRow(statement.text);
+
+        // Clear the input field
+        $input.val('');
+
+        // Scroll to the bottom of the chat interface
+        $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+    });
+
+    $submit.fail(function() {
+      // TODO: Handle errors
+    });
+  }
+
+  $sayButton.click(function() {
+    submitInput();
+  });
+
+  $input.keydown(function(event) {
+    // Submit the input when the enter button is pressed
+    if (event.keyCode == 13) {
+      submitInput();
+    }
+  });
+</script>
+
+{% endblock %}

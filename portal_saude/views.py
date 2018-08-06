@@ -9,7 +9,6 @@ from dicionario_farmacos.models import Farmaco
 from dicionario_doencas.models import Doenca
 from dicionario_alimentos.models import Alimento
 from dicionario_termos.models import Termo
-from hitcount.views import HitCountDetailView
 
 class MateriaMixinDetailView(object):
 
@@ -20,11 +19,7 @@ class MateriaMixinDetailView(object):
         context['materia_list'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('data_de_publicacao')
         return context
 
-class MateriaCountHitDetailView(MateriaMixinDetailView, HitCountDetailView):
-    """
-    Generic hitcount class based view that will also perform the hitcount logic.
-    """
-    count_hit = False
+class MateriaCountHitDetailView(DetailView):
     template_name = 'portal_saude/detalhe_materia.html'
     slug_field = 'url'
 

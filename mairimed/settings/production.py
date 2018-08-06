@@ -56,7 +56,6 @@ if not settings.DEBUG:
         'dicionario_farmacos',
         'dicionario_alimentos',
         'dicionario_termos',
-        'hitcount',
         'quiz',
         'multichoice',
         'true_false',
@@ -64,8 +63,8 @@ if not settings.DEBUG:
         'pagedown',
         'contactus',
         'portal_saude',
-        'chatterbot.ext.django_chatterbot',
-        'links_uteis'
+        'links_uteis',
+        'chat',
     ]
 
     # ChatterBot settings

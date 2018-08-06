@@ -6,7 +6,6 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 import django.utils.timezone
-import hitcount.models
 
 
 class Migration(migrations.Migration):
@@ -48,6 +47,6 @@ class Migration(migrations.Migration):
                 ('assunto', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='portal_saude.Assunto', verbose_name='Assunto')),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
-            bases=(models.Model, hitcount.models.HitCountMixin),
+            bases=(models.Model, ),
         ),
     ]

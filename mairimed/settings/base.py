@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'dicionario_farmacos',
     'dicionario_alimentos',
     'dicionario_termos',
-    'hitcount',
     'quiz',
     'multichoice',
     'true_false',
@@ -62,8 +61,8 @@ INSTALLED_APPS = [
     'pagedown',
     'contactus',
     'portal_saude',
-    'chatterbot.ext.django_chatterbot',
-    'links_uteis'
+    'links_uteis',
+    'chat',
 ]
 
 # ChatterBot settings

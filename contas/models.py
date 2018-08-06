@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from artigos.models import Artigo
 
 class Estudante(models.Model):
-    usuario = models.OneToOneField(User)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE,)
     primeiro_nome = models.CharField(max_length=50, default='')
     ultimo_nome = models.CharField(max_length=50, default='')
     instituicao = models.CharField(max_length=30, default='')

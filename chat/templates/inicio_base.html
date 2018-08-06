@@ -1,0 +1,228 @@
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mairimed</title>
+    <meta name="description" content="O projeto mairimed tem o objetivo de fornecer conteúdo adequado para estudantes e profissionais da área da saúde.">
+    <meta name="KEYWORDS" content="resumos de medicina, medicina, residência médica, exercícios de medicina" >
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113535136-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-113535136-1');
+    </script>
+
+    <!-- Google Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5705627321786233",
+        enable_page_level_ads: true
+      });
+    </script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
+    <!-- Custom styles-->
+    <link rel="stylesheet" href="{% static 'css/materia.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/headings.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/adsense_artigos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bot.css' %}"/>
+
+    <!-- Documentation extras -->
+    <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/megamenu.js' %}"></script>
+
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+
+    <!-- Icon for FF, Chrome, Opera -->
+    <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="32x32">
+
+    <!-- Chatbot -->
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  </head>
+
+  <body style="background-color:#EDEDED">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light static">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#" style="float:left; padding-left:30">
+      <img src="{% static 'img/mairimed_logo6.svg' %}" width="180" height="55" alt="">
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <div class="dropdown">
+            <button class="dropbtn"><a href="#">ASSISTENTE MAIRIMED</a></button>
+            <div class="dropdown-content">
+              <div class="row">
+              	<div class="col-md-12">
+              		<a href="#">DOENÇAS</a>
+              		<a href="#">ALIMENTAÇÃO</a>
+              		<a href="#">TERMOS MÉDICOS</a>
+                  <a href="#">FÁRMACOS</a>
+              	</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <button class="dropbtn"><a href="#">ESTUDAR.MAIRIMED</a></button>
+            <div class="dropdown-content">
+              <div class="row">
+              	<div class="col-md-12">
+                  <a href="#">INÍCIO</a>
+              		<a href="#">CICLO BÁSICO</a>
+                  <a href="#">CICLO CLÍNICO</a>
+                  <a href="#">EXERCÍCIOS</a>
+              	</div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <button class="dropbtn" style="padding-left:60px; padding-right:60px"><a href="#">ESCS</a></button>
+            <div class="dropdown-content">
+              <div class="row">
+              	<div class="col-md-12">
+                  <a href="#">3ª - MÓDULOS TEMÁTICOS</a>
+                  <a href="#">3ª - HABILIDADES E ATITUDES</a>
+                  <a href="#">4ª - MÓDULOS TEMÁTICOS</a>
+                  <a href="#">4ª - HABILIDADES E ATITUDES</a>
+              	</div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0" type="get" action="">
+      {% if request.user.is_authenticated %}
+        <a href="#" class="btn btn-light">Área Exclusiva</a>
+        <!-- <p style="color: white">{{user}}. <a style="color: white" href="#" >Minha Conta</a> </p> -->
+      {% else %}
+        <a href="#" class="btn btn-light">Entrar</a>
+      {% endif %}
+    </form>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+    <!-- CONTEUDO -->
+    {% block content %}
+    {% endblock %}
+    <!-- BARRA ESQUERDA -->
+    {% block barra-esquerda %}
+    {% endblock %}
+    </div>
+  </div>
+  <!-- CONTEUDO INICIO -->
+  {% block carousel %}
+  {% endblock %}
+
+  <!-- FOOTER -->
+  <footer class="blog-footer">
+   <div class="container">
+     <p><a href="#">Termos de uso</a></p>
+     <p><a href="#">Sobre mairimed.com</a></p>
+     <p><a href="#">Contato</a></p>
+     <p>&copy; 2017-2018 mairimed.com</p>
+   </div>
+  </footer>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.17/marked.min.js"> </script>
+    <!-- Markdown JavaScript-->
+    <script src="{% static 'js/markdown.js' %}"></script>
+    <!-- Slider JavaScript-->
+    <script src="{% static 'js/slick.js' %}"></script>
+    <script src="{% static 'js/myslick.js' %}"></script>
+
+    <script type="text/javascript">
+        // Standard javascript code for csrf cookies
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+            // });
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        function sameOrigin(url) {
+            // test that a given url is a same-origin URL
+            // url could be relative or scheme relative or absolute
+            var host = document.location.host; // host + port
+            var protocol = document.location.protocol;
+            var sr_origin = '//' + host;
+            var origin = protocol + sr_origin;
+            // Allow absolute or scheme relative URLs to same origin
+            return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+                (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+                // or any other URL that isn't scheme relative or absolute i.e relative.
+                !(/^(\/\/|http:|https:).*/.test(url));
+        }
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+                    // Send the token to same-origin, relative URLs only.
+                    // Send the token only if the method warrants CSRF protection
+                    // Using the CSRFToken value acquired earlier
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+        }
+    });
+
+    </script>
+
+    {% block websockets %}
+    {% endblock %}
+
+  </body>
+</html>
