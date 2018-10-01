@@ -42,7 +42,6 @@ if not settings.DEBUG:
 
     INSTALLED_APPS = [
         'django.contrib.sites',
-        'registration',
         'django.contrib.auth',
         'django.contrib.admin',
         'django.contrib.contenttypes',
@@ -52,17 +51,12 @@ if not settings.DEBUG:
         'site_mairimed',
         'artigos',
         'contas',
-        'dicionario_doencas',
-        'dicionario_farmacos',
-        'dicionario_alimentos',
-        'dicionario_termos',
         'quiz',
         'multichoice',
         'true_false',
         'essay',
         'pagedown',
         'contactus',
-        'portal_saude',
         'links_uteis',
         'chat',
     ]

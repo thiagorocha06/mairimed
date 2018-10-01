@@ -1,22 +1,29 @@
 from django.conf.urls import url
-from django.contrib.auth.views import (
-    login, logout, password_reset, password_reset_done, password_reset_confirm,
-    password_reset_complete
-)
 from . import views
+from django.urls import path
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    url(r'^sair$', logout, {'template_name': 'contas/logout.html'}, name='logout'),
-    url(r'^login/$', login, {'template_name': 'contas/login.html'}, name='login'),
-    url(r'^logout/$', logout, {'template_name': 'contas/logout.html'}, name='logout'),
-    url(r'^cadastro/$', views.cadastro, name='cadastro'),
-    url(r'^perfil/$', views.perfil, name='perfil'),
-    url(r'^perfil/editar$', views.editar_perfil, name='editar_perfil'),
-    url(r'^mudar-senha$', views.mudar_senha, name='mudar_senha'),
-    url(r'^reset-password$', password_reset, name='reset_password'),
-    url(r'^reset-password/done/$', password_reset_done, name='password_reset_done'),
-    url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
-    password_reset_confirm, name='password_reset_confirm'),
-    url(r'^reset-password/complete/$', password_reset_complete, name='password_reset_complete'),
+    url(r'^entrar$', views.entrar, name='entrar'), # login
+    url(r'^login$', views.login_view, name='login'), # login
+    url(r'^logout$', views.logout_view, name='logout'), # logout
+    url(r'^signup$', views.signup), # signup
+    url(r'^users/$', views.users),
+    url(r'^perfil/(?P<pk>\w{0,30})/$', views.perfil_pk, name='detail_user'),
 
+    url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),
+    path('activate/<uidb64>/<token>/', views.activate, name='activate'),
+    url(r'^password/$', views.change_password, name='change_password'),
+
+    url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
+    url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        auth_views.password_reset_confirm, name='password_reset_confirm'),
+    url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
+    url(r'^del_user/(?P<pk>\w{0,30})/$', views.del_user, name='delete_user'),
+
+    url(r'^perfil/$', views.perfil, name='perfil'),
+    url(r'^perfil/editar/(?P<user_id>\w{0,30})/$', login_required(views.EditarPerfil.as_view()), name='editar_perfil'),
+    url(r'^mudar-senha$', views.mudar_senha, name='mudar_senha'),
 ]

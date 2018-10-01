@@ -1,4 +1,9 @@
 from django.contrib import admin
-from .models import Estudante
+from .models import PerfilEstudante
 
-admin.site.register(Estudante)
+class PerfilEstudanteAdmin(admin.ModelAdmin):
+
+    list_display = ["user", "email_confirmed"]
+    search_fields = ["user",]
+
+admin.site.register(PerfilEstudante, PerfilEstudanteAdmin)

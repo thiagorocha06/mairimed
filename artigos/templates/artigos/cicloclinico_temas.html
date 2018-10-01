@@ -60,12 +60,12 @@
                         <a>{{ artigo.titulo }}</a><i class="material-icons" style="font-size: 18px">lock</i>
                       </ul>
                     {% endif %}
-                  {% endif %}
-                  {% if artigo.artigo_inativo == True %}
-                    <ul>
-                      <a style="pointer-events: none; cursor: default; text-decoration: none; color: #BDBDBD;" href="{% url 'detalhe_artigo' slug=artigo.url %}">
-                        {{ artigo.titulo }}</a>
-                    </ul>
+                    {% if artigo.artigo_inativo == True %}
+                      <ul>
+                        <a style="pointer-events: none; cursor: default; text-decoration: none; color: #BDBDBD;" href="{% url 'detalhe_artigo' slug=artigo.url %}">
+                          {{ artigo.titulo }}</a>
+                      </ul>
+                    {% endif %}
                   {% endif %}
                 {% endfor %}
               </h3>

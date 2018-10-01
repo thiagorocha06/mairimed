@@ -10,11 +10,6 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 from django.utils import timezone
 from artigos.models import Artigo, Especialidade, Tema
-from dicionario_farmacos.models import Farmaco
-from dicionario_doencas.models import Doenca
-from dicionario_alimentos.models import Alimento
-from dicionario_termos.models import Termo
-from portal_saude.models import Materia, Assunto, Patologia
 from quiz.models import Quiz, Progress
 from django.views.generic import DetailView, TemplateView, ListView, View
 from django import forms
@@ -65,21 +60,6 @@ class EducacaoMedicaView(ArtigoMixinDetailView, TemplateView):
 
 class InicioView(ArtigoMixinDetailView, TemplateView):
     template_name = 'mairimed/inicio.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(InicioView, self).get_context_data(**kwargs)
-        context['patologias'] = Patologia.objects.all()
-        context['alimentos'] = Alimento.objects.order_by('nome')[:4]
-        context['doencas'] = Doenca.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:4]
-        context['farmacos'] = Farmaco.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:4]
-        context['termos'] = Termo.objects.order_by('nome')[:4]
-
-        context['materias'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')
-        context['materia_saude'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[7]).order_by('-data_de_publicacao')[:4]
-        context['materia_alimentacao'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[6]).order_by('-data_de_publicacao')[:4]
-        context['materia_exercicio'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[1]).order_by('-data_de_publicacao')[:4]
-        context['materia_medicamentos'] = Materia.objects.filter(data_de_publicacao__lte=timezone.now(), assunto__in=[5]).order_by('-data_de_publicacao')[:4]
-        return context
 
 class EspecialidadesDetalhesView(ArtigoMixinDetailView, TemplateView):
     template_name = 'interno_artigos/especialidades_detalhes.html'

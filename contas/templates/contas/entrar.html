@@ -1,45 +1,47 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends "inicio_base.html" %}
 
 {% block content %}
+<div class="title">ENTRAR</div>
+        <div class="container">
 
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+          <!-- Content -->
+            <div id="content">
+              <article class="box post">
 
-  <div id="login">
-        <form class="form-horizontal" name="LoginForm" action="/login/" method="post">
-        {% csrf_token %}
-        {% if next %}
-            <input type="hidden" name="next" value="{{ next }}" />
-        {% endif %}
-        <div class="control-group">
-            <label class="control-label" for="username">Usuário</label>
-            <div class="controls">
-                <input type="text" id="username" name="username"  placeholder="Usuário">
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="password">Senha</label>
-            <div class="controls">
-                <input type="password" name="password" id="password" placeholder="Senha">
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn">Entrar</button>
-            </div>
-        </div>
-        </form>
-    </div>
+                <!-- Login -->
+                <h1>Entrar no Mairimed</h1>
+                <p>
+                  <form action="/login" method="post">{% csrf_token %}
+                    {% for field in auth_form %}
+                    {{ field }}
+                    {% endfor %}
+                    <input type="submit" id="btnLogIn" value="Entrar">
+                  </form>
+                </p>
 
-</main>
+                <!-- SignUp -->
+                {% if auth_form.non_field_errors or user_form.non_field_errors %}
+                <div class="flash error">
+                    {{ auth_form.non_field_errors }}
+                    {{ user_form.non_field_errors }}
+                </div>
+                {% endif %}
 
-{% endblock %}
+                <div class="panel right">
+                    <h1>Criar uma conta no Mairimed</h1>
+                    <p>
+                        <form action="/signup" method="post">{% csrf_token %}
+                            {% for field in user_form %}
+                            {{ field }}
+                            {% endfor %}
+                            <input type="submit" value="Criar Conta">
+                        </form>
+                    </p>
+                </div>
 
+              </article>
+						</div>
 
-{% block barra-esquerda %}
-
-<div class="col-12 col-md-3 col-xl-2">
-
-</div>
+  					</div>
 
 {% endblock %}

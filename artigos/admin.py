@@ -16,6 +16,7 @@ class ArtigoModelAdmin(admin.ModelAdmin):
 
 class EspecialidadeAdmin(admin.ModelAdmin):
     search_fields = ('especialidade', )
+    ordering = ["especialidade"]
 
 class TemaAdmin(admin.ModelAdmin):
     search_fields = ('tema', )

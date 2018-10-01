@@ -1,5 +1,6 @@
-{% extends "conectado_base.html" %}
+{% extends "educacao_base.html" %}
 {% load i18n %}
+{% load staticfiles%}
 
 {% load quiz_tags %}
 
@@ -8,54 +9,16 @@
 
 {% block form-nav %}
 <ul class="navbar-nav px-3">
+  {% if request.user.is_authenticated %}
   <li class="nav-item text-nowrap">
-      <a href="{% url 'auth_logout' %}" class="btn btn-outline-light">Sair</a>
+      <a href="{% url 'logout' %}" class="btn btn-outline-light">Sair</a>
   </li>
+  {% else %}
+  <li class="nav-item text-nowrap">
+      <a href="{% url 'login' %}" class="btn btn-outline-light">Entrar</a>
+  </li>
+  {% endif %}
 </ul>
-{% endblock %}
-
-{% block barra-esquerda %}
-
-<div style="background-color:#F5F0ED" class="col-12 col-md-3 col-xl-2 bd-sidebar">
-
-  <div class="bd-search d-flex align-items-center">
-    <a class="bd-toc-link">{{user}}</a>
-    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
-    </button>
-  </div>
-
-  <nav class="collapse bd-links" id="bd-docs-nav">
-    <div class="bd-toc-item">
-      <a class="bd-toc-link" href="{% url 'conectado' %}">
-        <span data-feather="home"></span>
-        Início</a>
-      <a class="bd-toc-link" href="{% url 'especialidades' %}">
-        <span data-feather="file-text"></span>
-        Apostilas</a>
-      <a class="bd-toc-link" href="{% url 'quiz_index' %}">
-        <span data-feather="file"></span>
-        Exercícios</a>
-      <a class="bd-toc-link" href="{% url 'simulado_lista' %}">
-        <span data-feather="layers"></span>
-        Simulados</a>
-      <a class="bd-toc-link" href="{% url 'quiz_progress' %}">
-        <span data-feather="bar-chart-2"></span>
-        Progresso</a>
-      <a class="bd-toc-link" href="{% url 'perfil' %}">
-        <span data-feather="users"></span>
-        Perfil</a>
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <!-- <span>Favoritos</span>
-            <a class="d-flex align-items-center text-muted" href="#">
-            <span data-feather="plus-circle"></span>
-          </a> -->
-        </h6>
-
-    </div>
-  </nav>
-
-</div>
-
 {% endblock %}
 
 {% block content %}
@@ -158,5 +121,62 @@
 
   </div>
 </main>
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+  <div class="bd-search d-flex align-items-center">
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'perfil' %}">
+        <img class="avatar" src="{{ user.perfilestudante.gravatar_url }}">
+        <i class="material-icons" style="font-size: 30px; padding-bottom: 3px; vertical-align: middle;">perm_identity</i>
+        <span style="" class="name">{{user.first_name}} {{user.last_name}}</span>
+      </a>
+    {% else %}
+
+    {% endif %}
+    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+    </button>
+  </div>
+
+  <nav class="collapse bd-links" id="bd-docs-nav">
+    <div class="bd-toc-item">
+      <a class="bd-toc-link" href="{% url 'educacao_medica' %}">
+        <h1><span data-feather="home"></span> Início</h1></a>
+      <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
+        <h1><span data-feather="book-open"></span> Cíclo Básico</h1></a>
+      <a class="bd-toc-link" href="{% url 'ciclo_clinico' %}">
+        <h1><span data-feather="activity"></span> Cíclo Clínico</h1></a>
+      <a class="bd-toc-link" href="{% url 'escs' %}">
+        <h1><img src="{% static 'img/escs.svg' %}" style="padding-bottom: 3px; vertical-align: middle;" width="40" height="45" alt=""> ESCS</h1></a>
+      <a class="bd-toc-link" href="{% url 'exercicios' %}">
+        <h1><span data-feather="clipboard"></span> Exercícios</h1></a>
+      {% if request.user.is_authenticated %}
+        <a class="bd-toc-link" href="{% url 'simulado_lista' %}">
+          <h1><span data-feather="layers"></span> Simulados</h1></a>
+        <a class="bd-toc-link" href="{% url 'quiz_progress' %}">
+          <h1><span data-feather="bar-chart-2"></span> Desempenho</h1></a>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <!-- <span>Favoritos</span>
+            <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+          </a> -->
+        </h6>
+      {% else %}
+        <a class="bd-toc-link not-active" href="{% url 'simulado_lista' %}">
+          <h1><span data-feather="layers"></span> Simulados<i class="material-icons" style="font-size: 15px; padding-bottom: 3px; vertical-align: middle;">lock</i></h1></a>
+        <a class="bd-toc-link not-active" href="{% url 'quiz_progress' %}">
+          <h1><span data-feather="bar-chart-2"></span> Progresso<i class="material-icons" style="font-size: 15px; padding-bottom: 3px; vertical-align: middle;">lock</i></h1></a>
+        <a class="bd-toc-link not-active" href="{% url 'perfil' %}">
+          <h1><i class="material-icons" style="font-size: 30px; padding-bottom: 3px; vertical-align: middle;">perm_identity</i>
+          Perfil<i class="material-icons" style="font-size: 15px; padding-bottom: 3px; vertical-align: middle;">lock</i></h1></a>
+      {% endif %}
+    </div>
+  </nav>
+
+</div>
 
 {% endblock %}
