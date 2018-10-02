@@ -1,0 +1,100 @@
+[33m558f303[m HEAD@{0}: commit: Correcao db
+[33m0c1efa5[m HEAD@{1}: commit: Correcao db
+[33m476550d[m HEAD@{2}: commit: Correcao db
+[33mb80e982[m HEAD@{3}: commit: Correcao erro db
+[33m32a56c7[m HEAD@{4}: commit: Correcao erro db
+[33m549decf[m HEAD@{5}: commit: Correcao de erro na migracao para heroku (model PerfilEstudante).
+[33m41ce9f9[m HEAD@{6}: commit: Correcao de erro na migracao para heroku (model PerfilEstudante).
+[33m3cc4d96[m HEAD@{7}: commit: Correcao de erro na migracao para heroku (model PerfilEstudante).
+[33mb00795c[m HEAD@{8}: commit: Correcao de erro na migracao para heroku (model PerfilEstudante).
+[33m66af51c[m HEAD@{9}: commit: Feito parte da pagina com usuario autenticado.
+[33mf35deb4[m HEAD@{10}: commit: Refeito app contas. Iniciado parte do site para usuarios.
+[33m9683724[m HEAD@{11}: commit: corrigido erro em artigos.views
+[33mc610e72[m HEAD@{12}: commit: Corrigido contact.success
+[33m2fc37a6[m HEAD@{13}: commit: Correcao direct assignment Django 2.0
+[33ma55ff6b[m HEAD@{14}: commit: Correcao do nome do chat_app no settings.
+[33mc54d182[m HEAD@{15}: commit: atualizado para django2.0.7; Add app chat.
+[33m89c8012[m HEAD@{16}: commit: Add app links_uteis
+[33m732e66d[m HEAD@{17}: commit: Add clortalidona e indapamida; Add artigo_inativo.
+[33m519dc08[m HEAD@{18}: commit: Alterado img inicio
+[33mb4672a0[m HEAD@{19}: commit: Apagado pkg-res do req.txt.
+[33m8c4c8b6[m HEAD@{20}: commit: Add pasta corpus, com atenolol; Alteracao model quiz para adequar ao django 2.0; excluido docs antigos.
+[33m68429ce[m HEAD@{21}: commit: Alterado inicio_novo para inicio; Alterado inicio_base; Acerto da img da pag inicio.
+[33mf71d22f[m HEAD@{22}: commit: Correcao do nltk; excluido app chanels
+[33mff10283[m HEAD@{23}: commit: Add chatterbot; excluido app chatbot (websockets); criado nova pag inicial.
+[33maf80410[m HEAD@{24}: commit: Mudancas para funcionar ws no heroku.
+[33m9bce674[m HEAD@{25}: commit: Alterado websocket para tentativa de deploy ao heroku.
+[33m8b08c9c[m HEAD@{26}: commit: Criado app chatbot; colocado referencia para farmacos; Colocado helptext nos modelos farmaco, doenca, alimento e termo.
+[33mc62df88[m HEAD@{27}: commit: Add campo data criacao e publicacao aos modelos doenca e farmaco.
+[33m954d1a2[m HEAD@{28}: commit: Add prescricao ao modelo doenca, add lactacao ao modelo farmaco. Aumentado os max_lenght dos dois.
+[33m73ef741[m HEAD@{29}: commit: Add campo diagnostico a doenca.
+[33mbb90c33[m HEAD@{30}: commit: Alterações em models dos dicio; colocado topicos dos dicios nos templates.
+[33m2a9f209[m HEAD@{31}: commit: Aumento tamanho do texto das campos para os modelos farmaco e doenca.
+[33m7a36fd7[m HEAD@{32}: commit: Add novos modelos: farmaco, termo, doenca, alimento; reconfigurado o portal saude; retirado propagandas no topo para celulares.
+[33mfd927eb[m HEAD@{33}: commit: Colocado markdown ao educacao_medica-base correcao.
+[33m14d0ace[m HEAD@{34}: commit: Colocado markdown ao educacao_medica-base.
+[33m846834a[m HEAD@{35}: commit: Alterado base da educacao medica
+[33m02f2b18[m HEAD@{36}: commit: Add chatbot com websockets e dj-channel.
+[33m4fe4518[m HEAD@{37}: commit: Alterado pagina inicial para inicio_novo
+[33m374da19[m HEAD@{38}: commit: Alterado Plantas Medicinais para medicamentos
+[33mdb1ed72[m HEAD@{39}: commit: Alterado Bem-Estar para Plantas Medicinais
+[33m213bb12[m HEAD@{40}: commit: Add mais sobre ALIMENTAÇÃO, BEM-ESTAR e EXERCICIOS; acerto em ccs.
+[33m0ae3e34[m HEAD@{41}: commit: Adequacoes na formatacao da pag inicio_novo
+[33m3240b2c[m HEAD@{42}: commit: Add materia destaque1 e 2; removido campo destaque_geral1, 2 e 3
+[33mf5cdfb3[m HEAD@{43}: commit: correcao dos pks dos assuntos do portal; redimencionamento do anuncio na pag inicio_novo.
+[33m64abe80[m HEAD@{44}: commit: Ajuste pk do assunto do portal saude
+[33md7474d2[m HEAD@{45}: commit: Ajuste anuncio da pag inicial; pk do assunto
+[33m6da065c[m HEAD@{46}: commit: Customizacao do slick; excluido figura_menor das materias; add anuncio a pag inicial.
+[33m98fa91c[m HEAD@{47}: commit: Adicionado slick, apagado pasta slick desnecessaria
+[33m42fc156[m HEAD@{48}: commit: Adicionado slick-slider
+[33md5d3210[m HEAD@{49}: commit: Add pagina para materia; alterado megamenu; add pag para cada categoria
+[33m77f71b3[m HEAD@{50}: commit: Correcao da navbar
+[33mbe0764d[m HEAD@{51}: commit: Add portal_saude, com novo inicio e model materia
+[33mbf182b0[m HEAD@{52}: commit: Ads em escs_modulos; correcao pag login
+[33m11949c4[m HEAD@{53}: commit: Add ads ao exercicio_base, cicloclinico e ciclobasico, em cada pag
+[33mf6108af[m HEAD@{54}: commit: Add ads ao exercicio_base, cicloclinico e ciclobasico
+[33mf0441ba[m HEAD@{55}: commit: Add ads ao exercicio_base
+[33m96cb885[m HEAD@{56}: commit: Bloqueado acesso para artigos_interno; Atualizado pagina entrar.html;
+[33m43197c5[m HEAD@{57}: commit: Alterado base.html com css adsense_artigos
+[33md66024e[m HEAD@{58}: commit: Alterado css adsense_artigos
+[33m50b97e5[m HEAD@{59}: commit: Add css para adsense nos artigos
+[33m2afdb92[m HEAD@{60}: commit: Adicionado ordem a especialidade e aos temas
+[33md20d250[m HEAD@{61}: commit: Adicionado redirecionamento para as urls antigas
+[33me5dab8d[m HEAD@{62}: commit: Adicionada pagina 404.html e 500.html
+[33m51d0915[m HEAD@{63}: commit: Correcao dos topicos da barra lateral e acrescentado tema e especialidade em detalhe artigo
+[33m50e4b1b[m HEAD@{64}: commit: Troca do pk por slug para url dos artigos
+[33m1170f70[m HEAD@{65}: commit: Correcao de erro devido delecao de categoria do model artigo
+[33ma28efd4[m HEAD@{66}: commit: Correcao de erro devido delecao de categoria do model artigo
+[33mb571277[m HEAD@{67}: commit: Correcao do campo figure do quiz
+[33m8b56f27[m HEAD@{68}: commit: Add slug aos artigos. Retirado categoria. Add pk as questoes.
+[33m042e474[m HEAD@{69}: commit: Adicionado anuncios automaticos do adsense
+[33m9f3d71b[m HEAD@{70}: commit: Correcao do link para os exercicios
+[33ma63413f[m HEAD@{71}: commit: Acerto dos artigos do ciclo basico por tema
+[33mc53759d[m HEAD@{72}: commit: Adicionado codigo do google adsense.
+[33mcc8b384[m HEAD@{73}: commit: Adicionado ciclo basico. Alterado modo de exibicao dos artigos, mostrando por tema.
+[33m055196e[m HEAD@{74}: commit: Colocado tema no admin retirado modulo
+[33md5acfe4[m HEAD@{75}: commit: correcao pwd email
+[33mb4121f6[m HEAD@{76}: commit: correcao secretkey
+[33m60207c6[m HEAD@{77}: commit: Add pag de contato
+[33m4388faf[m HEAD@{78}: commit: Add go
+[33m16fa117[m HEAD@{79}: commit: Excluido topicos vazios
+[33m06bbc8e[m HEAD@{80}: commit: Adicionado app dicio_med
+[33m7915ae1[m HEAD@{81}: commit: Troca da questao de charfield para textfield com 2000
+[33m19bf46f[m HEAD@{82}: commit: corrigido pag de login
+[33md6fd69c[m HEAD@{83}: commit: Adicionado ano as questoes - correcao
+[33m9c80efa[m HEAD@{84}: commit: Adicionado ano as questoes
+[33mee20d4e[m HEAD@{85}: commit: Utilizacao de markdowns e instalacao do pagedown
+[33m3e0f507[m HEAD@{86}: commit: Utilizacao de markdowns
+[33mbcde2da[m HEAD@{87}: commit: Alterado css para adequar listas
+[33m2d1f5ce[m HEAD@{88}: commit: Iniciado adaptacao para marcacoes dos textos (|safe); retirado url que faltavam dos termos medicos.!
+[33m784987a[m HEAD@{89}: commit: Retirado url dos termos medicos
+[33m2c335d6[m HEAD@{90}: commit: Alterado titulo e retirado pag de termos medicos do google.
+[33md495954[m HEAD@{91}: commit: Add artigo destaque; alterado slides do carrosel; add topicos na pag inicial; retirado dicio med
+[33m24004d2[m HEAD@{92}: commit: Add resumos mais vistos da semana
+[33m3bf7f91[m HEAD@{93}: commit: Migrado exercicios para tema
+[33mcc3076f[m HEAD@{94}: commit: Add pag de artigos por tema; add campo artigo para internos.
+[33mcbac463[m HEAD@{95}: commit: Retirado comentarios dos exercicios
+[33m5cf519e[m HEAD@{96}: commit: Retirado botao sair da navbarr do exercicio
+[33m32677cf[m HEAD@{97}: commit: Retirado comentario
+[33m54a5644[m HEAD@{98}: commit: Add pag de exercicios
+[33md1877bc[m HEAD@{99}: commi

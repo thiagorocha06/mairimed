@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'site_mairimed',
     'artigos',
-    'contas',
+    
     'quiz',
     'multichoice',
     'true_false',

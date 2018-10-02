@@ -10,7 +10,7 @@ urlpatterns = [
     #url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
     url(r'', include('site_mairimed.urls')),
     url(r'', include('artigos.urls')),
-    url(r'', include('contas.urls')),
+
     url(r'^questoes/', include('quiz.urls')),
     url('^', include('django.contrib.auth.urls')),
     url('^contact/', include('contactus.urls')),
