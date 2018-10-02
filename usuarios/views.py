@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
-from contas.forms import AuthenticateForm, SignUpForm
-from contas.models import PerfilEstudante
+from usuarios.forms import AuthenticateForm, SignUpForm
+from usuarios.models import PerfilEstudante
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.http import Http404
@@ -13,7 +13,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from contas.tokens import account_activation_token
+from usuarios.tokens import account_activation_token
 
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
@@ -36,13 +36,13 @@ def entrar(request, auth_form=None, user_form=None):
         user_form = user_form or SignUpForm()
 
         return render(request,
-                      'contas/entrar.html',
+                      'usuarios/entrar.html',
                       {'auth_form': auth_form, 'user_form': user_form, })
 
 @login_required
 def perfil(request):
     args = {'user': request.user}
-    return render(request, 'contas/perfil.html')
+    return render(request, 'usuarios/perfil.html')
 
 @login_required
 def editar_perfil(request):
@@ -56,7 +56,7 @@ def editar_perfil(request):
     else:
         form = FormularioEdicaoPerfil(instance=request.user)
         args = {'form': form}
-        return render(request, 'contas/editar_perfil.html', args)
+        return render(request, 'usuarios/editar_perfil.html', args)
 
 @login_required
 def mudar_senha(request):
@@ -73,7 +73,7 @@ def mudar_senha(request):
     else:
         form = PasswordChangeForm(user=request.user)
         args = {'form': form}
-        return render(request, 'contas/mudar_senha.html', args)
+        return render(request, 'usuarios/mudar_senha.html', args)
 
 def login_view(request):
     if request.method == 'POST':
@@ -107,7 +107,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             current_site = get_current_site(request)
             subject = 'Activate Your MySite Account'
-            message = render_to_string('contas/account_activation_email.html', {
+            message = render_to_string('usuarios/account_activation_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
@@ -138,17 +138,17 @@ def users(request, pk="",):
 
 def perfil_pk(request, pk):
     args = {'user': request.user}
-    return render(request, 'contas/perfil.html')
+    return render(request, 'usuarios/perfil.html')
 
 class EditarPerfil(UpdateView):
     model = PerfilEstudante
     fields = ['primeiro_nome', 'ultimo_nome', 'matricula', 'faculdade']
-    template_name = 'contas/editar_perfil.html'
+    template_name = 'usuarios/editar_perfil.html'
     slug_field = 'user_id'
     slug_url_kwarg = 'user_id'
 
 def account_activation_sent(request):
-    return render(request, 'contas/account_activation_sent.html')
+    return render(request, 'usuarios/account_activation_sent.html')
 
 def activate(request, uidb64, token):
     try:
@@ -164,7 +164,7 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('/')
     else:
-        return render(request, 'contas/account_activation_invalid.html')
+        return render(request, 'usuarios/account_activation_invalid.html')
 
 def change_password(request):
     if request.method == 'POST':
@@ -178,7 +178,7 @@ def change_password(request):
             messages.error(request, 'Por favor corrija o erro indicado.')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'contas/change_password.html', {
+    return render(request, 'usuarios/change_password.html', {
         'form': form
     })
 

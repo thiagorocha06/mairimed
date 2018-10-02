@@ -1,4 +1,6 @@
 from django.db import models
+
+from django.db import models
 from django.contrib.auth.models import User
 import hashlib
 from django.urls import reverse
@@ -16,8 +18,6 @@ class PerfilEstudante(models.Model):
     email_confirmed = models.BooleanField(default=False)
     primeiro_nome = models.TextField(max_length=30, default='')
     ultimo_nome = models.TextField(max_length=30, default='')
-    faculdade = models.CharField(max_length=1, choices=INSTITUICOES, verbose_name = _("Instituição"), default="")
-    matricula = models.CharField(max_length=30, default='')
 
     def gravatar_url(self):
         return "http://www.gravatar.com/avatar/%s?s=50" % hashlib.md5(self.user.email.encode('utf-8')).hexdigest()
