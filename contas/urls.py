@@ -9,10 +9,11 @@ urlpatterns = [
     url(r'^login$', views.login_view, name='login'), # login
     url(r'^logout$', views.logout_view, name='logout'), # logout
     url(r'^signup$', views.signup), # signup
-    
+    url(r'^users/$', views.users),
     url(r'^perfil/(?P<pk>\w{0,30})/$', views.perfil_pk, name='detail_user'),
 
     url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),
+    path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     url(r'^password/$', views.change_password, name='change_password'),
 
     url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
@@ -23,5 +24,6 @@ urlpatterns = [
     url(r'^del_user/(?P<pk>\w{0,30})/$', views.del_user, name='delete_user'),
 
     url(r'^perfil/$', views.perfil, name='perfil'),
+    url(r'^perfil/editar/(?P<user_id>\w{0,30})/$', login_required(views.EditarPerfil.as_view()), name='editar_perfil'),
     url(r'^mudar-senha$', views.mudar_senha, name='mudar_senha'),
 ]

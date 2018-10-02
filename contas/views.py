@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from contas.forms import AuthenticateForm, SignUpForm
-
+from contas.models import PerfilEstudante
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.http import Http404
@@ -100,7 +100,9 @@ def signup(request):
             user.refresh_from_db()  # load the profile instance created by the signal
             user.is_active = False
             user.email = form.cleaned_data.get('username')
-
+            user.perfilestudante.email = form.cleaned_data.get('username')
+            user.perfilestudante.primeiro_nome = form.cleaned_data.get('first_name')
+            user.perfilestudante.ultimo_nome = form.cleaned_data.get('last_name')
             user.save()
             raw_password = form.cleaned_data.get('password1')
             current_site = get_current_site(request)
@@ -118,17 +120,51 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
+@login_required
+def users(request, pk="",):
+    if pk:
+        # Show a profile
+        try:
+            user = User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            raise Http404
+
+            return render(request, 'user.html', {'user': user, })
+        return render(request, 'user.html', {'user': user,})
+    return render(request,
+                  'profiles.html',
+                  {'obj': obj, 'next_url': '/users/',
+                   'user_id': request.user.perfilestudante.user_id, })
 
 def perfil_pk(request, pk):
     args = {'user': request.user}
     return render(request, 'contas/perfil.html')
 
-
+class EditarPerfil(UpdateView):
+    model = PerfilEstudante
+    fields = ['primeiro_nome', 'ultimo_nome', 'matricula', 'faculdade']
+    template_name = 'contas/editar_perfil.html'
+    slug_field = 'user_id'
+    slug_url_kwarg = 'user_id'
 
 def account_activation_sent(request):
     return render(request, 'contas/account_activation_sent.html')
 
+def activate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
 
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.perfilestudante.email_confirmed = True
+        user.save()
+        login(request, user)
+        return redirect('/')
+    else:
+        return render(request, 'contas/account_activation_invalid.html')
 
 def change_password(request):
     if request.method == 'POST':
