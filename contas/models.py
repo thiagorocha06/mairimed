@@ -16,7 +16,6 @@ class PerfilEstudante(models.Model):
     email_confirmed = models.BooleanField(default=False)
     primeiro_nome = models.TextField(max_length=30, default='')
     ultimo_nome = models.TextField(max_length=30, default='')
-    faculdade = models.CharField(max_length=1, choices=INSTITUICOES, verbose_name = _("Instituição"), default="")
     matricula = models.CharField(max_length=30, default='')
 
     def gravatar_url(self):
