@@ -3,7 +3,7 @@ from .models import PerfilEstudante
 
 class PerfilEstudanteAdmin(admin.ModelAdmin):
 
-    list_display = ["estudante", "email_confirmed"]
-    search_fields = ["estudante",]
+    list_display = ["user", "email_confirmed"]
+    search_fields = ["user",]
 
 admin.site.register(PerfilEstudante, PerfilEstudanteAdmin)
