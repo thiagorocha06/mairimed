@@ -12,11 +12,12 @@ from django.db.models import Q
 INSTITUICOES = ( ('1', 'ESCS'), ('2', 'UNB'), ('3', 'UCB'), ('4', 'UNICEUB'), ('5', 'FACIPLAC') )
 
 class PerfilEstudante(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    estudante = models.OneToOneField(User, on_delete=models.CASCADE)
     email_confirmed = models.BooleanField(default=False)
-    primeiro_nome = models.TextField(max_length=30, default='')
-    ultimo_nome = models.TextField(max_length=30, default='')
-    matricula = models.CharField(max_length=30, default='')
+    primeiro_nome = models.CharField(max_length=30, default='')
+    ultimo_nome = models.CharField(max_length=30, default='')
+    faculdade = models.CharField(max_length=1, choices=INSTITUICOES, verbose_name = _("Instituição"), default="ESCS")
+    matricula = models.CharField(max_length=30, default="")
 
     def gravatar_url(self):
         return "http://www.gravatar.com/avatar/%s?s=50" % hashlib.md5(self.user.email.encode('utf-8')).hexdigest()
