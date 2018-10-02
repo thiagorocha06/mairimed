@@ -50,7 +50,7 @@ if not settings.DEBUG:
         'django.contrib.staticfiles',
         'site_mairimed',
         'artigos',
-        
+        'contas',
         'quiz',
         'multichoice',
         'true_false',
