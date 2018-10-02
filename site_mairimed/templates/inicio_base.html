@@ -77,7 +77,15 @@
                 <li><a href="{% url 'escs' %}">ESCS</a></li>
                 <li><a href="{% url 'diretrizes' %}">DIRETRIZES</a></li>
                 <li class="current"><a href="{% url 'chat' %}">Assistente</a></li>
-                <li class="current"><a href="{% url 'entrar' %}">Entrar</a></li>
+                {% if request.user.is_authenticated %}
+                  <li class="nav-item text-nowrap">
+                      <a href="{% url 'logout' %}" class="btn btn-outline-light">Sair</a>
+                  </li>
+                {% else %}
+                  <li class="nav-item text-nowrap">
+                      <a href="{% url 'login' %}" class="btn btn-outline-light">Entrar</a>
+                  </li>
+                {% endif %}
 							</ul>
 						</nav>
 

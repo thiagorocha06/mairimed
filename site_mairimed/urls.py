@@ -7,10 +7,9 @@ from links_uteis.views import ViewLinkporInstituicao
 urlpatterns = [
     url(r'^assistente/$', chat, name='chat'),
     url(r'^$', views.InicioView.as_view(), name='inicio'),
-    url(r'^educacao_medica/$', views.EducacaoMedicaView.as_view(), name='educacao_medica'),
+    url(r'^educacao_medica/$', views.educacaomedicaview, name='educacao_medica'),
     url(r'^mairimed/termos_uso/$', views.termos_uso, name='termos_uso'),
     url(r'^mairimed/sobre/$', views.sobre, name='sobre'),
-    url(r'^mairimed/interno/$', views.ConectadoView.as_view(), name='conectado'),
     url(r'^mairimed/especialidades/$', view=views.EspecialidadeListaView.as_view(), name='especialidades'),
     url(r'^diretrizes/$', ViewLinkporInstituicao.as_view(), name='diretrizes'),
     # url(r'^mairimed/especialidades_detalhes$', views.EspecialidadeDetailView.as_view(), name='especialidades_detalhes'),

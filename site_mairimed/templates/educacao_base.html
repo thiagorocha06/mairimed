@@ -1,3 +1,4 @@
+<!doctype html>
 {% load staticfiles %}
 
 <html>
@@ -62,8 +63,17 @@
       <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
       </ul>
       <form type="get" action="" class="form-inline my-2 my-lg-0">
-        {% block form-nav %}
-        {% endblock %}
+        <ul class="navbar-nav px-3">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item text-nowrap">
+              <a href="{% url 'logout' %}" class="btn btn-outline-light">Sair</a>
+          </li>
+          {% else %}
+          <li class="nav-item text-nowrap">
+              <a href="{% url 'entrar' %}" class="btn btn-outline-light">Entrar</a>
+          </li>
+          {% endif %}
+        </ul>
       </form>
     </header>
 

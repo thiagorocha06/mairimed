@@ -31,32 +31,29 @@ class ArtigoMixinDetailView(object):
         context['artigo_list'] = Artigo.objects.all().order_by("-titulo")
         return context
 
-class ConectadoView(TemplateView):
-    template_name = 'mairimed/conectado.html'
+# class EducacaoMedicaView(TemplateView):
+#     template_name = 'mairimed/conectado.html'
+#
+#     @method_decorator(login_required)
+#     def dispatch(self, request, *args, **kwargs):
+#         return super(ConectadoView, self)\
+#             .dispatch(request, *args, **kwargs)
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(ConectadoView, self).get_context_data(**kwargs)
+#         progress, c = Progress.objects.get_or_create(user=self.request.user)
+#
+#         context['cat_scores'] = progress.list_all_cat_scores
+#         context['exams'] = progress.show_exams()
+#         return context
 
-    @method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super(ConectadoView, self)\
-            .dispatch(request, *args, **kwargs)
+def educacaomedicaview(request):
 
-    def get_context_data(self, **kwargs):
-        context = super(ConectadoView, self).get_context_data(**kwargs)
-        progress, c = Progress.objects.get_or_create(user=self.request.user)
-
-        context['cat_scores'] = progress.list_all_cat_scores
-        context['exams'] = progress.show_exams()
-        return context
-
-class EducacaoMedicaView(ArtigoMixinDetailView, TemplateView):
-    template_name = 'mairimed/educacao_medica.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(EducacaoMedicaView, self).get_context_data(**kwargs)
-
-        context['artigos_mais_vistos'] = Artigo.objects.all().order_by("-titulo")[:5]
-        context['ultimos_artigos'] = Artigo.objects.filter(data_de_publicacao__lte=timezone.now()).order_by('-data_de_publicacao')[:5]
-        context['lista_artigos'] = Artigo.objects.all()
-        return context
+    if request.user.is_authenticated:
+        progress, c = Progress.objects.get_or_create(user=request.user)
+        return render(request, 'mairimed/educacao_medica.html', {'cat_scores' : progress.list_all_cat_scores, 'exams' : progress.show_exams()})
+    else:
+        return render(request, 'mairimed/educacao_medica.html', )
 
 class InicioView(ArtigoMixinDetailView, TemplateView):
     template_name = 'mairimed/inicio.html'

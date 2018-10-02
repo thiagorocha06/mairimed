@@ -15,7 +15,7 @@
   </li>
   {% else %}
   <li class="nav-item text-nowrap">
-      <a href="{% url 'login' %}" class="btn btn-outline-light">Entrar</a>
+      <a href="{% url 'entrar' %}" class="btn btn-outline-light">Entrar</a>
   </li>
   {% endif %}
 </ul>
@@ -131,9 +131,9 @@
   <div class="bd-search d-flex align-items-center">
     {% if request.user.is_authenticated %}
       <a href="{% url 'perfil' %}">
-        <img class="avatar" src="{{ user.perfilestudante.gravatar_url }}">
+        <!-- <img class="avatar" src="{{ user.perfilestudante.gravatar_url }}"> -->
         <i class="material-icons" style="font-size: 30px; padding-bottom: 3px; vertical-align: middle;">perm_identity</i>
-        <span style="" class="name">{{user.first_name}} {{user.last_name}}</span>
+        <span style="" class="name">{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</span>
       </a>
     {% else %}
 

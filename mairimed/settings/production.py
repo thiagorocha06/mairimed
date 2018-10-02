@@ -185,7 +185,8 @@ if not settings.DEBUG:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'live-static', 'media-root')
     #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_root')
 
-    LOGIN_REDIRECT_URL	=	'/mairimed/interno/'
+    LOGIN_REDIRECT_URL	=	'/'
+    LOGOUT_REDIRECT_URL	=	'/'
 
     EMAIL_USE_TLS = True
     EMAIL_HOST = 'smtp.gmail.com'
