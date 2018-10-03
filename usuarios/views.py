@@ -109,7 +109,7 @@ def signup(request):
             subject = 'Activate Your MySite Account'
             message = render_to_string('usuarios/account_activation_email.html', {
                 'user': user,
-                'domain': current_site.domain,
+                'domain': "mairimed.com",
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
                 'token': account_activation_token.make_token(user),
             })
@@ -118,7 +118,7 @@ def signup(request):
             return redirect('account_activation_sent')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'usuarios/signup.html', {'form': form})
 
 @login_required
 def users(request, pk="",):
