@@ -142,7 +142,7 @@ def perfil_pk(request, pk):
 
 class EditarPerfil(UpdateView):
     model = PerfilEstudante
-    fields = ['primeiro_nome', 'ultimo_nome', 'matricula', 'faculdade']
+    fields = ['primeiro_nome', 'ultimo_nome', 'faculdade']
     template_name = 'usuarios/editar_perfil.html'
     slug_field = 'user_id'
     slug_url_kwarg = 'user_id'

@@ -29,8 +29,7 @@
   <p>Nome: {{ user.perfilestudante.primeiro_nome }}</p>
   <p>Último nome: {{ user.perfilestudante.ultimo_nome }}</p>
   <p>Faculdade: {{ user.perfilestudante.get_faculdade_display }}</p>
-  <p>Matricula: {{ user.perfilestudante.matricula }}</p>
-
+  
   <a href="{% url 'editar_perfil' user_id=user.perfilestudante.user_id %}">Atualizar Perfil</a><br>
   <a href="{% url 'change_password' %}">Alterar Senha</a><br>
   <a href="{% url 'delete_user' pk=user.pk %}">Apagar Conta</a>
