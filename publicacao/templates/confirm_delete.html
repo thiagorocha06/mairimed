@@ -1,10 +1,15 @@
 <!doctype html>
 {% extends "educacao_base.html" %}
+{% load quiz_tags %}
 {% load i18n %}
 {% load staticfiles%}
 
 {% block form-nav %}
+
 <ul class="navbar-nav px-3">
+  <li class="nav-item text-nowrap">
+      <a href="{% url 'usuarios' %}" class="btn btn-outline-light">Perfis Publicos</a>
+  </li>
   {% if request.user.is_authenticated %}
   <li class="nav-item text-nowrap">
       <a href="{% url 'logout' %}" class="btn btn-outline-light">Sair</a>
@@ -15,22 +20,19 @@
   </li>
   {% endif %}
 </ul>
+
 {% endblock %}
 
 {% block content %}
 
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-
-  <div class="texto-centro">
-    <h1>{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</h1>
-  </div>
-
-  <form method="post">{% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Atualizar">
-  </form>
-
-</main>
+    <div class="panel left">
+      <h1>Deletar comentário</h1>
+        <form class="" action="{{ribbit.id}}" method="post"> {% csrf_token %}
+          <p>Tem certeza que quer deletar: "{{ object.conteudo }}" ? </p>
+          <input type="submit" name="" value="Confirmar" class="btn btn-warning">
+          <a href="/" class="btn btn-default">Cancelar</a>
+        </form>
+    </div>
 
 {% endblock %}
 
@@ -52,12 +54,12 @@
 
   <nav class="collapse bd-links" id="bd-docs-nav">
     <div class="bd-toc-item">
-      <a class="bd-toc-link" href="/">
+      <a class="bd-toc-link active" href="/">
         <h1><span data-feather="home"></span> Perguntas</h1></a>
       <a class="bd-toc-link" href="{% url 'educacao_medica' %}">
         <h1><span data-feather="book-open"></span>Educação Médica</h1></a>
-      <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
-        <h1><span data-feather="book-open"></span>Minhas Perguntas</h1></a>
+      <a class="bd-toc-link" href="{% url 'diretrizes_in' %}">
+        <h1><span data-feather="book-open"></span>Diretrizes</h1></a>
       <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
         <h1><span data-feather="book-open"></span>Controles</h1></a>
       <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">

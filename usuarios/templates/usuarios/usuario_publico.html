@@ -4,7 +4,11 @@
 {% load staticfiles%}
 
 {% block form-nav %}
+
 <ul class="navbar-nav px-3">
+  <li class="nav-item text-nowrap">
+      <a href="{% url 'usuarios' %}" class="btn btn-outline-light">Perfis Publicos</a>
+  </li>
   {% if request.user.is_authenticated %}
   <li class="nav-item text-nowrap">
       <a href="{% url 'logout' %}" class="btn btn-outline-light">Sair</a>
@@ -15,6 +19,7 @@
   </li>
   {% endif %}
 </ul>
+
 {% endblock %}
 
 {% block content %}
@@ -22,13 +27,58 @@
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
   <div class="texto-centro">
-    <h1>{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</h1>
+    <h1>{{ usuario_publico.perfilestudante.primeiro_nome }} {{ usuario_publico.perfilestudante.ultimo_nome }}</h1>
+  </div>
+  <div class="artigo">
+    <p>Faculdade: {{ usuario_publico.perfilestudante.get_faculdade_display }}</p>
+    <p>
+      Perguntas
+      {% for user, pergunta in obj %}
+      {{ user.pergunta_count}}
+      {% endfor %}
+    </p>
+
+    <p>
+      Respostas
+      {% for user, comentario in obj_comentarios %}
+      {{ user.comentario_count}}
+      {% endfor %}
+    </p>
   </div>
 
-  <form method="post">{% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Atualizar">
-  </form>
+  {% for pergunta in perguntas %}
+  <div class="artigo">
+      <h4>{{ pergunta.content }}</h4>
+      <a href="{% url 'usuario_publico' pk=pergunta.user.pk %}">
+          <small>{{ pergunta.user.perfilestudante.primeiro_nome }} {{ pergunta.user.perfilestudante.ultimo_nome }}</small>
+      </a>
+      <br>
+      {% if request.user == pergunta.user %}
+        <a href="{% url 'deletar_pergunta' pk=pergunta.id %}">Deletar</a>
+      {% endif %}
+
+    <h6>Respostas</h6>
+
+    {% for comentario in comentarios %}
+        {% if pergunta.id == comentario.object_id %}
+        <blockquote>
+          <p>{{ comentario.conteudo }}</p>
+          <footer>{{ comentario.user.perfilestudante.primeiro_nome }} {{ pergunta.user.perfilestudante.ultimo_nome }} há {{ comentario.data|timesince}}</cite></footer>
+          {% if request.user == comentario.user %}
+            <a href="{% url 'deletar_comentario' pk=comentario.id %}">Deletar</a>
+          {% endif %}
+        </blockquote>
+        {% endif %}
+    {% endfor %}
+
+    <form class="" action="." method="post"> {% csrf_token %}
+      {{ comentario_form }}
+      <input type="hidden" name="object_id" value="{{ pergunta.id }}">
+      <input type="submit" name="" value="Responder" class="btn btn-default">
+    </form>
+
+  </div>
+  {% endfor %}
 
 </main>
 
@@ -52,12 +102,12 @@
 
   <nav class="collapse bd-links" id="bd-docs-nav">
     <div class="bd-toc-item">
-      <a class="bd-toc-link" href="/">
+      <a class="bd-toc-link" href="{% url 'educacao_medica' %}">
         <h1><span data-feather="home"></span> Perguntas</h1></a>
       <a class="bd-toc-link" href="{% url 'educacao_medica' %}">
         <h1><span data-feather="book-open"></span>Educação Médica</h1></a>
-      <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
-        <h1><span data-feather="book-open"></span>Minhas Perguntas</h1></a>
+      <a class="bd-toc-link" href="{% url 'diretrizes_in' %}">
+        <h1><span data-feather="book-open"></span>Diretrizes</h1></a>
       <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
         <h1><span data-feather="book-open"></span>Controles</h1></a>
       <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">

@@ -15,6 +15,7 @@ urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
     url('^contact/', include('contactus.urls')),
     url(r"^chat/", include("chat.urls")),
+    url(r'', include('publicacao.urls')),
 ]
 
 handler404 = 'site_mairimed.views.handler404'

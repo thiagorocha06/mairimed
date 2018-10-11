@@ -2,16 +2,17 @@ from django.conf.urls import url
 from . import views
 from .views import chat
 from .views import EspecialidadeListaView, ViewArtigosListPorEspecialidade
-from links_uteis.views import ViewLinkporInstituicao
+from links_uteis.views import ViewLinkporInstituicao, ViewLinkporInstituicao2
 
 urlpatterns = [
     url(r'^assistente/$', chat, name='chat'),
-    url(r'^$', views.InicioView.as_view(), name='inicio'),
+    url(r'^$', views.inicio, name='inicio'),
     url(r'^educacao_medica/$', views.educacaomedicaview, name='educacao_medica'),
     url(r'^mairimed/termos_uso/$', views.termos_uso, name='termos_uso'),
     url(r'^mairimed/sobre/$', views.sobre, name='sobre'),
     url(r'^mairimed/especialidades/$', view=views.EspecialidadeListaView.as_view(), name='especialidades'),
     url(r'^diretrizes/$', ViewLinkporInstituicao.as_view(), name='diretrizes'),
+    url(r'^diretrizes_in/$', ViewLinkporInstituicao2.as_view(), name='diretrizes_in'),
     # url(r'^mairimed/especialidades_detalhes$', views.EspecialidadeDetailView.as_view(), name='especialidades_detalhes'),
 
     url(r'^especialidade/(?P<especialidade_name>[\w|\W-]+)/$',

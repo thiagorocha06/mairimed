@@ -1,20 +1,25 @@
-from django.views import generic
-from django.views.decorators.csrf import csrf_exempt
 import json
 import requests
 import random
-from django.http.response import HttpResponse
+
+from django import forms
+from django.views import generic
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import DetailView, TemplateView, ListView, View
+from django.http import JsonResponse, Http404, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 from django.utils import timezone
+
 from artigos.models import Artigo, Especialidade, Tema
 from quiz.models import Quiz, Progress
-from django.views.generic import DetailView, TemplateView, ListView, View
-from django import forms
-
-from django.http import JsonResponse
+from publicacao.models import Pergunta
+from publicacao.forms import PerguntaForm
+from comentario.models import Comentario
+from comentario.forms import ComentarioForm
 
 def handler404(request):
     return render(request, 'mairimed/404.html')
@@ -54,6 +59,48 @@ def educacaomedicaview(request):
         return render(request, 'mairimed/educacao_medica.html', {'cat_scores' : progress.list_all_cat_scores, 'exams' : progress.show_exams()})
     else:
         return render(request, 'mairimed/educacao_medica.html', )
+
+def inicio(request):
+    if request.user.is_authenticated:
+        form = PerguntaForm()
+        user = request.user
+        perguntas_self = Pergunta.objects.filter(user=user.id).order_by("-pk")
+        perguntas_buddies = Pergunta.objects.filter(user__perfilestudante__in=user.perfilestudante.follows.all()).order_by("-pk")
+        perguntas = perguntas_self | perguntas_buddies
+
+        content_type = ContentType.objects.get_for_model(Pergunta)
+        comentarios = Comentario.objects.filter(content_type=content_type, )
+
+        initial_data = {
+                "content_type": content_type,
+        }
+
+        comentario_form = ComentarioForm(request.POST or None, initial=initial_data)
+        if comentario_form.is_valid():
+                c_type = comentario_form.cleaned_data.get("content_type")
+                content_type = ContentType.objects.get(model=c_type)
+                object_id = request.POST.get("object_id")
+                comentario_conteudo = comentario_form.cleaned_data.get("comentario")
+                novo_comentario, create = Comentario.objects.get_or_create(
+                                        user = request.user,
+                                        content_type = content_type,
+                                        object_id = object_id,
+                                        conteudo = comentario_conteudo
+                                        )
+                return HttpResponseRedirect('/')
+
+        context = {
+            "comentarios": comentarios,
+            'perguntas': perguntas,
+            "comentario_form": comentario_form,
+
+            'form': form,
+            'user': user,
+            'next_url': '/',
+        }
+        return render(request, 'mairimed/social.html', context)
+    else:
+        return render(request, 'mairimed/inicio.html', )
 
 class InicioView(ArtigoMixinDetailView, TemplateView):
     template_name = 'mairimed/inicio.html'

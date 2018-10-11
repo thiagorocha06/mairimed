@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'links_uteis',
     'chat',
     'usuarios',
+    'publicacao',
+    'comentario',
 ]
 
 # ChatterBot settings

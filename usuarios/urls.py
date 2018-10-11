@@ -9,7 +9,10 @@ urlpatterns = [
     url(r'^login$', views.login_view, name='login'), # login
     url(r'^logout$', views.logout_view, name='logout'), # logout
     url(r'^signup$', views.signup), # signup
-    url(r'^users/$', views.users),
+    url(r'^usuarios/$', views.users, name='usuarios'),
+    url(r'^usuarios/(?P<pk>\w{0,30})/$', views.usuario_publico, name='usuario_publico'),
+    url(r'^follow$', views.follow),
+    url(r'^unfollow$', views.unfollow),
     url(r'^perfil/(?P<pk>\w{0,30})/$', views.perfil_pk, name='detail_user'),
 
     url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),

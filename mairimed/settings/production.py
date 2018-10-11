@@ -59,6 +59,8 @@ if not settings.DEBUG:
         'links_uteis',
         'chat',
         'usuarios',
+        'publicacao',
+        'comentario',
     ]
 
     # ChatterBot settings

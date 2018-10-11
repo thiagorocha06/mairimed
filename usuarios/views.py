@@ -1,26 +1,30 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
+from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth import update_session_auth_hash, login, authenticate, logout
 from django.contrib.auth.models import User
-from usuarios.forms import AuthenticateForm, SignUpForm
-from usuarios.models import PerfilEstudante
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.db.models import Count
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic.edit import UpdateView
+from django.views.generic import DeleteView
 
-from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
+
 from usuarios.tokens import account_activation_token
+from usuarios.forms import AuthenticateForm, SignUpForm
+from usuarios.models import PerfilEstudante
+from publicacao.models import Pergunta
+from comentario.models import Comentario
+from comentario.forms import ComentarioForm
 
-from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
-
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import DeleteView
 
 def entrar(request, auth_form=None, user_form=None):
     if request.user.is_authenticated:
@@ -41,8 +45,130 @@ def entrar(request, auth_form=None, user_form=None):
 
 @login_required
 def perfil(request):
+    user = request.user
+    minhas_perguntas = Pergunta.objects.filter(user=user)
+
+    users = User.objects.filter(pk=user.pk).annotate(pergunta_count=Count('pergunta'))
+    perguntas = map(get_latest, users)
+    obj = zip(users, perguntas)
+
+    users_resposta = User.objects.filter(pk=user.pk).annotate(comentario_count=Count('comentario'))
+    comentarios = map(get_latest, users_resposta)
+    obj_comentarios = zip(users_resposta, comentarios)
+
+    content_type = ContentType.objects.get_for_model(Pergunta)
+    comentarios = Comentario.objects.filter(content_type=content_type, )
+
+    initial_data = {
+            "content_type": content_type,
+    }
+
+    comentario_form = ComentarioForm(request.POST or None, initial=initial_data)
+    if comentario_form.is_valid():
+            c_type = comentario_form.cleaned_data.get("content_type")
+            content_type = ContentType.objects.get(model=c_type)
+            object_id = request.POST.get("object_id")
+            comentario_conteudo = comentario_form.cleaned_data.get("comentario")
+            novo_comentario, create = Comentario.objects.get_or_create(
+                                    user = request.user,
+                                    content_type = content_type,
+                                    object_id = object_id,
+                                    conteudo = comentario_conteudo
+                                    )
+            return HttpResponseRedirect('/')
+
+    context = {
+        'user': user,
+        'usuario_publico': usuario_publico,
+        'perguntas': minhas_perguntas,
+        "comentarios": comentarios,
+        "comentario_form": comentario_form,
+        'obj': obj,
+        'obj_comentarios': obj_comentarios,
+    }
+
+    return render(request, 'usuarios/perfil.html', context)
+
+@login_required
+def usuario_publico(request, pk):
+    usuario_publico = User.objects.get(pk=pk)
+    usuario_perguntas = Pergunta.objects.filter(user=usuario_publico.pk)
+
+    users = User.objects.filter(pk=usuario_publico.pk).annotate(pergunta_count=Count('pergunta'))
+    perguntas = map(get_latest, users)
+    obj = zip(users, perguntas)
+
+    users_resposta = User.objects.filter(pk=usuario_publico.pk).annotate(comentario_count=Count('comentario'))
+    comentarios = map(get_latest, users_resposta)
+    obj_comentarios = zip(users_resposta, comentarios)
+
+    content_type = ContentType.objects.get_for_model(Pergunta)
+    comentarios = Comentario.objects.filter(content_type=content_type, )
+
+    initial_data = {
+            "content_type": content_type,
+    }
+
+    comentario_form = ComentarioForm(request.POST or None, initial=initial_data)
+    if comentario_form.is_valid():
+            c_type = comentario_form.cleaned_data.get("content_type")
+            content_type = ContentType.objects.get(model=c_type)
+            object_id = request.POST.get("object_id")
+            comentario_conteudo = comentario_form.cleaned_data.get("comentario")
+            novo_comentario, create = Comentario.objects.get_or_create(
+                                    user = request.user,
+                                    content_type = content_type,
+                                    object_id = object_id,
+                                    conteudo = comentario_conteudo
+                                    )
+            return HttpResponseRedirect('/')
+
+    context = {
+        'user': request.user,
+        'usuario_publico': usuario_publico,
+        'perguntas': usuario_perguntas,
+        "comentarios": comentarios,
+        "comentario_form": comentario_form,
+        'obj': obj,
+        'obj_comentarios': obj_comentarios,
+    }
+
+    return render(request, 'usuarios/usuario_publico.html', context)
+
+def perfil_pk(request, pk):
     args = {'user': request.user}
     return render(request, 'usuarios/perfil.html')
+
+@login_required
+def follow(request):
+    if request.method == "POST":
+        follow_id = request.POST.get('follow', False)
+        if follow_id:
+            try:
+                user = User.objects.get(id=follow_id)
+                request.user.userprofile.follows.add(user.userprofile)
+            except ObjectDoesNotExist:
+                return redirect('/users/')
+    return redirect('/users/')
+
+@login_required
+def unfollow(request):
+    if request.method == "POST":
+        follow_id = request.POST.get('unfollow', False)
+        if follow_id:
+            try:
+                user = User.objects.get(id=follow_id)
+                request.user.userprofile.follows.remove(user.userprofile)
+            except ObjectDoesNotExist:
+                return redirect('/users/')
+    return redirect('/users/')
+
+class EditarPerfil(UpdateView):
+    model = PerfilEstudante
+    fields = ['primeiro_nome', 'ultimo_nome', 'faculdade']
+    template_name = 'usuarios/editar_perfil.html'
+    slug_field = 'user_id'
+    slug_url_kwarg = 'user_id'
 
 @login_required
 def editar_perfil(request):
@@ -120,32 +246,26 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'usuarios/signup.html', {'form': form})
 
+def get_latest(user):
+    try:
+        return user.pergunta_set.order_by('-id')[0]
+    except IndexError:
+        return ""
+
 @login_required
-def users(request, pk="",):
-    if pk:
-        # Show a profile
-        try:
-            user = User.objects.get(pk=pk)
-        except User.DoesNotExist:
-            raise Http404
+def users(request):
+    users = User.objects.all().annotate(pergunta_count=Count('pergunta'))
+    perguntas = map(get_latest, users)
+    obj = zip(users, perguntas)
 
-            return render(request, 'user.html', {'user': user, })
-        return render(request, 'user.html', {'user': user,})
+    users_resposta = User.objects.all().annotate(comentario_count=Count('comentario'))
+    comentarios = map(get_latest, users_resposta)
+    obj_comentarios = zip(users_resposta, comentarios)
+
     return render(request,
-                  'profiles.html',
-                  {'obj': obj, 'next_url': '/users/',
+                  'usuarios/profiles.html',
+                  {'obj': obj, 'next_url': '/users/', 'obj_comentarios': obj_comentarios,
                    'user_id': request.user.perfilestudante.user_id, })
-
-def perfil_pk(request, pk):
-    args = {'user': request.user}
-    return render(request, 'usuarios/perfil.html')
-
-class EditarPerfil(UpdateView):
-    model = PerfilEstudante
-    fields = ['primeiro_nome', 'ultimo_nome', 'faculdade']
-    template_name = 'usuarios/editar_perfil.html'
-    slug_field = 'user_id'
-    slug_url_kwarg = 'user_id'
 
 def account_activation_sent(request):
     return render(request, 'usuarios/account_activation_sent.html')

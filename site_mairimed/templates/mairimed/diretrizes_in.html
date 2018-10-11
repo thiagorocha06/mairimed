@@ -1,0 +1,123 @@
+<!doctype html>
+{% extends "educacao_base.html" %}
+{% load quiz_tags %}
+{% load i18n %}
+{% load staticfiles%}
+
+{% block form-nav %}
+
+<ul class="navbar-nav px-3">
+  <li class="nav-item text-nowrap">
+      <a href="{% url 'usuarios' %}" class="btn btn-outline-light">Perfis Publicos</a>
+  </li>
+  {% if request.user.is_authenticated %}
+  <li class="nav-item text-nowrap">
+      <a href="{% url 'logout' %}" class="btn btn-outline-light">Sair</a>
+  </li>
+  {% else %}
+  <li class="nav-item text-nowrap">
+      <a href="{% url 'entrar' %}" class="btn btn-outline-light">Entrar</a>
+  </li>
+  {% endif %}
+</ul>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+
+</div>
+
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
+      <div class="texto-centro">
+        <h1>DIRETRIZES</h1>
+      </div>
+
+      <div class="artigo">
+
+    			<h2>Links para as principais diretrizes médicas<br class="mobile-hide" /></h2>
+    			<p></p>
+
+          <!-- anuncio1 -->
+          <div class="anuncio-top">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5705627321786233"
+                 data-ad-slot="5686167727"
+                 data-ad-format="auto"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+
+          {% with object_list as instituicoes %}
+            {% if instituicoes %}
+
+                {% for instituicao in instituicoes %}
+            			  <h2>
+            				{{ instituicao.instituicao }}<br>
+            			  </h2>
+
+                    <p>
+                      {% for link in links_list %}
+                        {% if instituicao.instituicao|stringformat:"s" == link.instituicao|stringformat:"s" %}
+                          <ul>
+                            <a target="_blank" href="{{ link.link }}">
+                    				{{ link.nome }}
+                    			  </a><br>
+                          </ul>
+                        {% endif %}
+                      {% endfor %}
+                    </p>
+                {% endfor %}
+
+            {% else %}
+                <p>{% trans "Não há links" %}</p>
+            {% endif %}
+          {% endwith %}
+
+    	</div>
+</main>
+
+    {% endblock %}
+
+    {% block barra-esquerda %}
+
+    <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+      <div class="bd-search d-flex align-items-center">
+
+          <a href="{% url 'perfil' %}">
+            <!-- <img class="avatar" src="{{ user.perfilestudante.gravatar_url }}"> -->
+            <i class="material-icons" style="font-size: 30px; padding-bottom: 3px; vertical-align: middle;">perm_identity</i>
+            <span style="" class="name">{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</span>
+          </a>
+
+        <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+        </button>
+      </div>
+
+      <nav class="collapse bd-links" id="bd-docs-nav">
+        <div class="bd-toc-item">
+          <a class="bd-toc-link" href="/">
+            <h1><span data-feather="home"></span> Perguntas</h1></a>
+          <a class="bd-toc-link" href="{% url 'educacao_medica' %}">
+            <h1><span data-feather="book-open"></span>Educação Médica</h1></a>
+          <a class="bd-toc-link active" href="{% url 'diretrizes_in' %}">
+            <h1><span data-feather="book-open"></span>Diretrizes</h1></a>
+          <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
+            <h1><span data-feather="book-open"></span>Controles</h1></a>
+          <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
+            <h1><span data-feather="book-open"></span>Exames</h1></a>
+          <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
+            <h1><span data-feather="book-open"></span>Prescrições</h1></a> -->
+        </div>
+      </nav>
+
+    </div>
+
+    {% endblock %}

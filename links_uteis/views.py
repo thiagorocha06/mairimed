@@ -12,3 +12,14 @@ class ViewLinkporInstituicao(ListView):
 
         context['links_list'] = Link.objects.all().order_by("nome")
         return context
+
+class ViewLinkporInstituicao2(ListView):
+    model = Instituicao
+    template_name = 'mairimed/diretrizes_in.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ViewLinkporInstituicao2, self)\
+            .get_context_data(**kwargs)
+
+        context['links_list'] = Link.objects.all().order_by("nome")
+        return context

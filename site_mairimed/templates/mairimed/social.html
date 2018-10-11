@@ -1,5 +1,6 @@
 <!doctype html>
 {% extends "educacao_base.html" %}
+{% load quiz_tags %}
 {% load i18n %}
 {% load staticfiles%}
 
@@ -23,6 +24,7 @@
 {% endblock %}
 
 {% block content %}
+
 <!-- BARRA DIREITA -->
 <div class="d-none d-xl-block col-xl-2 bd-toc">
 
@@ -31,24 +33,55 @@
 <!-- CONTEUDO -->
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
-    <div class="texto-centro">
-      <h1>Perfils Publicos</h1>
-    </div>
-
-    <div class="artigo">
-        {% for user, pergunta in obj %}
         <div class="artigo">
-            <a href="{% url 'usuario_publico' pk=user.pk %}">
-                <span class="name">{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</span>
+          <h2>Criar pergunta</h2>
+          <p>
+              <form action="/submit" method="post">
+                {% for field in form %}{% csrf_token %}
+                {{ field }}
+                {% endfor %}
+                <input type="hidden" value="{{ next_url }}" name="next_url">
+                <input type="submit" value="Perguntar">
+              </form>
+          </p>
+        </div>
+
+        <div class="texto-centro">
+          <h2>Perguntas feitas</h2>
+        </div>
+        {% for pergunta in perguntas %}
+        <div class="artigo">
+            <h4>{{ pergunta.content }}</h4>
+            <a href="{% url 'usuario_publico' pk=pergunta.user.pk %}">
+                <small>{{ pergunta.user.perfilestudante.primeiro_nome }} {{ pergunta.user.perfilestudante.ultimo_nome }}</small>
             </a>
-            <p>
-                {{ user.pergunta_count}} Perguntas
-                <span class="spacing">{{ user.perfilestudante.followed_by.count }} Seguidores</span>
-                <span class="spacing">{{ user.perfilestudante.follows.count }} Seguindo</span>
-            </p>
+            <br>
+            {% if request.user == pergunta.user %}
+              <a href="{% url 'deletar_pergunta' pk=pergunta.id %}">Deletar</a>
+            {% endif %}
+
+          <h6>Respostas</h6>
+
+          {% for comentario in comentarios %}
+              {% if pergunta.id == comentario.object_id %}
+              <blockquote>
+                <p>{{ comentario.conteudo }}</p>
+                <footer>{{ comentario.user.perfilestudante.primeiro_nome }} {{ pergunta.user.perfilestudante.ultimo_nome }} há {{ comentario.data|timesince}}</cite></footer>
+                {% if request.user == comentario.user %}
+                  <a href="{% url 'deletar_comentario' pk=comentario.id %}">Deletar</a>
+                {% endif %}
+              </blockquote>
+              {% endif %}
+          {% endfor %}
+
+          <form class="" action="." method="post"> {% csrf_token %}
+            {{ comentario_form }}
+            <input type="hidden" name="object_id" value="{{ pergunta.id }}">
+            <input type="submit" name="" value="Responder" class="btn btn-default">
+          </form>
+
         </div>
         {% endfor %}
-    </div>
 
 </main>
 
@@ -72,15 +105,15 @@
 
   <nav class="collapse bd-links" id="bd-docs-nav">
     <div class="bd-toc-item">
-      <a class="bd-toc-link" href="/">
+      <a class="bd-toc-link active" href="/">
         <h1><span data-feather="home"></span> Perguntas</h1></a>
+      <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
+        <h1><span data-feather="book-open"></span>Controles</h1></a> -->
       <a class="bd-toc-link" href="{% url 'educacao_medica' %}">
         <h1><span data-feather="book-open"></span>Educação Médica</h1></a>
       <a class="bd-toc-link" href="{% url 'diretrizes_in' %}">
         <h1><span data-feather="book-open"></span>Diretrizes</h1></a>
       <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
-        <h1><span data-feather="book-open"></span>Controles</h1></a>
-      <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
         <h1><span data-feather="book-open"></span>Exames</h1></a>
       <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
         <h1><span data-feather="book-open"></span>Prescrições</h1></a> -->
