@@ -1,11 +1,9 @@
 import hashlib
 
 from django.db import models
-from django.db.models import Q
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
-from django.contrib.auth.backends import ModelBackend
+from django.conf import settings
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.signals import post_save
@@ -13,8 +11,10 @@ from django.dispatch import receiver
 
 INSTITUICOES = ( ('1', '----'), ('2', 'ESCS'), ('3', 'UNB'), ('4', 'UCB'), ('5', 'UNICEUB'), ('6', 'FACIPLAC') )
 
+
+
 class PerfilEstudante(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     email_confirmed = models.BooleanField(default=False)
     primeiro_nome = models.CharField(max_length=30, default='')
     ultimo_nome = models.CharField(max_length=30, default='')

@@ -172,9 +172,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'live-static', 'media-root', 'our_static')
 #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_root')
 
+# Custom Django auth settings
+
 LOGIN_REDIRECT_URL	=	'/mairimed/interno/'
 LOGOUT_REDIRECT_URL	=	'/'
 
+# Custom Email
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

@@ -81,7 +81,7 @@ class TemaBasico(models.Model):
         return self.tema_basico
 
 class Artigo(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE,)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
     data_de_criacao = models.DateTimeField(default=timezone.now)
     data_de_publicacao = models.DateTimeField(blank=True, null=True)
 

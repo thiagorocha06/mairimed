@@ -10,12 +10,11 @@ urlpatterns = [
     #url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
     url(r'', include('site_mairimed.urls')),
     url(r'', include('artigos.urls')),
-    url(r'', include('usuarios.urls')),
     url(r'^questoes/', include('quiz.urls')),
     url('^', include('django.contrib.auth.urls')),
     url('^contact/', include('contactus.urls')),
     url(r"^chat/", include("chat.urls")),
-    url(r'', include('publicacao.urls')),
+
 ]
 
 handler404 = 'site_mairimed.views.handler404'
