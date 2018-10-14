@@ -11,7 +11,9 @@ from django.dispatch import receiver
 
 INSTITUICOES = ( ('1', '----'), ('2', 'ESCS'), ('3', 'UNB'), ('4', 'UCB'), ('5', 'UNICEUB'), ('6', 'FACIPLAC') )
 
-
+class User(AbstractUser):
+    is_student = models.BooleanField(default=False)
+    is_teacher = models.BooleanField(default=False)
 
 class PerfilEstudante(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

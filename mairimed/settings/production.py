@@ -188,7 +188,7 @@ if not settings.DEBUG:
     #os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_root')
 
     # Custom Django auth settings
-
+    AUTH_USER_MODEL = 'usuarios.User'
     LOGIN_REDIRECT_URL	=	'/'
     LOGOUT_REDIRECT_URL	=	'/'
 
