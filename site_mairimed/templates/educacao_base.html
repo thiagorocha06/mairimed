@@ -56,15 +56,26 @@
     <!-- Navbar -->
 
     <header class="navbar navbar-expand-lg navbar-light sticky-top flex-column flex-md-row" style="background-color: #1F1102">
-      <a class="navbar-brand" href="{% url 'inicio' %}">
-        <img src="{% static 'img/mairimed_logo5.svg' %}" width="180" height="45" alt="">
+      <a class="navbar-brand" href="{% url 'educacao_medica' %}">
+        <img src="{% static 'img/estudante_mairimed2.svg' %}" width="180" height="45" alt="">
       </a>
 
       <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
       </ul>
       <form type="get" action="" class="form-inline my-2 my-lg-0">
-        {% block form-nav %}
-        {% endblock %}
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+            <a href="{% url 'inicio' %}" class="btn btn-outline-light">Início</a>
+            <a href="{% url 'perfil_saude' %}" class="btn btn-outline-light">Perfil</a>
+            <a href="{% url 'educacao_medica' %}" class="btn btn-outline-light">Estudante</a>
+            <a href="{% url 'perfil' %}" class="btn btn-outline-light">Conta</a>
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'logout' %}" class="btn btn-outline-light">Sair</a>
+            {% else %}
+              <a href="{% url 'entrar' %}" class="btn btn-outline-light">Entrar</a>
+            {% endif %}
+          </li>
+        </ul>
       </form>
     </header>
 

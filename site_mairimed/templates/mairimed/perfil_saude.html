@@ -1,0 +1,270 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load quiz_tags %}
+{% load i18n %}
+{% load staticfiles%}
+
+{% block content %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+    <nav class="collapse bd-links" id="bd-docs-nav">
+      <div class="bd-toc-item">
+        <!-- <a href="{% url 'usuarios' %}"><h1>Contatos</h1></a> -->
+        <p>PROPAGANDA</p>
+      </div>
+    </nav>
+
+    <!-- FOOTER -->
+    <footer class="blog-footer">
+     <div class="container">
+       <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
+       <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
+       <p><a href="{% url 'contactus' %}">Contato</a></p>
+       <p>&copy; 2017-2018 mairimed.com</p>
+     </div>
+    </footer>
+
+</div>
+
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+  <div class="">
+    <p style="text-align: right;">
+      <!-- <a href="#">imprimir</a> -->
+      <!-- <a href="#">compartilhar</a> -->
+    </p>
+  </div>
+
+  <div class="artigo">
+    <a href="{% url 'nova_dieta' %}"><h3>Criar Nova Dieta</h3></a>
+    <!-- <h3>Criar Novo Treino</h3> -->
+    <!-- <h3>Criar Nova Publicação</h3> -->
+  </div>
+
+  <div class="artigo">
+    <h1>{{ user.perfilusuario.primeiro_nome }} {{ user.perfilusuario.ultimo_nome }}, {{ user.perfilsaude.idade }} anos </h1>
+    <!-- <p>Data de nascimento: {{ user.perfilsaude.data_nascimento }}</p> -->
+    <p>Sexo: {{ user.perfilsaude.get_sexo_display }}</p>
+    <p>Altura: {{ user.perfilsaude.altura }} m</p>
+    <p>Peso: {{ user.perfilsaude.peso }} kg</p>
+    <p>
+      <!-- IMC: {% widthratio user.perfilsaude.peso 1 user.perfilsaude.altura %} -->
+    </p>
+    <a href="{% url 'editar_perfil_saude' user_id=user.perfilusuario.user_id %}">Alterar Dados</a><br>
+  </div>
+
+  <!-- <div class="artigo">
+    <h2>Diagnósticos</h2>
+    <p>Adicionar diagnóstico</p>
+    <p>
+        <form action="/submit" method="post">
+          {% for field in form %}{% csrf_token %}
+          {{ field }}
+          {% endfor %}
+          <input type="hidden" value="{{ next_url }}" name="next_url">
+          <input type="submit" value="Adicionar">
+        </form>
+    </p>
+  </div>
+
+  <div class="artigo">
+    <h2>Sintomas</h2>
+
+    <p>Adicionar sintoma</p>
+    <p>
+        <form action="/sintoma_escolhido" method="post">
+          {% csrf_token %}
+          {% for sintoma in sintomas_form %}
+            {{ sintoma }}
+          {% endfor %}
+          <input type="hidden" value="{{ next_url }}" name="next_url">
+          <input type="submit" value="Adicionar">
+        </form>
+    </p>
+  </div>
+
+  <div class="artigo">
+    <h2>Medicações em uso</h2>
+    <p>Adicionar medicação</p>
+    <p>
+        <form action="/submit" method="post">
+          {% for field in form %}{% csrf_token %}
+          {{ field }}
+          {% endfor %}
+          <input type="hidden" value="{{ next_url }}" name="next_url">
+          <input type="submit" value="Adicionar">
+        </form>
+    </p>
+  </div> -->
+
+  <div class="artigo">
+    <h2>Dieta</h2>
+    <p>Sua dieta atual:
+      {% if minha_dieta %}
+        {% for dieta in minha_dieta %}
+          <a href="{% url 'detalhe_dieta' pk=dieta.minha_dieta.id %}">{{ dieta }}</a>
+        {% endfor %}
+      {% else %}
+        <p>Você ainda não selecionou uma dieta</p>
+      {% endif %}
+    </p>
+
+    <a href="{% url 'lista_dietas' %}"><p>Buscar Dietas</p></a>
+  </div>
+
+  <!-- <div class="artigo">
+    <h2>Treino</h2>
+    <p>Seu treino atual:
+      {% for dieta in minha_dieta %}
+        <a href="{% url 'detalhe_dieta' pk=dieta.minha_dieta.id %}">{{ dieta }}</a>
+      {% endfor %}
+    </p>
+    <p>Buscar Treino</p>
+  </div> -->
+
+  <!-- <div class="artigo">
+    <a href="{% url 'controles' %}"><h2>Controles</h2></a>
+    <a href="{% url 'controles' %}"><p>Adicionar Controle</p></a>
+  </div> -->
+
+  {% if controles_peso %}
+    <div class="artigo">
+      <!-- <p style="text-align: right;"><a href="#">compartilhar</a></p> -->
+      <h2>Controles de Peso</h2>
+    {% for peso in controles_peso %}
+      {{ peso.peso }} kg
+      <small>{{ peso.data }}, {{ peso.hora }}</small>
+      <br>
+    {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if controles_pressao %}
+    <div class="artigo">
+      <h2>Controles de Pressão Arterial</h2>
+    {% for pressao in controles_pressao %}
+      {{ pressao.sistolica }} x {{ pressao.diastolica }} mmHg
+      <small>{{ pressao.data }}, {{ pressao.hora }}</small>
+      <br>
+    {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if controles_glicemia %}
+    <div class="artigo">
+      <h2>Controles de Glicemia</h2>
+    {% for glicemia in controles_glicemia %}
+        {{ glicemia.glicemia }} g/dl
+        <small>{{ glicemia.data }}, {{ glicemia.hora }}</small>
+        <br>
+    {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if controles_temperatura %}
+    <div class="artigo">
+      <h2>Controles de Temperatura</h2>
+    {% for temperatura in controles_temperatura %}
+        {{ temperatura.temperatura }} ºC
+        <small>{{ temperatura.data }}, {{ temperatura.hora }}</small>
+        <br>
+    {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="artigo">
+    <h2>Criar anotação</h2>
+    <p>
+        <form action="/submit" method="post">
+          {% for field in form %}{% csrf_token %}
+          {{ field }}
+          {% endfor %}
+          <input type="hidden" value="{{ next_url }}" name="next_url">
+          <input type="submit" value="Salvar">
+        </form>
+    </p>
+  </div>
+
+  {% for pergunta in perguntas %}
+  <div class="artigo">
+    <h2>Anotação</h2>
+    <h4>{{ pergunta.user }}</h4>
+    <small>{{ pergunta.creation_date }}</small>
+    <p></p>
+    <p>{{ pergunta.content }}</p>
+    {% if request.user == pergunta.user %}
+      <a href="{% url 'deletar_pergunta' pk=pergunta.id %}">Deletar</a>
+    {% endif %}
+    <br>
+
+    <blockquote>
+      <footer>
+        <a class="respostas-btn" href="#">{{ pergunta.comentarios.count }} Comentario{% if pergunta.comentarios.count < 1 %}s{% endif %}
+          {% if pergunta.comentarios.count > 1 %}s{% endif %}</a>
+      </footer>
+      <div class="respostas" style='display:none;'>
+        <p></p>
+        {% for comentario in comentarios %}
+            {% if pergunta.id == comentario.object_id %}
+              <p>
+                {{ comentario.conteudo }}<br>
+                <small>{{ comentario.user.perfilusuario.primeiro_nome }} {{ pergunta.user.perfilusuario.ultimo_nome }} há {{ comentario.data|timesince}}</small>
+                {% if request.user == comentario.user %}
+                  <a href="{% url 'deletar_comentario' pk=comentario.id %}">Deletar</a>
+                {% endif %}
+              </p>
+            {% endif %}
+        {% endfor %}
+      </div>
+    </blockquote>
+    <form class="" action="." method="post"> {% csrf_token %}
+      {{ comentario_form }}
+      <input type="hidden" name="object_id" value="{{ pergunta.id }}">
+      <input type="submit" name="" value="Comentar" class="btn btn-default">
+    </form>
+  </div>
+  {% endfor %}
+
+</main>
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+  <div class="bd-search d-flex align-items-center">
+
+      <a href="{% url 'perfil_saude' %}">
+        <!-- <img class="avatar" src="{{ user.perfilusuario.gravatar_url }}"> -->
+        <i class="material-icons" style="font-size: 30px; padding-bottom: 3px; vertical-align: middle;">perm_identity</i>
+        <span style="" class="name">{{ user.perfilusuario.primeiro_nome }} {{ user.perfilusuario.ultimo_nome }}</span>
+      </a>
+
+    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+    </button>
+  </div>
+
+  <nav class="collapse bd-links" id="bd-docs-nav">
+    <div class="bd-toc-item">
+      <a class="bd-toc-link" href="/">
+        <h1><span data-feather="home"></span> Início</h1></a>
+      <a class="bd-toc-link" href="{% url 'perfil_detalhado' %}">
+        <h1><span data-feather="book-open"></span> Perfil detalhado</h1></a>
+      <!-- <a class="bd-toc-link" href="/">
+        <h1><span data-feather="home"></span> Publicações</h1></a> -->
+      <a class="bd-toc-link" href="{% url 'nova_dieta' %}">
+        <h1><span data-feather="book-open"></span> Minhas Dietas</h1></a>
+      <a class="bd-toc-link" href="{% url 'novo_treino' %}">
+        <h1><span data-feather="book-open"></span> Meus Treinos</h1></a>
+      <a class="bd-toc-link" href="{% url 'controles' %}">
+        <h1><span data-feather="book-open"></span> Controles</h1></a>
+      <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
+        <h1><span data-feather="book-open"></span>Exames</h1></a> -->
+    </div>
+  </nav>
+
+</div>
+
+{% endblock %}

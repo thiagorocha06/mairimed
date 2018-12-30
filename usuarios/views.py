@@ -3,7 +3,6 @@ from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import update_session_auth_hash, login, authenticate, logout
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -19,12 +18,12 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 
 from usuarios.tokens import account_activation_token
-from usuarios.forms import AuthenticateForm, SignUpForm
-from usuarios.models import PerfilEstudante
+from usuarios.forms import AuthenticateForm, SignUpForm, PerfilSaudeForm
+from usuarios.models import User, PerfilUsuario, PerfilSaude
 from publicacao.models import Pergunta
+from publicacao.forms import PerguntaForm
 from comentario.models import Comentario
 from comentario.forms import ComentarioForm
-
 
 def entrar(request, auth_form=None, user_form=None):
     if request.user.is_authenticated:
@@ -89,10 +88,39 @@ def perfil(request):
 
     return render(request, 'usuarios/perfil.html', context)
 
+class EditarPerfil(UpdateView):
+    model = PerfilUsuario
+    fields = ['primeiro_nome', 'ultimo_nome',]
+    template_name = 'usuarios/editar_perfil.html'
+    slug_field = 'user_id'
+    slug_url_kwarg = 'user_id'
+
+# @login_required
+# def editar_perfil(request):
+#     if request.method == 'POST':
+#         form = FormularioEdicaoPerfil(request.POST, instance=request.user)
+#
+#         if form.is_valid():
+#             form.save()
+#             return redirect('/perfil')
+#
+#     else:
+#         form = FormularioEdicaoPerfil(instance=request.user)
+#         args = {'form': form}
+#         return render(request, 'usuarios/editar_perfil.html', args)
+
+class EditarPerfilSaude(UpdateView):
+    model = PerfilSaude
+    fields = ['data_nascimento', 'altura', 'sexo', 'peso']
+    template_name = 'usuarios/editar_perfil_saude.html'
+    slug_field = 'user_id'
+    slug_url_kwarg = 'user_id'
+
 @login_required
 def usuario_publico(request, pk):
     usuario_publico = User.objects.get(pk=pk)
     usuario_perguntas = Pergunta.objects.filter(user=usuario_publico.pk)
+    form = PerguntaForm()
 
     users = User.objects.filter(pk=usuario_publico.pk).annotate(pergunta_count=Count('pergunta'))
     perguntas = map(get_latest, users)
@@ -131,6 +159,7 @@ def usuario_publico(request, pk):
         "comentario_form": comentario_form,
         'obj': obj,
         'obj_comentarios': obj_comentarios,
+        'form': form
     }
 
     return render(request, 'usuarios/usuario_publico.html', context)
@@ -162,27 +191,6 @@ def unfollow(request):
             except ObjectDoesNotExist:
                 return redirect('/users/')
     return redirect('/users/')
-
-class EditarPerfil(UpdateView):
-    model = PerfilEstudante
-    fields = ['primeiro_nome', 'ultimo_nome', 'faculdade']
-    template_name = 'usuarios/editar_perfil.html'
-    slug_field = 'user_id'
-    slug_url_kwarg = 'user_id'
-
-@login_required
-def editar_perfil(request):
-    if request.method == 'POST':
-        form = FormularioEdicaoPerfil(request.POST, instance=request.user)
-
-        if form.is_valid():
-            form.save()
-            return redirect('/perfil')
-
-    else:
-        form = FormularioEdicaoPerfil(instance=request.user)
-        args = {'form': form}
-        return render(request, 'usuarios/editar_perfil.html', args)
 
 @login_required
 def mudar_senha(request):
@@ -226,13 +234,17 @@ def signup(request):
             user.refresh_from_db()  # load the profile instance created by the signal
             user.is_active = False
             user.email = form.cleaned_data.get('username')
-            user.perfilestudante.email = form.cleaned_data.get('username')
-            user.perfilestudante.primeiro_nome = form.cleaned_data.get('first_name')
-            user.perfilestudante.ultimo_nome = form.cleaned_data.get('last_name')
+            user.perfilusuario.email = form.cleaned_data.get('username')
+            user.perfilusuario.primeiro_nome = form.cleaned_data.get('first_name')
+            user.perfilusuario.ultimo_nome = form.cleaned_data.get('last_name')
+
+            user.perfilsaude.altura = "00"
+            user.perfilsaude.peso = "00"
+
             user.save()
             raw_password = form.cleaned_data.get('password1')
             current_site = get_current_site(request)
-            subject = 'Activate Your MySite Account'
+            subject = 'Ative sua conta Mairimed'
             message = render_to_string('usuarios/account_activation_email.html', {
                 'user': user,
                 'domain': "mairimed.com",
@@ -265,7 +277,7 @@ def users(request):
     return render(request,
                   'usuarios/profiles.html',
                   {'obj': obj, 'next_url': '/users/', 'obj_comentarios': obj_comentarios,
-                   'user_id': request.user.perfilestudante.user_id, })
+                   'user_id': request.user.perfilusuario.user_id, })
 
 def account_activation_sent(request):
     return render(request, 'usuarios/account_activation_sent.html')
@@ -279,7 +291,7 @@ def activate(request, uidb64, token):
 
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
-        user.perfilestudante.email_confirmed = True
+        user.perfilusuario.email_confirmed = True
         user.save()
         login(request, user)
         return redirect('/')

@@ -14,8 +14,8 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg1664"
-   inkscape:version="0.92.2pre0 (973e216, 2017-07-25)"
-   sodipodi:docname="educacao_mairimed.svg">
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="estudante_mairimed2.svg">
   <defs
      id="defs1658" />
   <sodipodi:namedview
@@ -25,14 +25,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24748738"
-     inkscape:cx="77.216409"
-     inkscape:cy="577.96093"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="6.531658"
+     inkscape:cy="522.97236"
      inkscape:document-units="mm"
      inkscape:current-layer="g1697"
      showgrid="false"
-     inkscape:window-width="1364"
-     inkscape:window-height="707"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1" />
@@ -58,20 +58,43 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <rect
-         style="opacity:1;fill:#1f1102;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3.4341166;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:1;fill:#1f1102;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:4.52053499;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect5716-7"
-         width="1875.1556"
-         height="1450.6343"
-         x="972.21082"
-         y="2011.4587"
+         width="5260.001"
+         height="922.22083"
+         x="-838.29437"
+         y="2224.3816"
          inkscape:export-xdpi="3.051538"
          inkscape:export-ydpi="3.051538" />
+      <a
+         id="a6149-0"
+         transform="matrix(1.8895238,0,0,1.8895238,-1490.5227,-2344.9862)">
+        <text
+           inkscape:export-ydpi="96"
+           inkscape:export-xdpi="96"
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:11.68706226px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.09725344px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="1038.9623"
+           y="2799.4023"
+           id="text5825-23"
+           sodipodi:linespacing="0%"><tspan
+             sodipodi:role="line"
+             x="1038.9623"
+             y="2799.4023"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:447.07107544px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#ffffff;stroke-width:1.09725344px"
+             id="tspan4262">Estudante</tspan></text>
+      </a>
+      <path
+         style="fill:#ff9400;fill-opacity:1"
+         d="m -743.90406,3051.0469 c 0.057,-4.1472 5.1295,-41.4727 11.2731,-82.9453 11.8491,-79.9856 12.4882,-88.9762 7.8721,-110.7252 -2.2233,-10.4741 -0.687,-16.9173 6.4096,-26.8837 8.9309,-12.5424 9.3225,-17.3104 9.0779,-110.5077 -0.1418,-53.5696 -1.2472,-99.0041 -2.4591,-100.9647 -1.2119,-1.9609 -19.6978,-9.8232 -41.08,-17.4715 -36.4657,-13.0443 -46.676,-18.9068 -41.661,-23.9219 3.0007,-3.0008 629.1128,-229.9159 634.3137,-229.8879 5.7248,0.031 631.4311,227.0048 634.641,230.2147 5.4334,5.4333 -9.9824,12.0318 -126.1139,53.9808 l -120.5656,43.5508 -45.3251,-15.0398 c -97.684499,-32.4133 -188.7806988,-46.0591 -308.1655,-46.1623 -84.8432,-0.073 -126.1835,3.4685 -206.8249,17.718 -68.8875,12.1731 -157.3698,37.3784 -168.7516,48.0711 l -9.5759,8.9959 -80.4419,-29.078 c -64.9853,-23.4909 -81.1643,-27.938 -84.2015,-23.1425 -2.0678,3.2643 -3.7893,43.7805 -3.8256,90.0352 -0.067,83.5167 0,84.2136 11.136,100.5847 8.7632,12.8959 10.5709,19.4458 8.3037,30.0849 -4.5792,21.4891 -3.9427,30.4737 7.9866,112.7033 6.1885,42.6578 11.2596,79.9832 11.2694,82.9456 0,4.0104 -13.1863,5.386 -51.6883,5.386 -46.4105,0 -51.6957,-0.7721 -51.6032,-7.5405 z m 189.7893,-90.486 c 0.1673,-4.147 16.1907,-62.8013 35.6092,-130.3426 l 35.3064,-122.8022 15.0198,-7.3165 c 18.1945,-8.8624 104.5274,-30.9107 155.5874,-39.7352 110.5529,-19.106 251.079301,-20.0599 352.796201,-2.3944 63.433199,11.0167 149.963799,36.1376 160.094299,46.4772 8.0175,8.1838 80.1074,257.5668 75.7228,261.9513 -1.547,1.5473 -31.4864,-5.138 -66.5317,-14.8564 -71.5475,-19.841 -125.673799,-31.1812 -201.6017988,-42.2394 -64.9658002,-9.4614 -251.2761012,-10.8997 -310.2378012,-2.3944 -71.0427,10.2476 -144.5542,26.7426 -196.3552,44.059 -28.1906,9.424 -52.2588,17.1343 -53.4842,17.1343 -1.2254,0 -2.0921,-3.3931 -1.9254,-7.5407 z"
+         id="path3460"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cscscssscsscsssscscscsscsccsccssccsssssc" />
       <g
          id="g5849-53"
-         transform="matrix(0.90213945,0,0,0.90213945,520.63165,297.18966)"
+         transform="matrix(0.27061551,0,0,0.27061551,-537.37696,1775.7801)"
          inkscape:export-xdpi="96"
-         inkscape:export-ydpi="96"
-         style="opacity:0.294">
+         inkscape:export-ydpi="96">
         <ellipse
            ry="401.88663"
            rx="413.1756"
@@ -92,7 +115,7 @@
                id="g650-7-6-4-2-3-4-3-0-1"
                transform="translate(-67.351921,-282.87807)">
               <g
-                 transform="rotate(-29.767655,934.66519,1060.4834)"
+                 transform="matrix(0.86804587,-0.49648401,0.49648401,0.86804587,-403.18011,603.98148)"
                  id="g579-9-5-9-9-3-0-5-8-2"
                  style="fill:#1f1102;fill-opacity:1">
                 <path
@@ -176,36 +199,6 @@
              sodipodi:nodetypes="ccccccccccccccccccscscccccscccccccccsccccccscccsscc" />
         </g>
       </g>
-      <a
-         id="a6149-0"
-         transform="matrix(0.54944405,0,0,0.54944405,766.41422,1243.6121)">
-        <text
-           inkscape:export-ydpi="96"
-           inkscape:export-xdpi="96"
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:13.16704082px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.09725344px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="874.703"
-           y="2966.304"
-           id="text5825-23"><tspan
-             sodipodi:role="line"
-             x="874.703"
-             y="2966.304"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:503.68539429px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#ffffff;stroke-width:1.09725344px"
-             id="tspan855">Mairimed</tspan></text>
-        <text
-           inkscape:export-ydpi="96"
-           inkscape:export-xdpi="96"
-           xml:space="preserve"
-           style="font-style:normal;font-weight:normal;font-size:13.16704082px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.09725344px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           x="877.48871"
-           y="2478.606"
-           id="text5825-23-3"><tspan
-             sodipodi:role="line"
-             x="877.48871"
-             y="2478.606"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:503.68536377px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#ffffff;stroke-width:1.09725344px"
-             id="tspan882">Educação</tspan></text>
-      </a>
     </g>
   </g>
 </svg>

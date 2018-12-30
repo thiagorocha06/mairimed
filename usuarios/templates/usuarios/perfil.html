@@ -1,40 +1,21 @@
 <!doctype html>
-{% extends "educacao_base.html" %}
+{% extends "conta_base.html" %}
 {% load i18n %}
 {% load staticfiles%}
-
-{% block form-nav %}
-
-<ul class="navbar-nav px-3">
-  <li class="nav-item text-nowrap">
-      <a href="{% url 'usuarios' %}" class="btn btn-outline-light">Perfis Publicos</a>
-  </li>
-  {% if request.user.is_authenticated %}
-  <li class="nav-item text-nowrap">
-      <a href="{% url 'logout' %}" class="btn btn-outline-light">Sair</a>
-  </li>
-  {% else %}
-  <li class="nav-item text-nowrap">
-      <a href="{% url 'entrar' %}" class="btn btn-outline-light">Entrar</a>
-  </li>
-  {% endif %}
-</ul>
-
-{% endblock %}
 
 {% block content %}
 
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
   <div class="texto-centro">
-    <h1>{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</h1>
+    <h1>{{ user.perfilusuario.primeiro_nome }} {{ user.perfilusuario.ultimo_nome }}</h1>
   </div>
 
   <div class="artigo">
+    <h4>Dados gerais</h4>
     <p>Email: {{ user }}</p>
-    <p>Nome: {{ user.perfilestudante.primeiro_nome }}</p>
-    <p>Último nome: {{ user.perfilestudante.ultimo_nome }}</p>
-    <p>Faculdade: {{ user.perfilestudante.get_faculdade_display }}</p>
+    <p>Nome: {{ user.perfilusuario.primeiro_nome }}</p>
+    <p>Último nome: {{ user.perfilusuario.ultimo_nome }}</p>
 
     <p>
       Perguntas
@@ -50,52 +31,10 @@
       {% endfor %}
     </p>
 
+    <!-- <h4>Credenciais</h4>
+    <p>Se você é um profissional de saúde, <a href="#">aperte aqui para atualizar seu perfil</a></p> -->
 
-    <a href="{% url 'editar_perfil' user_id=user.perfilestudante.user_id %}">Atualizar Perfil</a><br>
-    <a href="{% url 'change_password' %}">Alterar Senha</a><br>
     <a href="{% url 'delete_user' pk=user.pk %}">Apagar Conta</a>
-  </div>
-
-  <div class="artigo">
-    <h1>Minhas Perguntas</h1>
-    {% for pergunta in perguntas %}
-    <div class="artigo">
-      <h4>{{ pergunta.content }}</h4>
-      <a href="{% url 'usuario_publico' pk=pergunta.user.pk %}">
-          <small>{{ pergunta.user.perfilestudante.primeiro_nome }} {{ pergunta.user.perfilestudante.ultimo_nome }}</small>
-      </a>
-      {% if request.user == pergunta.user %}
-        <a href="{% url 'deletar_pergunta' pk=pergunta.id %}">Deletar</a>
-      {% endif %}
-      <br>
-
-      <blockquote>
-        <footer>
-          <a class="respostas-btn" href="#">{{ pergunta.comentarios.count }} Resposta{% if pergunta.comentarios.count < 1 %}s{% endif %}
-            {% if pergunta.comentarios.count > 1 %}s{% endif %}</a>
-        </footer>
-        <div class="respostas" style='display:none;'>
-          <p></p>
-          {% for comentario in comentarios %}
-              {% if pergunta.id == comentario.object_id %}
-                <p>
-                  {{ comentario.conteudo }}<br>
-                  <small>{{ comentario.user.perfilestudante.primeiro_nome }} {{ pergunta.user.perfilestudante.ultimo_nome }} há {{ comentario.data|timesince}}</small>
-                  {% if request.user == comentario.user %}
-                    <a href="{% url 'deletar_comentario' pk=comentario.id %}">Deletar</a>
-                  {% endif %}
-                </p>
-              {% endif %}
-          {% endfor %}
-        </div>
-      </blockquote>
-      <form class="" action="." method="post"> {% csrf_token %}
-        {{ comentario_form }}
-        <input type="hidden" name="object_id" value="{{ pergunta.id }}">
-        <input type="submit" name="" value="Responder" class="btn btn-default">
-      </form>
-    </div>
-    {% endfor %}
   </div>
 
 </main>
@@ -108,10 +47,10 @@
 
   <div class="bd-search d-flex align-items-center">
 
-      <a href="{% url 'perfil' %}">
-        <!-- <img class="avatar" src="{{ user.perfilestudante.gravatar_url }}"> -->
+      <a href="{% url 'perfil_saude' %}">
+        <!-- <img class="avatar" src="{{ user.perfilusuario.gravatar_url }}"> -->
         <i class="material-icons" style="font-size: 30px; padding-bottom: 3px; vertical-align: middle;">perm_identity</i>
-        <span style="" class="name">{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</span>
+        <span style="" class="name">{{ user.perfilusuario.primeiro_nome }} {{ user.perfilusuario.ultimo_nome }}</span>
       </a>
 
     <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
@@ -120,18 +59,10 @@
 
   <nav class="collapse bd-links" id="bd-docs-nav">
     <div class="bd-toc-item">
-      <a class="bd-toc-link" href="/">
-        <h1><span data-feather="home"></span> Perguntas</h1></a>
-      <a class="bd-toc-link" href="{% url 'educacao_medica' %}">
-        <h1><span data-feather="book-open"></span>Educação Médica</h1></a>
-      <a class="bd-toc-link" href="{% url 'diretrizes_in' %}">
-        <h1><span data-feather="book-open"></span>Diretrizes</h1></a>
-      <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
-        <h1><span data-feather="book-open"></span>Controles</h1></a>
-      <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
-        <h1><span data-feather="book-open"></span>Exames</h1></a>
-      <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
-        <h1><span data-feather="book-open"></span>Prescrições</h1></a> -->
+      <a class="bd-toc-link" href="{% url 'editar_perfil' user_id=user.perfilusuario.user_id %}">
+        <h1><span data-feather="home"></span> Alterar Dados</h1></a>
+      <a class="bd-toc-link" href="{% url 'change_password' %}">
+        <h1><span data-feather="book-open"></span> Alterar Senha</h1></a>
     </div>
   </nav>
 

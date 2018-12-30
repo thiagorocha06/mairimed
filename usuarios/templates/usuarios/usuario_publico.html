@@ -27,30 +27,28 @@
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
   <div class="texto-centro">
-    <h1>{{ usuario_publico.perfilestudante.primeiro_nome }} {{ usuario_publico.perfilestudante.ultimo_nome }}</h1>
+    <h1>{{ usuario_publico.perfilusuario.primeiro_nome }} {{ usuario_publico.perfilusuario.ultimo_nome }}</h1>
   </div>
-  <div class="artigo">
-    <p>Faculdade: {{ usuario_publico.perfilestudante.get_faculdade_display }}</p>
-    <p>
-      Perguntas
-      {% for user, pergunta in obj %}
-      {{ user.pergunta_count}}
-      {% endfor %}
-    </p>
-
-    <p>
-      Respostas
-      {% for user, comentario in obj_comentarios %}
-      {{ user.comentario_count}}
-      {% endfor %}
-    </p>
-  </div>
+    <div class="artigo">
+      <a href="#">Adicionar contato</a>
+      <a href="#">Remover contato</a>
+      <h2>Criar anotação para {{ usuario_publico.perfilusuario.primeiro_nome }} {{ usuario_publico.perfilusuario.ultimo_nome }}</h2>
+      <p>
+          <form action="/submit" method="post">
+            {% for field in form %}{% csrf_token %}
+            {{ field }}
+            {% endfor %}
+            <input type="hidden" value="{{ next_url }}" name="next_url">
+            <input type="submit" value="Salvar">
+          </form>
+      </p>
+    </div>
 
   {% for pergunta in perguntas %}
   <div class="artigo">
     <h4>{{ pergunta.content }}</h4>
     <a href="{% url 'usuario_publico' pk=pergunta.user.pk %}">
-        <small>{{ pergunta.user.perfilestudante.primeiro_nome }} {{ pergunta.user.perfilestudante.ultimo_nome }}</small>
+        <small>{{ pergunta.user.perfilusuario.primeiro_nome }} {{ pergunta.user.perfilusuario.ultimo_nome }}</small>
     </a>
     {% if request.user == pergunta.user %}
       <a href="{% url 'deletar_pergunta' pk=pergunta.id %}">Deletar</a>
@@ -68,7 +66,7 @@
             {% if pergunta.id == comentario.object_id %}
               <p>
                 {{ comentario.conteudo }}<br>
-                <small>{{ comentario.user.perfilestudante.primeiro_nome }} {{ pergunta.user.perfilestudante.ultimo_nome }} há {{ comentario.data|timesince}}</small>
+                <small>{{ comentario.user.perfilusuario.primeiro_nome }} {{ pergunta.user.perfilusuario.ultimo_nome }} há {{ comentario.data|timesince}}</small>
                 {% if request.user == comentario.user %}
                   <a href="{% url 'deletar_comentario' pk=comentario.id %}">Deletar</a>
                 {% endif %}
@@ -96,9 +94,9 @@
   <div class="bd-search d-flex align-items-center">
 
       <a href="{% url 'perfil' %}">
-        <!-- <img class="avatar" src="{{ user.perfilestudante.gravatar_url }}"> -->
+        <!-- <img class="avatar" src="{{ user.perfilusuario.gravatar_url }}"> -->
         <i class="material-icons" style="font-size: 30px; padding-bottom: 3px; vertical-align: middle;">perm_identity</i>
-        <span style="" class="name">{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</span>
+        <span style="" class="name">{{ user.perfilusuario.primeiro_nome }} {{ user.perfilusuario.ultimo_nome }}</span>
       </a>
 
     <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>

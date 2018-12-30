@@ -22,7 +22,7 @@
 <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
 
   <div class="texto-centro">
-    <h1>{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</h1>
+    <h1>{{ user.perfilusuario.primeiro_nome }} {{ user.perfilusuario.ultimo_nome }}</h1>
   </div>
 
   <form method="post">{% csrf_token %}
@@ -41,9 +41,9 @@
   <div class="bd-search d-flex align-items-center">
 
       <a href="{% url 'perfil' %}">
-        <!-- <img class="avatar" src="{{ user.perfilestudante.gravatar_url }}"> -->
+        <!-- <img class="avatar" src="{{ user.perfilusuario.gravatar_url }}"> -->
         <i class="material-icons" style="font-size: 30px; padding-bottom: 3px; vertical-align: middle;">perm_identity</i>
-        <span style="" class="name">{{ user.perfilestudante.primeiro_nome }} {{ user.perfilestudante.ultimo_nome }}</span>
+        <span style="" class="name">{{ user.perfilusuario.primeiro_nome }} {{ user.perfilusuario.ultimo_nome }}</span>
       </a>
 
     <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>

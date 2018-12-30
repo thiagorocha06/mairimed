@@ -1,8 +1,8 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth.models import User
 from django import forms
 from django.utils.html import strip_tags
 
+from usuarios.models import User, PerfilSaude
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Nome'}))
@@ -32,3 +32,9 @@ class AuthenticateForm(AuthenticationForm):
             if f != '__all__':
                 self.fields[f].widget.attrs.update({'class': 'error', 'value': strip_tags(error)})
         return form
+
+class PerfilSaudeForm(forms.ModelForm):
+
+    class Meta:
+        model = PerfilSaude
+        fields = [ 'data_nascimento', 'altura', 'sexo', 'peso' ]

@@ -1,0 +1,134 @@
+<!doctype html>
+{% extends "base.html" %}
+{% load staticfiles%}
+
+{% block form-nav %}
+
+<ul class="navbar-nav px-3">
+  <li class="nav-item text-nowrap">
+      <a href="{% url 'educacao_medica' %}" class="btn btn-outline-light">Educação Médica</a>
+      <a href="{% url 'perfil' %}" class="btn btn-outline-light">Conta</a>
+      {% if request.user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="btn btn-outline-light">Sair</a>
+      {% else %}
+        <a href="{% url 'entrar' %}" class="btn btn-outline-light">Entrar</a>
+      {% endif %}
+  </li>
+</ul>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- BARRA DIREITA -->
+<div class="d-none d-xl-block col-xl-2 bd-toc">
+    <nav class="collapse bd-links" id="bd-docs-nav">
+      <div class="bd-toc-item">
+        <!-- <a href="{% url 'usuarios' %}"><h1>Contatos</h1></a> -->
+        <p>PROPAGANDA</p>
+      </div>
+    </nav>
+
+    <!-- FOOTER -->
+    <footer class="blog-footer">
+     <div class="container">
+       <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
+       <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
+       <p><a href="{% url 'contactus' %}">Contato</a></p>
+       <p>&copy; 2017-2018 mairimed.com</p>
+     </div>
+    </footer>
+
+</div>
+
+<!-- CONTEUDO -->
+<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
+  <div class="artigo">
+    <a href="{% url 'editar_dieta' pk=dieta.id %}"><h1>{{ dieta.nome_dieta }}</h1></a>
+    <small> Criado por: {{ dieta.user.perfilusuario.primeiro_nome }} {{ dieta.user.perfilusuario.ultimo_nome }}</small>
+    <p></p>
+    <p>Descriçao: {{ dieta.descricao }}</p>
+    <a href="#">alterar nome e descrição da dieta</a>
+  </div>
+
+  <div class="artigo">
+
+    <h2>Quinta-Feira</h2>
+    <h3>Lanches</h3>
+    {% for alimento in obj %}
+      <p>{{ alimento.alimento }} x {{ alimento.quantidade }}
+        <form class="" action="{% url 'del_lanches_qui' pk=alimento.pk %}" method="post">
+          {% csrf_token %}
+          <input type="submit" name="" value="Deletar">
+        </form>
+      </p>
+    {% endfor %}
+
+  </div>
+
+  <div class="artigo">
+
+    <h2>Adicionar Alimento</h2>
+
+    <form class="" action="" method="get">
+      <input type="text" name="q" placeholder="Pesquisar Alimentos" value="{{ request.GET.q }}">
+      <input type="submit" name="" value="Pesquisar">
+    </form>
+
+    {% for alimento in alimentos %}
+      <p>{{ alimento }}
+        <form class="" action="{% url 'add_lanches_qui' pk=dieta.id %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="alimento" value="{{ alimento.id }}">
+          <input type="number" name="quantidade" value="quantidade">
+          <input type="hidden" name="dieta" value="{{ dieta.id }}">
+          <input type="submit" name="" value="Adicionar">
+        </form>
+      </p>
+    {% endfor %}
+
+  </div>
+
+</main>
+
+{% endblock %}
+
+{% block barra-esquerda %}
+
+<div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+  <div class="bd-search d-flex align-items-center">
+
+      <a href="{% url 'perfil_saude' %}">
+        <!-- <img class="avatar" src="{{ user.perfilusuario.gravatar_url }}"> -->
+        <i class="material-icons" style="font-size: 30px; padding-bottom: 3px; vertical-align: middle;">perm_identity</i>
+        <span style="" class="name">{{ user.perfilusuario.primeiro_nome }} {{ user.perfilusuario.ultimo_nome }}</span>
+      </a>
+
+    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+    </button>
+  </div>
+
+  <nav class="collapse bd-links" id="bd-docs-nav">
+    <div class="bd-toc-item">
+      <a class="bd-toc-link" href="/">
+        <h1><span data-feather="home"></span> Início</h1></a>
+      <a class="bd-toc-link" href="{% url 'perfil_detalhado' %}">
+        <h1><span data-feather="book-open"></span> Perfil detalhado</h1></a>
+      <!-- <a class="bd-toc-link" href="/">
+        <h1><span data-feather="home"></span> Publicações</h1></a> -->
+      <a class="bd-toc-link" href="{% url 'nova_dieta' %}">
+        <h1><span data-feather="book-open"></span> Minhas Dietas</h1></a>
+      <a class="bd-toc-link" href="{% url 'novo_treino' %}">
+        <h1><span data-feather="book-open"></span> Meus Treinos</h1></a>
+      <a class="bd-toc-link" href="{% url 'controles' %}">
+        <h1><span data-feather="book-open"></span> Controles</h1></a>
+      <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
+        <h1><span data-feather="book-open"></span>Exames</h1></a> -->
+    </div>
+  </nav>
+
+</div>
+
+{% endblock %}

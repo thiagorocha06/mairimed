@@ -18,7 +18,7 @@ def submit(request):
             pergunta.save()
             return redirect(next_url)
         else:
-            return public(request, pergunta_form)
+            return redirect('/')
     return redirect('/')
 
 def deletar_pergunta(request, pk):

@@ -58,6 +58,13 @@ INSTALLED_APPS = [
     'usuarios',
     'publicacao',
     'comentario',
+    'controles',
+    'dieta',
+    'diagnostico',
+    'sintoma',
+    'medicamento',
+    'recomendacao',
+    'treino',
 ]
 
 # ChatterBot settings

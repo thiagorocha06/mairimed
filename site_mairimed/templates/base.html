@@ -1,5 +1,5 @@
+<!doctype html>
 {% load staticfiles %}
-<!DOCTYPE HTML>
 
 <html>
   <head>
@@ -9,9 +9,6 @@
     <title>Mairimed</title>
     <meta name="description" content="O projeto mairimed tem o objetivo de fornecer conteúdo adequado para estudantes e profissionais da área da saúde.">
     <meta name="KEYWORDS" content="resumos de medicina, medicina, residência médica, exercícios de medicina" >
-
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113535136-1"></script>
@@ -32,95 +29,95 @@
       });
     </script>
 
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap4.css' %}">
+    <!-- Custom styles-->
+    <link rel="stylesheet" href="{% static 'css/navbar2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/artigos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar2.css' %}">
+    <!-- Documentation extras -->
+    <link rel="stylesheet" href="{% static 'css/docs.min.css' %}">
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/carousel.js' %}"></script>
+
     <!-- Icon for FF, Chrome, Opera -->
     <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="16x16">
     <link rel="icon" type="image/png" href="{% static 'img/mairimed_logo1.png' %}" sizes="32x32">
 
-    <!-- Custom styles-->
-		<link rel="stylesheet" href="{% static 'css/navtransparent.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
   </head>
 
-	<body class="no-sidebar is-preload">
+  <body style="background-color:#EDEDED" ondragstart="return false" onselectstart="return false">
 
-		<div id="page-wrapper">
+    <!-- Navbar -->
 
-			<!-- Header -->
-				<section id="header" class="wrapper">
+    <header class="navbar navbar-expand-lg navbar-light sticky-top flex-column flex-md-row">
+      <a class="navbar-brand" href="{% url 'inicio' %}">
+        <img src="{% static 'img/mairimed_logo6.svg' %}" width="180" height="45" alt="">
+      </a>
 
-					<!-- Logo -->
-          <div id="logomarca">
-            <a class="navbar-brand" href="{% url 'inicio' %}">
-              <img src="{% static 'img/mairimed_logo6.svg' %}" width="180" height="55" alt="">
-            </a>
-          </div>
-					<!-- <div id="logo">
-						<h1><a href="index.html">Escape Velocity</a></h1>
-						<p>A free responsive site template by HTML5 UP</p>
-					</div> -->
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      </ul>
+      <form type="get" action="" class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+            <a href="{% url 'inicio' %}" class="btn btn-light">Início</a>
+            <a href="{% url 'perfil_saude' %}" class="btn btn-light">Perfil</a>
+            <a href="{% url 'educacao_medica' %}" class="btn btn-light">Estudante</a>
+            <a href="{% url 'perfil' %}" class="btn btn-light">Conta</a>
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'logout' %}" class="btn btn-light">Sair</a>
+            {% else %}
+              <a href="{% url 'entrar' %}" class="btn btn-light">Entrar</a>
+            {% endif %}
+          </li>
+        </ul>
+      </form>
+    </header>
 
-					<!-- Nav -->
-						<nav id="nav">
-              <a class="navbar-brand" href="{% url 'inicio' %}" style="float:left; margin-left:30px;">
-                <img src="{% static 'img/mairimed_logo6.svg' %}" width="180" height="55" alt="">
-              </a>
-							<ul>
-								<li>
-									<a href="{% url 'educacao_medica' %}">EDUCAÇÃO MÉDICA</a>
-									<ul>
-										<li><a href="{% url 'educacao_medica' %}">INÍCIO</a></li>
-										<li><a href="{% url 'ciclo_basico' %}">CICLO BÁSICO</a></li>
-										<li><a href="{% url 'ciclo_clinico' %}">CICLO CLÍNICO</a></li>
-										<li><a href="{% url 'exercicios' %}">EXERCÍCIOS</a></li>
-									</ul>
-								</li>
-                <li><a href="{% url 'escs' %}">ESCS</a></li>
-                <li><a href="{% url 'diretrizes' %}">DIRETRIZES</a></li>
-                <li class="current"><a href="{% url 'chat' %}">Assistente</a></li>
-                <li class="current"><a href="{% url 'login' %}">Entrar</a></li>
-							</ul>
-						</nav>
-
-				</section>
-
-      <!-- Main -->
-			<div id="main" class="wrapper style2">
-
-      <!-- CONTEUDO -->
-      {% block content %}
-      {% endblock %}
-
-      <!-- BARRA ESQUERDA -->
-      {% block barra-esquerda %}
-      {% endblock %}
-
-      </div>
-
-      <!-- Footer -->
-      <footer class="inicio-footer">
-       <div class="container">
-         <ul style="list-style-type: none;">
-           <li><a href="{% url 'termos_uso' %}">Termos de uso</a></li>
-           <li><a href="{% url 'sobre' %}">Sobre mairimed.com</a></li>
-           <li><a href="{% url 'contactus' %}">Contato</a></li>
-         </ul>
-       </div>
-       <div id="copyright">
-          <ul>
-            <li>&copy; 2017-2018 mairimed.com</li><li>Design based: <a href="http://html5up.net">HTML5 UP</a></li>
-          </ul>
-        </div>
-      </footer>
-
+  <div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+    <!-- BARRA ESQUERDA -->
+    {% block barra-esquerda %}
+    {% endblock %}
+    <!-- CONTEUDO -->
+    {% block content %}
+    {% endblock %}
     </div>
+  </div>
 
-    <!-- Scripts -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/navtransparent/jquery.dropotron.min.js' %}"></script>
-    <script src="{% static 'js/navtransparent/breakpoints.min.js' %}"></script>
-    <script src="{% static 'js/navtransparent/browser.min.js' %}"></script>
-    <script src="{% static 'js/navtransparent/util.js' %}"></script>
-    <script src="{% static 'js/navtransparent/main.js' %}"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.17/marked.min.js"> </script>
+  <!-- Markdown JavaScript-->
+  <script src="{% static 'js/markdown.js' %}"></script>
+  <!-- Icons -->
+  <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+  <script>
+    feather.replace()
+  </script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $(".respostas-btn").click(function(event){
+        event.preventDefault();
+        $(this).parent().next(".respostas").fadeToggle();
+    })
+  })
+  </script>
+
+  <!-- Graphs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+  {% block grafico %}
+  {% endblock %}
 
   </body>
 </html>

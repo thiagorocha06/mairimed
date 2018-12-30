@@ -16,6 +16,9 @@ urlpatterns = [
     url('^contact/', include('contactus.urls')),
     url(r"^chat/", include("chat.urls")),
     url(r'', include('publicacao.urls')),
+    url(r'', include('controles.urls')),
+    url(r'', include('dieta.urls')),
+    url(r'', include('treino.urls')),
 ]
 
 handler404 = 'site_mairimed.views.handler404'

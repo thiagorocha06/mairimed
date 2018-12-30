@@ -7,6 +7,8 @@ from links_uteis.views import ViewLinkporInstituicao, ViewLinkporInstituicao2
 urlpatterns = [
     url(r'^assistente/$', chat, name='chat'),
     url(r'^$', views.inicio, name='inicio'),
+    url(r'^perfil_saude/$', views.perfil_saude, name='perfil_saude'),
+    url(r'^perfil_detalhado/$', views.perfil_detalhado, name='perfil_detalhado'),
     url(r'^educacao_medica/$', views.educacaomedicaview, name='educacao_medica'),
     url(r'^mairimed/termos_uso/$', views.termos_uso, name='termos_uso'),
     url(r'^mairimed/sobre/$', views.sobre, name='sobre'),
@@ -36,4 +38,8 @@ urlpatterns = [
     url(r'^pediatria/$', views.especialidades, name='pediatria'),
     url(r'^pneumologia/$', views.especialidades, name='pneumologia'),
     url(r'^reumatologia/$', views.especialidades, name='reumatologia'),
+
+### Perfil Saude ##
+    url(r'^dieta_escolhida$', views.dieta_escolhida, name='dieta_escolhida'),
+    url(r'^sintoma_escolhido$', views.sintoma_escolhido, name='sintoma_escolhido'),
 ]

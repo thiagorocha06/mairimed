@@ -8,7 +8,7 @@
 
 <ul class="navbar-nav px-3">
   <li class="nav-item text-nowrap">
-      <a href="{% url 'usuarios' %}" class="btn btn-outline-light">Perfis Publicos</a>
+      <a href="{% url 'usuarios' %}" class="btn btn-outline-light">Educação Médica</a>
   </li>
   {% if request.user.is_authenticated %}
   <li class="nav-item text-nowrap">
@@ -27,7 +27,19 @@
 
 <!-- BARRA DIREITA -->
 <div class="d-none d-xl-block col-xl-2 bd-toc">
-
+    <nav class="collapse bd-links" id="bd-docs-nav">
+      <div class="bd-toc-item">
+          <h1><span data-feather="home"></span> Contatos</h1>
+      </div>
+    </nav>
+    <footer class="blog-footer">
+      <div class="container">
+        <p><a href="{% url 'termos_uso' %}">Termos de uso</a></p>
+        <p><a href="{% url 'sobre' %}">Sobre mairimed.com</a></p>
+        <p><a href="{% url 'contactus' %}">Contato</a></p>
+        <p>&copy; 2017-2018 mairimed.com</p>
+      </div>
+    </footer>
 </div>
 
 <!-- CONTEUDO -->
@@ -111,16 +123,12 @@
   <nav class="collapse bd-links" id="bd-docs-nav">
     <div class="bd-toc-item">
       <a class="bd-toc-link active" href="/">
-        <h1><span data-feather="home"></span> Perguntas</h1></a>
-      <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
-        <h1><span data-feather="book-open"></span>Controles</h1></a> -->
-      <a class="bd-toc-link" href="{% url 'educacao_medica' %}">
-        <h1><span data-feather="book-open"></span>Educação Médica</h1></a>
-      <a class="bd-toc-link" href="{% url 'diretrizes_in' %}">
-        <h1><span data-feather="book-open"></span>Diretrizes</h1></a>
-      <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
-        <h1><span data-feather="book-open"></span>Exames</h1></a>
+        <h1><span data-feather="home"></span> Início</h1></a>
       <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
+        <h1><span data-feather="book-open"></span>Controles</h1></a>
+      <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
+        <h1><span data-feather="book-open"></span>Exames</h1></a>
+      <!-- <a class="bd-toc-link" href="{% url 'ciclo_basico' %}">
         <h1><span data-feather="book-open"></span>Prescrições</h1></a> -->
     </div>
   </nav>
